@@ -18,9 +18,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <style>
+        main {
+            height: 5000px
+        }
+
+        #search-bar {
+            box-shadow: 0 2px 13px -4px #0000005c;
+            width: 80%;
+            height: max-content;
+            border-radius: 15px;
+        }
+
+        #search-bar>button {
+            border: none;
+            box-shadow: 0 0 3px -1px black;
+            background-color: #03A9F4!important;
+            color: white!important;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .form-select,#search-bar>button {
+            border-radius: 10px;
+            width: 160px;
+            height: 35px;
+            font-size: 14px;
+            background-color: white;
+            color: black;
+            margin: 10px;
+        }
 
     </style>
-
 </head>
 <body>
 <header class="flex header-area overlay">
@@ -131,6 +158,44 @@
         </div>
         <div id="details-img"></div>
     </section><!--details section-->
+    <section id="rental-section" class="flex f-col">
+        <h1 class="topic">Rentals</h1>
+        <section id="search-bar" class="flex f-row f-wrap">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>No of passengers</option>
+                <option value="1">2</option>
+                <option value="2">4</option>
+                <option value="3">6</option>
+                <option value="3">8</option>
+            </select>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Transmission type</option>
+                <option value="1">Manual</option>
+                <option value="2">Auto</option>
+            </select>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Brand (Make)</option>
+            </select><!--get database-->
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Type</option>
+                <option value="1">General</option>
+                <option value="2">Premium</option>
+                <option value="3">Luxury</option>
+            </select>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Fuel type</option>
+                <option value="1">Diesel</option>
+                <option value="2">Petrol</option>
+            </select>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Daily Price</option>
+            </select><!--get database-->
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Monthly Price</option>
+            </select><!--get database-->
+            <button>Search</button>
+        </section><!--search bar-->
+    </section><!--rental section-->
 </main>
 
 <script src="assets/js/jquery-3.7.0.min.js"></script>
