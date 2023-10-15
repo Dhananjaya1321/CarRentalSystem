@@ -18,35 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <style>
-        .topic {
-            margin: 25px 0 25px 0;
-        }
 
-        #about-section {
-            margin-bottom: 25px;
-            height: max-content;
-        }
-
-        #about > p {
-            margin: 0;
-            text-align: center;
-            padding: 0 25px 0 25px;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        #about > p > span {
-            font-size: 38px;
-            color: #FF9800;
-        }
-
-        #about {
-            width: 50%;
-        }
-
-        #about-img > img {
-            width: 500px;
-            height: 300px;
-        }
     </style>
 
 </head>
@@ -64,8 +36,8 @@
 
             <div id="main-nav" class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
-                    <li><a href="#" class="nav-item nav-link active">Home</a></li>
-                    <li><a href="#" class="nav-item nav-link">About</a></li>
+                    <li><a href="#home-section" class="nav-item nav-link active">Home</a></li>
+                    <li><a href="#about-section" class="nav-item nav-link">About</a></li>
                     <li><a href="#" class="nav-item nav-link">Cars</a></li>
                     <li><a href="#" class="nav-item nav-link">Contact</a></li>
                     <li><a href="#" class="nav-item nav-link">Profile</a></li><!--display after signIn or signUp-->
@@ -137,7 +109,28 @@
                 <img src="assets/image/car-front/lamborghini.png">
             </div>
         </div>
-    </section><!--about-->
+    </section><!--about section-->
+    <section id="details-section" class="flex">
+        <div class="flex f-row f-wrap">
+            <div id="rental-frequency" class="flex f-col">
+                <h1>650</h1>
+                <h5>Rental Frequency</h5>
+            </div>
+            <div id="cars" class="flex f-col">
+                <h1>50</h1>
+                <h5>Cars</h5>
+            </div>
+            <div id="happy-customers" class="flex f-col">
+                <h1>300</h1>
+                <h5>Happy Customers </h5>
+            </div>
+            <div id="drivers" class="flex f-col">
+                <h1>40</h1>
+                <h5>Drivers</h5>
+            </div>
+        </div>
+        <div id="details-img"></div>
+    </section><!--details section-->
 </main>
 
 <script src="assets/js/jquery-3.7.0.min.js"></script>
