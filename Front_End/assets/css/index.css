@@ -484,3 +484,31 @@ p {
     background: url(../image/car-front/woman-holding-keys-from-her-new-car.jpg);
     background-size: cover;
 }
+
+/*================================================= rental section ===================================================*/
+/*==================================================== search bar ====================================================*/
+#search-bar {
+    box-shadow: 0 2px 13px -4px #0000005c;
+    width: 80%;
+    height: max-content;
+    border-radius: 15px;
+}
+
+#search-bar>button {
+    border: none;
+    box-shadow: 0 0 3px -1px black;
+    background-color: #03A9F4!important;
+    color: white!important;
+    font-size: 18px;
+    font-weight: bold;
+}
+.form-select,#search-bar>button {
+    border-radius: 10px;
+    width: 160px;
+    height: 35px;
+    font-size: 14px;
+    background-color: white;
+    color: black;
+    margin: 10px;
+}
+/*==================================================== search bar ====================================================*/
