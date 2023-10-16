@@ -514,9 +514,9 @@ p {
 /*==================================================== rental details section ====================================================*/
 #rental-display-section {
     gap: 50px;
-    margin-top: 25px;
+    margin-top: 40px;
     height: max-content;
-    width: 80%;
+    width: 100%;
 }
 
 .display-car {

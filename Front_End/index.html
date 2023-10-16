@@ -19,10 +19,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <style>
         main {
-            height: 5000px
+            /*height: 5000px*/
         }
 
+        #see-all-btn {
+            width: 200px;
+            height: 40px;
+            border: 2px solid;
+            border-radius: 10px;
+            margin: 30px 0 25px 0;
+            /*box-shadow: 0 2px 10px -5px black;*/
+            font-size: 18px;
+            font-weight: bold;
+            background-color: unset;
+            color: #0000008c;
+        }
 
+        #contact-section {
+            position: relative;
+        }
+
+        #contact-section > div:first-child {
+            width: 100%;
+            height: 200px;
+        }
+
+        #map {
+            width: 80%;
+            height: 200px;
+            border-radius: 15px;
+            top: 100px;
+            position: absolute;
+        }
+
+        #map > iframe {
+            border-radius: 15px;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 0 12px -6px black;
+        }
+
+        #contact-info{
+            width: 100%;
+            height: 500px;
+            background-color: black;
+        }
 
         /*.rental-slider-img1, .rental-slider-img2, .rental-slider-img3, .rental-slider-img4 {
             width: 100%;
@@ -304,8 +345,120 @@
                     </div><!--other details-->
                 </div><!--car details-->
             </div><!--display car-->
+            <div class="display-car flex f-col">
+                <div></div><!--car images-->
+                <div class="car-type general-bach flex">
+                    <h2>General</h2>
+                </div><!--(ex mini, luxury)-->
+                <div class="flex f-col">
+                    <div class="flex f-row">
+                        <h2>Mercedes</h2>
+                        <div class="car-color"></div>
+                    </div>
+                    <div class="price-details flex f-row">
+                        <div>
+                            <h3>Daily Rate (Rs.) <br><span>18000</span></h3>
+                            <h3>Free KM for a day <br><span>100</span></h3>
+                        </div><!--daily rate-->
+                        <div class="horizontal-line"></div>
+                        <div>
+                            <h3>Monthly Rate (Rs.) <br><span>300000</span></h3>
+                            <h3>Free KM for a month <br><span>2400</span></h3>
+                        </div><!--monthly rate-->
+                    </div><!--price details-->
+                    <div class="other-details flex f-col">
+                        <h3>Price per Extra Km (Rs) <span>100</span></h3>
+                        <div class="flex f-row f-wrap">
+                            <div class="flex flex-row"><i class="fa-solid fa-user"></i> <span>4</span></div>
+                            <!--seat count-->
+                            <div class="flex flex-row"><i class="fa-solid fa-gear"></i> <span>Auto</span></div>
+                            <!--(Manual, Auto)-->
+                            <div class="flex flex-row"><i class="fa-solid fa-gas-pump"></i> <span>Diesel</span></div>
+                            <!--(Diesel, Petrol)-->
+                        </div>
+                    </div><!--other details-->
+                </div><!--car details-->
+            </div><!--display car-->
+            <div class="display-car flex f-col">
+                <div></div><!--car images-->
+                <div class="car-type luxury-bach flex">
+                    <h2>Luxury</h2>
+                </div><!--(ex mini, luxury)-->
+                <div class="flex f-col">
+                    <div class="flex f-row">
+                        <h2>Mercedes</h2>
+                        <div class="car-color"></div>
+                    </div>
+                    <div class="price-details flex f-row">
+                        <div>
+                            <h3>Daily Rate (Rs.) <br><span>18000</span></h3>
+                            <h3>Free KM for a day <br><span>100</span></h3>
+                        </div><!--daily rate-->
+                        <div class="horizontal-line"></div>
+                        <div>
+                            <h3>Monthly Rate (Rs.) <br><span>300000</span></h3>
+                            <h3>Free KM for a month <br><span>2400</span></h3>
+                        </div><!--monthly rate-->
+                    </div><!--price details-->
+                    <div class="other-details flex f-col">
+                        <h3>Price per Extra Km (Rs) <span>100</span></h3>
+                        <div class="flex f-row f-wrap">
+                            <div class="flex flex-row"><i class="fa-solid fa-user"></i> <span>4</span></div>
+                            <!--seat count-->
+                            <div class="flex flex-row"><i class="fa-solid fa-gear"></i> <span>Auto</span></div>
+                            <!--(Manual, Auto)-->
+                            <div class="flex flex-row"><i class="fa-solid fa-gas-pump"></i> <span>Diesel</span></div>
+                            <!--(Diesel, Petrol)-->
+                        </div>
+                    </div><!--other details-->
+                </div><!--car details-->
+            </div><!--display car-->
+            <div class="display-car flex f-col">
+                <div></div><!--car images-->
+                <div class="car-type premium-bach flex">
+                    <h2>Premium</h2>
+                </div><!--(ex mini, luxury)-->
+                <div class="flex f-col">
+                    <div class="flex f-row">
+                        <h2>Mercedes</h2>
+                        <div class="car-color"></div>
+                    </div>
+                    <div class="price-details flex f-row">
+                        <div>
+                            <h3>Daily Rate (Rs.) <br><span>18000</span></h3>
+                            <h3>Free KM for a day <br><span>100</span></h3>
+                        </div><!--daily rate-->
+                        <div class="horizontal-line"></div>
+                        <div>
+                            <h3>Monthly Rate (Rs.) <br><span>300000</span></h3>
+                            <h3>Free KM for a month <br><span>2400</span></h3>
+                        </div><!--monthly rate-->
+                    </div><!--price details-->
+                    <div class="other-details flex f-col">
+                        <h3>Price per Extra Km (Rs) <span>100</span></h3>
+                        <div class="flex f-row f-wrap">
+                            <div class="flex flex-row"><i class="fa-solid fa-user"></i> <span>4</span></div>
+                            <!--seat count-->
+                            <div class="flex flex-row"><i class="fa-solid fa-gear"></i> <span>Auto</span></div>
+                            <!--(Manual, Auto)-->
+                            <div class="flex flex-row"><i class="fa-solid fa-gas-pump"></i> <span>Diesel</span></div>
+                            <!--(Diesel, Petrol)-->
+                        </div>
+                    </div><!--other details-->
+                </div><!--car details-->
+            </div><!--display car-->
         </section><!--rental display section-->
+        <button id="see-all-btn">See All</button>
     </section><!--rental section-->
+    <section id="contact-section" class="flex f-col">
+        <div></div>
+        <div id="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d700.4087975292399!2d79.8984742225366!3d6.7563796121652215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sNo.%20200%2C%20Galle%20%20Road%2C%20Panadura%2C!5e0!3m2!1sen!2slk!4v1697462861988!5m2!1sen!2slk"
+                    style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div id="contact-info"></div>
+    </section><!--contact section-->
 </main>
 
 <script src="assets/js/jquery-3.7.0.min.js"></script>
