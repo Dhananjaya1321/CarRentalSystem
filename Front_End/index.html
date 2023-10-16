@@ -59,10 +59,21 @@
             box-shadow: 0 0 12px -6px black;
         }
 
-        #contact-info{
+        #contact-section > div:last-child {
+            height: 200px;
+            background-color: #393939;
             width: 100%;
-            height: 500px;
-            background-color: black;
+            color: white;
+        }
+        #contact-section > div:last-child>h1 {
+            font-family: 'Lobster', cursive;
+            font-size: 2.5rem;
+            top: 50px;
+            position: relative;
+        }
+        #contact-section > div:last-child>small {
+            top: 50px;
+            position: relative;
         }
 
         /*.rental-slider-img1, .rental-slider-img2, .rental-slider-img3, .rental-slider-img4 {
@@ -457,7 +468,10 @@
                     style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-        <div id="contact-info"></div>
+        <div class="flex f-col">
+            <h1>Easy Rental Car</h1>
+            <small>All right reserved by Isuru Dhananjaya</small>
+        </div>
     </section><!--contact section-->
 </main>
 
