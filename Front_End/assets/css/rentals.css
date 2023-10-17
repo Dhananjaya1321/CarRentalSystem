@@ -67,7 +67,10 @@
 }
 
 /*==================================================== rental details section ====================================================*/
-#rental-display-section {
+#rental-display-section,
+#general-rental-display-section,
+#luxury-rental-display-section,
+#premium-rental-display-section {
     gap: 50px;
     margin-top: 40px;
     height: max-content;
