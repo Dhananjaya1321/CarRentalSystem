@@ -19,6 +19,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <style>
 
+        .display-car > div:first-child, .display-car > div:first-child > div > div > div:first-child > div:first-child,
+        .display-car > div:first-child > div > div > div:nth-child(2) > div:first-child,
+        .display-car > div:first-child > div > div > div:nth-child(3) > div:first-child,
+        .display-car > div:first-child > div > div > div:last-child > div:first-child{
+            width: 100%;
+            height: 200px;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .display-car > div:first-child > div > div > div:first-child > div:first-child {
+            background: url("assets/image/car-front/benz.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .display-car > div:first-child > div > div > div:nth-child(2) > div:first-child {
+            background: url("assets/image/car-front/lamborghini.png");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .display-car > div:first-child > div > div > div:nth-child(3) > div:first-child {
+            background: url("assets/image/car-front/CHR.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .display-car > div:first-child > div > div > div:last-child > div:first-child {
+            background: url("assets/image/car-front/RR.jpg");
+            background-size: cover;
+            background-position: center;
+        }
 
     </style>
 </head>
@@ -94,7 +126,7 @@
         <h1 class="topic">About US</h1>
         <div class="flex f-row f-wrap">
             <div id="about">
-                <p><span>Easy Car Rental</span><br> Private Limited, we are known for our commitment to quality service.
+                <p>At Easy Car Rental Private Limited, we are known for our commitment to quality service.
                     Whether you don't own a car, are waiting for your vehicle to be repaired, or you're a
                     traveler or tourist seeking reliable transportation, we've got you covered. Our services
                     are tailored to meet the unique needs of each customer, ensuring a hassle-free and enjoyable
@@ -173,7 +205,34 @@
         </section><!--search bar-->
         <section id="rental-display-section" class="flex f-row f-wrap">
             <div class="display-car flex f-col">
-                <div></div><!--car images-->
+                <div>
+                    <div id="car-1" class="carousel slide carousel-fade">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="10000">
+                                <div class="d-block w-100"></div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000">
+                                <div class="d-block w-100"></div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-block w-100"></div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#car-1"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#car-1"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div><!--car images slider-->
                 <div class="car-type general-bach flex">
                     <h2>General</h2>
                 </div><!--(ex mini, luxury)-->
@@ -207,7 +266,34 @@
                 </div><!--car details-->
             </div><!--display car-->
             <div class="display-car flex f-col">
-                <div></div><!--car images-->
+                <div>
+                    <div id="car-2" class="carousel slide carousel-fade">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="10000">
+                                <div class="d-block w-100"></div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000">
+                                <div class="d-block w-100"></div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-block w-100"></div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#car-2"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#car-2"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div><!--car images slider-->
                 <div class="car-type luxury-bach flex">
                     <h2>Luxury</h2>
                 </div><!--(ex mini, luxury)-->
@@ -241,7 +327,34 @@
                 </div><!--car details-->
             </div><!--display car-->
             <div class="display-car flex f-col">
-                <div></div><!--car images-->
+                <div>
+                    <div id="car-3" class="carousel slide carousel-fade">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="10000">
+                                <div class="d-block w-100"></div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000">
+                                <div class="d-block w-100"></div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-block w-100"></div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#car-3"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#car-3"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div><!--car images slider-->
                 <div class="car-type premium-bach flex">
                     <h2>Premium</h2>
                 </div><!--(ex mini, luxury)-->
@@ -275,7 +388,34 @@
                 </div><!--car details-->
             </div><!--display car-->
             <div class="display-car flex f-col">
-                <div></div><!--car images-->
+                <div>
+                    <div id="car-4" class="carousel slide carousel-fade">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="10000">
+                                <div class="d-block w-100"></div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000">
+                                <div class="d-block w-100"></div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-block w-100"></div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#car-4"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#car-4"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div><!--car images slider-->
                 <div class="car-type general-bach flex">
                     <h2>General</h2>
                 </div><!--(ex mini, luxury)-->
@@ -309,7 +449,34 @@
                 </div><!--car details-->
             </div><!--display car-->
             <div class="display-car flex f-col">
-                <div></div><!--car images-->
+                <div>
+                    <div id="car-5" class="carousel slide carousel-fade">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="10000">
+                                <div class="d-block w-100"></div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000">
+                                <div class="d-block w-100"></div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-block w-100"></div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#car-5"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#car-5"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div><!--car images slider-->
                 <div class="car-type luxury-bach flex">
                     <h2>Luxury</h2>
                 </div><!--(ex mini, luxury)-->
@@ -343,7 +510,34 @@
                 </div><!--car details-->
             </div><!--display car-->
             <div class="display-car flex f-col">
-                <div></div><!--car images-->
+                <div>
+                    <div id="car-6" class="carousel slide carousel-fade">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="10000">
+                                <div class="d-block w-100"></div>
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000">
+                                <div class="d-block w-100"></div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-block w-100"></div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-block w-100"></div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#car-6"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#car-6"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div><!--car images slider-->
                 <div class="car-type premium-bach flex">
                     <h2>Premium</h2>
                 </div><!--(ex mini, luxury)-->
