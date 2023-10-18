@@ -7,84 +7,75 @@
     <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="../assets/bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/flex.css">
+    <link rel="stylesheet" href="../assets/css/item.css">
     <style>
-        #details-section {
-            width: 80%;
+        main {
             position: relative;
+            top: 60px;
+            gap: 25px;
+        }
+
+        #form-section {
+            width: 80%;
             height: max-content;
             border-radius: 15px;
-            top: 60px;
             box-shadow: 0 0 10px -6px black;
         }
 
-        #img-slider {
-            margin: 25px;
-            display: flex;
-            width: 360px;
-            height: 300px;
-            border-radius: 15px;
-            background-color: #ff253a;
-            align-self: flex-start;
-        }
-
-        #details {
-            width: 600px;
-            border-radius: 15px;
-            height: max-content;
-            align-self: flex-start;
-            margin: 25px;
-        }
-
-        #car-name {
-            margin-bottom: 20px;
-        }
-
-        #daily-rate, #monthly-rate {
-            flex-grow: 1;
-            align-items: flex-start;
-            margin-left: 20px;
-        }
-
-        #rate {
-            width: 100%;
-        }
-
-        #horizontal-line {
-            background-color: #0000004d;
-            width: 1px;
-            height: 100%;
+        form {
+            gap: 25px;
             margin: 15px;
         }
 
-        h3 {
-            font-weight: normal;
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-
-        h3 > span {
-            font-weight: bold;
-        }
-
-        .other-details,
-        .other-details > div,
-        .other-details > div > div {
+        form > div {
             width: 100%;
+            display: flex;
+            /*align-items: flex-start;*/
+            gap: 25px;
         }
 
-        .other-details > h3,
-        .other-details > div > div > div ,
-        .other-details > div,
-        .other-details > div > div {
+        form > div:nth-child(2) {
+            align-items: flex-start;
+        }
+
+        form > div:last-child {
+            justify-content: flex-start;
+        }
+
+        form > div:last-child > button {
+            width: 200px;
+            height: 40px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 0 12px -4px black;
+        }
+
+        label {
             align-self: flex-start;
         }
 
-        p,
-        .other-details > div > div,
-        .other-details > h3{
-            margin-left: 20px;
+        [type=date],
+        [type=time],
+        [type=text],
+        select {
+            padding: 0 10px 0 10px !important;
+            height: 40px !important;
+            width: 250px !important;
+            border-radius: 10px !important;
+            border: 1px solid #000000b3 !important;
+        }
+
+        #slip {
+            width: 400px;
+            height: 250px;
+            border-radius: 15px;
+            border: 1px solid;
+            /*background: red;*/
+            background-position: center;
+            background-size: cover;
         }
     </style>
+
 </head>
 <body>
 <main class="flex f-col">
@@ -94,27 +85,31 @@
             <div><h1 id="car-name">Mercedes</h1></div><!--car name (brand)-->
             <div id="rate" class="flex f-row">
                 <div id="daily-rate" class="flex f-col">
-                    <h3>Daily Rate : Rs. <span>18000</span></h3>
-                    <h3>Free KM for a day : <span>100</span>KM</h3>
+                    <h3>Daily Rate : Rs. <span id="price-for-day">18000</span></h3>
+                    <h3>Free KM for a day : <span id="km-for-day">100</span>KM</h3>
                 </div><!--daily rate-->
                 <div id="horizontal-line"></div>
                 <div id="monthly-rate" class="flex f-col">
-                    <h3>Monthly Rate : Rs. <span>300000</span></h3>
-                    <h3>Free KM for a month : <span>2400</span>KM</h3>
+                    <h3>Monthly Rate : Rs. <span id="price-for-month">300000</span></h3>
+                    <h3>Free KM for a month : <span id="km-for-month">2400</span>KM</h3>
                 </div><!--monthly rate-->
             </div>
             <div class="other-details flex f-col">
-                <h3>Price per Extra KM : Rs. <span>100</span></h3>
+                <h3>Price per Extra KM : Rs. <span id="extra-km-price">100</span></h3>
                 <div class="flex f-row ">
                     <div class="flex f-col">
-                        <div class="flex flex-row"><h3>Number of passengers : <span>4</span></h3></div><!--seat count-->
-                        <div class="flex flex-row"><h3>Registration number : <span>45546</span></h3></div>
-                        <div class="flex flex-row"><h3>Transmission type : <span>Auto</span></h3></div>
+                        <div class="flex flex-row"><h3>Number of passengers : <span id="seat-count">4</span></h3></div>
+                        <!--seat count-->
+                        <div class="flex flex-row"><h3>Registration number : <span id="registration-number">45546</span>
+                        </h3></div>
+                        <div class="flex flex-row"><h3>Transmission type : <span id="transmission-type">Auto</span></h3>
+                        </div>
                         <!--(Manual, Auto)-->
                     </div>
                     <div class="flex f-col">
-                        <div class="flex flex-row"><h3>Colo : <span>red</span></h3></div>
-                        <div class="flex flex-row"><h3>Fuel Type : <span>Diesel</span></h3></div><!--(Diesel, Petrol)-->
+                        <div class="flex flex-row"><h3>Colo : <span id="color">red</span></h3></div>
+                        <div class="flex flex-row"><h3>Fuel Type : <span id="fuel-type">Diesel</span></h3></div>
+                        <!--(Diesel, Petrol)-->
                     </div>
 
                 </div>
@@ -133,7 +128,52 @@
                 Waiver.
             </p>
         </div><!--details-->
-    </section>
+    </section><!--details section-->
+    <section id="form-section" class="flex">
+        <form class="flex f-col f-wrap">
+            <div class="flex f-row f-wrap">
+                <div class="flex f-col">
+                    <label>Pick Up Date :</label>
+                    <input type="date">
+                </div>
+                <div class="flex f-col">
+                    <label>Pick Up Time :</label>
+                    <input type="time">
+                </div>
+                <div class="flex f-col">
+                    <label>Return Date :</label>
+                    <input type="date">
+                </div>
+                <div class="flex f-col">
+                    <label>Return Time :</label>
+                    <input type="time">
+                </div>
+                <div class="flex f-col">
+                    <label>Drivers or Not :</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="flex f-col">
+                    <label>Location :</label>
+                    <input type="text" placeholder="Ex- Galle">
+                </div>
+            </div>
+            <div class="flex f-col">
+                <div class="flex f-col">
+                    <label>Bank Slip :</label>
+                    <input type="file">
+                </div>
+                <div id="slip"></div>
+            </div>
+            <div class="flex f-row">
+                <button>Add To Cart</button>
+                <button>Request To Rent</button>
+            </div>
+
+        </form>
+    </section><!--form section-->
 </main>
 
 <script src="../assets/js/jquery-3.7.0.min.js"></script>

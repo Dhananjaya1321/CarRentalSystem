@@ -1,0 +1,74 @@
+#details-section {
+    width: 80%;
+    height: max-content;
+    border-radius: 15px;
+    box-shadow: 0 0 10px -6px black;
+}
+
+#img-slider {
+    margin: 25px;
+    display: flex;
+    width: 360px;
+    height: 300px;
+    border-radius: 15px;
+    background-color: #ff253a;
+    align-self: flex-start;
+}
+
+#details {
+    width: 600px;
+    border-radius: 15px;
+    height: max-content;
+    align-self: flex-start;
+    margin: 25px;
+}
+
+#car-name {
+    margin-bottom: 20px;
+}
+
+#daily-rate, #monthly-rate {
+    flex-grow: 1;
+    align-items: flex-start;
+    margin-left: 20px;
+}
+
+#rate {
+    width: 100%;
+}
+
+#horizontal-line {
+    background-color: #0000004d;
+    width: 1px;
+    height: 100%;
+    margin: 15px;
+}
+
+h3 {
+    font-weight: normal;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+h3 > span {
+    font-weight: bold;
+}
+
+.other-details,
+.other-details > div,
+.other-details > div > div {
+    width: 100%;
+}
+
+.other-details > h3,
+.other-details > div > div > div ,
+.other-details > div,
+.other-details > div > div {
+    align-self: flex-start;
+}
+
+p,
+.other-details > div > div,
+.other-details > h3{
+    margin-left: 20px;
+}
