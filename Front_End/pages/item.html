@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap-5.1.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/flex.css">
+    <style>
+        #details-section {
+            width: 80%;
+            position: relative;
+            height: max-content;
+            border-radius: 15px;
+            top: 60px;
+            box-shadow: 0 0 10px -6px black;
+        }
+
+        #img-slider {
+            margin: 25px;
+            display: flex;
+            width: 360px;
+            height: 300px;
+            border-radius: 15px;
+            background-color: #ff253a;
+            align-self: flex-start;
+        }
+
+        #details {
+            width: 600px;
+            border-radius: 15px;
+            height: max-content;
+            align-self: flex-start;
+            margin: 25px;
+        }
+
+        #car-name {
+            margin-bottom: 20px;
+        }
+
+        #daily-rate, #monthly-rate {
+            flex-grow: 1;
+            align-items: flex-start;
+            margin-left: 20px;
+        }
+
+        #rate {
+            width: 100%;
+        }
+
+        #horizontal-line {
+            background-color: #0000004d;
+            width: 1px;
+            height: 100%;
+            margin: 15px;
+        }
+
+        h3 {
+            font-weight: normal;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        h3 > span {
+            font-weight: bold;
+        }
+
+        .other-details,
+        .other-details > div,
+        .other-details > div > div {
+            width: 100%;
+        }
+
+        .other-details > h3,
+        .other-details > div > div > div ,
+        .other-details > div,
+        .other-details > div > div {
+            align-self: flex-start;
+        }
+
+        p,
+        .other-details > div > div,
+        .other-details > h3{
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+<main class="flex f-col">
+    <section id="details-section" class="flex f-row f-wrap">
+        <div id="img-slider"></div><!--image slider-->
+        <div id="details" class="flex f-col">
+            <div><h1 id="car-name">Mercedes</h1></div><!--car name (brand)-->
+            <div id="rate" class="flex f-row">
+                <div id="daily-rate" class="flex f-col">
+                    <h3>Daily Rate : Rs. <span>18000</span></h3>
+                    <h3>Free KM for a day : <span>100</span>KM</h3>
+                </div><!--daily rate-->
+                <div id="horizontal-line"></div>
+                <div id="monthly-rate" class="flex f-col">
+                    <h3>Monthly Rate : Rs. <span>300000</span></h3>
+                    <h3>Free KM for a month : <span>2400</span>KM</h3>
+                </div><!--monthly rate-->
+            </div>
+            <div class="other-details flex f-col">
+                <h3>Price per Extra KM : Rs. <span>100</span></h3>
+                <div class="flex f-row ">
+                    <div class="flex f-col">
+                        <div class="flex flex-row"><h3>Number of passengers : <span>4</span></h3></div><!--seat count-->
+                        <div class="flex flex-row"><h3>Registration number : <span>45546</span></h3></div>
+                        <div class="flex flex-row"><h3>Transmission type : <span>Auto</span></h3></div>
+                        <!--(Manual, Auto)-->
+                    </div>
+                    <div class="flex f-col">
+                        <div class="flex flex-row"><h3>Colo : <span>red</span></h3></div>
+                        <div class="flex flex-row"><h3>Fuel Type : <span>Diesel</span></h3></div><!--(Diesel, Petrol)-->
+                    </div>
+
+                </div>
+            </div><!--other details-->
+            <p>This car is a <span id="car-type-loss-damage">luxury</span>car and before you can rent it first you need
+                to make a damage waiver payment of Rs. <span id="loss-damage">20000</span> to our bank account details
+                and upload the bank slip or bank confirmation in the reserved field in the rental view.
+                <br><br>
+                After you return the car, a brief inspection will be carried out on the car and if the car is
+                damaged or damaged, an appropriate amount will be deducted from the damage waiver payment and
+                the balance will be returned to you.
+                <br><br>
+                If the vehicle is not damaged, the damage waiver will be passed entirely to you.
+                <br><br>
+                Defects and malfunctions in the car's engine are not counted when making deductions from the Loss Damage
+                Waiver.
+            </p>
+        </div><!--details-->
+    </section>
+</main>
+
+<script src="../assets/js/jquery-3.7.0.min.js"></script>
+<script src="../assets/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
+<script src="../assets/fontawesome/js/all.min.js"></script>
+</body>
+</html>

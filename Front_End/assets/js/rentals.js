@@ -2,7 +2,7 @@ let click = 0;
 $("#filter>button").click(function () {
     if (click === 0) {
         let filter = $("#filter");
-        filter.css("display", "flex");
+        // filter.css("display", "flex");
         filter.css("position", "absolute");
         filter.css("boxShadow", "#0000007a 0px 0px 8px -4px");
         filter.css("borderRadius", "10px");
