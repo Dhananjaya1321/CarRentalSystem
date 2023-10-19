@@ -3,7 +3,8 @@ main {
     height: 100vh;
 }
 
-#login-section {
+#login-section ,
+#find-account-section{
     justify-content: flex-start;
     position: relative;
     width: 350px;
@@ -14,7 +15,8 @@ main {
 
 }
 
-#login-section > div:nth-child(1) {
+#login-section > div:nth-child(1) ,
+#find-account-section > div:nth-child(1) {
     align-self: self-start;
     margin-left: 20px;
     margin-bottom: 20px;
@@ -67,4 +69,45 @@ span {
 #line {
     width: 80%;
     height: max-content;
+}
+
+/*================================================ find account section ==============================================*/
+#find-account-section {
+    height: 360px;
+}
+
+a {
+    text-decoration: none;
+}
+
+#find-account-section > div:first-child > h1,
+#find-account-section > div:first-child > p {
+    align-self: flex-start;
+}
+
+#find-account-section > form > div > label {
+    align-self: flex-start;
+}
+
+
+#find-account-section > div:last-child {
+    width: 100%;
+    position: relative;
+    top: 50px;
+}
+
+#go-back-btn, #next-btn {
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 3px 6px -4px black;
+    background-color: #0027ff;
+}
+
+#find-account-section > div:last-child > a {
+    flex-grow: 1;
 }
