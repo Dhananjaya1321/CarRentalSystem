@@ -7,69 +7,85 @@
     <link rel="stylesheet" href="../assets/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="../assets/bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/flex.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
     <style>
-        a {
-            text-decoration: none;
-        }
-
         main {
-            width: 100%;
+            width: 77%;
+            position: absolute;
+            right: 0;
             height: 100vh;
         }
 
-        #nav-bar {
-            border-radius: 0 15px 15px 0;
-            width: 250px;
-            height: 100%;
-            box-shadow: 0 0 14px -3px #00000057;
-            background: #2f3457;
-        }
 
-        #nav-bar > div {
-            width: 100%;
-            gap: 2px;
-            align-self: flex-start;
-        }
-
-        #nav-bar > div > a {
-            align-self: flex-start;
-            width: 100%;
-        }
-
-        #nav-bar > div > a > button {
-            width: 100%;
-            height: 40px;
-            border: none;
-        }
     </style>
 </head>
 <body>
-<main>
-    <section id="nav-bar" class="flex f-row">
-        <div class="flex f-col">
-            <a href="#">
-                <button>Dashboard</button>
-            </a>
-            <a href="#">
-                <button>Manage Cars</button>
-            </a>
-            <a href="#">
-                <button>Manage Drivers</button>
-            </a>
-            <a href="#">
-                <button>Manage Customers</button>
-            </a>
-            <a href="#">
-                <button>Rental Request</button>
-            </a><a href="#">
-                <button>LogOut</button>
-            </a>
-        </div>
-    </section><!--navigation bar-->
+<section id="nav-bar" class="flex f-row">
+    <div class="flex f-col">
+        <a href="#">
+            <button>Dashboard</button>
+        </a>
+        <a href="#">
+            <button>Manage Cars</button>
+        </a>
+        <a href="#">
+            <button>Manage Drivers</button>
+        </a>
+        <a href="#">
+            <button>Manage Customers</button>
+        </a>
+        <a href="#">
+            <button>Rental Request</button>
+        </a><a href="#">
+        <button>LogOut</button>
+    </a>
+    </div>
+</section><!--navigation bar-->
+
+<main class="flex f-row">
     <section id="dashboard" class="flex f-col">
-        <div class="flex f-row"></div>
-        <div class="flex f-row"></div>
-        <div class="flex f-row"></div>
+        <div class="flex f-row f-wrap">
+            <div style="background-color: #f9c1a1;" class="flex f-col">
+                <h1 id="registered-users">100</h1>
+                <p>registered<br> users</p>
+            </div>
+            <div style="background-color: #f9a1f2;" class="flex f-col">
+                <h1 id="total-bookings-for-day">100</h1>
+                <p>Total bookings<br> for the day</p>
+            </div>
+            <div style="background-color: #b7a1f9;" class="flex f-col">
+                <h1 id="available-cars">1000</h1>
+                <p>available<br> cars</p>
+            </div>
+        </div>
+        <div class="flex f-row f-wrap">
+            <div style="background-color: #a1c0f9;" class="flex f-col">
+                <h1 id="reserved -cars">1000</h1>
+                <p>reserved<br>  cars</p>
+            </div>
+            <div style="background-color: #a1f1f9;" class="flex f-col">
+                <h1 id="active-bookings-for-day">1000</h1>
+                <p>active bookings<br> for day</p>
+            </div>
+            <div style="background-color: #a1f9ac;" class="flex f-col">
+                <h1 id="available-drivers">1000</h1>
+                <p>available<br> drivers</p>
+            </div>
+        </div>
+        <div class="flex f-row f-wrap">
+            <div style="background-color: #e7f9a1;" class="flex f-col">
+                <h1 id="occupied-drivers">1000</h1>
+                <p>occupied<br> drivers</p>
+            </div>
+            <div style="background-color: #f9daa1;" class="flex f-col">
+                <h1 id="need-maintenance">1000</h1>
+                <p>need<br> maintenance</p>
+            </div>
+            <div style="background-color: #f9a1a1;" class="flex f-col">
+                <h1 id="under-maintenance">1000</h1>
+                <p>under<br> maintenance</p>
+            </div>
+        </div>
     </section>
 </main>
 </body>

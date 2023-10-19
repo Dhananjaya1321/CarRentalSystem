@@ -1,0 +1,61 @@
+a {
+    text-decoration: none;
+}
+
+
+
+#nav-bar {
+    position: fixed;
+    left: 0;
+    border-radius: 0 15px 15px 0;
+    width: 250px;
+    height: 100%;
+    box-shadow: 0 0 14px -3px #00000057;
+    background: #2f3457;
+}
+
+#nav-bar > div {
+    width: 100%;
+    gap: 2px;
+    align-self: flex-start;
+}
+
+#nav-bar > div > a {
+    align-self: flex-start;
+    width: 100%;
+}
+
+#nav-bar > div > a > button {
+    width: 100%;
+    height: 40px;
+    border: none;
+}
+
+/*=========================================================dashboard===================================================*/
+#dashboard {
+    width: max-content;
+    height: 470px;
+    background-color: white;
+    box-shadow: 0 0 14px -3px #00000057;
+    border-radius: 15px;
+}
+
+#dashboard > div {
+    width: 100%;
+    flex-grow: 1;
+}
+
+#dashboard > div > div {
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    margin: 20px;
+    box-shadow: -12px 12px 17px -21px black;
+    height: 150px;
+    width: 180px;
+    border-radius: 15px;
+}
+#dashboard > div > div >p{
+    margin: 0;
+    text-align: center;
+}
