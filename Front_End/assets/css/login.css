@@ -5,7 +5,8 @@ main {
 
 #login-section ,
 #find-account-section,
-#verification-section{
+#verification-section,
+#change-password{
     justify-content: flex-start;
     position: relative;
     width: 350px;
@@ -13,18 +14,17 @@ main {
     height: 470px;
     border-radius: 15px;
     background-color: white;
-
 }
 
 #login-section > div:nth-child(1) ,
+#change-password > div:nth-child(1),
 #find-account-section > div:nth-child(1) {
     align-self: self-start;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin: 20px;
 }
 
-#login-section > form > div > label {
+#login-section > form > div > label ,
+#change-password > form > div > label {
     align-self: flex-start;
 }
 
@@ -114,7 +114,8 @@ a {
 }
 
 /*================================================ verify account section ==============================================*/
-#verification-section {
+#verification-section,
+#change-password{
     height: max-content !important;
 }
 
@@ -151,11 +152,13 @@ a {
     margin: 15px 0;
 }
 
-#verification-section > div:nth-child(4) {
+#verification-section > div:nth-child(4) ,
+#change-password > div:nth-child(3) {
     margin: 25px 0;
 }
 
-#continue-btn {
+#continue-btn,
+#Change-password-btn{
     width: 245px;
     height: 40px;
     border-radius: 10px;
