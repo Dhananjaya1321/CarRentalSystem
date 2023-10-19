@@ -73,18 +73,57 @@
                 <button id="next-btn">Next</button>
             </a>
         </div>
+    </section><!--find account section-->
+    <section id="verification-section" class="flex f-col">
+        <div class="flex f-col">
+            <i class="fa-solid fa-shield"></i>
+            <h1>Email verification</h1>
+            <p>We sent a verification code to your email.
+                Please enter the code in the field below.</p>
+        </div>
+        <div class="flex">
+            <form class="flex f-row">
+                <div>
+                    <input type="text" class="form-control form-control-lg text-center py-4" maxlength="1" autofocus="">
+                </div>
+                <div>
+                    <input type="text" class="form-control form-control-lg text-center py-4" maxlength="1" autofocus="">
+                </div>
+                <div>
+                    <input type="text" class="form-control form-control-lg text-center py-4" maxlength="1" autofocus="">
+                </div>
+                <div>
+                    <input type="text" class="form-control form-control-lg text-center py-4" maxlength="1" autofocus="">
+                </div>
+            </form>
+        </div>
+        <div><p>Didn't receive it? <a href="#">Resend code</a></p></div>
+        <div class="flex f-row">
+            <a href="#" class="flex">
+                <button id="continue-btn">Continue</button>
+            </a>
+        </div>
     </section>
 </main>
 <script src="../assets/js/jquery-3.7.0.min.js"></script>
 <script>
-    $("#find-account-section").css("display","none");
+    $("#find-account-section").css("display", "none");
+    $("#verification-section").css("display", "none");
+
     $("#forgot-password").click(function () {
-       $("#login-section").css("display","none");
-       $("#find-account-section").css("display","flex");
+        $("#login-section").css("display", "none");
+        $("#find-account-section").css("display", "flex");
+        $("#verification-section").css("display", "none");
     });
     $("#go-back-btn").click(function () {
-       $("#login-section").css("display","flex");
-       $("#find-account-section").css("display","none");
+        $("#login-section").css("display", "flex");
+        $("#find-account-section").css("display", "none");
+        $("#verification-section").css("display", "none");
+    });
+    $("#next-btn").click(function () {
+        $("#login-section").css("display", "none");
+        $("#find-account-section").css("display", "none");
+        $("#verification-section").css("display", "flex");
     });
 </script>
 </body>

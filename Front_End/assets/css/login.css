@@ -4,7 +4,8 @@ main {
 }
 
 #login-section ,
-#find-account-section{
+#find-account-section,
+#verification-section{
     justify-content: flex-start;
     position: relative;
     width: 350px;
@@ -110,4 +111,58 @@ a {
 
 #find-account-section > div:last-child > a {
     flex-grow: 1;
+}
+
+/*================================================ verify account section ==============================================*/
+#verification-section {
+    height: max-content !important;
+}
+
+#verification-section > div:first-child {
+    width: 100%;
+    margin: 20px 0;
+}
+
+#verification-section > div:first-child > i {
+    font-size: 50px;
+}
+
+#verification-section > div:first-child > h1 {
+    margin-top: 15px;
+    font-size: 24px;
+}
+
+#verification-section > div:first-child > p {
+    text-align: center;
+    padding: 0 20px;
+}
+
+#verification-section > div:nth-child(2) > form {
+    gap: 10px;
+}
+
+#verification-section > div:nth-child(2) > form > div > input {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px !important;
+}
+
+#verification-section > div:nth-child(3) > p {
+    margin: 15px 0;
+}
+
+#verification-section > div:nth-child(4) {
+    margin: 25px 0;
+}
+
+#continue-btn {
+    width: 245px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 3px 6px -4px black;
+    background-color: #0a58ca;
 }
