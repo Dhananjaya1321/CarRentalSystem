@@ -1,0 +1,84 @@
+main {
+    position: relative;
+    top: 25px;
+}
+
+#create-account-section {
+    width: 80%;
+    height: max-content;
+    border-radius: 15px;
+    box-shadow: 0 0 14px -3px #00000057;
+}
+
+form {
+    margin: 30px;
+    gap: 15px;
+}
+
+label {
+    align-self: flex-start;
+}
+
+.chooser, form > div {
+    gap: 15px;
+    width: 100%;
+}
+
+form > div > div {
+    width: 250px;
+}
+
+textarea {
+    height: 40px;
+}
+
+#nic-front-photo,
+#nic-back-photo,
+#license-front-photo,
+#license-back-photo {
+    width: 350px;
+    height: 200px;
+    border-radius: 15px;
+    border: 1px solid #00000052;
+}
+
+#login-btn {
+    background-color: #0027ff;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+#create-btn {
+    background-color: #0acd00;
+    margin-top: 30px;
+}
+
+#login-btn, #create-btn {
+    width: 245px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 3px 6px -4px black;
+}
+
+#line > div {
+    height: 1px;
+    background-color: black;
+    width: 30%;
+}
+
+#line > h5 {
+    margin: 15px;
+}
+
+#line {
+    width: 80%;
+    height: max-content;
+}
+main>div{
+    height: 30px;
+    width: 100%;
+}
