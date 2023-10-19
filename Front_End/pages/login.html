@@ -17,29 +17,34 @@
             <div class="flex f-col">
                 <label>User Name</label>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="user-name">@</span>
-                    <input name="userName" type="text" class="form-control" placeholder="Username" aria-label="Username"
-                           aria-describedby="user-name">
+                    <span class="input-group-text" id="user-name-span">@</span>
+                    <input id="user-name" name="userName" type="text" class="form-control" placeholder="Username"
+                           aria-label="Username"
+                           aria-describedby="user-name-span">
                 </div>
             </div>
             <div class="flex f-col">
                 <label>Password</label>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="password"><i class="fa-solid fa-lock"></i></span>
-                    <input name="password" type="password" class="form-control" placeholder="Username"
+                    <span class="input-group-text" id="password-span"><i class="fa-solid fa-lock"></i></span>
+                    <input id="password" name="password" type="password" class="form-control" placeholder="Username"
                            aria-label="Username"
-                           aria-describedby="password">
+                           aria-describedby="password-span">
                 </div>
             </div>
             <a href="#">Forgot password?</a>
         </form>
-        <button id="login-btn">LogIn</button>
+        <a href="#">
+            <button id="login-btn">LogIn</button>
+        </a>
         <div id="line" class="flex">
             <div></div>
             <h5>Or</h5>
             <div></div>
         </div>
-        <button id="create-btn">Create Account</button>
+        <a href="#">
+            <button id="create-btn">Create Account</button>
+        </a>
     </section>
 </main>
 <script src="../assets/js/jquery-3.7.0.min.js"></script>
