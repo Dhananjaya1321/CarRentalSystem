@@ -46,15 +46,18 @@
             box-shadow: -3px 3px 10px -7px black;
         }
 
-        #car-details {
+        #car-details,
+        #need-to-maintain-cars{
             margin: 25px 0;
             width: 750px;
         }
 
-        #car-details > h4 {
+        #car-details > h4 ,
+        #need-to-maintain-cars>h4{
             align-self: flex-start;
         }
-        #car-details > table {
+        #car-details > table ,
+        #need-to-maintain-cars>table{
             width: 100%;
             height: max-content;
             border-radius: 15px;
@@ -233,6 +236,62 @@
             </div>
 
         </form>
+        <section id="need-to-maintain-cars" class="flex f-col">
+            <h4>Need to maintain cars</h4>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Registration number</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Options</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Benz</td>
+                    <td>Premium</td>
+                    <td>
+                        Need to maintain
+                    </td>
+                    <td>
+                        <button type="button" class="btn border-0 btn-danger" style="background-color: #1aff00; width: 180px;">Confirm
+                            maintenance
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Benz</td>
+                    <td>Premium</td>
+                    <td>
+                        Need to maintain
+                    </td>
+                    <td>
+                        <button type="button" class="btn border-0 btn-danger" style="background-color: #1aff00; width: 180px;">Confirm
+                            maintenance
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Benz</td>
+                    <td>Premium</td>
+                    <td>
+                        Need to maintain
+                    </td>
+                    <td>
+                        <button type="button" class="btn border-0 btn-danger" style="background-color: #1aff00; width: 180px;">Confirm
+                            maintenance
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </section><!--Need to maintain cars-->
+
         <section id="car-details" class="flex f-col">
             <h4>Car Details</h4>
             <table class="table table-hover">
@@ -280,9 +339,77 @@
                                 class="fa-solid fa-pencil"></i></button>
                     </td>
                 </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Benz</td>
+                    <td>Premium</td>
+                    <td style="width: 0;">
+                        <select class="form-select" aria-label="Default select example" style="width: 200px">
+                            <option value="available">available</option>
+                            <option value="under-maintenance">under maintenance</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger border-0" style="background-color: #ff0014"><i
+                                class="fa-solid fa-trash-can"></i></button>
+                        <button type="button" class="btn border-0 btn-danger" style="background-color: #1aff00;"><i
+                                class="fa-solid fa-pencil"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Benz</td>
+                    <td>Premium</td>
+                    <td style="width: 0;">
+                        <select class="form-select" aria-label="Default select example" style="width: 200px">
+                            <option value="available">available</option>
+                            <option value="under-maintenance">under maintenance</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger border-0" style="background-color: #ff0014"><i
+                                class="fa-solid fa-trash-can"></i></button>
+                        <button type="button" class="btn border-0 btn-danger" style="background-color: #1aff00;"><i
+                                class="fa-solid fa-pencil"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Benz</td>
+                    <td>Premium</td>
+                    <td style="width: 0;">
+                        <select class="form-select" aria-label="Default select example" style="width: 200px">
+                            <option value="available">available</option>
+                            <option value="under-maintenance">under maintenance</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger border-0" style="background-color: #ff0014"><i
+                                class="fa-solid fa-trash-can"></i></button>
+                        <button type="button" class="btn border-0 btn-danger" style="background-color: #1aff00;"><i
+                                class="fa-solid fa-pencil"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Benz</td>
+                    <td>Premium</td>
+                    <td style="width: 0;">
+                        <select class="form-select" aria-label="Default select example" style="width: 200px">
+                            <option value="available">available</option>
+                            <option value="under-maintenance">under maintenance</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger border-0" style="background-color: #ff0014"><i
+                                class="fa-solid fa-trash-can"></i></button>
+                        <button type="button" class="btn border-0 btn-danger" style="background-color: #1aff00;"><i
+                                class="fa-solid fa-pencil"></i></button>
+                    </td>
+                </tr>
                 </tbody>
             </table>
-        </section>
+        </section><!--available cars-->
         <div></div>
     </section><!--cars section-->
 
