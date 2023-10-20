@@ -47,22 +47,34 @@
         }
 
         #car-details,
-        #need-to-maintain-cars{
+        #need-to-maintain-cars,
+        #cars-under-maintenance {
             margin: 25px 0;
             width: 750px;
         }
 
-        #car-details > h4 ,
-        #need-to-maintain-cars>h4{
+        #car-details > h4,
+        #need-to-maintain-cars > h4,
+        #cars-under-maintenance > h4 {
             align-self: flex-start;
         }
-        #car-details > table ,
-        #need-to-maintain-cars>table{
+
+        #car-details > table,
+        #need-to-maintain-cars > table,
+        #cars-under-maintenance > table {
             width: 100%;
             height: max-content;
-            border-radius: 15px;
+            border-radius: 15px!important;
             background-color: white;
             box-shadow: 0 0 14px -3px #00000057;
+        }
+
+        #need-to-maintain-cars > table > tbody > tr {
+            background: #fb5245;
+        }
+
+        #cars-under-maintenance > table > tbody > tr {
+            background: #ceffba;
         }
 
     </style>
@@ -257,7 +269,8 @@
                         Need to maintain
                     </td>
                     <td>
-                        <button type="button" class="btn border-0 btn-danger" style="background-color: #1aff00; width: 180px;">Confirm
+                        <button type="button" class="btn border-0 btn-danger"
+                                style="background-color: #ffb100; width: 180px;">Confirm
                             maintenance
                         </button>
                     </td>
@@ -270,7 +283,8 @@
                         Need to maintain
                     </td>
                     <td>
-                        <button type="button" class="btn border-0 btn-danger" style="background-color: #1aff00; width: 180px;">Confirm
+                        <button type="button" class="btn border-0 btn-danger"
+                                style="background-color: #ffb100; width: 180px;">Confirm
                             maintenance
                         </button>
                     </td>
@@ -283,15 +297,44 @@
                         Need to maintain
                     </td>
                     <td>
-                        <button type="button" class="btn border-0 btn-danger" style="background-color: #1aff00; width: 180px;">Confirm
+                        <button type="button" class="btn border-0 btn-danger"
+                                style="background-color: #ffb100; width: 180px;">Confirm
                             maintenance
                         </button>
                     </td>
                 </tr>
                 </tbody>
             </table>
-        </section><!--Need to maintain cars-->
-
+        </section><!--need to maintain cars-->
+        <section id="cars-under-maintenance" class="flex f-col">
+            <h4>Cars under maintenance</h4>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Registration number</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Options</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Benz</td>
+                    <td>Premium</td>
+                    <td>
+                        under maintenance
+                    </td>
+                    <td>
+                        <button type="button" class="btn border-0 btn-danger" style="background-color: #1aff00;">
+                            Maintenance completed
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </section><!--cars under maintenance-->
         <section id="car-details" class="flex f-col">
             <h4>Car Details</h4>
             <table class="table table-hover">
@@ -412,7 +455,6 @@
         </section><!--available cars-->
         <div></div>
     </section><!--cars section-->
-
 </main>
 
 <script src="../assets/js/jquery-3.7.0.min.js"></script>
