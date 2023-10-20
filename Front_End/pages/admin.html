@@ -42,7 +42,7 @@
     </div>
 </section><!--navigation bar-->
 
-<main class="flex f-row">
+<main class="flex f-col">
     <section id="dashboard" class="flex f-col">
         <div class="flex f-row f-wrap">
             <div style="background-color: #f9c1a1;" class="flex f-col">
@@ -61,7 +61,7 @@
         <div class="flex f-row f-wrap">
             <div style="background-color: #a1c0f9;" class="flex f-col">
                 <h1 id="reserved -cars">1000</h1>
-                <p>reserved<br>  cars</p>
+                <p>reserved<br> cars</p>
             </div>
             <div style="background-color: #a1f1f9;" class="flex f-col">
                 <h1 id="active-bookings-for-day">1000</h1>
@@ -86,7 +86,98 @@
                 <p>under<br> maintenance</p>
             </div>
         </div>
-    </section>
+    </section><!--dashboard section-->
+    <section id="cars-section" class="flex f-col">
+        <form class="flex f-wrap f-row">
+            <div class="mb-3">
+                <label for="brand" class="form-label">Brand</label>
+                <input type="text" id="brand" class="form-control" placeholder="Ex:- Toyota, Suzuki">
+            </div><!--brand-->
+            <div class="mb-3">
+                <label for="Number-of-passengers" class="form-label">Number of passengers</label>
+                <input type="text" id="Number-of-passengers" class="form-control" placeholder="Number of passengers">
+            </div><!--number of passengers-->
+            <div class="mb-3">
+                <label for="Type" class="form-label">Type</label>
+                <select id="Type" class="form-select" aria-label="Default select example">
+                    <option value="general">general</option>
+                    <option value="premium">premium</option>
+                    <option value="luxury">luxury</option>
+                </select>
+            </div><!--type-->
+            <div class="mb-3">
+                <label for="transmission-type" class="form-label">Transmission type</label>
+                <select id="transmission-type" class="form-select" aria-label="Default select example">
+                    <option value="auto">auto</option>
+                    <option value="manual">manual</option>
+                </select>
+            </div><!--transmission type-->
+            <div class="mb-3">
+                <label for="fuel-type" class="form-label">Transmission type</label>
+                <select id="fuel-type" class="form-select" aria-label="Default select example">
+                    <option value="diesel">diesel</option>
+                    <option value="petrol">petrol</option>
+                    <option value="gas">gas</option>
+                    <option value="bio-diesel">bio-diesel</option>
+                </select>
+            </div><!--fuel type-->
+            <div class="mb-3">
+                <label for="registration-number" class="form-label">Registration number</label>
+                <input type="text" id="registration-number" class="form-control" placeholder="Registration number">
+            </div><!--registration number-->
+            <div class="mb-3">
+                <label for="color" class="form-label">Color</label>
+                <input type="text" id="color" class="form-control" placeholder="Ex:- red">
+            </div><!--color-->
+            <div class="mb-3">
+                <label for="daily-rate" class="form-label">Daily rate</label>
+                <input type="text" id="daily-rate" class="form-control" placeholder="Daily Prices">
+            </div><!--daily rate-->
+            <div class="mb-3">
+                <label for="daily-free-mileage" class="form-label">Free mileage for day</label>
+                <input type="text" id="daily-free-mileage" class="form-control" placeholder="Free mileage for day">
+            </div><!--daily free mileage-->
+            <div class="mb-3">
+                <label for="monthly-rate" class="form-label">Monthly rate</label>
+                <input type="text" id="monthly-rate" class="form-control" placeholder="Monthly Prices">
+            </div><!--monthly rate-->
+            <div class="mb-3">
+                <label for="monthly-free-mileage" class="form-label">Free mileage for month</label>
+                <input type="text" id="monthly-free-mileage" class="form-control" placeholder="Free mileage for month">
+            </div><!--monthly free mileage-->
+            <div class="mb-3">
+                <label for=" price-for-extra-km" class="form-label">Price for extra KM</label>
+                <input type="text" id=" price-for-extra-km" class="form-control" placeholder="Price for extra KM">
+            </div><!-- price for extra KM-->
+
+            <div class="mb-3">
+                <label for="front-view" class="form-label">Front view image of the car</label>
+                <input type="file" id="front-view" class="form-control">
+                <div id="front-view-img-div"></div>
+            </div><!--front view-->
+            <div class="mb-3">
+                <label for="back-view" class="form-label">Back view image of the car</label>
+                <input type="file" id="back-view" class="form-control">
+                <div id="back-view-img-div"></div>
+            </div><!--back view-->
+            <div class="mb-3">
+                <label for="side-view" class="form-label">Side view image of the car</label>
+                <input type="file" id="side-view" class="form-control">
+                <div id="side-view-img-div"></div>
+            </div><!--side view-->
+            <div class="mb-3">
+                <label for="interior-view" class="form-label">Interior view image of the car</label>
+                <input type="file" id="interior-view" class="form-control">
+                <div id="interior-view-img-div"></div>
+            </div><!--interior view-->
+        </form>
+        <div></div>
+    </section><!--cars section-->
 </main>
+
+<script src="../assets/js/jquery-3.7.0.min.js"></script>
+<script>
+    $("#dashboard").css("display", "none");
+</script>
 </body>
 </html>
