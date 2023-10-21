@@ -15,8 +15,10 @@ a {
 }
 
 #nav-bar > div {
+    position: relative;
+    top: 10px;
     width: 100%;
-    gap: 2px;
+    gap: 5px;
     align-self: flex-start;
 }
 
@@ -26,9 +28,12 @@ a {
 }
 
 #nav-bar > div > a > button {
-    width: 100%;
+    width: 96%;
     height: 40px;
     border: none;
+    border-radius: 10px;
+    /*background-color: #ffffff;*/
+    box-shadow: -5px 5px 14px -14px black;
 }
 
 /*=========================================================dashboard===================================================*/

@@ -17,37 +17,51 @@
             justify-content: flex-start !important;
         }
 
-        #request-details>div{
+        #request-details > div {
             margin: auto
         }
-        #request-details>div>div{
+
+        #request-details > div > div {
             width: 500px;
             border-radius: 15px;
             height: max-content;
         }
 
+        #dashboard {
+            display: flex;
+        }
+        #dashboard-btn{
+            background-color: #b3bdff;
+        }
+
+        #cars-section,
+        #drivers-section,
+        #cars-rental-request {
+            display: none;
+        }
     </style>
 </head>
 <body>
 <section id="nav-bar" class="flex f-row">
     <div class="flex f-col">
-        <a href="#">
-            <button>Dashboard</button>
+        <a class="flex" href="../index.html">
+            <button id="home-btn">Home</button>
         </a>
-        <a href="#">
-            <button>Manage Cars</button>
+        <a class="flex" href="#">
+            <button id="dashboard-btn">Dashboard</button>
         </a>
-        <a href="#">
-            <button>Manage Drivers</button>
+        <a class="flex" href="#">
+            <button id="manage-cars-btn">Manage Cars</button>
         </a>
-        <a href="#">
-            <button>Manage Customers</button>
+        <a class="flex" href="#">
+            <button id="manage-drivers-btn">Manage Drivers</button>
         </a>
-        <a href="#">
-            <button>Rental Request</button>
-        </a><a href="#">
-        <button>LogOut</button>
-    </a>
+        <a class="flex" href="#">
+            <button id="rental-request-btn">Rental Request</button>
+        </a>
+        <a class="flex" href="login.html">
+            <button id="logout-btn">LogOut</button>
+        </a>
     </div>
 </section><!--navigation bar-->
 
@@ -525,7 +539,8 @@
                 <td>2023/12/13</td>
                 <td>12:00</td>
                 <td>
-                    <button type="button" class="btn btn-danger border-0" style="background-color: #0090ff;"  data-bs-toggle="modal"
+                    <button type="button" class="btn btn-danger border-0" style="background-color: #0090ff;"
+                            data-bs-toggle="modal"
                             data-bs-target="#request-details">
                         <i class="fa-solid fa-eye"></i></button>
                 </td>
@@ -536,7 +551,8 @@
              tabindex="-1" aria-labelledby="newCustomerLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header" style="background-color: white; border-radius: 15px 15px 0 0; color: white">
+                    <div class="modal-header"
+                         style="background-color: white; border-radius: 15px 15px 0 0; color: white">
                         <h1 class="modal-title fs-5" id="newCustomerLabel">New Customer</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
@@ -553,23 +569,28 @@
                             </div>
                             <div class="col-4">
                                 <label for="registration-number-request" class="form-label">Registration number</label>
-                                <input type="text" name="registration-number" class="form-control" id="registration-number-request" readonly>
+                                <input type="text" name="registration-number" class="form-control"
+                                       id="registration-number-request" readonly>
                             </div>
                             <div class="col-4">
                                 <label for="pick-up-date-request" class="form-label">Pick up date</label>
-                                <input type="text" name="pick-up-date" class="form-control" id="pick-up-date-request" readonly>
+                                <input type="text" name="pick-up-date" class="form-control" id="pick-up-date-request"
+                                       readonly>
                             </div>
                             <div class="col-4">
                                 <label for="pick-up-time-request" class="form-label">Pick up time</label>
-                                <input type="text" name="pick-up-time" class="form-control" id="pick-up-time-request" readonly>
+                                <input type="text" name="pick-up-time" class="form-control" id="pick-up-time-request"
+                                       readonly>
                             </div>
                             <div class="col-4">
                                 <label for="return-date-request" class="form-label">Return date</label>
-                                <input type="text" name="return-date" class="form-control" id="return-date-request" readonly>
+                                <input type="text" name="return-date" class="form-control" id="return-date-request"
+                                       readonly>
                             </div>
                             <div class="col-4">
                                 <label for="return-time-request" class="form-label">Return time request</label>
-                                <input type="text" name="return-time" class="form-control" id="return-time-request" readonly>
+                                <input type="text" name="return-time" class="form-control" id="return-time-request"
+                                       readonly>
                             </div>
                             <div class="col-4">
                                 <label for="location-request" class="form-label">Location</label>
@@ -577,7 +598,8 @@
                             </div>
                             <div class="col-4">
                                 <label for="drivers-or-not-request" class="form-label">Drivers or not</label>
-                                <input type="text" name="drivers-or-not" class="form-control" id="drivers-or-not-request" readonly>
+                                <input type="text" name="drivers-or-not" class="form-control"
+                                       id="drivers-or-not-request" readonly>
                             </div>
 
                             <div class="col-4">
@@ -589,27 +611,36 @@
                             </div>
                             <div class="col-4">
                                 <label for="driver-name-request" class="form-label">Driver Name</label>
-                                <input type="text" name="driver-name-request" class="form-control" id="driver-name-request" readonly>
+                                <input type="text" name="driver-name-request" class="form-control"
+                                       id="driver-name-request" readonly>
                             </div>
                             <div class="col-4">
                                 <label for="driver-nic-request" class="form-label">Driver NIC</label>
-                                <input type="text" name="driver-nic" class="form-control" id="driver-nic-request" readonly>
+                                <input type="text" name="driver-nic" class="form-control" id="driver-nic-request"
+                                       readonly>
                             </div>
                             <div class="col-4">
                                 <label for="driver-contact-request" class="form-label">Driver Contact</label>
-                                <input type="text" name="driver-contact" class="form-control" id="driver-contact-request" readonly>
+                                <input type="text" name="driver-contact" class="form-control"
+                                       id="driver-contact-request" readonly>
                             </div>
                             <div class="col-8">
                                 <label for="driver-address-request" class="form-label">Driver Address</label>
-                                <input type="text" name="driver-address" class="form-control" id="driver-address-request" readonly>
+                                <input type="text" name="driver-address" class="form-control"
+                                       id="driver-address-request" readonly>
                             </div>
                             <div class="col-12">
                                 <label for="message-request" class="form-label">Message</label>
-                                <textarea name="message" class="form-control" id="message-request" placeholder="If this request is denied, why?"></textarea>
+                                <textarea name="message" class="form-control" id="message-request"
+                                          placeholder="If this request is denied, why?"></textarea>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" id="reject-request" style="background-color: #ff253a; border: none">Reject</button>
-                                <button type="button" class="btn btn-primary" id="accept-request" style="background-color: #1aff00; border: none">Accept</button>
+                                <button type="button" class="btn btn-primary" id="reject-request"
+                                        style="background-color: #ff253a; border: none">Reject
+                                </button>
+                                <button type="button" class="btn btn-primary" id="accept-request"
+                                        style="background-color: #1aff00; border: none">Accept
+                                </button>
                             </div>
                         </form><!--customer form-->
                     </div>
@@ -623,10 +654,57 @@
 <script src="../assets/js/jquery-3.7.0.min.js"></script>
 <script src="../assets/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 <script>
-    $("#dashboard").css("display", "none");
-    $("#cars-section").css("display", "none");
-    $("#drivers-section").css("display", "none");
 
+    $("#home-btn").css("backgroundColor", "white");
+    $("#logout-btn").css("backgroundColor", "white");
+    $("#manage-cars-btn").css("backgroundColor", "white");
+    $("#manage-drivers-btn").css("backgroundColor", "white");
+    $("#rental-request-btn").css("backgroundColor", "white");
+
+    $("#dashboard-btn").click(function () {
+        $("#dashboard").css("display", "flex");
+        $("#cars-section").css("display", "none");
+        $("#drivers-section").css("display", "none");
+        $("#cars-rental-request").css("display", "none");
+
+        $("#dashboard-btn").css("backgroundColor", "#b3bdff");
+        $("#manage-cars-btn").css("backgroundColor", "white");
+        $("#manage-drivers-btn").css("backgroundColor", "white");
+        $("#rental-request-btn").css("backgroundColor", "white");
+    });
+    $("#manage-cars-btn").click(function () {
+        $("#dashboard").css("display", "none");
+        $("#cars-section").css("display", "flex");
+        $("#drivers-section").css("display", "none");
+        $("#cars-rental-request").css("display", "none");
+
+        $("#dashboard-btn").css("backgroundColor", "white");
+        $("#manage-cars-btn").css("backgroundColor", "#b3bdff");
+        $("#manage-drivers-btn").css("backgroundColor", "white");
+        $("#rental-request-btn").css("backgroundColor", "white");
+    });
+    $("#manage-drivers-btn").click(function () {
+        $("#dashboard").css("display", "none");
+        $("#cars-section").css("display", "none");
+        $("#drivers-section").css("display", "flex");
+        $("#cars-rental-request").css("display", "none");
+
+        $("#dashboard-btn").css("backgroundColor", "white");
+        $("#manage-cars-btn").css("backgroundColor", "white");
+        $("#manage-drivers-btn").css("backgroundColor", "#b3bdff");
+        $("#rental-request-btn").css("backgroundColor", "white");
+    });
+    $("#rental-request-btn").click(function () {
+        $("#dashboard").css("display", "none");
+        $("#cars-section").css("display", "none");
+        $("#drivers-section").css("display", "none");
+        $("#cars-rental-request").css("display", "flex");
+
+        $("#dashboard-btn").css("backgroundColor", "white");
+        $("#manage-cars-btn").css("backgroundColor", "white");
+        $("#manage-drivers-btn").css("backgroundColor", "white");
+        $("#rental-request-btn").css("backgroundColor", "#b3bdff");
+    });
 
     $("#cars-section>form").css("display", "none");
     let click_count = 0;
