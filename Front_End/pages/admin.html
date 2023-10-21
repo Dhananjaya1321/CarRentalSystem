@@ -59,12 +59,17 @@
         <a class="flex" href="#">
             <button id="rental-request-btn">Rental Request</button>
         </a>
+        <a class="flex" href="#">
+            <button id="payments-btn">Payments</button>
+        </a>
+        <a class="flex" href="#">
+            <button id="income-btn">Income</button>
+        </a>
         <a class="flex" href="login.html">
             <button id="logout-btn">LogOut</button>
         </a>
     </div>
 </section><!--navigation bar-->
-
 <main class="flex f-col">
     <section id="dashboard" class="flex f-col">
         <div class="flex f-row f-wrap">
@@ -648,7 +653,6 @@
             </div>
         </div><!--modal-->
     </section><!--rental request-->
-
 </main>
 
 <script src="../assets/js/jquery-3.7.0.min.js"></script>
@@ -660,6 +664,8 @@
     $("#manage-cars-btn").css("backgroundColor", "white");
     $("#manage-drivers-btn").css("backgroundColor", "white");
     $("#rental-request-btn").css("backgroundColor", "white");
+    $("#payments-btn").css("backgroundColor", "white");
+    $("#income-btn").css("backgroundColor", "white");
 
     $("#dashboard-btn").click(function () {
         $("#dashboard").css("display", "flex");
