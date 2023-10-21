@@ -54,3 +54,68 @@ a {
     background-color: white;
     box-shadow: 0 0 14px -3px #00000057;
 }
+
+/*===================================================== profile section ================================================*/
+#profile {
+    position: relative;
+    top: 50px;
+    width: 750px;
+    height: max-content;
+    justify-content: flex-start;
+    gap: 25px;
+}
+
+#profile > div:nth-child(1) ,
+#profile > form{
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 0 14px -3px #00000057;
+}
+
+#profile-photo {
+    width: 200px;
+    height: 200px;
+    background-color: #1aff00;
+    border-radius: 100%;
+    align-self: flex-start;
+    z-index: 1;
+    margin: 20px;
+    position: relative;
+}
+
+
+#driver-details {
+    position: relative;
+    align-self: flex-start;
+}
+
+#driver-details > div {
+    align-content: flex-start;
+}
+
+#driver-details > div > h5 {
+    font-size: 18px;
+    align-self: flex-start;
+}
+
+#driver-details > h1 {
+    margin-bottom: 25px;
+}
+
+#edit {
+    flex-grow: 1;
+    align-self: flex-end;
+    position: relative;
+    bottom: 15px;
+    justify-content: flex-end;
+    right: 15px;
+}
+
+#edit > button {
+    border-radius: 100%;
+    border: none;
+    width: 35px;
+    height: 35px;
+    background-color: #00ff2b;
+    box-shadow: -2px 2px 11px -5px black;
+}

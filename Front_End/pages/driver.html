@@ -9,45 +9,43 @@
     <link rel="stylesheet" href="../assets/css/flex.css">
     <link rel="stylesheet" href="../assets/css/driver.css">
     <style>
-        #profile {
-            position: relative;
-            top: 50px;
-            width: 750px;
+        #profile > form {
+            display: none;
+            width: 100%;
             height: max-content;
-            border-radius: 15px;
+            background-color: white;
             justify-content: flex-start;
-            gap: 25px;
-            box-shadow: 0 0 14px -3px #00000057;
-        }
-
-        #profile-photo {
-            width: 200px;
-            height: 200px;
-            background-color: #1aff00;
-            border-radius: 100%;
-            align-self: flex-start;
-            z-index: 1;
-            margin: 20px;
-            position: relative;
-        }
-
-
-        #driver-details {
-            position: relative;
-            align-self: flex-start;
-        }
-
-        #driver-details > div {
             align-content: flex-start;
         }
 
-        #driver-details > div > h5 {
-            font-size: 18px;
+
+        #profile > form > div {
+            margin: 0 24px;
             align-self: flex-start;
         }
 
-        #driver-details > h1 {
-            margin-bottom: 25px;
+        #profile > form > div > div {
+            align-self: flex-start;
+            margin: 20px;
+            gap: 20px;
+        }
+
+        #driver-details-update-btn {
+            width: 200px;
+            margin-left: 15px;
+            margin-bottom: 20px;
+            height: 40px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: -3px 3px 6px -5px black;
+            background-color: lime;
+            font-weight: bold;
+            color: white;
+        }
+
+        main > div {
+            width: 100%;
+            height: 100px;
         }
     </style>
 
@@ -169,25 +167,86 @@
             </tbody>
         </table>
     </section><!--schedule section-->
-    <section id="profile" class="flex f-row">
-        <div id="profile-photo"></div><!--profile photo-->
+    <section id="profile" class="flex f-col">
         <div class="flex f-row">
-            <div id="driver-details">
-                <h1 id="name">Driver Name Here</h1>
-                <div class="flex f-col f-wrap">
-                    <h5 id="nic">NIC : 000000000000</h5>
-                    <h5 id="email">Email : driver@gmail.com</h5>
-                    <h5 id="contact">Contact : 075 000 0000</h5>
-                    <h5 id="address">Address : Galle</h5>
+            <div id="profile-photo"></div><!--profile photo-->
+            <div class="flex f-row">
+                <div id="driver-details">
+                    <h1 id="name">Driver Name Here</h1>
+                    <div class="flex f-col f-wrap">
+                        <h5 id="nic">NIC : 000000000000</h5>
+                        <h5 id="email">Email : driver@gmail.com</h5>
+                        <h5 id="contact">Contact : 075 000 0000</h5>
+                        <h5 id="address">Address : Galle</h5>
+                    </div>
+                </div>
+            </div><!--profile details-->
+            <div id="edit" class="flex">
+                <button><i class="fa-solid fa-pen"></i></button>
+            </div>
+        </div><!--details-->
+        <form class="flex f-col f-wrap">
+            <div class="flex f-col f-wrap">
+                <div class="flex f-row f-wrap">
+                    <div class="mb-3">
+                        <label for="driver-nic" class="form-label">NIC</label>
+                        <input type="text" id="driver-nic" class="form-control" placeholder="Ex:- 0000000000">
+                    </div><!--driver nic-->
+                    <div class="mb-3">
+                        <label for="driver-contact" class="form-label">Contact</label>
+                        <input type="text" id="driver-contact" class="form-control" placeholder="Ex:- 076 000 0000">
+                    </div><!--driver Contact-->
+                    <div class="mb-3">
+                        <label for="driver-name" class="form-label">Name</label>
+                        <input type="text" id="driver-name" class="form-control" placeholder="Ex:- 0000000000">
+                    </div><!--driver Name-->
+                </div>
+                <div class="flex f-row f-wrap">
+                    <div class="mb-3">
+                        <label for="driver-address" class="form-label">Address</label>
+                        <input type="text" id="driver-address" class="form-control" placeholder="Ex:- Galle">
+                    </div><!--driver Address-->
+                    <div class="mb-3">
+                        <label for="driver-email" class="form-label">Email</label>
+                        <input type="email" id="driver-email" class="form-control" placeholder="Ex:- driver@gmail.com">
+                    </div><!--email-->
                 </div>
             </div>
-        </div><!--profile details-->
+            <div class="flex f-col f-wrap">
+                <div class="flex f-row f-wrap">
+                    <div class="mb-3">
+                        <label for="driver-username" class="form-label">Username</label>
+                        <input type="text" id="driver-username" class="form-control" placeholder="Ex:- Kamal">
+                    </div><!--username-->
+                    <div class="mb-3">
+                        <label for="driver-password" class="form-label">Password</label>
+                        <input type="password" id="driver-password" class="form-control" placeholder="password">
+                    </div><!--driver password-->
+                </div>
+            </div>
+            <div class="flex f-col f-wrap">
+                <button id="driver-details-update-btn">Update</button>
+            </div>
+        </form><!--form-->
     </section><!--profile section-->
+    <div></div>
 </main>
 
 <script src="../assets/js/jquery-3.7.0.min.js"></script>
 <script>
     $("#schedule").css("display", "none");
+
+    let edit_btn_click_count = 0;
+    $("#edit > button").click(function () {
+        if (edit_btn_click_count === 0) {
+            $("#profile > form").css("display", "flex");
+            edit_btn_click_count = 1;
+        } else {
+            $("#profile > form").css("display", "none");
+            edit_btn_click_count = 0;
+        }
+    });
+
 </script>
 </body>
 </html>
