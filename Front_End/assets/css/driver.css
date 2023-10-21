@@ -1,0 +1,56 @@
+main {
+    width: 77%;
+    position: absolute;
+    right: 0;
+    height: max-content;
+    justify-content: flex-start !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*=====================================================navigation bar================================================*/
+
+#nav-bar {
+    position: fixed;
+    left: 0;
+    border-radius: 0 15px 15px 0;
+    width: 250px;
+    height: 100%;
+    box-shadow: 0 0 14px -3px #00000057;
+    background: #2f3457;
+}
+
+#nav-bar > div {
+    position: relative;
+    top: 10px;
+    width: 100%;
+    gap: 5px;
+    align-self: flex-start;
+}
+
+#nav-bar > div > a {
+    align-self: flex-start;
+    width: 100%;
+}
+
+#nav-bar > div > a > button {
+    width: 96%;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: -5px 5px 14px -14px black;
+}
+
+/*=====================================================schedule================================================*/
+#schedule {
+    position: relative;
+    top: 50px;
+}
+
+#schedule > table {
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0 0 14px -3px #00000057;
+}
