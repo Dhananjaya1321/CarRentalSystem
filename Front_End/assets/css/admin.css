@@ -139,7 +139,8 @@ a {
 #car-details,
 #need-to-maintain-cars,
 #cars-under-maintenance ,
-#drivers-details {
+#drivers-details,
+#cars-rental-request{
     margin: 25px 0;
     width: 750px;
 }
@@ -155,7 +156,8 @@ a {
 #car-details > table,
 #need-to-maintain-cars > table,
 #cars-under-maintenance > table ,
-#drivers-details > table {
+#drivers-details > table ,
+#cars-rental-request>table{
     width: 100%;
     height: max-content;
     border-radius: 15px!important;
