@@ -9,7 +9,46 @@
     <link rel="stylesheet" href="../assets/css/flex.css">
     <link rel="stylesheet" href="../assets/css/driver.css">
     <style>
+        #profile {
+            position: relative;
+            top: 50px;
+            width: 750px;
+            height: max-content;
+            border-radius: 15px;
+            justify-content: flex-start;
+            gap: 25px;
+            box-shadow: 0 0 14px -3px #00000057;
+        }
 
+        #profile-photo {
+            width: 200px;
+            height: 200px;
+            background-color: #1aff00;
+            border-radius: 100%;
+            align-self: flex-start;
+            z-index: 1;
+            margin: 20px;
+            position: relative;
+        }
+
+
+        #driver-details {
+            position: relative;
+            align-self: flex-start;
+        }
+
+        #driver-details > div {
+            align-content: flex-start;
+        }
+
+        #driver-details > div > h5 {
+            font-size: 18px;
+            align-self: flex-start;
+        }
+
+        #driver-details > h1 {
+            margin-bottom: 25px;
+        }
     </style>
 
 </head>
@@ -129,9 +168,26 @@
             </tr>
             </tbody>
         </table>
-    </section>
+    </section><!--schedule section-->
+    <section id="profile" class="flex f-row">
+        <div id="profile-photo"></div><!--profile photo-->
+        <div class="flex f-row">
+            <div id="driver-details">
+                <h1 id="name">Driver Name Here</h1>
+                <div class="flex f-col f-wrap">
+                    <h5 id="nic">NIC : 000000000000</h5>
+                    <h5 id="email">Email : driver@gmail.com</h5>
+                    <h5 id="contact">Contact : 075 000 0000</h5>
+                    <h5 id="address">Address : Galle</h5>
+                </div>
+            </div>
+        </div><!--profile details-->
+    </section><!--profile section-->
 </main>
 
 <script src="../assets/js/jquery-3.7.0.min.js"></script>
+<script>
+    $("#schedule").css("display", "none");
+</script>
 </body>
 </html>
