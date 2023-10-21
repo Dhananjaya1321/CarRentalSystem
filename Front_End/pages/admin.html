@@ -276,6 +276,21 @@
                 </tbody>
             </table>
         </section><!--cars under maintenance-->
+        <section id="cars-section-search-bar" class="flex f-row f-wrap">
+            <div class="flex f-col">
+<!--                <label>Date</label>-->
+                <input type="date">
+            </div>
+            <div class="flex f-col">
+<!--                <label>Status</label>-->
+                <select class="form-select" aria-label="Default select example">
+                    <option value="all">all</option>
+                    <option value="available">available</option>
+                    <option value="not-available">not available</option>
+                </select>
+            </div>
+            <div class="flex f-col"><button>Search</button></div>
+        </section><!--search bar-->
         <section id="car-details" class="flex f-col">
             <h4>Car Details</h4>
             <table class="table table-hover">
@@ -480,7 +495,8 @@
 <script src="../assets/js/jquery-3.7.0.min.js"></script>
 <script>
     $("#dashboard").css("display", "none");
-    $("#cars-section").css("display", "none");
+    // $("#cars-section").css("display", "none");
+    $("#drivers-section").css("display", "none");
 
 
     $("#cars-section>form").css("display", "none");
