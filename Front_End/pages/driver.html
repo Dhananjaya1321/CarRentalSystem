@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="../assets/css/flex.css">
     <link rel="stylesheet" href="../assets/css/driver.css">
     <style>
-
+        #profile{
+            display: none;
+        }
     </style>
 
 </head>
@@ -197,7 +199,26 @@
 
 <script src="../assets/js/jquery-3.7.0.min.js"></script>
 <script>
-    $("#schedule").css("display", "none");
+    $("#schedule-btn").css("backgroundColor", "#b3bdff");
+    $("#profile-btn").css("backgroundColor", "white");
+    $("#logout-btn").css("backgroundColor", "white");
+    $("#home-btn").css("backgroundColor", "white");
+
+    $("#schedule-btn").click(function () {
+        $("#schedule").css("display", "flex");
+        $("#profile").css("display", "none");
+
+        $("#schedule-btn").css("backgroundColor", "#b3bdff");
+        $("#profile-btn").css("backgroundColor", "white");
+    });
+    $("#profile-btn").click(function () {
+        $("#schedule").css("display", "none");
+        $("#profile").css("display", "flex");
+
+        $("#schedule-btn").css("backgroundColor", "white");
+        $("#profile-btn").css("backgroundColor", "#b3bdff");
+    });
+
 
     let edit_btn_click_count = 0;
     $("#edit > button").click(function () {
