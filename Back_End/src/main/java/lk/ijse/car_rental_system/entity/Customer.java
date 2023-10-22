@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -23,4 +24,6 @@ public class Customer {
     private String nic_photo;
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
+    @OneToMany(mappedBy = "customer")
+    private List<Rental> rentals;
 }
