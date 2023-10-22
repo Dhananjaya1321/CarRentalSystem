@@ -18,11 +18,11 @@ import javax.persistence.OneToOne;
 public class Driver {
     @Id
     private String driver_id;
-    private String nic;
-    private String name;
-    private String contact;
     private String address;
+    private String contact;
     private String email;
+    private String name;
+    private String nic;
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
 }

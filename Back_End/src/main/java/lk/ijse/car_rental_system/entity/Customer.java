@@ -16,14 +16,14 @@ import java.util.List;
 public class Customer {
     @Id
     private String nic;
-    private String contact;
-    private String email;
     private String address;
+    private String contact;
     private String driving_license_number;
     private String driving_license_number_photo;
+    private String email;
     private String nic_photo;
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer",cascade = {CascadeType.PERSIST})
     private List<Rental> rentals;
 }

@@ -19,14 +19,14 @@ import java.time.LocalTime;
 public class Payment {
     @Id
     private String payment_id;
-    private String payment_type;
     private double car_fee;
+    private int days;
     private double driver_fee;
     private double loss_damage;
     private int mileage;
-    private int days;
     private LocalDate payment_date;
     private LocalTime payment_time;
+    private String payment_type;
     @ManyToOne
     private Request request;
 }
