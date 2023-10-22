@@ -27,6 +27,6 @@ public class RentalDTO {
 
     private List<ScheduleDTO> schedule;
 
-    private List<RentalCarDetails> rentalCarDetails;
+    private List<RentalCarDetailsDTO> rentalCarDetails;
 
 }

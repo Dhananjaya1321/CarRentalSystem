@@ -9,7 +9,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Data
 @ToString
-public class RentalCarDetails {
+public class RentalCarDetailsDTO {
     private String rental_id;
     private String registration_number;
 }
