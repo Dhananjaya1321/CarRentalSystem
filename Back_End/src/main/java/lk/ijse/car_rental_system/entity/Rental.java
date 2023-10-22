@@ -27,9 +27,12 @@ public class Rental {
     private LocalTime return_time;
     private String location;
     private String driver_or_not;
+    private String loss_damage_back_slip;
     @ManyToOne
     private Customer customer;
-    @OneToMany
+    @OneToMany(mappedBy = "rental")
     private List<Schedule> schedule;
+    @OneToMany(mappedBy = "rental")
+    private List<RentalCarDetails> rentalCarDetails;
 
 }
