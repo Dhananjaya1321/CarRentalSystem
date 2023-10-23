@@ -6,7 +6,9 @@ function getAllDrivers() {
         url: base_url + "driver",
         method: "get",
         success: function (rep) {
-            return JSON.parse(rep.data)[0];
+             let array=rep.data;
+             console.log(array)
+            return array;
         },
         error: function (rep) {
 
@@ -16,11 +18,16 @@ function getAllDrivers() {
 
 function generateDriverID() {
     drivers = getAllDrivers();
-    if (drivers.length > 0) {
-        return "D00-00" + (drivers.length + 1);
-    } else {
+    if (drivers === undefined){
         return "D00-001";
+    }else {
+        if (drivers.length > 0) {
+            return "D00-00" + (drivers.length + 1);
+        } else {
+            return "D00-001";
+        }
     }
+
 }
 
 function searchDriverNIC(driverNIC) {
@@ -31,14 +38,14 @@ function searchDriverNIC(driverNIC) {
 }
 
 $("#driver-add-btn").click(function () {
-    let driverNIC = $("#driver-nic").text();
-    let contact = $("#driver-nic").text();
-    let name = $("#driver-nic").text();
-    let address = $("#driver-nic").text();
-    let username = $("#driver-nic").text();
-    let password = $("#driver-nic").text();
-    let email = $("#driver-nic").text();
-    if (undefined === searchDriverNIC(driverNIC)) {
+    let driverNIC = $("#driver-nic").val();
+    let contact = $("#driver-contact").val();
+    let name = $("#driver-name").text();
+    let address = $("#driver-address").val();
+    let username = $("#driver-username").val();
+    let password = $("#driver-password").val();
+    let email = $("#driver-email").val();
+    // if (undefined === searchDriverNIC(driverNIC)) {
         let driver_id = generateDriverID();
         let newDriver = {
             "driver_id": driver_id,
@@ -47,6 +54,7 @@ $("#driver-add-btn").click(function () {
             "email": email,
             "name": name,
             "nic": driverNIC,
+            "profile_photo": null,
             "user": {"username": username, "password": password, "role": "driver"}
         }
         $.ajax({
@@ -55,11 +63,11 @@ $("#driver-add-btn").click(function () {
             contentType: "application/json",
             data: JSON.stringify(newDriver),
             success:function (rep) {
-
+                alert(rep.message);
             },
             error:function (rep) {
-
+                alert(rep.responseJSON.message)
             }
         })
-    }
+    // }
 });
