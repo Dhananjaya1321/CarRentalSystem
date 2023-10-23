@@ -34,6 +34,7 @@ function loadAllDriversForTable(array) {
                     </tr>`;
         $("#driver-details-table-body").append(row);
     }
+    deleteDriver();
 }
 
 function generateDriverID() {
@@ -124,6 +125,26 @@ $("#driver-add-btn").click(function () {
         /*username already excites*/
     }
 });
+
+function deleteDriver() {
+    $("#driver-details-table-body>tr>td>button").click(function () {
+        let driver_id = $(this).parents("#driver-details-table-body>tr").children().eq(0).text();
+        if (confirm("Do you want to delete...!")) {
+            $.ajax({
+                url: base_url + "driver?driver_id=" + driver_id,
+                method: "delete",
+                success: function (rep) {
+                    getAllDrivers();
+                    loadAllDriversForTable(drivers);
+                    alert(rep.message);
+                },
+                error: function (rep) {
+                    alert(rep.responseJson.message);
+                }
+            })
+        }
+    })
+}
 
 
 $("#home-btn").css("backgroundColor", "white");
