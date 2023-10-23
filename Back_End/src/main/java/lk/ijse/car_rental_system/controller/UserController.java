@@ -22,6 +22,11 @@ public class UserController {
     }
 
 
+    @GetMapping
+    public ResponseUtil getAllUsers() {
+        return new ResponseUtil("Ok", "Successfully loaded...!", user.getAllUsers());
+    }
+
    /* @PostMapping("/upload")
     public ResponseUtil uploadFile(@RequestParam("file") MultipartFile file) {
         if (file.isEmpty()) {

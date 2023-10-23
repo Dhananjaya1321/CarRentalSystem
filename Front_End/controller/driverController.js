@@ -1,14 +1,13 @@
 let base_url = "http://localhost:8080/Back_End_war/";
-let drivers = getAllDrivers();
+let drivers = [];
 
 function getAllDrivers() {
     $.ajax({
         url: base_url + "driver",
         method: "get",
         success: function (rep) {
-             let array=rep.data;
-             console.log(array)
-            return array;
+            drivers = rep.data;
+            console.log(drivers)
         },
         error: function (rep) {
 
@@ -17,10 +16,10 @@ function getAllDrivers() {
 }
 
 function generateDriverID() {
-    drivers = getAllDrivers();
-    if (drivers === undefined){
+    getAllDrivers();
+    if (drivers === undefined) {
         return "D00-001";
-    }else {
+    } else {
         if (drivers.length > 0) {
             return "D00-00" + (drivers.length + 1);
         } else {
@@ -30,23 +29,52 @@ function generateDriverID() {
 
 }
 
+/*
 function searchDriverNIC(driverNIC) {
-    drivers = getAllDrivers();
-    return drivers.find(function (driverNIC) {
-        return drivers.driverNIC === driverNIC;
+    let resp = false;
+    $.ajax({
+        url: base_url + "driver?nic=" + driverNIC,
+        method: "get",
+        async: false,
+        success: function (rep) {
+            return true;
+        },
+        error: function (rep) {
+            return false;
+        }
+    })
+}
+*/
+
+function searchUsername(username) {
+    let resp = false;
+    $.ajax({
+        url: base_url + "user",
+        method: "get",
+        async: false,
+        success: function (rep) {
+            let users = rep.data;
+            resp = users.find(function (user) {
+                return user.username === username;
+            });
+        },
+        error: function (rep) {
+            resp = false;
+        }
     });
+    return resp;
 }
 
 $("#driver-add-btn").click(function () {
     let driverNIC = $("#driver-nic").val();
     let contact = $("#driver-contact").val();
-    let name = $("#driver-name").text();
+    let name = $("#driver-name").val();
     let address = $("#driver-address").val();
     let username = $("#driver-username").val();
     let password = $("#driver-password").val();
     let email = $("#driver-email").val();
-    // if (undefined === searchDriverNIC(driverNIC)) {
-        let driver_id = generateDriverID();
+    let driver_id = generateDriverID();
+    if (!searchUsername(username)){
         let newDriver = {
             "driver_id": driver_id,
             "address": address,
@@ -62,12 +90,83 @@ $("#driver-add-btn").click(function () {
             method: "post",
             contentType: "application/json",
             data: JSON.stringify(newDriver),
-            success:function (rep) {
+            success: function (rep) {
                 alert(rep.message);
+                getAllDrivers();
             },
-            error:function (rep) {
+            error: function (rep) {
                 alert(rep.responseJSON.message)
             }
-        })
-    // }
+        });
+    }else {
+        /*username already excites*/
+    }
+});
+
+
+$("#home-btn").css("backgroundColor", "white");
+$("#logout-btn").css("backgroundColor", "white");
+$("#manage-cars-btn").css("backgroundColor", "white");
+$("#manage-drivers-btn").css("backgroundColor", "white");
+$("#rental-request-btn").css("backgroundColor", "white");
+$("#payments-btn").css("backgroundColor", "white");
+$("#income-btn").css("backgroundColor", "white");
+
+$("#dashboard-btn").click(function () {
+    $("#dashboard").css("display", "flex");
+    $("#cars-section").css("display", "none");
+    $("#drivers-section").css("display", "none");
+    $("#cars-rental-request").css("display", "none");
+
+    $("#dashboard-btn").css("backgroundColor", "#b3bdff");
+    $("#manage-cars-btn").css("backgroundColor", "white");
+    $("#manage-drivers-btn").css("backgroundColor", "white");
+    $("#rental-request-btn").css("backgroundColor", "white");
+});
+$("#manage-cars-btn").click(function () {
+    $("#dashboard").css("display", "none");
+    $("#cars-section").css("display", "flex");
+    $("#drivers-section").css("display", "none");
+    $("#cars-rental-request").css("display", "none");
+
+    $("#dashboard-btn").css("backgroundColor", "white");
+    $("#manage-cars-btn").css("backgroundColor", "#b3bdff");
+    $("#manage-drivers-btn").css("backgroundColor", "white");
+    $("#rental-request-btn").css("backgroundColor", "white");
+});
+$("#manage-drivers-btn").click(function () {
+    $("#dashboard").css("display", "none");
+    $("#cars-section").css("display", "none");
+    $("#drivers-section").css("display", "flex");
+    $("#cars-rental-request").css("display", "none");
+
+    $("#dashboard-btn").css("backgroundColor", "white");
+    $("#manage-cars-btn").css("backgroundColor", "white");
+    $("#manage-drivers-btn").css("backgroundColor", "#b3bdff");
+    $("#rental-request-btn").css("backgroundColor", "white");
+
+    drivers = getAllDrivers();
+});
+$("#rental-request-btn").click(function () {
+    $("#dashboard").css("display", "none");
+    $("#cars-section").css("display", "none");
+    $("#drivers-section").css("display", "none");
+    $("#cars-rental-request").css("display", "flex");
+
+    $("#dashboard-btn").css("backgroundColor", "white");
+    $("#manage-cars-btn").css("backgroundColor", "white");
+    $("#manage-drivers-btn").css("backgroundColor", "white");
+    $("#rental-request-btn").css("backgroundColor", "#b3bdff");
+});
+
+$("#cars-section>form").css("display", "none");
+let click_count = 0;
+$("#new-car-btn-div>button").click(function () {
+    if (click_count === 0) {
+        $("#cars-section>form").css("display", "flex");
+        click_count = 1;
+    } else {
+        $("#cars-section>form").css("display", "none");
+        click_count = 0;
+    }
 });

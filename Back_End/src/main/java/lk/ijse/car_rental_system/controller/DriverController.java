@@ -12,14 +12,21 @@ import org.springframework.web.bind.annotation.*;
 public class DriverController {
     @Autowired
     DriverService driverService;
+
     @PostMapping
-    public ResponseUtil addDriver(@RequestBody DriverDTO dto){
+    public ResponseUtil addDriver(@RequestBody DriverDTO dto) {
         System.out.println(dto.toString());
         driverService.saveDriver(dto);
-        return new ResponseUtil("Ok","",dto);
+        return new ResponseUtil("Ok", "Successfully added...!", dto);
     }
+
     @GetMapping
-    public ResponseUtil getAllDrivers(){
-        return new ResponseUtil("Ok","",driverService.getAllDrivers());
+    public ResponseUtil getAllDrivers() {
+        return new ResponseUtil("Ok", "Successfully loaded...!", driverService.getAllDrivers());
+    }
+
+    @GetMapping(params = {"nic"})
+    public ResponseUtil findDriver(String nic) {
+        return new ResponseUtil("Ok", "", driverService.findDriverByNic(nic));
     }
 }

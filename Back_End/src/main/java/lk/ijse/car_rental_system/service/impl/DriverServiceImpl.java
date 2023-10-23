@@ -1,6 +1,7 @@
 package lk.ijse.car_rental_system.service.impl;
 
 import lk.ijse.car_rental_system.dto.DriverDTO;
+import lk.ijse.car_rental_system.dto.UserDTO;
 import lk.ijse.car_rental_system.entity.Driver;
 import lk.ijse.car_rental_system.entity.User;
 import lk.ijse.car_rental_system.repo.DriverRepo;
@@ -33,8 +34,15 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public void saveDriver(@RequestBody DriverDTO dto) {
+    public void saveDriver(DriverDTO dto) {
         driverRepo.save(modelMapper.map(dto, Driver.class));
-        System.out.println("ok");
+    }
+    @Override
+    public DriverDTO findDriverByNic(String nic) {
+       return modelMapper.map(driverRepo.findByNic(nic), DriverDTO.class);
+    }
+    @Override
+    public UserDTO findDriverByUsername(String username) {
+       return modelMapper.map(userRepo.findById(username), UserDTO.class);
     }
 }
