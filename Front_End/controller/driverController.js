@@ -11,3 +11,12 @@ function getAllDrivers() {
         }
     });
 }
+
+function generateDriverID() {
+   let drivers=getAllDrivers();
+   if (drivers.length>0){
+       return "D00-00"+(drivers.length+1);
+   }else {
+        return "D00-001";
+   }
+}
