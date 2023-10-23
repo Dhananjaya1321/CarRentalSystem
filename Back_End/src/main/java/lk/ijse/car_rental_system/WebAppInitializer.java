@@ -1,5 +1,6 @@
 package lk.ijse.car_rental_system;
 
+
 import lk.ijse.car_rental_system.config.WebAppConfig;
 import lk.ijse.car_rental_system.config.WebRootConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
