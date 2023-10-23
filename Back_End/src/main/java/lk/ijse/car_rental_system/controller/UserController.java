@@ -17,7 +17,6 @@ public class UserController {
 
     @GetMapping(params = {"username"})
     public ResponseUtil findUser(String username){
-        user.findUser(username);
-        return new ResponseUtil("","","");
+        return new ResponseUtil("Ok","",user.findUser(username));
     }
 }
