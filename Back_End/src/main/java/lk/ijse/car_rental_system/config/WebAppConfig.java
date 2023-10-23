@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "lk.ijse.car_rental_system.controller")
+@ComponentScan(basePackages = {"lk.ijse.car_rental_system.controller","lk.ijse.car_rental_system.advisor"})
 public class WebAppConfig {
     @Bean
     public CommonsMultipartResolver multipartResolver() {
