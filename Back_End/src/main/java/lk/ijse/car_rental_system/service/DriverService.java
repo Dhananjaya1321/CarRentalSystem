@@ -10,6 +10,8 @@ public interface DriverService {
 
     void saveDriver(DriverDTO dto);
 
+    void deleteDriver(String driver_id);
+
     DriverDTO findDriverByNic(String nic);
 
     UserDTO findDriverByUsername(String username);
