@@ -20,6 +20,11 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void saveCar(CarDTO dto) {
+        if (carRepo.existsById(dto.getRegistration_number())){
+            throw new RuntimeException(dto.getRegistration_number()+" already exists");
+        }
+
+
         String uploadDir = "C:\\Users\\ACER\\Documents\\WorkZone\\CarRentalSystem\\Back_End\\src\\main\\resources\\files\\" + "cars";
 
         MultipartFile back_image = dto.getBack_image();
