@@ -1,4 +1,3 @@
-let base_url = "http://localhost:8080/Back_End_war/";
 let drivers = [];
 
 function getAllDrivers() {
@@ -68,24 +67,7 @@ function searchDriverNIC(driverNIC) {
 }
 */
 
-function searchUsername(username) {
-    let resp = false;
-    $.ajax({
-        url: base_url + "user",
-        method: "get",
-        async: false,
-        success: function (rep) {
-            let users = rep.data;
-            resp = users.find(function (user) {
-                return user.username === username;
-            });
-        },
-        error: function (rep) {
-            resp = false;
-        }
-    });
-    return resp;
-}
+
 
 $("#driver-add-btn").click(function () {
     let driverNIC = $("#driver-nic").val();

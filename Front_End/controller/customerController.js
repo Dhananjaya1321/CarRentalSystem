@@ -1,8 +1,3 @@
-let base_url="http://localhost:8080/Back_End_war/"
-function saveCustomer() {
-
-}
-
 $("#create-btn").click(function (e) {
     let email = $("#email").val();
     let contact = $("#contact").val();
@@ -16,22 +11,27 @@ $("#create-btn").click(function (e) {
     let license = $("#license").val();
     let license_front_photo = $("#license-front-photo-choose").val();
     let license_back_photo = $("#license-back-photo-choose").val();
+    if (!searchUsername(username)){
+        if (password === conform_password) {
+            let formData = new FormData($("#create-account-form")[0]);
+            $.ajax({
+                url: base_url + "customer",
+                method: "post",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function () {
+                    window.location.href='../index.html'
+                },
+                error: function () {
 
-    let formData = new FormData($("#create-account-form")[0]);
-    console.log(formData);
-
-    $.ajax({
-        url:base_url+"customer",
-        method:"post",
-        data: formData,
-        contentType: false,
-        processData: false,
-        success:function () {
-
-        },
-        error:function () {
-
+                }
+            })
+        }else {
+            /*password is not match*/
         }
-    })
+    }else {
+        /*username is already excise*/
+    }
 
 });
