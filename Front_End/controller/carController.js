@@ -1,4 +1,5 @@
 let cars = [];
+loadCarsForAvailableCarTable();
 
 /*add cars*/
 $("#car-add-btn").click(function () {
@@ -11,6 +12,7 @@ $("#car-add-btn").click(function () {
         processData: false,
         success: function (rep) {
             alert("Car", rep.message);
+            loadCarsForAvailableCarTable();
         },
         error: function (rep) {
 
@@ -26,12 +28,39 @@ function getAllCars() {
         dataType:"JSON",
         success: function (rep) {
             cars = rep.data;
-            // console.log(rep)
+            console.log(rep)
         },
         error: function (rep) {
 
         }
     })
+}
+
+/*load cars for available car table*/
+function loadCarsForAvailableCarTable() {
+    getAllCars();
+    $("#available-cars-table-body").empty();
+    for (let i in cars) {
+        let car=cars[i];
+        let row=`<tr>
+                    <td>${car.registration_number}</td>
+                    <td>${car.brand}</td>
+                    <td>${car.type}</td>
+                    <td style="width: 0;">
+                        <select class="form-select" aria-label="Default select example" style="width: 200px">
+                            <option value="available">available</option>
+                            <option value="under-maintenance">under maintenance</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger border-0" style="background-color: #ff0014"><i
+                                class="fa-solid fa-trash-can"></i></button>
+                        <button type="button" class="btn border-0 btn-danger" style="background-color: #1aff00;"><i
+                                class="fa-solid fa-pencil"></i></button>
+                    </td>
+                </tr>`;
+        $("#available-cars-table-body").append(row);
+    }
 }
 
 
