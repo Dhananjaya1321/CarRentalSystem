@@ -4,10 +4,9 @@ import lk.ijse.car_rental_system.dto.CarDTO;
 import lk.ijse.car_rental_system.service.CarService;
 import lk.ijse.car_rental_system.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -20,5 +19,9 @@ public class CarController {
     public ResponseUtil saveCar(CarDTO dto){
         carService.saveCar(dto);
         return new ResponseUtil("Ok","Successfully added...!",dto.getRegistration_number());
+    }
+    @GetMapping
+    public ResponseUtil getAllCars(){
+        return new ResponseUtil("Ok","Successfully loaded...!",carService.getAllCars());
     }
 }
