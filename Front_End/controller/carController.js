@@ -15,7 +15,7 @@ $("#car-add-btn").click(function () {
             loadCarsForTable();
         },
         error: function (rep) {
-
+            loadCarsForTable();
         }
     })
 })
@@ -41,10 +41,27 @@ function loadCarsForTable() {
     getAllCars();
     $("#available-cars-table-body").empty();
     $("#cars-under-maintenance-table-body").empty();
+    $("#cars-need-maintenance-table-body").empty();
     for (let i in cars) {
         let car = cars[i];
         if (car.status === "available") {
-            let row = `<tr>
+            if ((car.mileage_after_maintenance-car.mileage_before_maintenance)>=5000){
+                $("#need-to-maintain-cars").css("display","flex");
+                let row=`<tr>
+                            <td>${car.registration_number}</td>
+                            <td>${car.brand}</td>
+                            <td>${car.type}</td>
+                            <td>Need to maintain</td>
+                            <td>
+                                <button type="button" class="btn border-0 btn-danger"
+                                        style="background-color: #ffb100; width: 180px;">Confirm
+                                    maintenance
+                                </button>
+                            </td>
+                        </tr>`;
+                $("#cars-need-maintenance-table-body").append(row);
+            }else {
+                let row = `<tr>
                     <td>${car.registration_number}</td>
                     <td>${car.brand}</td>
                     <td>${car.type}</td>
@@ -61,7 +78,8 @@ function loadCarsForTable() {
                                 class="fa-solid fa-pencil"></i></button>
                     </td>
                 </tr>`;
-            $("#available-cars-table-body").append(row);
+                $("#available-cars-table-body").append(row);
+            }
         } else {
             $("#cars-under-maintenance").css("display","flex");
             let row = `<tr>
