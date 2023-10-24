@@ -37,9 +37,12 @@
 
         #cars-section,
         #drivers-section,
-        #cars-rental-request {
+        #cars-rental-request,
+        #cars-under-maintenance {
             display: none;
         }
+
+
     </style>
 </head>
 <body>
@@ -141,7 +144,8 @@
                 </div><!--type-->
                 <div class="mb-3">
                     <label for="transmission-type" class="form-label">Transmission type</label>
-                    <select name="transmission_type" id="transmission-type" class="form-select" aria-label="Default select example">
+                    <select name="transmission_type" id="transmission-type" class="form-select"
+                            aria-label="Default select example">
                         <option value="auto">auto</option>
                         <option value="manual">manual</option>
                     </select>
@@ -157,7 +161,8 @@
                 </div><!--fuel type-->
                 <div class="mb-3">
                     <label for="registration-number" class="form-label">Registration number</label>
-                    <input name="registration_number" type="text" id="registration-number" class="form-control" placeholder="Registration number">
+                    <input name="registration_number" type="text" id="registration-number" class="form-control"
+                           placeholder="Registration number">
                 </div><!--registration number-->
                 <div class="mb-3">
                     <label for="color" class="form-label">Color</label>
@@ -165,15 +170,18 @@
                 </div><!--color-->
                 <div class="mb-3">
                     <label for="daily-rate" class="form-label">Daily rate</label>
-                    <input name="price_for_day" type="text" id="daily-rate" class="form-control" placeholder="Daily Prices">
+                    <input name="price_for_day" type="text" id="daily-rate" class="form-control"
+                           placeholder="Daily Prices">
                 </div><!--daily rate-->
                 <div class="mb-3">
                     <label for="daily-free-mileage" class="form-label">Free mileage for day</label>
-                    <input name="free_mileage_for_day" type="text" id="daily-free-mileage" class="form-control" placeholder="Free mileage for day">
+                    <input name="free_mileage_for_day" type="text" id="daily-free-mileage" class="form-control"
+                           placeholder="Free mileage for day">
                 </div><!--daily free mileage-->
                 <div class="mb-3">
                     <label for="monthly-rate" class="form-label">Monthly rate</label>
-                    <input name="price_for_month" type="text" id="monthly-rate" class="form-control" placeholder="Monthly Prices">
+                    <input name="price_for_month" type="text" id="monthly-rate" class="form-control"
+                           placeholder="Monthly Prices">
                 </div><!--monthly rate-->
                 <div class="mb-3">
                     <label for="monthly-free-mileage" class="form-label">Free mileage for month</label>
@@ -182,12 +190,14 @@
                 </div><!--monthly free mileage-->
                 <div class="mb-3">
                     <label for="price-for-extra-km" class="form-label">Price for extra KM</label>
-                    <input name="price_for_extra_km" type="text" id="price-for-extra-km" class="form-control" placeholder="Price for extra KM">
+                    <input name="price_for_extra_km" type="text" id="price-for-extra-km" class="form-control"
+                           placeholder="Price for extra KM">
                 </div><!-- price for extra KM-->
                 <div class="mb-3">
                     <label for="mileage-after-last-maintenance" class="form-label">Mileage after last
                         maintenance</label>
-                    <input name="mileage_after_maintenance" type="text" id="mileage-after-last-maintenance" class="form-control" placeholder="Ex- 0KM">
+                    <input name="mileage_after_maintenance" type="text" id="mileage-after-last-maintenance"
+                           class="form-control" placeholder="Ex- 0KM">
                 </div><!-- mileage after maintenance-->
             </div>
             <div class="flex f-wrap f-row">
@@ -287,20 +297,8 @@
                     <th scope="col">Options</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Benz</td>
-                    <td>Premium</td>
-                    <td>
-                        under maintenance
-                    </td>
-                    <td>
-                        <button type="button" class="btn border-0 btn-danger" style="background-color: #1aff00;">
-                            Maintenance completed
-                        </button>
-                    </td>
-                </tr>
+                <tbody id="cars-under-maintenance-table-body">
+
                 </tbody>
             </table>
         </section><!--cars under maintenance-->
@@ -558,7 +556,7 @@
         $("#rental-request-btn").css("backgroundColor", "white");
     });
     $("#manage-cars-btn").click(function () {
-        loadCarsForAvailableCarTable();
+        loadCarsForTable();
 
         $("#dashboard").css("display", "none");
         $("#cars-section").css("display", "flex");
@@ -581,7 +579,7 @@
         $("#manage-drivers-btn").css("backgroundColor", "#b3bdff");
         $("#rental-request-btn").css("backgroundColor", "white");
 
-        drivers = getAllDrivers();
+        getAllDrivers();
     });
     $("#rental-request-btn").click(function () {
         $("#dashboard").css("display", "none");
