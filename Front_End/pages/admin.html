@@ -120,20 +120,20 @@
         <div id="new-car-btn-div" class="flex f-row">
             <button>New Car</button>
         </div>
-        <form class="flex f-wrap f-col">
+        <form id="cars-add-form" class="flex f-wrap f-col">
             <div class="flex f-wrap f-row">
                 <div class="mb-3">
                     <label for="brand" class="form-label">Brand</label>
-                    <input type="text" id="brand" class="form-control" placeholder="Ex:- Toyota, Suzuki">
+                    <input name="brand" type="text" id="brand" class="form-control" placeholder="Ex:- Toyota, Suzuki">
                 </div><!--brand-->
                 <div class="mb-3">
                     <label for="Number-of-passengers" class="form-label">Number of passengers</label>
-                    <input type="text" id="Number-of-passengers" class="form-control"
+                    <input name="number_of_passengers" type="text" id="Number-of-passengers" class="form-control"
                            placeholder="Number of passengers">
                 </div><!--number of passengers-->
                 <div class="mb-3">
                     <label for="Type" class="form-label">Type</label>
-                    <select id="Type" class="form-select" aria-label="Default select example">
+                    <select name="type" id="Type" class="form-select" aria-label="Default select example">
                         <option value="general">general</option>
                         <option value="premium">premium</option>
                         <option value="luxury">luxury</option>
@@ -141,14 +141,14 @@
                 </div><!--type-->
                 <div class="mb-3">
                     <label for="transmission-type" class="form-label">Transmission type</label>
-                    <select id="transmission-type" class="form-select" aria-label="Default select example">
+                    <select name="transmission_type" id="transmission-type" class="form-select" aria-label="Default select example">
                         <option value="auto">auto</option>
                         <option value="manual">manual</option>
                     </select>
                 </div><!--transmission type-->
                 <div class="mb-3">
-                    <label for="fuel-type" class="form-label">Transmission type</label>
-                    <select id="fuel-type" class="form-select" aria-label="Default select example">
+                    <label for="fuel-type" class="form-label">Fuel type</label>
+                    <select name="fuel_type" id="fuel-type" class="form-select" aria-label="Default select example">
                         <option value="diesel">diesel</option>
                         <option value="petrol">petrol</option>
                         <option value="gas">gas</option>
@@ -157,63 +157,63 @@
                 </div><!--fuel type-->
                 <div class="mb-3">
                     <label for="registration-number" class="form-label">Registration number</label>
-                    <input type="text" id="registration-number" class="form-control" placeholder="Registration number">
+                    <input name="registration_number" type="text" id="registration-number" class="form-control" placeholder="Registration number">
                 </div><!--registration number-->
                 <div class="mb-3">
                     <label for="color" class="form-label">Color</label>
-                    <input type="text" id="color" class="form-control" placeholder="Ex:- red">
+                    <input name="color" type="text" id="color" class="form-control" placeholder="Ex:- red">
                 </div><!--color-->
                 <div class="mb-3">
                     <label for="daily-rate" class="form-label">Daily rate</label>
-                    <input type="text" id="daily-rate" class="form-control" placeholder="Daily Prices">
+                    <input name="price_for_day" type="text" id="daily-rate" class="form-control" placeholder="Daily Prices">
                 </div><!--daily rate-->
                 <div class="mb-3">
                     <label for="daily-free-mileage" class="form-label">Free mileage for day</label>
-                    <input type="text" id="daily-free-mileage" class="form-control" placeholder="Free mileage for day">
+                    <input name="free_mileage_for_day" type="text" id="daily-free-mileage" class="form-control" placeholder="Free mileage for day">
                 </div><!--daily free mileage-->
                 <div class="mb-3">
                     <label for="monthly-rate" class="form-label">Monthly rate</label>
-                    <input type="text" id="monthly-rate" class="form-control" placeholder="Monthly Prices">
+                    <input name="price_for_month" type="text" id="monthly-rate" class="form-control" placeholder="Monthly Prices">
                 </div><!--monthly rate-->
                 <div class="mb-3">
                     <label for="monthly-free-mileage" class="form-label">Free mileage for month</label>
-                    <input type="text" id="monthly-free-mileage" class="form-control"
+                    <input name="free_mileage_for_month" type="text" id="monthly-free-mileage" class="form-control"
                            placeholder="Free mileage for month">
                 </div><!--monthly free mileage-->
                 <div class="mb-3">
                     <label for="price-for-extra-km" class="form-label">Price for extra KM</label>
-                    <input type="text" id="price-for-extra-km" class="form-control" placeholder="Price for extra KM">
+                    <input name="price_for_extra_km" type="text" id="price-for-extra-km" class="form-control" placeholder="Price for extra KM">
                 </div><!-- price for extra KM-->
                 <div class="mb-3">
                     <label for="mileage-after-last-maintenance" class="form-label">Mileage after last
                         maintenance</label>
-                    <input type="text" id="mileage-after-last-maintenance" class="form-control" placeholder="Ex- 0KM">
-                </div><!-- price for extra KM-->
+                    <input name="mileage_after_maintenance" type="text" id="mileage-after-last-maintenance" class="form-control" placeholder="Ex- 0KM">
+                </div><!-- mileage after maintenance-->
             </div>
             <div class="flex f-wrap f-row">
                 <div class="mb-3">
                     <label for="front-view" class="form-label">Front view image of the car</label>
-                    <input type="file" id="front-view" class="form-control">
+                    <input name="front_image" type="file" id="front-view" class="form-control">
                     <div id="front-view-img-div"></div>
                 </div><!--front view-->
                 <div class="mb-3">
                     <label for="back-view" class="form-label">Back view image of the car</label>
-                    <input type="file" id="back-view" class="form-control">
+                    <input name="back_image" type="file" id="back-view" class="form-control">
                     <div id="back-view-img-div"></div>
                 </div><!--back view-->
                 <div class="mb-3">
                     <label for="side-view" class="form-label">Side view image of the car</label>
-                    <input type="file" id="side-view" class="form-control">
+                    <input name="side_image" type="file" id="side-view" class="form-control">
                     <div id="side-view-img-div"></div>
                 </div><!--side view-->
                 <div class="mb-3">
                     <label for="interior-view" class="form-label">Interior view image of the car</label>
-                    <input type="file" id="interior-view" class="form-control">
+                    <input name="interior_image" type="file" id="interior-view" class="form-control">
                     <div id="interior-view-img-div"></div>
                 </div><!--interior view-->
             </div>
             <div>
-                <button id="car-add-btn">Add</button>
+                <button type="button" id="car-add-btn">Add</button>
             </div>
 
         </form>
@@ -636,6 +636,7 @@
 <script src="../assets/js/jquery-3.7.0.min.js"></script>
 <script src="../assets/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 <script src="../controller/driverController.js"></script>
+<script src="../controller/carController.js"></script>
 <script src="../controller/util.js"></script>
 <script>
 
