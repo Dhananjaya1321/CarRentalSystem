@@ -4,6 +4,7 @@ function getAllDrivers() {
     $.ajax({
         url: base_url + "driver",
         method: "get",
+        async: false,
         success: function (rep) {
             drivers = rep.data;
             loadAllDriversForTable(drivers);

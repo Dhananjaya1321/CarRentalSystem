@@ -516,6 +516,7 @@
         $("#rental-request-btn").css("backgroundColor", "white");
     });
     $("#manage-cars-btn").click(function () {
+        getAllCars();
         loadCarsForTable();
 
         $("#dashboard").css("display", "none");

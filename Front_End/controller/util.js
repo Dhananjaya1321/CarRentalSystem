@@ -18,20 +18,3 @@ function searchUsername(username) {
     });
     return resp;
 }
-
-/*get all cars*/
-function getAllCars() {
-    $.ajax({
-        url: base_url + "car",
-        method: "get",
-        dataType: "JSON",
-        success: function (rep) {
-            cars = rep.data;
-            console.log(rep)
-            loadCarsForTable();
-        },
-        error: function (rep) {
-
-        }
-    })
-}
