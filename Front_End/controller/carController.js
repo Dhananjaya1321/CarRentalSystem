@@ -132,21 +132,33 @@ function manageCarMaintainStatus() {
         if (click === 2) {
             let registration_number = $(this).parents("#available-cars-table-body>tr").children().eq(0).text();
             let status = $(this).val();
-            $.ajax({
-                url: base_url + "car?registration_number="+registration_number+"&status="+status,
-                method: "put",
-                success: function (rep) {
-                    console.log(rep.message)
-                    getAllCars();
-                    loadCarsForTable();
-                },
-                error: function (rep) {
-
-                }
-            })
+            manageCarMaintainStatusRequestHandler(registration_number, status);
             click = 0;
         }
     });
+    $("#cars-under-maintenance-table-body>tr>td>button").click(function () {
+        let registration_number = $(this).parents("#cars-under-maintenance-table-body>tr").children().eq(0).text();
+        let status = "available";
+        manageCarMaintainStatusRequestHandler(registration_number, status);
+    });
+}
+
+function manageCarMaintainStatusRequestHandler(registration_number, status) {
+    $.ajax({
+        url: base_url + "car?registration_number=" + registration_number + "&status=" + status,
+        method: "put",
+        success: function (rep) {
+            console.log(rep.message)
+            getAllCars();
+            loadCarsForTable();
+            if ($("#cars-under-maintenance-table-body tr").length===0){
+                $("#cars-under-maintenance").css("display","none");
+            }
+        },
+        error: function (rep) {
+
+        }
+    })
 }
 
 function searchCarByRegistrationNumber(registration_number) {
