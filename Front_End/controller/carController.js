@@ -96,6 +96,21 @@ function loadCarsForTable() {
             $("#cars-under-maintenance-table-body").append(row);
         }
     }
+    deleteCar();
 }
 
+function deleteCar() {
+    $("#available-cars-table-body>tbody>tr>td>button:nth-child(1)").click(function () {
+        let registration_number = $(this).parents("#available-cars-table-body>tr").children().eq(0).text();
+       $.ajax({
+           url:base_url+"car?registration_number="+registration_number,
+           method:"delete",
+           success:function (rep) {
+               alert("Car",rep.message)
+           },
+           error:function (rep) {
 
+           }
+       })
+    });
+}
