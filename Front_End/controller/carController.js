@@ -21,23 +21,6 @@ $("#car-add-btn").click(function () {
     })
 })
 
-/*get all cars*/
-function getAllCars() {
-    $.ajax({
-        url: base_url + "car",
-        method: "get",
-        dataType: "JSON",
-        success: function (rep) {
-            cars = rep.data;
-            console.log(rep)
-            loadCarsForTable();
-        },
-        error: function (rep) {
-
-        }
-    })
-}
-
 /*load cars for available, undermining and need to maintain tables*/
 function loadCarsForTable() {
     $("#available-cars-table-body").empty();
@@ -120,3 +103,26 @@ function deleteCar() {
         }
     });
 }
+
+/*function f() {
+    $("#available-cars-table-body>tr>td>select").click(function () {
+        /!*if (confirm("Do you want to delete...!")){
+            let registration_number = $(this).parents("#available-cars-table-body>tr").children().eq(0).text();
+            $.ajax({
+                url: base_url + "car?registration_number=" + registration_number,
+                method: "delete",
+                success: function (rep) {
+                    alert(rep.message);
+                    getAllCars();
+                    loadCarsForTable();
+                },
+                error: function (rep) {
+
+                }
+            })
+        }*!/
+        console.log($(this).parents("#available-cars-table-body>tr>td>select").text())
+    });
+}*/
+
+
