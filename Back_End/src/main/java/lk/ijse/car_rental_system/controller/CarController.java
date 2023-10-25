@@ -16,12 +16,19 @@ public class CarController {
     CarService carService;
 
     @PostMapping
-    public ResponseUtil saveCar(CarDTO dto){
+    public ResponseUtil saveCar(CarDTO dto) {
         carService.saveCar(dto);
-        return new ResponseUtil("Ok","Successfully added...!",dto.getRegistration_number());
+        return new ResponseUtil("Ok", "Successfully added...!", dto.getRegistration_number());
     }
+
     @GetMapping
-    public ResponseUtil getAllCars(){
-        return new ResponseUtil("Ok","Successfully loaded...!",carService.getAllCars());
+    public ResponseUtil getAllCars() {
+        return new ResponseUtil("Ok", "Successfully loaded...!", carService.getAllCars());
+    }
+
+    @DeleteMapping(params = {"registration_number"})
+    public ResponseUtil deleteCar(String registration_number) {
+        carService.deleteCar(registration_number);
+        return new ResponseUtil("Ok", "Successfully deleted...!", registration_number);
     }
 }

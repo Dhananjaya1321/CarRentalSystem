@@ -77,4 +77,12 @@ public class CarServiceImpl implements CarService {
     public List<CarDTO> getAllCars(){
         return modelMapper.map(carRepo.findAll(),new TypeToken<ArrayList<Car>>(){}.getType());
     }
+
+    @Override
+    public void deleteCar(String registration_number){
+        if (!carRepo.existsById(registration_number)) {
+            throw new RuntimeException(registration_number+" this registration number is not available");
+        }
+        carRepo.deleteById(registration_number);
+    }
 }

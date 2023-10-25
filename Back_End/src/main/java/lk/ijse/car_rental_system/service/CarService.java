@@ -8,4 +8,6 @@ public interface CarService{
     void saveCar(CarDTO dto);
 
     List<CarDTO> getAllCars();
+
+    void deleteCar(String registration_number);
 }
