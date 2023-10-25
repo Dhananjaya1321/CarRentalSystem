@@ -10,4 +10,6 @@ public interface CarService{
     List<CarDTO> getAllCars();
 
     void deleteCar(String registration_number);
+
+    CarDTO searchCarByRegistrationNumber(String registration_number);
 }

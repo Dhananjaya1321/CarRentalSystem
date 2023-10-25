@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -27,8 +28,8 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void saveCar(CarDTO dto) {
-        if (carRepo.existsById(dto.getRegistration_number())){
-            throw new RuntimeException(dto.getRegistration_number()+" already exists");
+        if (carRepo.existsById(dto.getRegistration_number())) {
+            throw new RuntimeException(dto.getRegistration_number() + " already exists");
         }
 
 
@@ -73,16 +74,26 @@ public class CarServiceImpl implements CarService {
 
     }
 
-    @Override
-    public List<CarDTO> getAllCars(){
-        return modelMapper.map(carRepo.findAll(),new TypeToken<ArrayList<Car>>(){}.getType());
-    }
 
     @Override
-    public void deleteCar(String registration_number){
+    public void deleteCar(String registration_number) {
         if (!carRepo.existsById(registration_number)) {
-            throw new RuntimeException(registration_number+" this registration number is not available");
+            throw new RuntimeException(registration_number + " this registration number is not available");
         }
         carRepo.deleteById(registration_number);
     }
+
+    @Override
+    public List<CarDTO> getAllCars() {
+        return modelMapper.map(carRepo.findAll(), new TypeToken<ArrayList<Car>>() {
+        }.getType());
+    }
+
+    @Override
+    public CarDTO searchCarByRegistrationNumber(String registration_number) {
+        Car car = carRepo.findById(registration_number).get();
+        System.out.println(car);
+        return modelMapper.map(car, CarDTO.class);
+    }
+
 }

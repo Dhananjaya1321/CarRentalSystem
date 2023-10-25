@@ -29,9 +29,9 @@ function loadCarsForTable() {
     for (let i in cars) {
         let car = cars[i];
         if (car.status === "available") {
-            if ((car.mileage_after_maintenance-car.mileage_before_maintenance)>=5000){
-                $("#need-to-maintain-cars").css("display","flex");
-                let row=`<tr>
+            if ((car.mileage_after_maintenance - car.mileage_before_maintenance) >= 5000) {
+                $("#need-to-maintain-cars").css("display", "flex");
+                let row = `<tr>
                             <td>${car.registration_number}</td>
                             <td>${car.brand}</td>
                             <td>${car.type}</td>
@@ -44,7 +44,7 @@ function loadCarsForTable() {
                             </td>
                         </tr>`;
                 $("#cars-need-maintenance-table-body").append(row);
-            }else {
+            } else {
                 let row = `<tr>
                     <td>${car.registration_number}</td>
                     <td>${car.brand}</td>
@@ -65,7 +65,7 @@ function loadCarsForTable() {
                 $("#available-cars-table-body").append(row);
             }
         } else {
-            $("#cars-under-maintenance").css("display","flex");
+            $("#cars-under-maintenance").css("display", "flex");
             let row = `<tr>
                             <td>${car.registration_number}</td>
                             <td>${car.brand}</td>
@@ -81,12 +81,13 @@ function loadCarsForTable() {
         }
     }
     deleteCar();
+    manageCarMaintainStatus();
 }
 
 /*delete cars*/
 function deleteCar() {
     $("#available-cars-table-body>tr>td>button:nth-child(1)").click(function () {
-        if (confirm("Do you want to delete...!")){
+        if (confirm("Do you want to delete...!")) {
             let registration_number = $(this).parents("#available-cars-table-body>tr").children().eq(0).text();
             $.ajax({
                 url: base_url + "car?registration_number=" + registration_number,
@@ -123,26 +124,23 @@ function getAllCars() {
     })
 }
 
-/*function f() {
-    $("#available-cars-table-body>tr>td>select").click(function () {
-        /!*if (confirm("Do you want to delete...!")){
-            let registration_number = $(this).parents("#available-cars-table-body>tr").children().eq(0).text();
-            $.ajax({
-                url: base_url + "car?registration_number=" + registration_number,
-                method: "delete",
-                success: function (rep) {
-                    alert(rep.message);
-                    getAllCars();
-                    loadCarsForTable();
-                },
-                error: function (rep) {
 
-                }
-            })
-        }*!/
-        console.log($(this).parents("#available-cars-table-body>tr>td>select").text())
-    });
-}*/
+function searchCarByRegistrationNumber(registration_number) {
+   let car={};
+   $.ajax({
+        url: base_url + "car?registration_number="+registration_number,
+        method: "get",
+        async:false,
+        success:function (rep) {
+            console.log(rep.data,"hi");
+            car=rep.data;
+        },
+        error:function (rep) {
+
+        }
+    })
+    return car;
+}
 
 function loadCarsForHomePage() {
     getAllCars();
@@ -151,13 +149,13 @@ function loadCarsForHomePage() {
     $("#rental-display-section").empty();
     for (let i in cars) {
         console.log("hi")
-        let car=cars[i];
-        let front_img="../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.front_image;
-        let side_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.back_image;
-        let back_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.side_image;
-        let interior_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.interior_image;
+        let car = cars[i];
+        let front_img = "../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.front_image;
+        let side_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.back_image;
+        let back_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.side_image;
+        let interior_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.interior_image;
         console.log(front_img);
-        let item=`<div class="display-car flex f-col">
+        let item = `<div class="display-car flex f-col">
                         <div>
                             <div id="car-${car.registration_number}" class="carousel slide carousel-fade">
                                 <div class="carousel-inner">
