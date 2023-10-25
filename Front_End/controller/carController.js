@@ -1,5 +1,4 @@
 let cars = [];
-loadCarsForTable();
 
 /*add cars*/
 $("#car-add-btn").click(function () {
@@ -12,9 +11,11 @@ $("#car-add-btn").click(function () {
         processData: false,
         success: function (rep) {
             alert("Car", rep.message);
+            getAllCars()
             loadCarsForTable();
         },
         error: function (rep) {
+            getAllCars()
             loadCarsForTable();
         }
     })
@@ -29,6 +30,7 @@ function getAllCars() {
         success: function (rep) {
             cars = rep.data;
             console.log(rep)
+            loadCarsForTable();
         },
         error: function (rep) {
 
@@ -38,7 +40,6 @@ function getAllCars() {
 
 /*load cars for available, undermining and need to maintain tables*/
 function loadCarsForTable() {
-    getAllCars();
     $("#available-cars-table-body").empty();
     $("#cars-under-maintenance-table-body").empty();
     $("#cars-need-maintenance-table-body").empty();
@@ -99,18 +100,23 @@ function loadCarsForTable() {
     deleteCar();
 }
 
+/*delete cars*/
 function deleteCar() {
-    $("#available-cars-table-body>tbody>tr>td>button:nth-child(1)").click(function () {
-        let registration_number = $(this).parents("#available-cars-table-body>tr").children().eq(0).text();
-       $.ajax({
-           url:base_url+"car?registration_number="+registration_number,
-           method:"delete",
-           success:function (rep) {
-               alert("Car",rep.message)
-           },
-           error:function (rep) {
+    $("#available-cars-table-body>tr>td>button:nth-child(1)").click(function () {
+        if (confirm("Do you want to delete...!")){
+            let registration_number = $(this).parents("#available-cars-table-body>tr").children().eq(0).text();
+            $.ajax({
+                url: base_url + "car?registration_number=" + registration_number,
+                method: "delete",
+                success: function (rep) {
+                    alert(rep.message);
+                    getAllCars();
+                    loadCarsForTable();
+                },
+                error: function (rep) {
 
-           }
-       })
+                }
+            })
+        }
     });
 }
