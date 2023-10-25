@@ -151,38 +151,42 @@ function loadCarsForHomePage() {
     $("#rental-display-section").empty();
     for (let i in cars) {
         console.log("hi")
-
-        let car=cars[0];
+        let car=cars[i];
+        let front_img="../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.front_image;
+        let side_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.back_image;
+        let back_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.side_image;
+        let interior_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.interior_image;
+        console.log(front_img);
         let item=`<div class="display-car flex f-col">
                         <div>
-                            <div id="car-1" class="carousel slide carousel-fade">
+                            <div id="car-${car.registration_number}" class="carousel slide carousel-fade">
                                 <div class="carousel-inner">
                                     <div class="carousel-item active" data-bs-interval="2000">
-                                        <div class="d-block w-100"></div>
+                                        <div class="d-block w-100" style="background-position: center; background: url(${front_img}); background-size: cover;"></div>
                                     </div>
                                     <div class="carousel-item" data-bs-interval="2000">
-                                        <div class="d-block w-100"></div>
+                                        <div class="d-block w-100" style="background-position: center; background: url(${back_img}); background-size: cover;"></div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <div class="d-block w-100"></div>
+                                    <div class="carousel-item" data-bs-interval="2000">
+                                        <div class="d-block w-100" style="background-position: center; background: url(${side_img}); background-size: cover;"></div>
                                     </div>
-                                    <div class="carousel-item">
-                                        <div class="d-block w-100"></div>
+                                    <div class="carousel-item" data-bs-interval="2000">
+                                        <div class="d-block w-100" style="background-position: center; background: url(${interior_img}); background-size: cover;"></div>
                                     </div>
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#car-1"
+                                <button class="carousel-control-prev" type="button" data-bs-target="#car-${car.registration_number}"
                                         data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#car-1"
+                                <button class="carousel-control-next" type="button" data-bs-target="#car-${car.registration_number}"
                                         data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
                             </div>
                         </div><!--car images slider-->
-                        <div class="car-type general-bach flex">
+                        <div class="car-type ${car.type}-bach flex">
                             <h2>${car.type}</h2>
                         </div><!--(ex mini, luxury)-->
                         <div class="flex f-col">

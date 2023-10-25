@@ -7,33 +7,6 @@
     height: 200px;
     border-radius: 15px 15px 0 0;
 }
-
-.display-car > div:first-child > div > div > div:first-child > div:first-child {
-    background: url("../image/car-front/benz.jpg");
-    background-size: cover;
-    background-position: center;
-}
-
-.display-car > div:first-child > div > div > div:nth-child(2) > div:first-child {
-    background: url("../image/car-front/lamborghini.png");
-    background-size: cover;
-    background-position: center;
-}
-
-.display-car > div:first-child > div > div > div:nth-child(3) > div:first-child {
-    background: url("../image/car-front/CHR.jpg");
-    background-size: cover;
-    background-position: center;
-}
-
-.display-car > div:first-child > div > div > div:last-child > div:first-child {
-    background: url("../image/car-front/RR.jpg");
-    background-size: cover;
-    background-position: center;
-}
-
-
-
 /*================================================= rental section ===================================================*/
 /*==================================================== search bar ====================================================*/
 #search-bar {
