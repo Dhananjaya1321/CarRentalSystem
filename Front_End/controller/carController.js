@@ -124,6 +124,36 @@ function getAllCars() {
     })
 }
 
+let click=0;
+function manageCarMaintainStatus() {
+    $("#available-cars-table-body>tr>td>select").click(function () {
+       click++;
+       if (click===2){
+           let registration_number = $(this).parents("#available-cars-table-body>tr").children().eq(0).text();
+           let status = $(this).val();
+           let car = searchCarByRegistrationNumber(registration_number);
+           if (car.status==="available"){
+               car.status=status;
+               console.log(car.status)
+               $.ajax({
+                   url: base_url + "car",
+                   method: "put",
+                   contentType: "application/json",
+                   data: JSON.stringify(car),
+                   success:function (rep) {
+                       getAllCars();
+                       loadCarsForTable();
+                   },
+                   error:function (rep) {
+                       getAllCars();
+                       loadCarsForTable();
+                   }
+               })
+           }
+           click=0;
+       }
+    });
+}
 
 function searchCarByRegistrationNumber(registration_number) {
    let car={};
