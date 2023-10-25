@@ -6,6 +6,8 @@ import lk.ijse.car_rental_system.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/car")
@@ -15,7 +17,11 @@ public class CarController {
 
     @PostMapping
     public ResponseUtil saveCar(CarDTO dto) {
-        carService.saveCar(dto);
+        try {
+            carService.saveCar(dto);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return new ResponseUtil("Ok", "Successfully added...!", dto.getRegistration_number());
     }
 
@@ -25,6 +31,11 @@ public class CarController {
         return new ResponseUtil("Ok", "Successfully deleted...!", registration_number);
     }
 
+    @PutMapping(params = {"registration_number","status"})
+    public ResponseUtil updateCarStatus(String registration_number, String status){
+        carService.updateCarStatus(registration_number,status);
+        return new ResponseUtil("Ok","Successfully updated...!",registration_number);
+    }
     @GetMapping
     public ResponseUtil getAllCars() {
         return new ResponseUtil("Ok", "Successfully loaded...!", carService.getAllCars());
@@ -32,8 +43,6 @@ public class CarController {
 
     @GetMapping(params = {"registration_number"})
     public ResponseUtil searchCarByRegistrationNumber(String registration_number){
-        CarDTO carDTO = carService.searchCarByRegistrationNumber(registration_number);
-        System.out.println("\n\n\n\n"+carDTO.toString());
-        return new ResponseUtil("Ok","",carDTO);
+        return new ResponseUtil("Ok","",carService.searchCarByRegistrationNumber(registration_number));
     }
 }

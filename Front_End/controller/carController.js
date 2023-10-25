@@ -124,48 +124,41 @@ function getAllCars() {
     })
 }
 
-let click=0;
+let click = 0;
+
 function manageCarMaintainStatus() {
     $("#available-cars-table-body>tr>td>select").click(function () {
-       click++;
-       if (click===2){
-           let registration_number = $(this).parents("#available-cars-table-body>tr").children().eq(0).text();
-           let status = $(this).val();
-           let car = searchCarByRegistrationNumber(registration_number);
-           if (car.status==="available"){
-               car.status=status;
-               console.log(car.status)
-               $.ajax({
-                   url: base_url + "car",
-                   method: "put",
-                   contentType: "application/json",
-                   data: JSON.stringify(car),
-                   success:function (rep) {
-                       getAllCars();
-                       loadCarsForTable();
-                   },
-                   error:function (rep) {
-                       getAllCars();
-                       loadCarsForTable();
-                   }
-               })
-           }
-           click=0;
-       }
+        click++;
+        if (click === 2) {
+            let registration_number = $(this).parents("#available-cars-table-body>tr").children().eq(0).text();
+            let status = $(this).val();
+            $.ajax({
+                url: base_url + "car?registration_number="+registration_number+"&status="+status,
+                method: "put",
+                success: function (rep) {
+                    console.log(rep.message)
+                    getAllCars();
+                    loadCarsForTable();
+                },
+                error: function (rep) {
+
+                }
+            })
+            click = 0;
+        }
     });
 }
 
 function searchCarByRegistrationNumber(registration_number) {
-   let car={};
-   $.ajax({
-        url: base_url + "car?registration_number="+registration_number,
+    let car = {};
+    $.ajax({
+        url: base_url + "car?registration_number=" + registration_number,
         method: "get",
-        async:false,
-        success:function (rep) {
-            console.log(rep.data,"hi");
-            car=rep.data;
+        async: false,
+        success: function (rep) {
+            car = rep.data;
         },
-        error:function (rep) {
+        error: function (rep) {
 
         }
     })
