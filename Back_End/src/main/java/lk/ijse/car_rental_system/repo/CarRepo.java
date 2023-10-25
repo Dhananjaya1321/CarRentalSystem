@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface CarRepo extends JpaRepository<Car, String> {
     @Modifying
-    @Query(value = "UPDATE car set status=?1 WHERE registration_number=?2", nativeQuery = true)
-    int updateCarStatus(String status, String registration_number);
+    @Query(value = "UPDATE car set status=?1,mileage_after_maintenance=?2 WHERE registration_number=?3", nativeQuery = true)
+    int updateCarStatus(String status, int mileage_after_maintenance,String registration_number);
 }

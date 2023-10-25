@@ -72,7 +72,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void updateCarStatus(String registration_number, String status) {
-        carRepo.updateCarStatus(status,registration_number);
+        carRepo.updateCarStatus(status,0,registration_number);
     }
 
     @Override

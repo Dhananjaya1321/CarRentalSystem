@@ -141,6 +141,11 @@ function manageCarMaintainStatus() {
         let status = "available";
         manageCarMaintainStatusRequestHandler(registration_number, status);
     });
+    $("#cars-need-maintenance-table-body>tr>td>button").click(function () {
+        let registration_number = $(this).parents("#cars-need-maintenance-table-body>tr").children().eq(0).text();
+        let status = "under-maintenance";
+        manageCarMaintainStatusRequestHandler(registration_number, status);
+    });
 }
 
 function manageCarMaintainStatusRequestHandler(registration_number, status) {
@@ -153,6 +158,9 @@ function manageCarMaintainStatusRequestHandler(registration_number, status) {
             loadCarsForTable();
             if ($("#cars-under-maintenance-table-body tr").length===0){
                 $("#cars-under-maintenance").css("display","none");
+            }
+            if ($("#cars-need-maintenance-table-body tr").length===0){
+                $("#need-to-maintain-cars").css("display","none");
             }
         },
         error: function (rep) {
