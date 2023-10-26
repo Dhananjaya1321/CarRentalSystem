@@ -349,27 +349,50 @@ function searchCars() {
             }
             /*3*/
         } else if (passengers === "all" && transmission_type === "all" && brand === "all" && type !== "all" && fuel_type === "all" && daily_price === "all" && monthly_price === "all") {
-
+            if (car.type === type) {
+                loadFindCars(car);
+            }
         } else if (passengers === "all" && transmission_type === "all" && brand === "all" && type !== "all" && fuel_type !== "all" && daily_price === "all" && monthly_price === "all") {
-
+            if (car.type === type && car.fuel_type === fuel_type) {
+                loadFindCars(car);
+            }
         } else if (passengers === "all" && transmission_type === "all" && brand === "all" && type !== "all" && fuel_type !== "all" && daily_price !== "all" && monthly_price === "all") {
-
+            if (car.type === type && car.fuel_type === fuel_type && car.price_for_day === Number(daily_price)) {
+                loadFindCars(car);
+            }
         } else if (passengers === "all" && transmission_type === "all" && brand === "all" && type !== "all" && fuel_type !== "all" && daily_price !== "all" && monthly_price === "all") {
+            if (car.type === type && car.fuel_type === fuel_type && car.price_for_day === Number(daily_price) && car.price_for_month === Number(monthly_price)) {
+                loadFindCars(car);
+            }
             /*4*/
         } else if (passengers === "all" && transmission_type === "all" && brand === "all" && type === "all" && fuel_type !== "all" && daily_price === "all" && monthly_price === "all") {
-
+            if (car.fuel_type === fuel_type) {
+                loadFindCars(car);
+            }
         } else if (passengers === "all" && transmission_type === "all" && brand === "all" && type === "all" && fuel_type !== "all" && daily_price !== "all" && monthly_price === "all") {
-
+            if (car.fuel_type === fuel_type && car.price_for_day === Number(daily_price)) {
+                loadFindCars(car);
+            }
         } else if (passengers === "all" && transmission_type === "all" && brand === "all" && type === "all" && fuel_type !== "all" && daily_price !== "all" && monthly_price !== "all") {
+            if (car.fuel_type === fuel_type && car.price_for_day === Number(daily_price) && car.price_for_month === Number(monthly_price)) {
+                loadFindCars(car);
+            }
             /*5*/
         } else if (passengers === "all" && transmission_type === "all" && brand === "all" && type === "all" && fuel_type === "all" && daily_price !== "all" && monthly_price === "all") {
-
+            if (car.price_for_day === Number(daily_price)) {
+                loadFindCars(car);
+            }
         } else if (passengers === "all" && transmission_type === "all" && brand === "all" && type === "all" && fuel_type === "all" && daily_price !== "all" && monthly_price !== "all") {
+            if (car.price_for_day === Number(daily_price) && car.price_for_month === Number(monthly_price)) {
+                loadFindCars(car);
+            }
             /*6*/
         } else if (passengers === "all" && transmission_type === "all" && brand === "all" && type === "all" && fuel_type === "all" && daily_price === "all" && monthly_price !== "all") {
-
+            if (car.price_for_month === Number(monthly_price)) {
+                loadFindCars(car);
+            }
         } else {
-
+            loadCarsForHomePage()
         }
     }
 }
