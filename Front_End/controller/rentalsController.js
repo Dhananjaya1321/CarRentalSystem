@@ -1,4 +1,8 @@
-loadCarsForRentalPage();
+$(document).ready(function () {
+    loadCarsForRentalPage();
+
+});
+
 function loadCarsForRentalPage() {
     getAllCars();
 
@@ -6,13 +10,12 @@ function loadCarsForRentalPage() {
     $("#luxury-rental-display-section").empty();
     $("#premium-rental-display-section").empty();
     for (let i in cars) {
-        let car=cars[i];
-        let front_img="../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.front_image;
-        let side_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.back_image;
-        let back_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.side_image;
-        let interior_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.interior_image;
-        let item=`<div class="flex f-col">
-                      <a class="display-car flex f-col" style="text-decoration: none; color: black" href="#">
+        let car = cars[i];
+        let front_img = "../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.front_image;
+        let side_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.back_image;
+        let back_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.side_image;
+        let interior_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.interior_image;
+        let item = `<div class="display-car flex f-col">
                         <div>
                             <div id="car-${car.registration_number}" class="carousel slide carousel-fade">
                                 <div class="carousel-inner">
@@ -44,7 +47,7 @@ function loadCarsForRentalPage() {
                         <div class="car-type ${car.type}-bach flex">
                             <h2>${car.type}</h2>
                         </div><!--(ex mini, luxury)-->
-                        <div class="flex f-col">
+                        <div id="dody${car.registration_number}" class="details-div flex f-col">
                             <div class="flex f-row">
                                 <h2>${car.brand}</h2>
                                 <div class="car-color"></div>
@@ -61,24 +64,23 @@ function loadCarsForRentalPage() {
                                 </div><!--monthly rate-->
                             </div><!--price details-->
                             <div class="other-details flex f-col">
-                                <h3>Price per Extra Km (Rs) <span>${car.price_for_extra_km}</span></h3>
-                                <div class="flex f-row f-wrap">
-                                    <div class="flex flex-row"><i class="fa-solid fa-user"></i> <span>${car.number_of_passengers}</span></div>
+                                <h3 style="align-self: center;">Price per Extra Km (Rs) <span>${car.price_for_extra_km}</span></h3>
+                                <div class="flex f-row">
+                                    <div style="margin-left:0;" class="flex flex-row"><i class="fa-solid fa-user"></i> <span>${car.number_of_passengers}</span></div>
                                     <!--seat count-->
-                                    <div class="flex flex-row"><i class="fa-solid fa-gear"></i> <span>${car.transmission_type}</span></div>
+                                    <div style="margin-left:0;" class="flex flex-row"><i class="fa-solid fa-gear"></i> <span>${car.transmission_type}</span></div>
                                     <!--(Manual, Auto)-->
-                                    <div class="flex flex-row"><i class="fa-solid fa-gas-pump"></i> <span>${car.fuel_type}</span></div>
+                                    <div style="margin-left:0;" class="flex flex-row"><i class="fa-solid fa-gas-pump"></i> <span>${car.fuel_type}</span></div>
                                     <!--(Diesel, Petrol)-->
                                 </div>
                             </div><!--other details-->
                         </div><!--car details-->
-                      </a> 
                   </div> `
-        if (car.type==="general"){
+        if (car.type === "general") {
             $("#general-rental-display-section").append(item);
-        }else if (car.type==="luxury"){
+        } else if (car.type === "luxury") {
             $("#luxury-rental-display-section").append(item);
-        }else {
+        } else {
             $("#premium-rental-display-section").append(item);
         }
     }
@@ -86,27 +88,27 @@ function loadCarsForRentalPage() {
 }
 
 function getCarDetailsForRentalsPage() {
-    $("#general-rental-display-section>div").click(function () {
-        let registration_number = $(this).find(".display-car>div:nth-child(1)>div").attr("id").substring(4);
-        $("#general-rental-display-section").append(setItem(registration_number));
+    $("#general-rental-display-section .display-car").click(function () {
+        let registration_number = $(this).find(".details-div").attr("id").substring(4);
+        $("#item-details-section").append(setItem(registration_number));
     })
-    $("#luxury-rental-display-section>div").click(function () {
-       let registration_number = $(this).find(".display-car>div:nth-child(1)>div").attr("id").substring(4);
-        $("#luxury-rental-display-section").append(setItem(registration_number));
+    $("#luxury-rental-display-section .display-car").click(function () {
+        let registration_number = $(this).find(".details-div").attr("id").substring(4);
+        $("#item-details-section").append(setItem(registration_number));
     })
-    $("#premium-rental-display-section>div").click(function () {
-        let registration_number = $(this).find(".display-car>div:nth-child(1)>div").attr("id").substring(4);
-        $("#premium-rental-display-section").append(setItem(registration_number));
+    $("#premium-rental-display-section .display-car").click(function () {
+        let registration_number = $(this).find(".details-div").attr("id").substring(4);
+        $("#item-details-section").append(setItem(registration_number));
     })
 }
 
 function setItem(registration_number) {
-    let car=searchCarByRegistrationNumber(registration_number)[0];
-    let front_img="../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.front_image;
-    let side_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.back_image;
-    let back_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.side_image;
-    let interior_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.interior_image;
-    let item=`<div id="img-slider">
+    let car = searchCarByRegistrationNumber(registration_number)[0];
+    let front_img = "../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.front_image;
+    let side_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.back_image;
+    let back_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.side_image;
+    let interior_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.interior_image;
+    let item = `<div id="img-slider">
                      <div id="car-${car.registration_number}" class="carousel slide carousel-fade">
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-bs-interval="10000">
@@ -180,5 +182,7 @@ function setItem(registration_number) {
                         Waiver.
                     </p>
                 </div><!--details-->`
+    $("#rental-main").css("display", "none");
+    $("#item-main").css("display", "flex");
     return item;
 }
