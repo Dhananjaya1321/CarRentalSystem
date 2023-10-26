@@ -1,4 +1,7 @@
 let cars = [];
+$(document).ready(function () {
+    getCarDetails();
+});
 
 /*get all cars*/
 function getAllCars() {
@@ -94,7 +97,7 @@ function loadCarsForHomePage() {
                   </div> `
         $("#rental-display-section").append(item);
     }
-    getCarDetails();
+    // getCarDetails();
 }
 
 function getCarDetails() {
@@ -257,6 +260,7 @@ function loadFindCars(car) {
                       </a> 
                   </div> `
     $("#rental-display-section").append(item);
+    getCarDetails();
 }
 
 function searchCars() {
@@ -270,7 +274,7 @@ function searchCars() {
     let fuel_type = $("#search-fuel-type").val();
     let daily_price = $("#search-daily-price").val();
     let monthly_price = $("#search-monthly-price").val();
-    console.log(passengers)
+
     for (let i in cars) {
         let car = cars[i];
         if (passengers !== "all" && transmission_type === "all" && brand === "all" && type === "all" && fuel_type === "all" && daily_price === "all" && monthly_price === "all") {
@@ -396,3 +400,7 @@ function searchCars() {
         }
     }
 }
+
+$("#search-btn").click(function () {
+    searchCars();
+})
