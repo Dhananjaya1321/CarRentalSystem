@@ -30,7 +30,8 @@ function loadCarsForHomePage() {
         let back_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.side_image;
         let interior_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.interior_image;
         console.log(front_img);
-        let item=`<div class="display-car flex f-col">
+        let item=`<div class="flex f-col">
+                      <a class="display-car flex f-col" style="text-decoration: none; color: black" href="../pages/item.html">
                         <div>
                             <div id="car-${car.registration_number}" class="carousel slide carousel-fade">
                                 <div class="carousel-inner">
@@ -90,6 +91,7 @@ function loadCarsForHomePage() {
                                 </div>
                             </div><!--other details-->
                         </div><!--car details-->
+                      </a> 
                   </div> `
         $("#rental-display-section").append(item);
     }
