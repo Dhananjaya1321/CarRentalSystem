@@ -24,12 +24,12 @@ function loadCarsForHomePage() {
     $("#rental-display-section").empty();
     for (let i in cars) {
         console.log("hi")
-        let car=cars[i];
-        let front_img="../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.front_image;
-        let side_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.back_image;
-        let back_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.side_image;
-        let interior_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.interior_image;
-        let item=`<div class="flex f-col">
+        let car = cars[i];
+        let front_img = "../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.front_image;
+        let side_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.back_image;
+        let back_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.side_image;
+        let interior_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.interior_image;
+        let item = `<div class="flex f-col">
                       <a class="display-car flex f-col" style="text-decoration: none; color: black" href="#">
                         <div>
                             <div id="car-${car.registration_number}" class="carousel slide carousel-fade">
@@ -101,12 +101,12 @@ function getCarDetails() {
     $("#rental-display-section>div").click(function () {
         let registration_number = $(this).find(".display-car>div:nth-child(1)>div").attr("id").substring(4);
 
-        let car=searchCarByRegistrationNumber(registration_number)[0];
-        let front_img="../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.front_image;
-        let side_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.back_image;
-        let back_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.side_image;
-        let interior_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.interior_image;
-        let item=`
+        let car = searchCarByRegistrationNumber(registration_number)[0];
+        let front_img = "../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.front_image;
+        let side_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.back_image;
+        let back_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.side_image;
+        let interior_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.interior_image;
+        let item = `
                 <div id="img-slider">
                      <div id="car-${car.registration_number}" class="carousel slide carousel-fade">
                         <div class="carousel-inner">
@@ -182,8 +182,34 @@ function getCarDetails() {
                     </p>
                 </div><!--details-->`
         $("#item-details-section").append(item);
-        $("#item-main").css("display","flex");
-        $("#home-main").css("display","none");
-        $("body>header").css("display","none");
+        $("#item-main").css("display", "flex");
+        $("#home-main").css("display", "none");
+        $("body>header").css("display", "none");
+    })
+}
+
+function searchCars() {
+    let passengers = $("#search-no-of-passengers").val();
+    let transmission_type = $("#search-transmission-type").val();
+    let brand = $("#search-brand").val();
+    let type = $("#search-type").val();
+    let fuel_type = $("#search-fuel-type").val();
+    let daily_price = $("#search-daily-price").val();
+    let monthly_price = $("#search-monthly-price").val();
+    $.ajax({
+        url: base_url + "car?passengers=" + passengers
+            + "&transmission_type=" + transmission_type
+            + "&brand=" + brand
+            + "&type=" + type
+            + "&fuel_type=" + fuel_type
+            + "&daily_price=" + daily_price
+            + "&monthly_price="+monthly_price,
+        method: "get",
+        success: function (rep) {
+
+        },
+        error: function (rep) {
+
+        }
     })
 }
