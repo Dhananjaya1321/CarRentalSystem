@@ -196,20 +196,66 @@ function searchCars() {
     let fuel_type = $("#search-fuel-type").val();
     let daily_price = $("#search-daily-price").val();
     let monthly_price = $("#search-monthly-price").val();
-    $.ajax({
-        url: base_url + "car?passengers=" + passengers
-            + "&transmission_type=" + transmission_type
-            + "&brand=" + brand
-            + "&type=" + type
-            + "&fuel_type=" + fuel_type
-            + "&daily_price=" + daily_price
-            + "&monthly_price="+monthly_price,
-        method: "get",
-        success: function (rep) {
+    for (let i in cars) {
+        let car=cars[i];
+        if (passengers!=="all" && transmission_type==="all" && brand==="all" && type==="all" && fuel_type==="all" && daily_price==="all" && monthly_price==="all"){
 
-        },
-        error: function (rep) {
+        }else if (passengers!=="all" && transmission_type!=="all" && brand==="all" && type==="all" && fuel_type==="all" && daily_price==="all" && monthly_price==="all"){
+
+        }else if (passengers!=="all" && transmission_type!=="all" && brand!=="all" && type==="all" && fuel_type==="all" && daily_price==="all" && monthly_price==="all"){
+
+        }else if (passengers!=="all" && transmission_type!=="all" && brand!=="all" && type!=="all" && fuel_type==="all" && daily_price==="all" && monthly_price==="all"){
+
+        }else if (passengers!=="all" && transmission_type!=="all" && brand!=="all" && type!=="all" && fuel_type!=="all" && daily_price==="all" && monthly_price==="all"){
+
+        }else if (passengers!=="all" && transmission_type!=="all" && brand!=="all" && type!=="all" && fuel_type!=="all" && daily_price!=="all" && monthly_price==="all"){
+
+        }else if (passengers!=="all" && transmission_type!=="all" && brand!=="all" && type!=="all" && fuel_type!=="all" && daily_price!=="all" && monthly_price!=="all"){
+            /*1*/
+        }else if (passengers==="all" && transmission_type!=="all" && brand==="all" && type==="all" && fuel_type==="all" && daily_price==="all" && monthly_price==="all"){
+
+        }else if (passengers==="all" && transmission_type!=="all" && brand!=="all" && type==="all" && fuel_type==="all" && daily_price==="all" && monthly_price==="all"){
+
+        }else if (passengers==="all" && transmission_type!=="all" && brand!=="all" && type!=="all" && fuel_type==="all" && daily_price==="all" && monthly_price==="all"){
+
+        }else if (passengers==="all" && transmission_type!=="all" && brand!=="all" && type!=="all" && fuel_type!=="all" && daily_price==="all" && monthly_price==="all"){
+
+        }else if (passengers==="all" && transmission_type!=="all" && brand!=="all" && type!=="all" && fuel_type!=="all" && daily_price!=="all" && monthly_price==="all"){
+
+        }else if (passengers==="all" && transmission_type!=="all" && brand!=="all" && type!=="all" && fuel_type!=="all" && daily_price!=="all" && monthly_price!=="all"){
+            /*2*/
+        }else if (passengers==="all" && transmission_type==="all" && brand!=="all" && type==="all" && fuel_type==="all" && daily_price==="all" && monthly_price==="all"){
+
+        }else if (passengers==="all" && transmission_type==="all" && brand!=="all" && type!=="all" && fuel_type==="all" && daily_price==="all" && monthly_price==="all"){
+
+        }else if (passengers==="all" && transmission_type==="all" && brand!=="all" && type!=="all" && fuel_type!=="all" && daily_price==="all" && monthly_price==="all"){
+
+        }else if (passengers==="all" && transmission_type==="all" && brand!=="all" && type!=="all" && fuel_type!=="all" && daily_price!=="all" && monthly_price==="all"){
+
+        }else if (passengers==="all" && transmission_type==="all" && brand!=="all" && type!=="all" && fuel_type!=="all" && daily_price!=="all" && monthly_price!=="all"){
+            /*3*/
+        }else if (passengers==="all" && transmission_type==="all" && brand==="all" && type!=="all" && fuel_type==="all" && daily_price==="all" && monthly_price==="all"){
+
+        }else if (passengers==="all" && transmission_type==="all" && brand==="all" && type!=="all" && fuel_type!=="all" && daily_price==="all" && monthly_price==="all"){
+
+        }else if (passengers==="all" && transmission_type==="all" && brand==="all" && type!=="all" && fuel_type!=="all" && daily_price!=="all" && monthly_price==="all"){
+
+        }else if (passengers==="all" && transmission_type==="all" && brand==="all" && type!=="all" && fuel_type!=="all" && daily_price!=="all" && monthly_price==="all"){
+            /*4*/
+        }else if (passengers==="all" && transmission_type==="all" && brand==="all" && type==="all" && fuel_type!=="all" && daily_price==="all" && monthly_price==="all"){
+
+        }else if (passengers==="all" && transmission_type==="all" && brand==="all" && type==="all" && fuel_type!=="all" && daily_price!=="all" && monthly_price==="all"){
+
+        }else if (passengers==="all" && transmission_type==="all" && brand==="all" && type==="all" && fuel_type!=="all" && daily_price!=="all" && monthly_price!=="all"){
+            /*5*/
+        }else if (passengers==="all" && transmission_type==="all" && brand==="all" && type==="all" && fuel_type==="all" && daily_price!=="all" && monthly_price==="all"){
+
+        }else if (passengers==="all" && transmission_type==="all" && brand==="all" && type==="all" && fuel_type==="all" && daily_price!=="all" && monthly_price!=="all"){
+            /*6*/
+        }else if (passengers==="all" && transmission_type==="all" && brand==="all" && type==="all" && fuel_type==="all" && daily_price==="all" && monthly_price!=="all"){
+
+        }else {
 
         }
-    })
+    }
 }
