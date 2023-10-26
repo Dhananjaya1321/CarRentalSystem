@@ -148,19 +148,4 @@ function manageCarMaintainStatusRequestHandler(registration_number, status) {
     })
 }
 
-// function searchCarByRegistrationNumber(registration_number) {
-//     let car = {};
-//     $.ajax({
-//         url: base_url + "car?registration_number=" + registration_number,
-//         method: "get",
-//         async: false,
-//         success: function (rep) {
-//             car = rep.data;
-//         },
-//         error: function (rep) {
-//
-//         }
-//     })
-//     return car;
-// }
 

@@ -18,3 +18,20 @@ function searchUsername(username) {
     });
     return resp;
 }
+
+function searchCarByRegistrationNumber(registration_number) {
+    let car = [];
+    $.ajax({
+        url: base_url + "car?registration_number=" + registration_number,
+        method: "get",
+        async: false,
+        success: function (rep) {
+            car = rep.data;
+            console.log("car arrya",car, rep.data,rep)
+        },
+        error: function (rep) {
+
+        }
+    })
+    return car;
+}

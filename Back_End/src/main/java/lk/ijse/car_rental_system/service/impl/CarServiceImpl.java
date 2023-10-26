@@ -90,10 +90,12 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public CarDTO searchCarByRegistrationNumber(String registration_number) {
+    public List<CarDTO> searchCarByRegistrationNumber(String registration_number) {
         Car car = carRepo.findById(registration_number).get();
-        System.out.println(car);
-        return modelMapper.map(car, CarDTO.class);
+        ArrayList<Car> cars = new ArrayList<>();
+        cars.add(car);
+        return modelMapper.map(cars, new TypeToken<ArrayList<Car>>() {
+        }.getType());
     }
 
 }

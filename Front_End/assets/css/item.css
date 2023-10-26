@@ -1,10 +1,23 @@
-main {
+#img-slider > div {
+    width: 100%;
+}
+
+#img-slider > div > div > div:first-child > div:first-child,
+#img-slider > div > div > div:nth-child(2) > div:first-child,
+#img-slider > div > div > div:nth-child(3) > div:first-child,
+#img-slider > div > div > div:last-child > div:first-child {
+    height: 300px;
+    border-radius: 15px;
+}
+
+#item-main {
     position: relative;
     top: 60px;
     gap: 25px;
+    display: none;
 }
 
-#details-section {
+#item-details-section {
     width: 80%;
     height: max-content;
     border-radius: 15px;
@@ -128,10 +141,10 @@ label {
     align-self: flex-start;
 }
 
-[type=date],
-[type=time],
-[type=text],
-select {
+#form-section>form>div>div>[type=date],
+#form-section>form>div>div>[type=time],
+#form-section>form>div>div>[type=text],
+#form-section>form>div>div>select {
     padding: 0 10px 0 10px !important;
     height: 40px !important;
     width: 250px !important;
@@ -167,7 +180,7 @@ select {
 }
 
 @media all and (max-width:425px) {
-    #details-section,#form-section {
+    #item-details-section,#form-section {
         width: 94%;
     }
 }

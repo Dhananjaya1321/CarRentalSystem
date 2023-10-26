@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -43,6 +44,8 @@ public class CarController {
 
     @GetMapping(params = {"registration_number"})
     public ResponseUtil searchCarByRegistrationNumber(String registration_number){
-        return new ResponseUtil("Ok","",carService.searchCarByRegistrationNumber(registration_number));
+        List<CarDTO> carDTOS = carService.searchCarByRegistrationNumber(registration_number);
+        System.out.println(carDTOS.toString());
+        return new ResponseUtil("Ok","",carDTOS);
     }
 }
