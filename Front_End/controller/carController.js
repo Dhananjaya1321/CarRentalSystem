@@ -29,7 +29,6 @@ function loadCarsForHomePage() {
         let side_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.back_image;
         let back_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.side_image;
         let interior_img="../../../CarRentalSystem/Back_End/src/main/resources/files/cars/"+car.interior_image;
-        console.log(front_img);
         let item=`<div class="flex f-col">
                       <a class="display-car flex f-col" style="text-decoration: none; color: black" href="#">
                         <div>
@@ -97,8 +96,6 @@ function loadCarsForHomePage() {
     }
     getCarDetails();
 }
-
-
 
 function getCarDetails() {
     $("#rental-display-section>div").click(function () {
