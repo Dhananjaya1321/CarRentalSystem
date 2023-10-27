@@ -23,6 +23,16 @@ main {
     margin: 20px;
 }
 
+#login-section > form  {
+    width: 245px;
+    margin: 0;
+}#login-section > form  >div{
+     gap:0;
+}
+#login-section > form >div>div {
+    height: 40px;
+    font-size: 16px;
+}
 #login-section > form > div > label ,
 #change-password > form > div > label {
     align-self: flex-start;
@@ -51,10 +61,12 @@ main {
 
 input {
     border-radius: 0 10px 10px 0 !important;
+    font-size: 16px!important;
 }
 
 span {
     border-radius: 10px 0 0 10px !important;
+    font-size: 16px!important;
 }
 
 #line > div {

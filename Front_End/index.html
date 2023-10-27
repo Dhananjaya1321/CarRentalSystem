@@ -21,6 +21,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/contact.css">
+    <link rel="stylesheet" href="assets/css/login.css">
     <style>
 
     </style>
@@ -52,6 +53,98 @@
         </div>
     </nav>
 </header>
+<main id="login-main" class="flex">
+    <section id="login-section" class="flex f-col">
+        <div class="flex"><h1>LogIn</h1></div>
+        <form>
+            <div class="flex f-col">
+                <label>User Name</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="user-name-span">@</span>
+                    <input id="user-name" name="userName" type="text" class="form-control" placeholder="Username"
+                           aria-label="Username"
+                           aria-describedby="user-name-span">
+                </div>
+            </div>
+            <div class="flex f-col">
+                <label>Password</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="password-span"><i class="fa-solid fa-lock"></i></span>
+                    <input id="password" name="password" type="password" class="form-control" placeholder="Username"
+                           aria-label="Username"
+                           aria-describedby="password-span">
+                </div>
+            </div>
+            <a href="#" id="forgot-password">Forgot password?</a>
+        </form>
+        <a href="#">
+            <button id="login-btn">LogIn</button>
+        </a>
+        <div id="line" class="flex">
+            <div></div>
+            <h5>Or</h5>
+            <div></div>
+        </div>
+        <a href="createAccount.html">
+            <button id="create-btn">Create Account</button>
+        </a>
+    </section><!--login section-->
+    <section id="find-account-section" class="flex f-col">
+        <div class="flex f-col">
+            <h1>Find Account</h1>
+            <p>Please enter your username to find your account</p>
+        </div>
+        <form>
+            <div class="flex f-col">
+                <label>User Name</label>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="find-user-name-span">@</span>
+                    <input id="find-user-name" name="userName" type="text" class="form-control" placeholder="Username"
+                           aria-label="Username"
+                           aria-describedby="find-user-name-span">
+                </div>
+            </div>
+        </form>
+        <div class="flex f-row">
+            <a href="#" class="flex">
+                <button id="go-back-btn">Go Back</button>
+            </a>
+            <a href="#" class="flex">
+                <button id="next-btn">Next</button>
+            </a>
+        </div>
+    </section><!--find account section-->
+    <section id="verification-section" class="flex f-col">
+        <div class="flex f-col">
+            <i class="fa-solid fa-shield"></i>
+            <h1>Email verification</h1>
+            <p>We sent a verification code to your email.
+                Please enter the code in the field below.</p>
+        </div>
+        <div class="flex">
+            <form class="flex f-row">
+                <div>
+                    <input type="text" class="form-control form-control-lg text-center py-4" maxlength="1" autofocus="">
+                </div>
+                <div>
+                    <input type="text" class="form-control form-control-lg text-center py-4" maxlength="1" autofocus="">
+                </div>
+                <div>
+                    <input type="text" class="form-control form-control-lg text-center py-4" maxlength="1" autofocus="">
+                </div>
+                <div>
+                    <input type="text" class="form-control form-control-lg text-center py-4" maxlength="1" autofocus="">
+                </div>
+            </form>
+        </div>
+        <div><p>Didn't receive it? <a href="#">Resend code</a></p></div>
+        <div class="flex f-row">
+            <a href="changePassword.html" class="flex">
+                <button id="continue-btn">Continue</button>
+            </a>
+        </div>
+    </section>
+</main>
 <main id="home-main">
     <section id="home-section">
         <div id="carouselExampleFade" class="carousel slide carousel-fade">
@@ -182,7 +275,6 @@
         <a href="pages/rentals.html"><button id="see-all-btn">See All</button></a>
     </section><!--rental section-->
 </main>
-
 <main id="item-main" class="flex f-col">
     <section id="item-details-section" class="flex f-row f-wrap"></section><!--details section-->
     <section id="form-section" class="flex">
@@ -190,42 +282,42 @@
             <div class="flex f-row f-wrap">
                 <div class="flex f-col">
                     <label>Pick Up Date :</label>
-                    <input type="date">
+                    <input id="pic-up-date" type="date">
                 </div>
                 <div class="flex f-col">
                     <label>Pick Up Time :</label>
-                    <input type="time">
+                    <input id="pick-up-time" type="time">
                 </div>
                 <div class="flex f-col">
                     <label>Return Date :</label>
-                    <input type="date">
+                    <input id="return-date" type="date">
                 </div>
                 <div class="flex f-col">
                     <label>Return Time :</label>
-                    <input type="time">
+                    <input id="return-time" type="time">
                 </div>
                 <div class="flex f-col">
                     <label>Drivers or Not :</label>
-                    <select class="form-select" aria-label="Default select example">
+                    <select id="driver-or-not" class="form-select" aria-label="Default select example">
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
                     </select>
                 </div>
                 <div class="flex f-col">
                     <label>Location :</label>
-                    <input type="text" placeholder="Ex- Galle">
+                    <input id="location" type="text" placeholder="Ex- Galle">
                 </div>
             </div>
             <div class="flex f-col">
                 <div class="flex f-col">
                     <label>Bank Slip :</label>
-                    <input type="file">
+                    <input id="bank-slip" type="file">
                 </div>
                 <div id="slip"></div>
             </div>
             <div class="flex f-row f-wrap">
-                <button id="add-to-cart">Add To Cart</button>
-                <button id="request-to-rental">Request To Rent</button>
+                <button id="add-to-cart-btn">Add To Cart</button>
+                <button id="reservation-btn">Reservation</button>
             </div>
 
         </form>

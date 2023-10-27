@@ -185,3 +185,4 @@ function setItem(registration_number) {
     $("#item-main").css("display", "flex");
     return item;
 }
+

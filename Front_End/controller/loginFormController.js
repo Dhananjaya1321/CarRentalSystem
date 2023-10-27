@@ -1,3 +1,5 @@
+let usernameForContinue;
+let passwordForContinue;
 /*login account*/
 $("#login-btn").click(function () {
     let username = $("#user-name").val();
@@ -10,10 +12,16 @@ $("#login-btn").click(function () {
                 let user = rep.data;
                 if (user.password===password){
                     if (user.role==="admin"){
+                        usernameForContinue=username;
+                        passwordForContinue=password;
                         window.location.href="../pages/admin.html";
                     }else if (user.role==="driver"){
+                        usernameForContinue=username;
+                        passwordForContinue=password;
                         window.location.href="../pages/driver.html";
                     }else {
+                        usernameForContinue=username;
+                        passwordForContinue=password;
                         window.location.href="../index.html";
                     }
                 }else {
@@ -49,3 +57,17 @@ $("#next-btn").click(function () {
         /*username is not available*/
     }
 })
+
+$("#find-account-section").css("display", "none");
+$("#verification-section").css("display", "none");
+
+$("#forgot-password").click(function () {
+    $("#login-section").css("display", "none");
+    $("#find-account-section").css("display", "flex");
+    $("#verification-section").css("display", "none");
+});
+$("#go-back-btn").click(function () {
+    $("#login-section").css("display", "flex");
+    $("#find-account-section").css("display", "none");
+    $("#verification-section").css("display", "none");
+});
