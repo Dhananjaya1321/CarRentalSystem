@@ -90,6 +90,11 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public List<String> getCarBrands() {
+        return carRepo.searchCarBrands();
+    }
+
+    @Override
     public List<CarDTO> searchCarByRegistrationNumber(String registration_number) {
         Car car = carRepo.findById(registration_number).get();
         ArrayList<Car> cars = new ArrayList<>();

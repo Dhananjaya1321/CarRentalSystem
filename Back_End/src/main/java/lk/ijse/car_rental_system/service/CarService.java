@@ -14,5 +14,7 @@ public interface CarService{
 
     void deleteCar(String registration_number);
 
+    List<String> getCarBrands();
+
     List<CarDTO> searchCarByRegistrationNumber(String registration_number);
 }

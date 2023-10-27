@@ -1,6 +1,7 @@
 let cars = [];
 $(document).ready(function () {
     getCarDetails();
+    loadCarBrands();
 });
 
 /*get all cars*/
@@ -404,3 +405,20 @@ function searchCars() {
 $("#search-btn").click(function () {
     searchCars();
 })
+
+function loadCarBrands() {
+    let brands = [];
+    $.ajax({
+        url: base_url + "car/brands",
+        method: "get",
+        async: false,
+        success: function (rep) {
+            brands = rep.data;
+            for (let i in brands) {
+                let brand = brands[i];
+                let option = ` <option value="${brand}">${brand}</option>`
+                $("#search-brand").append(option);
+            }
+        },
+    })
+}

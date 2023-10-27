@@ -42,6 +42,11 @@ public class CarController {
         return new ResponseUtil("Ok", "Successfully loaded...!", carService.getAllCars());
     }
 
+    @GetMapping(path = "/brands")
+    public ResponseUtil getCarBrands() {
+        return new ResponseUtil("Ok", "Successfully loaded...!", carService.getCarBrands());
+    }
+
     @GetMapping(params = {"registration_number"})
     public ResponseUtil searchCarByRegistrationNumber(String registration_number){
         List<CarDTO> carDTOS = carService.searchCarByRegistrationNumber(registration_number);
