@@ -12,20 +12,23 @@ $("#login-btn").click(function () {
                     if (user.role === "admin") {
                         usernameForContinue = username;
                         passwordForContinue = password;
+                        manageSingInAndSignUpButton();
                         window.location.href = "../pages/admin.html";
                     } else if (user.role === "driver") {
                         usernameForContinue = username;
                         passwordForContinue = password;
+                        manageSingInAndSignUpButton();
                         window.location.href = "../pages/driver.html";
                     } else {
                         usernameForContinue = username;
                         passwordForContinue = password;
+                        manageSingInAndSignUpButton();
                         $("#header").css("display","flex");
                         $("#footer").css("display","flex");
                         $("#login-main").css("display","none");
                         $("#create-account-main").css("display","none");
                         $("#item-main").css("display","none");
-                        $("#home-main").css("display","flex");
+                        $("#home-main").css("display","block");
                     }
                 } else {
                     /*incorrect password*/
@@ -80,5 +83,5 @@ $("#create-btn").click(function () {
     $("#create-account-main").css("display", "flex");
     $("#login-main").css("display", "none");
     $("#item-main").css("display", "none");
-    $("#home-main").css("display", "none");
+    $("#home-main").css("display","none");
 });

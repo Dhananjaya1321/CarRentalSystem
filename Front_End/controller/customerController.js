@@ -1,7 +1,7 @@
 /*customer registration*/
-$("#create-btn").click(function (e) {
-    let username = $("#user-name").val();
-    let password = $("#password").val();
+$("#create-account-create-btn").click(function (e) {
+    let username = $("#create-account-user-name").val();
+    let password = $("#create-account-password").val();
     let conform_password = $("#conform-password").val();
 
     if (!searchUsername(username)){
@@ -14,6 +14,7 @@ $("#create-btn").click(function (e) {
                 contentType: false,
                 processData: false,
                 success: function () {
+                    manageSingInAndSignUpButton();
                     window.location.href='../index.html'
                 },
                 error: function () {

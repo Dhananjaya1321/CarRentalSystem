@@ -489,6 +489,7 @@
 <script src="controller/util.js"></script>
 <script src="controller/carController.js"></script>
 <script src="controller/loginFormController.js"></script>
+<script src="controller/customerController.js"></script>
 
 <script>
     getAllCars();
@@ -500,7 +501,7 @@
         $("#create-account-main").css("display", "none");
         $("#login-main").css("display", "flex");
         $("#item-main").css("display", "none");
-        $("#home-main").css("display", "none");
+        $("#home-main").css("display","none");
     });
     $("#create-account-login-btn").click(function () {
         $("#header").css("display", "none");
@@ -508,7 +509,7 @@
         $("#create-account-main").css("display", "none");
         $("#login-main").css("display", "flex");
         $("#item-main").css("display", "none");
-        $("#home-main").css("display", "none");
+        $("#home-main").css("display","none");
     });
 
     $("#navbar-sign-up").click(function () {
@@ -517,7 +518,7 @@
         $("#create-account-main").css("display", "flex");
         $("#login-main").css("display", "none");
         $("#item-main").css("display", "none");
-        $("#home-main").css("display", "none");
+        $("#home-main").css("display","none");
     });
 
 </script>

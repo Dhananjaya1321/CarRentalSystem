@@ -4,7 +4,23 @@ $(document).ready(function () {
     loadCarBrands();
     loadCarDailyRates();
     loadCarMonthlyRates();
+
+    console.log(usernameForContinue,passwordForContinue)
+    manageSingInAndSignUpButton();
 });
+
+function manageSingInAndSignUpButton() {
+    if (usernameForContinue==="logout" || passwordForContinue==="logout"){
+        $("#navbar-sign-up").css("display","block");
+        $("#navbar-sign-in").css("display","block");
+        $("#profile-btn").css("display","none");
+    }else {
+        $("#navbar-sign-up").css("display","none");
+        $("#navbar-sign-in").css("display","none");
+        $("#profile-btn").css("display","flex");
+
+    }
+}
 
 /*get all cars*/
 function getAllCars() {
