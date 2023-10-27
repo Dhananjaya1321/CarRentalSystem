@@ -38,11 +38,18 @@
         #cars-section,
         #drivers-section,
         #cars-rental-request,
+        #payment-section,
         #cars-under-maintenance,
         #need-to-maintain-cars {
             display: none;
         }
 
+
+        #payment-section{
+            width: 750px;
+            position: relative;
+            top: 50px;
+        }
 
     </style>
 </head>
@@ -493,6 +500,38 @@
             </div>
         </div><!--modal-->
     </section><!--rental request-->
+    <section id="payment-section" class="flex f-col">
+        <h4>Pending Payments</h4>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Request ID</th>
+                <th scope="col">NIC</th>
+                <th scope="col">Name</th>
+                <th scope="col">Registration number</th>
+                <th scope="col">Pick up date</th>
+                <th scope="col">Return up date</th>
+                <th scope="col">Options</th>
+            </tr>
+            </thead>
+            <tbody id="payment-table-body">
+            <tr>
+                <td>1111</td>
+                <td>1111111111</td>
+                <td>1111111111</td>
+                <td>1111111111</td>
+                <td>2023/12/12</td>
+                <td>2023/12/13</td>
+                <td>
+                    <button type="button" class="btn btn-danger border-0" style="background-color: #0090ff;"
+                            data-bs-toggle="modal"
+                            data-bs-target="#request-details">
+                        <i class="fa-solid fa-eye"></i></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section><!--payment section-->
 </main>
 
 <script src="../assets/js/jquery-3.7.0.min.js"></script>
@@ -515,11 +554,15 @@
         $("#cars-section").css("display", "none");
         $("#drivers-section").css("display", "none");
         $("#cars-rental-request").css("display", "none");
+        $("#payment-section").css("display", "none");
+
 
         $("#dashboard-btn").css("backgroundColor", "#b3bdff");
         $("#manage-cars-btn").css("backgroundColor", "white");
         $("#manage-drivers-btn").css("backgroundColor", "white");
         $("#rental-request-btn").css("backgroundColor", "white");
+        $("#payments-btn").css("backgroundColor", "white");
+
     });
     $("#manage-cars-btn").click(function () {
         getAllCars();
@@ -529,22 +572,30 @@
         $("#cars-section").css("display", "flex");
         $("#drivers-section").css("display", "none");
         $("#cars-rental-request").css("display", "none");
+        $("#payment-section").css("display", "none");
+
 
         $("#dashboard-btn").css("backgroundColor", "white");
         $("#manage-cars-btn").css("backgroundColor", "#b3bdff");
         $("#manage-drivers-btn").css("backgroundColor", "white");
         $("#rental-request-btn").css("backgroundColor", "white");
+        $("#payments-btn").css("backgroundColor", "white");
+
     });
     $("#manage-drivers-btn").click(function () {
         $("#dashboard").css("display", "none");
         $("#cars-section").css("display", "none");
         $("#drivers-section").css("display", "flex");
         $("#cars-rental-request").css("display", "none");
+        $("#payment-section").css("display", "none");
+
 
         $("#dashboard-btn").css("backgroundColor", "white");
         $("#manage-cars-btn").css("backgroundColor", "white");
         $("#manage-drivers-btn").css("backgroundColor", "#b3bdff");
         $("#rental-request-btn").css("backgroundColor", "white");
+        $("#payments-btn").css("backgroundColor", "white");
+
 
         getAllDrivers();
     });
@@ -553,11 +604,27 @@
         $("#cars-section").css("display", "none");
         $("#drivers-section").css("display", "none");
         $("#cars-rental-request").css("display", "flex");
+        $("#payment-section").css("display", "none");
 
         $("#dashboard-btn").css("backgroundColor", "white");
         $("#manage-cars-btn").css("backgroundColor", "white");
         $("#manage-drivers-btn").css("backgroundColor", "white");
         $("#rental-request-btn").css("backgroundColor", "#b3bdff");
+        $("#payments-btn").css("backgroundColor", "white");
+
+    });
+    $("#payments-btn").click(function () {
+        $("#dashboard").css("display", "none");
+        $("#cars-section").css("display", "none");
+        $("#drivers-section").css("display", "none");
+        $("#cars-rental-request").css("display", "none");
+        $("#payment-section").css("display", "flex");
+
+        $("#dashboard-btn").css("backgroundColor", "white");
+        $("#manage-cars-btn").css("backgroundColor", "white");
+        $("#manage-drivers-btn").css("backgroundColor", "white");
+        $("#rental-request-btn").css("backgroundColor", "white");
+        $("#payments-btn").css("backgroundColor", "#b3bdff");
     });
 
     $("#cars-section>form").css("display", "none");
