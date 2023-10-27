@@ -16,5 +16,7 @@ public interface CarService{
 
     List<String> getCarBrands();
 
+    List<Double> getCarDailyRates();
+
     List<CarDTO> searchCarByRegistrationNumber(String registration_number);
 }

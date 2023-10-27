@@ -2,6 +2,7 @@ let cars = [];
 $(document).ready(function () {
     getCarDetails();
     loadCarBrands();
+    loadCarDailyRates();
 });
 
 /*get all cars*/
@@ -418,6 +419,22 @@ function loadCarBrands() {
                 let brand = brands[i];
                 let option = ` <option value="${brand}">${brand}</option>`
                 $("#search-brand").append(option);
+            }
+        },
+    })
+}
+function loadCarDailyRates() {
+    let prices = [];
+    $.ajax({
+        url: base_url + "car/daily/prices",
+        method: "get",
+        async: false,
+        success: function (rep) {
+            prices = rep.data;
+            for (let i in prices) {
+                let price = prices[i];
+                let option = `<option value="${price}">${price}</option>`
+                $("#search-daily-price").append(option);
             }
         },
     })

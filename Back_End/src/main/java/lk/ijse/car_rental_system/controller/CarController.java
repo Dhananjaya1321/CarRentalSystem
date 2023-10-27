@@ -46,11 +46,13 @@ public class CarController {
     public ResponseUtil getCarBrands() {
         return new ResponseUtil("Ok", "Successfully loaded...!", carService.getCarBrands());
     }
+ @GetMapping(path = "/daily/prices")
+    public ResponseUtil getCarDailyRates() {
+        return new ResponseUtil("Ok", "Successfully loaded...!", carService.getCarDailyRates());
+    }
 
     @GetMapping(params = {"registration_number"})
     public ResponseUtil searchCarByRegistrationNumber(String registration_number){
-        List<CarDTO> carDTOS = carService.searchCarByRegistrationNumber(registration_number);
-        System.out.println(carDTOS.toString());
-        return new ResponseUtil("Ok","",carDTOS);
+        return new ResponseUtil("Ok","",carService.searchCarByRegistrationNumber(registration_number));
     }
 }

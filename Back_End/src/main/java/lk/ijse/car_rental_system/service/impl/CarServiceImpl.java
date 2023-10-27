@@ -95,6 +95,11 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public List<Double> getCarDailyRates() {
+        return carRepo.searchCarDailyRates();
+    }
+
+    @Override
     public List<CarDTO> searchCarByRegistrationNumber(String registration_number) {
         Car car = carRepo.findById(registration_number).get();
         ArrayList<Car> cars = new ArrayList<>();

@@ -14,4 +14,7 @@ public interface CarRepo extends JpaRepository<Car, String> {
 
     @Query(value = "SELECT DISTINCT brand FROM car", nativeQuery = true)
     List<String> searchCarBrands();
+
+    @Query(value = "SELECT DISTINCT price_for_day FROM car", nativeQuery = true)
+    List<Double> searchCarDailyRates();
 }
