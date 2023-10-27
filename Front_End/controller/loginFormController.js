@@ -23,12 +23,12 @@ $("#login-btn").click(function () {
                         usernameForContinue = username;
                         passwordForContinue = password;
                         manageSingInAndSignUpButton();
-                        $("#header").css("display","flex");
-                        $("#footer").css("display","flex");
-                        $("#login-main").css("display","none");
-                        $("#create-account-main").css("display","none");
-                        $("#item-main").css("display","none");
-                        $("#home-main").css("display","block");
+                        $("#header").css("display", "flex");
+                        $("#footer").css("display", "flex");
+                        $("#login-main").css("display", "none");
+                        $("#create-account-main").css("display", "none");
+                        $("#item-main").css("display", "none");
+                        $("#home-main").css("display", "block");
                     }
                 } else {
                     /*incorrect password*/
@@ -64,6 +64,25 @@ $("#next-btn").click(function () {
     }
 })
 
+
+function findUser(username) {
+    let user;
+    $.ajax({
+        url: base_url + "user?username=" + username,
+        method: "get",
+        async:false,
+        success: function (rep) {
+            if (rep.data.username===usernameForContinue && rep.data.password===passwordForContinue){
+                user=true;
+            }else {
+                user=false;
+            }
+        },
+    })
+    return user;
+}
+
+
 $("#find-account-section").css("display", "none");
 $("#verification-section").css("display", "none");
 
@@ -83,5 +102,5 @@ $("#create-btn").click(function () {
     $("#create-account-main").css("display", "flex");
     $("#login-main").css("display", "none");
     $("#item-main").css("display", "none");
-    $("#home-main").css("display","none");
+    $("#home-main").css("display", "none");
 });

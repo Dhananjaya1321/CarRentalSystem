@@ -27,20 +27,5 @@ public class UserController {
         return new ResponseUtil("Ok", "Successfully loaded...!", user.getAllUsers());
     }
 
-   /* @PostMapping("/upload")
-    public ResponseUtil uploadFile(@RequestParam("file") MultipartFile file) {
-        if (file.isEmpty()) {
-            return new ResponseUtil("", "", "");
-        }
 
-        String uploadDir = "C:\\Users\\ACER\\Documents\\WorkZone\\CarRentalSystem\\Back_End\\src\\main\\resources\\files\\" + "upload-dir";
-        try {
-            String fileName = file.getOriginalFilename();
-            String filePath = new File(uploadDir, fileName).getAbsolutePath();
-            file.transferTo(new File(filePath));
-            return new ResponseUtil("", "", "");
-        } catch (IOException e) {
-            return new ResponseUtil("", "", "");
-        }
-    }*/
 }

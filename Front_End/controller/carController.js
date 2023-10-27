@@ -4,8 +4,6 @@ $(document).ready(function () {
     loadCarBrands();
     loadCarDailyRates();
     loadCarMonthlyRates();
-
-    console.log(usernameForContinue,passwordForContinue)
     manageSingInAndSignUpButton();
 });
 
