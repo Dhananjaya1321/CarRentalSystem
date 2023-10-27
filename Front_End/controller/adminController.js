@@ -27,7 +27,7 @@ function loadCarsForTable() {
     for (let i in cars) {
         let car = cars[i];
         if (car.status === "available") {
-            if ((car.mileage_after_maintenance - car.mileage_before_maintenance) >= 5000) {
+            if (car.mileage_after_maintenance >= 5000) {
                 $("#need-to-maintain-cars").css("display", "flex");
                 let row = `<tr>
                             <td>${car.registration_number}</td>

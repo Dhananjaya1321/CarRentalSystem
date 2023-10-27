@@ -135,7 +135,7 @@ function setItem(registration_number) {
                         </button>
                     </div>
                 </div><!--image slider-->
-              <div id="details" class="flex f-col">
+                <div id="details" class="flex f-col">
                     <div><h1 id="car-name">${car.brand}</h1></div><!--car name (brand)-->
                     <div id="rate" class="flex f-row">
                         <div id="daily-rate" class="flex f-col">
@@ -168,7 +168,7 @@ function setItem(registration_number) {
                         </div>
                     </div><!--other details-->
                     <p>This car is a <span id="car-type-loss-damage">${car.type}</span>car and before you can rent it first you need
-                        to make a damage waiver payment of Rs. <span id="loss-damage">${car.loss}</span> to our bank account details
+                        to make a damage waiver payment of Rs. <span id="loss-damage">${car.loss_damage_waiver}</span> to our bank account details
                         and upload the bank slip or bank confirmation in the reserved field in the rental view.
                         <br><br>
                         After you return the car, a brief inspection will be carried out on the car and if the car is

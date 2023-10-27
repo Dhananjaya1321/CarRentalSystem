@@ -20,8 +20,8 @@ public class CarDTO {
     private MultipartFile front_image;
     private String fuel_type;
     private MultipartFile interior_image;
+    private double loss_damage_waiver;
     private int mileage_after_maintenance;
-    private int mileage_before_maintenance;
     private int number_of_passengers;
     private double price_for_day;
     private double price_for_extra_km;
