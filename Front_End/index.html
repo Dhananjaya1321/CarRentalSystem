@@ -28,7 +28,7 @@
 
 </head>
 <body>
-<header class="flex header-area overlay">
+<header id="header" class="flex header-area overlay">
     <nav class="navbar navbar-expand-md navbar-dark">
         <div class="container">
             <a href="#" class="navbar-brand">Easy Rental Car</a>
@@ -324,7 +324,7 @@
     </section><!--form section-->
 </main>
 
-<footer>
+<footer id="footer">
     <section id="contact-section" class="flex f-col">
         <div></div>
         <div id="map">
@@ -347,11 +347,23 @@
 <script src="assets/js/rentals.js"></script>
 <script src="controller/util.js"></script>
 <script src="controller/carController.js"></script>
-<script src="../controller/loginFormController.js"></script>
+<script src="controller/loginFormController.js"></script>
 
 <script>
     getAllCars();
     loadCarsForHomePage();
+
+    $("#navbar-sign-in").click(function () {
+        $("#header").css("display","none");
+        $("#footer").css("display","none");
+        $("#login-main").css("display","flex");
+        $("#item-main").css("display","none");
+        $("#home-main").css("display","none");
+    });
+ $("#navbar-sign-up").click(function () {
+        window.location.href="pages/createAccount.html"
+    });
+
 </script>
 
 </body>

@@ -4,35 +4,39 @@ let passwordForContinue;
 $("#login-btn").click(function () {
     let username = $("#user-name").val();
     let password = $("#password").val();
-    if (searchUsername(username)){
+    if (searchUsername(username)) {
         $.ajax({
-            url:base_url+"user?username="+username,
-            method:"get",
-            success:function (rep) {
+            url: base_url + "user?username=" + username,
+            method: "get",
+            success: function (rep) {
                 let user = rep.data;
-                if (user.password===password){
-                    if (user.role==="admin"){
-                        usernameForContinue=username;
-                        passwordForContinue=password;
-                        window.location.href="../pages/admin.html";
-                    }else if (user.role==="driver"){
-                        usernameForContinue=username;
-                        passwordForContinue=password;
-                        window.location.href="../pages/driver.html";
-                    }else {
-                        usernameForContinue=username;
-                        passwordForContinue=password;
-                        window.location.href="../index.html";
+                if (user.password === password) {
+                    if (user.role === "admin") {
+                        usernameForContinue = username;
+                        passwordForContinue = password;
+                        window.location.href = "../pages/admin.html";
+                    } else if (user.role === "driver") {
+                        usernameForContinue = username;
+                        passwordForContinue = password;
+                        window.location.href = "../pages/driver.html";
+                    } else {
+                        usernameForContinue = username;
+                        passwordForContinue = password;
+                        $("#header").css("display","flex")
+                        $("#footer").css("display","flex")
+                        $("#login-main").css("display","none")
+                        $("#item-main").css("display","none")
+                        $("#home-main").css("display","flex")
                     }
-                }else {
+                } else {
                     /*incorrect password*/
                 }
             },
-            error:function (rep) {
+            error: function (rep) {
 
             }
         })
-    }else {
+    } else {
         /*incorrect username*/
     }
 })
@@ -46,14 +50,14 @@ $("#next-btn").click(function () {
             method: "get",
             success: function (rep) {
                 let user = rep.data;
-                $("#find-account-section").css("display","none");
-                $("#verification-section").css("display","flex");
+                $("#find-account-section").css("display", "none");
+                $("#verification-section").css("display", "flex");
             },
             error: function (rep) {
 
             }
         })
-    }else {
+    } else {
         /*username is not available*/
     }
 })
