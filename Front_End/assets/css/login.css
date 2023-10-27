@@ -26,7 +26,9 @@ main {
 #login-section > form  {
     width: 245px;
     margin: 0;
-}#login-section > form  >div{
+}
+#login-section > form  >div,
+#find-account-section > form  >div{
      gap:0;
 }
 #login-section > form >div>div {
@@ -86,7 +88,7 @@ span {
 
 /*================================================ find account section ==============================================*/
 #find-account-section {
-    height: 360px;
+    height: 375px;
 }
 
 a {
@@ -100,6 +102,10 @@ a {
 
 #find-account-section > form > div > label {
     align-self: flex-start;
+}
+
+#find-account-section > form > div > div>input {
+    height: 40px;
 }
 
 
@@ -134,6 +140,9 @@ a {
 #verification-section > div:first-child {
     width: 100%;
     margin: 20px 0;
+}
+#verification-section > div >svg{
+    font-size: 40px;
 }
 
 #verification-section > div:first-child > i {
