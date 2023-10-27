@@ -18,5 +18,7 @@ public interface CarService{
 
     List<Double> getCarDailyRates();
 
+    List<Double> getCarMonthlyRates();
+
     List<CarDTO> searchCarByRegistrationNumber(String registration_number);
 }

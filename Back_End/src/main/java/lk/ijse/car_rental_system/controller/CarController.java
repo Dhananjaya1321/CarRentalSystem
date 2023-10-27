@@ -32,11 +32,12 @@ public class CarController {
         return new ResponseUtil("Ok", "Successfully deleted...!", registration_number);
     }
 
-    @PutMapping(params = {"registration_number","status"})
-    public ResponseUtil updateCarStatus(String registration_number, String status){
-        carService.updateCarStatus(registration_number,status);
-        return new ResponseUtil("Ok","Successfully updated...!",registration_number);
+    @PutMapping(params = {"registration_number", "status"})
+    public ResponseUtil updateCarStatus(String registration_number, String status) {
+        carService.updateCarStatus(registration_number, status);
+        return new ResponseUtil("Ok", "Successfully updated...!", registration_number);
     }
+
     @GetMapping
     public ResponseUtil getAllCars() {
         return new ResponseUtil("Ok", "Successfully loaded...!", carService.getAllCars());
@@ -46,13 +47,19 @@ public class CarController {
     public ResponseUtil getCarBrands() {
         return new ResponseUtil("Ok", "Successfully loaded...!", carService.getCarBrands());
     }
- @GetMapping(path = "/daily/prices")
+
+    @GetMapping(path = "/daily/rates")
     public ResponseUtil getCarDailyRates() {
         return new ResponseUtil("Ok", "Successfully loaded...!", carService.getCarDailyRates());
     }
 
+    @GetMapping(path = "/monthly/rates")
+    public ResponseUtil getCarMonthlyRates() {
+        return new ResponseUtil("Ok", "Successfully loaded...!", carService.getCarMonthlyRates());
+    }
+
     @GetMapping(params = {"registration_number"})
-    public ResponseUtil searchCarByRegistrationNumber(String registration_number){
-        return new ResponseUtil("Ok","",carService.searchCarByRegistrationNumber(registration_number));
+    public ResponseUtil searchCarByRegistrationNumber(String registration_number) {
+        return new ResponseUtil("Ok", "", carService.searchCarByRegistrationNumber(registration_number));
     }
 }
