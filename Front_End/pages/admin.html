@@ -45,7 +45,7 @@
         }
 
 
-        #payment-section{
+        #payment-section {
             width: 750px;
             position: relative;
             top: 50px;
@@ -77,7 +77,7 @@
         <a class="flex" href="#">
             <button id="income-btn">Income</button>
         </a>
-        <a class="flex" href="login.html">
+        <a class="flex" href="#">
             <button id="logout-btn">LogOut</button>
         </a>
     </div>
@@ -544,7 +544,8 @@
                         <form id="cars-rental-payment-form" class="row g-3 text-start">
                             <div class="col-4">
                                 <label for="payment-request-id" class="form-label">Request ID</label>
-                                <input type="text" name="request_id" class="form-control" id="payment-request-id" readonly>
+                                <input type="text" name="request_id" class="form-control" id="payment-request-id"
+                                       readonly>
                             </div>
                             <div class="col-4">
                                 <label for="payment-nic" class="form-label">NIC</label>
@@ -576,7 +577,8 @@
                             </div>
                             <div class="col-4">
                                 <label for="fee-for-extra-mileage" class="form-label">Fee for extra mileage</label>
-                                <input type="text" name="fee-for-extra-mileage" class="form-control" id="fee-for-extra-mileage" readonly>
+                                <input type="text" name="fee-for-extra-mileage" class="form-control"
+                                       id="fee-for-extra-mileage" readonly>
                             </div>
 
                             <div class="col-4">
@@ -713,6 +715,12 @@
         $("#manage-drivers-btn").css("backgroundColor", "white");
         $("#rental-request-btn").css("backgroundColor", "white");
         $("#payments-btn").css("backgroundColor", "#b3bdff");
+    });
+
+    $("#logout-btn").click(function () {
+        usernameForContinue="logout";
+        passwordForContinue="logout";
+        window.location.href = "../index.html";
     });
 
     $("#cars-section>form").css("display", "none");

@@ -1,4 +1,6 @@
 let base_url = "http://localhost:8080/Back_End_war/";
+let usernameForContinue="logout";
+let passwordForContinue="logout";
 
 function searchUsername(username) {
     let resp = false;

@@ -1,5 +1,3 @@
-let usernameForContinue;
-let passwordForContinue;
 /*login account*/
 $("#login-btn").click(function () {
     let username = $("#user-name").val();
@@ -22,11 +20,12 @@ $("#login-btn").click(function () {
                     } else {
                         usernameForContinue = username;
                         passwordForContinue = password;
-                        $("#header").css("display","flex")
-                        $("#footer").css("display","flex")
-                        $("#login-main").css("display","none")
-                        $("#item-main").css("display","none")
-                        $("#home-main").css("display","flex")
+                        $("#header").css("display","flex");
+                        $("#footer").css("display","flex");
+                        $("#login-main").css("display","none");
+                        $("#create-account-main").css("display","none");
+                        $("#item-main").css("display","none");
+                        $("#home-main").css("display","flex");
                     }
                 } else {
                     /*incorrect password*/
@@ -74,4 +73,12 @@ $("#go-back-btn").click(function () {
     $("#login-section").css("display", "flex");
     $("#find-account-section").css("display", "none");
     $("#verification-section").css("display", "none");
+});
+$("#create-btn").click(function () {
+    $("#header").css("display", "none");
+    $("#footer").css("display", "none");
+    $("#create-account-main").css("display", "flex");
+    $("#login-main").css("display", "none");
+    $("#item-main").css("display", "none");
+    $("#home-main").css("display", "none");
 });

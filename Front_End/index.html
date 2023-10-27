@@ -22,6 +22,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/contact.css">
     <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/createAccount.css">
+
     <style>
 
     </style>
@@ -80,12 +82,12 @@
         <a href="#">
             <button id="login-btn">LogIn</button>
         </a>
-        <div id="line" class="flex">
+        <div id="login-line" class="line flex">
             <div></div>
             <h5>Or</h5>
             <div></div>
         </div>
-        <a href="createAccount.html">
+        <a href="#">
             <button id="create-btn">Create Account</button>
         </a>
     </section><!--login section-->
@@ -139,11 +141,148 @@
         </div>
         <div><p>Didn't receive it? <a href="#">Resend code</a></p></div>
         <div class="flex f-row">
-            <a href="changePassword.html" class="flex">
+            <a href="pages/changePassword.html" class="flex">
                 <button id="continue-btn">Continue</button>
             </a>
         </div>
     </section>
+</main>
+<main id="create-account-main" class="flex f-col">
+    <section id="create-account-section" class="flex f-col">
+        <form id="create-account-form" class="flex f-col f-wrap">
+            <div class="flex f-row f-wrap">
+                <div class="flex f-col">
+                    <label>Email</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="email-span"><i class="fa-solid fa-envelope"></i></span>
+                        <input name="email" id="email" type="text" class="form-control"
+                               placeholder="ex- example@gmail.com"
+                               aria-label="email"
+                               aria-describedby="email-span">
+                    </div>
+                </div><!--email-->
+                <div class="flex f-col">
+                    <label>Contact</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="contact-span"><i class="fa-solid fa-phone"></i></span>
+                        <input id="contact" name="contact" type="text" class="form-control"
+                               placeholder="ex- 076 000 0000"
+                               aria-label="contact"
+                               aria-describedby="contact-span">
+                    </div>
+                </div><!--contact-->
+                <div class="flex f-col">
+                    <label>User Name</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="create-account-user-name-span">@</span>
+                        <input id="create-account-user-name" name="username" type="text" class="form-control"
+                               placeholder="ex- user"
+                               aria-label="Username"
+                               aria-describedby="user-name-span">
+                    </div>
+                </div><!--user name-->
+                <div class="flex f-col">
+                    <label>Password</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="create-account-password-span"><i
+                                class="fa-solid fa-lock"></i></span>
+                        <input id="create-account-password" name="password" type="password" class="form-control"
+                               placeholder="password"
+                               aria-label="password"
+                               aria-describedby="password-span">
+                    </div>
+                </div><!--password-->
+                <div class="flex f-col">
+                    <label>Conform password</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="conform-password-span"><i
+                                class="fa-solid fa-lock"></i></span>
+                        <input id="conform-password" name="conform-password" type="password" class="form-control"
+                               placeholder="conform-password" aria-label="conform-password"
+                               aria-describedby="conform-password-span">
+                    </div>
+                </div><!--conform password-->
+                <div class="flex f-col">
+                    <label>Address</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="address-span"><i class="fa-solid fa-location-dot"></i></span>
+                        <textarea id="address" name="address" class="form-control"
+                                  placeholder="ex- Colombo" aria-label="conform-password"
+                                  aria-describedby="address-span"></textarea>
+                    </div>
+                </div><!--address-->
+            </div><!--other details-->
+            <div class="flex f-col">
+                <div class="flex f-col">
+                    <label>NIC (National Identity Card)</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="nic-span"><i class="fa-solid fa-id-card"></i></span>
+                        <input id="nic" name="nic" type="text" class="form-control" placeholder="ex- 0000000000"
+                               aria-label="contact"
+                               aria-describedby="nic-span">
+                    </div>
+                </div><!--nic-->
+                <div class="chooser flex f-row f-wrap">
+                    <div class="flex f-col">
+                        <label>NIC front photo</label>
+                        <div class="input-group mb-3">
+                            <input name="nic_front_photo" type="file" id="nic-front-photo-choose">
+                        </div>
+                        <div id="nic-front-photo"></div>
+                    </div><!--nic front photo-->
+                    <div class="flex f-col">
+                        <label>NIC back photo</label>
+                        <div class="input-group mb-3">
+                            <input name="nic_back_photo" type="file" id="nic-back-photo-choose">
+                        </div>
+                        <div id="nic-back-photo"></div>
+                    </div><!--nic back photo-->
+                </div>
+            </div><!--nic details-->
+            <div class="flex f-col">
+                <div class="flex f-col">
+                    <label>License number</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="license-span"><i class="fa-solid fa-address-card"></i></span>
+                        <input id="license" name="driving_license_number" type="text" class="form-control"
+                               placeholder="ex- 0000000000"
+                               aria-label="contact"
+                               aria-describedby="license-span">
+                    </div>
+                </div><!--license-->
+                <div class="chooser flex f-row f-wrap">
+                    <div class="flex f-col">
+                        <label>License front photo</label>
+                        <div class="input-group mb-3">
+                            <input name="license_front_photo" type="file" id="license-front-photo-choose">
+                        </div>
+                        <div id="license-front-photo"></div>
+                    </div><!--nic front photo-->
+                    <div class="flex f-col">
+                        <label>License back photo</label>
+                        <div class="input-group mb-3">
+                            <input name="license_back_photo" type="file" id="license-back-photo-choose">
+                        </div>
+                        <div id="license-back-photo"></div>
+                    </div><!--nic back photo-->
+                </div>
+            </div><!--license details-->
+            <div class="flex f-col">
+                <a href="#">
+                    <button type="button" id="create-account-create-btn">Create Account</button>
+                </a>
+                <div id="create-account-line" class="line flex">
+                    <div></div>
+                    <h5>Or</h5>
+                    <div></div>
+                </div>
+                <a href="#">
+                    <button id="create-account-login-btn">LogIn</button>
+                </a>
+            </div>
+        </form>
+    </section>
+    <div></div>
 </main>
 <main id="home-main">
     <section id="home-section">
@@ -272,7 +411,9 @@
         <section id="rental-display-section" class="flex f-row f-wrap">
 
         </section><!--rental display section-->
-        <a href="pages/rentals.html"><button id="see-all-btn">See All</button></a>
+        <a href="pages/rentals.html">
+            <button id="see-all-btn">See All</button>
+        </a>
     </section><!--rental section-->
 </main>
 <main id="item-main" class="flex f-col">
@@ -354,14 +495,29 @@
     loadCarsForHomePage();
 
     $("#navbar-sign-in").click(function () {
-        $("#header").css("display","none");
-        $("#footer").css("display","none");
-        $("#login-main").css("display","flex");
-        $("#item-main").css("display","none");
-        $("#home-main").css("display","none");
+        $("#header").css("display", "none");
+        $("#footer").css("display", "none");
+        $("#create-account-main").css("display", "none");
+        $("#login-main").css("display", "flex");
+        $("#item-main").css("display", "none");
+        $("#home-main").css("display", "none");
     });
- $("#navbar-sign-up").click(function () {
-        window.location.href="pages/createAccount.html"
+    $("#create-account-login-btn").click(function () {
+        $("#header").css("display", "none");
+        $("#footer").css("display", "none");
+        $("#create-account-main").css("display", "none");
+        $("#login-main").css("display", "flex");
+        $("#item-main").css("display", "none");
+        $("#home-main").css("display", "none");
+    });
+
+    $("#navbar-sign-up").click(function () {
+        $("#header").css("display", "none");
+        $("#footer").css("display", "none");
+        $("#create-account-main").css("display", "flex");
+        $("#login-main").css("display", "none");
+        $("#item-main").css("display", "none");
+        $("#home-main").css("display", "none");
     });
 
 </script>

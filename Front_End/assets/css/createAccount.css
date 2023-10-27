@@ -1,6 +1,12 @@
-main {
+#create-account-main {
+    display: none;
     position: relative;
     top: 25px;
+}
+
+#create-account-section > form > div:last-child {
+    gap: 0;
+    width: 50%;
 }
 
 #create-account-section {
@@ -10,21 +16,36 @@ main {
     box-shadow: 0 0 14px -3px #00000057;
 }
 
-form {
+#create-account-form {
     margin: 30px;
     gap: 15px;
 }
 
-label {
+#create-account-form > div:nth-child(1) > div>input ,
+#create-account-form > div:nth-child(2) > div:nth-child(1) >div>input{
+    height: 40px;
+}
+#create-account-form > div:nth-child(2){
+    align-items: center;
+}
+#create-account-form > div > div > div > label,
+#create-account-form > div > div > div > span,
+#create-account-form > div > div > div > input,
+#address{
+    font-size: 16px;
+    height: 40px;
+}
+
+#create-account-form label {
     align-self: flex-start;
 }
 
-.chooser, form > div {
-    gap: 15px;
-    width: 100%;
+.chooser{
+    gap: 20px;
+    width: 100%!important;
 }
 
-form > div > div {
+#create-account-form > div > div {
     width: 250px;
 }
 
@@ -42,18 +63,18 @@ textarea {
     border: 1px solid #00000052;
 }
 
-#login-btn {
+#create-account-login-btn {
     background-color: #0027ff;
     margin-top: 0;
     margin-bottom: 25px;
 }
 
-#create-btn {
+#create-account-create-btn {
     background-color: #0acd00;
     margin-top: 30px;
 }
 
-#login-btn, #create-btn {
+#create-account-create-btn, #create-account-login-btn {
     width: 245px;
     height: 40px;
     border-radius: 10px;
@@ -64,21 +85,22 @@ textarea {
     box-shadow: 0 3px 6px -4px black;
 }
 
-#line > div {
+#create-account-line > div {
     height: 1px;
     background-color: black;
     width: 30%;
 }
 
-#line > h5 {
+#create-account-line > h5 {
     margin: 15px;
 }
 
-#line {
+#create-account-line {
     width: 80%;
     height: max-content;
 }
-main>div{
+
+main > div {
     height: 30px;
     width: 100%;
 }
