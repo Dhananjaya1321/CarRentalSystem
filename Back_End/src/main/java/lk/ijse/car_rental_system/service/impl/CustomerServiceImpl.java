@@ -54,4 +54,10 @@ public class CustomerServiceImpl implements CustomerService {
         );
 
     }
+
+    @Override
+    public String getCustomerNIC(String username){
+        return customerRepo.findCustomerNIC(username);
+    }
+
 }

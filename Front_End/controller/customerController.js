@@ -29,3 +29,14 @@ $("#create-account-create-btn").click(function (e) {
     }
 });
 
+function getCustomerNIC() {
+    $.ajax({
+        url: base_url + "customer?username="+usernameForContinue,
+        method: "get",
+        async: false,
+        success: function (rep) {
+            console.log(rep.data)
+        }
+    })
+}
+

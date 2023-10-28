@@ -6,4 +6,6 @@ import java.io.IOException;
 
 public interface CustomerService {
     void saveCustomer(CustomerDTO dto) throws IOException;
+
+    String getCustomerNIC(String username);
 }

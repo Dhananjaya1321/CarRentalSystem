@@ -1,3 +1,6 @@
+
+
+
 function getLastRequestID() {
     $.ajax({
         url: base_url + "request/last_ID",

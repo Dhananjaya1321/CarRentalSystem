@@ -5,10 +5,7 @@ import lk.ijse.car_rental_system.dto.UserDTO;
 import lk.ijse.car_rental_system.service.CustomerService;
 import lk.ijse.car_rental_system.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
@@ -30,5 +27,10 @@ public class CustomerController {
             e.printStackTrace();
         }
         return new ResponseUtil("Ok", "Successfully added...!", user.getUsername());
+    }
+
+    @GetMapping(params = {"username"})
+    public ResponseUtil getCustomerNIC(String username){
+        return new ResponseUtil("Ok","Successfully loaded...!",customerService.getCustomerNIC(username));
     }
 }
