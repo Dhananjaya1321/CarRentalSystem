@@ -148,4 +148,34 @@ function manageCarMaintainStatusRequestHandler(registration_number, status) {
     })
 }
 
+function getAllRequests() {
+    $.ajax({
+        url:base_url+"request/pending",
+        method:"get",
+        success:function (rep) {
+            $("#cars-rental-request-table-body").empty();
+            let requests = rep.data;
+            for (let i in requests) {
+                let request=requests[i]
+                let row=`<tr>
+                            <td>${request.request_id}</td>
+                            <td>${request.nic}</td>
+                            <td>${request.registration_number}</td>
+                            <td>${request.pick_up_date}</td>
+                            <td>${request.pick_up_time}</td>
+                            <td>${request.return_date}</td>
+                            <td>${request.return_time}</td>
+                            <td>
+                                <button type="button" class="btn btn-danger border-0" style="background-color: #0090ff;"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#request-details">
+                                    <i class="fa-solid fa-eye"></i></button>
+                            </td>
+                        </tr>`;
+                $("#cars-rental-request-table-body").append(row);
+            }
+        }
+    })
+}
+
 

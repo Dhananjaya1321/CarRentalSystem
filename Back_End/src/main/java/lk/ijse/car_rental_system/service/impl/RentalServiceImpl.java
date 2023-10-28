@@ -47,43 +47,65 @@ public class RentalServiceImpl implements RentalService {
         }.getType());
 
         if (dto.getDriver_or_not().equals("yes")) {
-            List<Driver> allAvailableDrivers = driverRepo.findAllAvailableDrivers(dto.getPick_up_date(), dto.getReturn_date());
+//            List<Driver> allAvailableDrivers = driverRepo.findAllAvailableDrivers(dto.getPick_up_date(), dto.getReturn_date());
+            List<Driver> allAvailableDrivers = driverRepo.findAll();
             if (allAvailableDrivers.size() >= dto.getSchedule().size()) {
                 Set<Integer> uniqueRandomValues = new HashSet<>();
                 Random random = new Random();
 
-                while (uniqueRandomValues.size() < 8) {
+                while (uniqueRandomValues.size() < dto.getSchedule().size()) {
                     int randomNumber = random.nextInt(allAvailableDrivers.size() + 1);
                     uniqueRandomValues.add(randomNumber);
                 }
                 int count = 0;
                 for (int value : uniqueRandomValues) {
+                    System.out.println(value);
                     dto.getSchedule().get(count).setDriver_id(allAvailableDrivers.get(value).getDriver_id());
                     count++;
                 }
             } else {
                 throw new RuntimeException("We don't have " + dto.getSchedule().size() + " drivers available these days");
             }
-        }
+        }/*drivers assign randomly*/
         List<Schedule> schedule = modelMapper.map(dto.getSchedule(), new TypeToken<ArrayList<Schedule>>() {
         }.getType());
-        rentalRepo.save(
-                new Rental(
-                        dto.getRental_id(),
-                        dto.getDriver_or_not(),
-                        dto.getLocation(),
-                        bank_slip.getOriginalFilename(),
-                        dto.getPick_up_date(),
-                        dto.getPick_up_time(),
-                        dto.getReturn_date(),
-                        dto.getReturn_time(),
-                        customer,
-                        requests,
+
+        if (dto.getDriver_or_not().equals("yes")) {
+            System.out.println("\n\nok");
+            rentalRepo.save(
+                    new Rental(
+                            dto.getRental_id(),
+                            dto.getDriver_or_not(),
+                            dto.getLocation(),
+                            bank_slip.getOriginalFilename(),
+                            dto.getPick_up_date(),
+                            dto.getPick_up_time(),
+                            dto.getReturn_date(),
+                            dto.getReturn_time(),
+                            customer,
+                            requests,
+                            schedule,
+                            rentalCarDetails
+                    )
+            );
+        } else {
+            rentalRepo.save(
+                    new Rental(
+                            dto.getRental_id(),
+                            dto.getDriver_or_not(),
+                            dto.getLocation(),
+                            bank_slip.getOriginalFilename(),
+                            dto.getPick_up_date(),
+                            dto.getPick_up_time(),
+                            dto.getReturn_date(),
+                            dto.getReturn_time(),
+                            customer,
+                            requests,
 //                        schedule,
-                        rentalCarDetails
-                )
-        );
+                            rentalCarDetails
+                    )
+            );
+        }
+
     }
-
-
 }
