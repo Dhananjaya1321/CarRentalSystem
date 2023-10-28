@@ -16,9 +16,7 @@ public class RequestDTO {
     private String message;
     private String status;
 
-    private RentalDTO rental;
+    private String rental_id;
 
-    private UserDTO user;
-
-    private List<PaymentDTO> payments;
+    private PaymentDTO payment;
 }

@@ -20,27 +20,33 @@ function saveRental() {
             "rental_id": rental_id,
             "driver_or_not": driverOrNot,
             "location": location,
-            "loss_damage_back_slip": bankSlip,
             "pick_up_date": pickUpDate,
             "pick_up_time": pickUpTime,
             "return_date": returnDate,
             "return_time": returnTime,
             "customer": {"nic": nic},
             "rentalCarDetails": [{"rental_id": rental_id, "registration_number": registration_number}],
-            "request": [{"request_id": request_id,"message":"pending","status":"pending"}]
+            "request": [{"request_id": request_id,"message":"","status":"pending","rental_id":rental_id}]
 
         }
-        if (driverOrNot === "yes") {
-            // data.schedule=[{"rental_id":rental_id,"driver_id":driver_id}];
-        }
+
+            data.schedule=[{"rental_id":rental_id}];
+
+        let formData = new FormData();
+        formData.append("loss_damage_back_slip", $("#bank-slip")[0].files[0]);
+        formData.append("dto", new Blob([JSON.stringify(data)], { type: "application/json" }));
         console.log(data)
         $.ajax({
             url: base_url + "rental",
             method: "post",
-            contentType: "application/json",
-            data: JSON.stringify(data),
+            data: formData,
+            processData: false,
+            contentType: false,
             success: function (rep) {
-
+                alert(rep.message);
+            },
+            error:function (rep) {
+                console.log(rep.data)
             }
         })
     }

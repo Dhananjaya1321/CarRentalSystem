@@ -18,10 +18,9 @@ public class Request {
     private String request_id;
     private String message;
     private String status;
-    @OneToOne
-    private Rental rental;
     @ManyToOne
-    private User user;
+    private Rental rental;
+
     @OneToMany(mappedBy = "request",cascade = {CascadeType.ALL})
     private List<Payment> payments;
 }
