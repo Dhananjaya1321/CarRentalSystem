@@ -77,6 +77,7 @@ function findUser(username) {
             }else {
                 user=false;
             }
+            console.log("SSs")
         },
     })
     return user;

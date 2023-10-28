@@ -30,13 +30,15 @@ $("#create-account-create-btn").click(function (e) {
 });
 
 function getCustomerNIC() {
+    let nic=null;
     $.ajax({
         url: base_url + "customer?username="+usernameForContinue,
         method: "get",
         async: false,
         success: function (rep) {
-            console.log(rep.data)
+               nic=rep.data;
         }
     })
+    return nic;
 }
 

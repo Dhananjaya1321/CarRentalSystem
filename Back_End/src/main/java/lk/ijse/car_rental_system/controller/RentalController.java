@@ -1,16 +1,14 @@
 package lk.ijse.car_rental_system.controller;
 
+import lk.ijse.car_rental_system.dto.RentalDTO;
 import lk.ijse.car_rental_system.service.RentalService;
 import lk.ijse.car_rental_system.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
-@RequestMapping("rental")
+@RequestMapping("/rental")
 public class RentalController {
     @Autowired
     RentalService rentalService;

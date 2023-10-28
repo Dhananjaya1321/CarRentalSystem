@@ -1,5 +1,6 @@
 package lk.ijse.car_rental_system.service.impl;
 
+import lk.ijse.car_rental_system.dto.RentalDTO;
 import lk.ijse.car_rental_system.repo.RentalRepo;
 import lk.ijse.car_rental_system.repo.RequestRepo;
 import lk.ijse.car_rental_system.service.RentalService;
@@ -19,7 +20,8 @@ public class RentalServiceImpl implements RentalService {
     ModelMapper modelMapper;
 
     @Override
-    public String getLastRentalID(){
+    public String getLastRentalID() {
         return rentalRepo.findLastRentalID();
     }
+
 }
