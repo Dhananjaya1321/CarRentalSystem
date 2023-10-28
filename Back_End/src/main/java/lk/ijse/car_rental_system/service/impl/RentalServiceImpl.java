@@ -2,6 +2,7 @@ package lk.ijse.car_rental_system.service.impl;
 
 import lk.ijse.car_rental_system.dto.RentalDTO;
 import lk.ijse.car_rental_system.entity.*;
+import lk.ijse.car_rental_system.repo.DriverRepo;
 import lk.ijse.car_rental_system.repo.RentalRepo;
 import lk.ijse.car_rental_system.repo.RequestRepo;
 import lk.ijse.car_rental_system.service.RentalService;
@@ -14,14 +15,15 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 @Transactional
 public class RentalServiceImpl implements RentalService {
     @Autowired
     RentalRepo rentalRepo;
+    @Autowired
+    DriverRepo driverRepo;
 
     @Autowired
     ModelMapper modelMapper;
@@ -45,7 +47,23 @@ public class RentalServiceImpl implements RentalService {
         }.getType());
 
         if (dto.getDriver_or_not().equals("yes")) {
+            List<Driver> allAvailableDrivers = driverRepo.findAllAvailableDrivers(dto.getPick_up_date(), dto.getReturn_date());
+            if (allAvailableDrivers.size() >= dto.getSchedule().size()) {
+                Set<Integer> uniqueRandomValues = new HashSet<>();
+                Random random = new Random();
 
+                while (uniqueRandomValues.size() < 8) {
+                    int randomNumber = random.nextInt(allAvailableDrivers.size() + 1);
+                    uniqueRandomValues.add(randomNumber);
+                }
+                int count = 0;
+                for (int value : uniqueRandomValues) {
+                    dto.getSchedule().get(count).setDriver_id(allAvailableDrivers.get(value).getDriver_id());
+                    count++;
+                }
+            } else {
+                throw new RuntimeException("We don't have " + dto.getSchedule().size() + " drivers available these days");
+            }
         }
         List<Schedule> schedule = modelMapper.map(dto.getSchedule(), new TypeToken<ArrayList<Schedule>>() {
         }.getType());
