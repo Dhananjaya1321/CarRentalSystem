@@ -18,6 +18,7 @@ public class Schedule {
     private String rental_id;
     @Id
     private String driver_id;
+    private String registration_number;
 
     @ManyToOne
     @JoinColumn(name = "rental_id", referencedColumnName = "rental_id", insertable = false, updatable = false)
@@ -26,4 +27,8 @@ public class Schedule {
     @ManyToOne
     @JoinColumn(name = "driver_id", referencedColumnName = "driver_id", insertable = false, updatable = false)
     private Driver driver;
+
+    @ManyToOne
+    @JoinColumn(name = "registration_number", referencedColumnName = "registration_number", insertable = false, updatable = false)
+    private Car car;
 }

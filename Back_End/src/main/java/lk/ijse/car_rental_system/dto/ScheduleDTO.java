@@ -12,4 +12,5 @@ import lombok.ToString;
 public class ScheduleDTO {
     private String rental_id;
     private String driver_id;
+    private String registration_number;
 }

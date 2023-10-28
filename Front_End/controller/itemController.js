@@ -5,17 +5,17 @@ $("#reservation-btn").click(function () {
 function saveRental() {
     if (findUser(usernameForContinue)) {
         let rental_id = generateNextRentalID(getLastRentalID());
-        let request_id =generateNextRequestID(getLastRequestID());
+        let nic = getCustomerNIC();
         let pickUpDate = $("#pick-up-date").val();
         let pickUpTime = $("#pick-up-time").val();
         let returnDate = $("#return-date").val();
         let returnTime = $("#return-time").val();
         let driverOrNot = $("#driver-or-not").val();
         let location = $("#location").val();
-        let bankSlip = $("#bank-slip").val();
 
+
+        let request_id = generateNextRequestID(getLastRequestID());
         let registration_number = $("#registration-number").text();
-        let nic = getCustomerNIC();
         let data = {
             "rental_id": rental_id,
             "driver_or_not": driverOrNot,
@@ -26,15 +26,15 @@ function saveRental() {
             "return_time": returnTime,
             "customer": {"nic": nic},
             "rentalCarDetails": [{"rental_id": rental_id, "registration_number": registration_number}],
-            "request": [{"request_id": request_id,"message":"","status":"pending","rental_id":rental_id}]
+            "request": [{"request_id": request_id, "message": "", "status": "pending", "rental_id": rental_id}]
 
         }
 
-            data.schedule=[{"rental_id":rental_id}];
+        data.schedule = [{"rental_id": rental_id,"registration_number": registration_number}];
 
         let formData = new FormData();
         formData.append("loss_damage_back_slip", $("#bank-slip")[0].files[0]);
-        formData.append("dto", new Blob([JSON.stringify(data)], { type: "application/json" }));
+        formData.append("dto", new Blob([JSON.stringify(data)], {type: "application/json"}));
         console.log(data)
         $.ajax({
             url: base_url + "rental",
@@ -45,7 +45,7 @@ function saveRental() {
             success: function (rep) {
                 alert(rep.message);
             },
-            error:function (rep) {
+            error: function (rep) {
                 console.log(rep.data)
             }
         })

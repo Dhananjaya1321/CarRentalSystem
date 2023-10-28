@@ -36,15 +36,18 @@ public class RentalServiceImpl implements RentalService {
         String uploadDir = "C:\\Users\\ACER\\Documents\\WorkZone\\CarRentalSystem\\Back_End\\src\\main\\resources\\files\\" + "bankSlip";
 
         MultipartFile bank_slip = dto.getLoss_damage_back_slip();
-
         bank_slip.transferTo(new File(new File(uploadDir, bank_slip.getOriginalFilename()).getAbsolutePath()));
 
         Customer customer = modelMapper.map(dto.getCustomer(), Customer.class);
         List<Request> requests = modelMapper.map(dto.getRequest(), new TypeToken<ArrayList<Request>>() {
         }.getType());
-        List<Schedule> schedule = modelMapper.map(dto.getSchedule(), new TypeToken<ArrayList<Schedule>>() {
-        }.getType());
         List<RentalCarDetails> rentalCarDetails = modelMapper.map(dto.getRentalCarDetails(), new TypeToken<ArrayList<RentalCarDetails>>() {
+        }.getType());
+
+        if (dto.getDriver_or_not().equals("yes")) {
+
+        }
+        List<Schedule> schedule = modelMapper.map(dto.getSchedule(), new TypeToken<ArrayList<Schedule>>() {
         }.getType());
         rentalRepo.save(
                 new Rental(
