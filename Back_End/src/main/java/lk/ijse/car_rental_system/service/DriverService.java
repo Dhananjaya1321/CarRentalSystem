@@ -17,5 +17,7 @@ public interface DriverService {
 
     ScheduleDTO findDriverFromSchedule(String rental_id, String registration_number);
 
+    DriverDTO getDriverByDriverId(String driver_id);
+
     UserDTO findDriverByUsername(String username);
 }

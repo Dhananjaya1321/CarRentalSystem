@@ -204,8 +204,10 @@ function loadPendingRequestDataForPopUpForm() {
             let driver=getDriverByDriverId(r.driver_id);
             $("#drivers-id-request").append(`<option selected value=${r.driver_id}>${r.driver_id}</option>`);
             for (let j in drivers) {
-                let option = `<option value=${drivers[j].driver_id}>${drivers[j].driver_id}</option>`;
-                $("#drivers-id-request").append(option);
+                if (drivers[j].driver_id!==r.driver_id){
+                    let option = `<option value=${drivers[j].driver_id}>${drivers[j].driver_id}</option>`;
+                    $("#drivers-id-request").append(option);
+                }
             }
             $("#driver-name-request").val(driver.name);
             $("#driver-nic-request").val(driver.nic);

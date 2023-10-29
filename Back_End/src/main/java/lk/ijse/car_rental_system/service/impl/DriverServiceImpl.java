@@ -57,7 +57,12 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public ScheduleDTO findDriverFromSchedule(String rental_id, String registration_number) {
-        return modelMapper.map(driverRepo.findDriverFromSchedule(rental_id,registration_number), ScheduleDTO.class);
+        return modelMapper.map(driverRepo.findDriverFromSchedule(rental_id, registration_number), ScheduleDTO.class);
+    }
+
+    @Override
+    public DriverDTO getDriverByDriverId(String driver_id) {
+        return modelMapper.map(driverRepo.findById(driver_id), DriverDTO.class);
     }
 
     @Override
