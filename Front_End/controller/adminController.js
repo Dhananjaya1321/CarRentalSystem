@@ -256,6 +256,7 @@ $("#drivers-id-request").click(function () {
     $("#driver-address-request").val(driver.address);
 })
 
+/*This event was created to reject the rental request*/
 $("#reject-request").click(function () {
     let request_id = $("#request-id").val();
     let msg = $("#message-request").val();
@@ -270,6 +271,36 @@ $("#reject-request").click(function () {
     }
     $.ajax({
         url:base_url+"request",
+        method:"put",
+        contentType: "application/json",
+        data:JSON.stringify(data),
+        success:function (rep) {
+            alert(rep.message);
+            getAllRequests();
+        },
+        error:function (rep){
+
+        }
+    })
+})
+
+/*This event was created to accept the rental request*/
+$("#accept-request").click(function () {
+    let request_id = $("#request-id").val();
+    let msg = $("#message-request").val();
+    let request = searchRequest(request_id);
+    let registration_number = $("#registration-number-request").val();
+    let driver_id = $("#drivers-id-request").val();
+    let data={
+        "request_id":request_id,
+        "message":msg,
+        "status":"accept",
+        "rental_id":request.rental_id,
+        "car": {"registration_number":registration_number},
+        "schedule": {"rental_id":request.rental_id,"driver_id":driver_id,"registration_number":registration_number}
+    }
+    $.ajax({
+        url:base_url+"request/accept",
         method:"put",
         contentType: "application/json",
         data:JSON.stringify(data),
