@@ -45,7 +45,7 @@ function loadCarsForHomePage() {
     for (let i in cars) {
         console.log("hi")
         let car = cars[i];
-        let front_img = "../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.front_image;
+        let front_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.front_image;
         let side_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.back_image;
         let back_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.side_image;
         let interior_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.interior_image;

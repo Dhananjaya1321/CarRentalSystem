@@ -201,6 +201,7 @@ function loadPendingRequestDataForPopUpForm() {
         $("#drivers-or-not-request").val(r.driver_or_not);
         getAllDrivers();
         if (r.driver_or_not === "yes") {
+            $("#drivers-id-request").empty();
             let driver=getDriverByDriverId(r.driver_id);
             $("#drivers-id-request").append(`<option selected value=${r.driver_id}>${r.driver_id}</option>`);
             for (let j in drivers) {
@@ -236,13 +237,21 @@ function loadPendingRequestDataForPopUpForm() {
             $("#driver-address-request").css("display", "none");
             $("[for=driver-address-request]").css("display", "none");
         }
-        let slip = "../../CarRentalSystem/Back_End/src/main/resources/files/bankSlip/" + r.loss_damage_back_slip;
+        let slip = "../../../CarRentalSystem/Back_End/src/main/resources/files/bankSlip/" + r.loss_damage_back_slip;
+
         $("#slip").css("background", `url(${slip})`);
         $("#slip").css("backgroundPosition", `center`);
         $("#slip").css("backgroundSize", `cover`);
     })
 }
-
+/*change to assigned driver*/
+$("#drivers-id-request").click(function () {
+    let driver = getDriverByDriverId($("#drivers-id-request").val());
+    $("#driver-name-request").val(driver.name);
+    $("#driver-nic-request").val(driver.nic);
+    $("#driver-contact-request").val(driver.contact);
+    $("#driver-address-request").val(driver.address);
+})
 /*search request from requests array*/
 function searchRequest(request_id) {
     for (let i in requests) {
