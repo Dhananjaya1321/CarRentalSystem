@@ -51,6 +51,13 @@
             top: 50px;
         }
 
+        #slip {
+            width: 100%;
+            height: 250px;
+            border-radius: 15px;
+            border: black 1px solid;
+        }
+
     </style>
 </head>
 <body>
@@ -467,6 +474,12 @@
                                 <input type="text" name="driver-address" class="form-control"
                                        id="driver-address-request" readonly>
                             </div>
+
+                            <div  class="col-12 flex f-col">
+                                <label class="form-label">Back Slip</label>
+                                <div id="slip"></div>
+                            </div>
+
                             <div class="col-12">
                                 <label for="message-request" class="form-label">Message</label>
                                 <textarea name="message" class="form-control" id="message-request"
@@ -480,7 +493,7 @@
                                         style="background-color: #1aff00; border: none">Accept
                                 </button>
                             </div>
-                        </form><!--customer form-->
+                        </form><!--request form-->
                     </div>
                 </div>
             </div>
@@ -618,108 +631,7 @@
 
 <script>
 
-    $("#home-btn").css("backgroundColor", "white");
-    $("#logout-btn").css("backgroundColor", "white");
-    $("#manage-cars-btn").css("backgroundColor", "white");
-    $("#manage-drivers-btn").css("backgroundColor", "white");
-    $("#rental-request-btn").css("backgroundColor", "white");
-    $("#payments-btn").css("backgroundColor", "white");
-    $("#income-btn").css("backgroundColor", "white");
-    $("#dashboard-btn").click(function () {
-        $("#dashboard").css("display", "flex");
-        $("#cars-section").css("display", "none");
-        $("#drivers-section").css("display", "none");
-        $("#cars-rental-request").css("display", "none");
-        $("#payment-section").css("display", "none");
 
-
-        $("#dashboard-btn").css("backgroundColor", "#b3bdff");
-        $("#manage-cars-btn").css("backgroundColor", "white");
-        $("#manage-drivers-btn").css("backgroundColor", "white");
-        $("#rental-request-btn").css("backgroundColor", "white");
-        $("#payments-btn").css("backgroundColor", "white");
-
-    });
-    $("#manage-cars-btn").click(function () {
-        getAllCars();
-        loadCarsForTable();
-
-        $("#dashboard").css("display", "none");
-        $("#cars-section").css("display", "flex");
-        $("#drivers-section").css("display", "none");
-        $("#cars-rental-request").css("display", "none");
-        $("#payment-section").css("display", "none");
-
-
-        $("#dashboard-btn").css("backgroundColor", "white");
-        $("#manage-cars-btn").css("backgroundColor", "#b3bdff");
-        $("#manage-drivers-btn").css("backgroundColor", "white");
-        $("#rental-request-btn").css("backgroundColor", "white");
-        $("#payments-btn").css("backgroundColor", "white");
-
-    });
-    $("#manage-drivers-btn").click(function () {
-        $("#dashboard").css("display", "none");
-        $("#cars-section").css("display", "none");
-        $("#drivers-section").css("display", "flex");
-        $("#cars-rental-request").css("display", "none");
-        $("#payment-section").css("display", "none");
-
-
-        $("#dashboard-btn").css("backgroundColor", "white");
-        $("#manage-cars-btn").css("backgroundColor", "white");
-        $("#manage-drivers-btn").css("backgroundColor", "#b3bdff");
-        $("#rental-request-btn").css("backgroundColor", "white");
-        $("#payments-btn").css("backgroundColor", "white");
-
-
-        getAllDrivers();
-    });
-    $("#rental-request-btn").click(function () {
-        $("#dashboard").css("display", "none");
-        $("#cars-section").css("display", "none");
-        $("#drivers-section").css("display", "none");
-        $("#cars-rental-request").css("display", "flex");
-        $("#payment-section").css("display", "none");
-
-        $("#dashboard-btn").css("backgroundColor", "white");
-        $("#manage-cars-btn").css("backgroundColor", "white");
-        $("#manage-drivers-btn").css("backgroundColor", "white");
-        $("#rental-request-btn").css("backgroundColor", "#b3bdff");
-        $("#payments-btn").css("backgroundColor", "white");
-
-    });
-    $("#payments-btn").click(function () {
-        $("#dashboard").css("display", "none");
-        $("#cars-section").css("display", "none");
-        $("#drivers-section").css("display", "none");
-        $("#cars-rental-request").css("display", "none");
-        $("#payment-section").css("display", "flex");
-
-        $("#dashboard-btn").css("backgroundColor", "white");
-        $("#manage-cars-btn").css("backgroundColor", "white");
-        $("#manage-drivers-btn").css("backgroundColor", "white");
-        $("#rental-request-btn").css("backgroundColor", "white");
-        $("#payments-btn").css("backgroundColor", "#b3bdff");
-    });
-
-    $("#logout-btn").click(function () {
-        usernameForContinue="logout";
-        passwordForContinue="logout";
-        window.location.href = "../index.html";
-    });
-
-    $("#cars-section>form").css("display", "none");
-    let click_count = 0;
-    $("#new-car-btn-div>button").click(function () {
-        if (click_count === 0) {
-            $("#cars-section>form").css("display", "flex");
-            click_count = 1;
-        } else {
-            $("#cars-section>form").css("display", "none");
-            click_count = 0;
-        }
-    });
 </script>
 </body>
 </html>

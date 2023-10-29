@@ -148,6 +148,9 @@ function manageCarMaintainStatusRequestHandler(registration_number, status) {
     })
 }
 
+let requests = [];
+
+/*all pending requests load to table*/
 function getAllRequests() {
     $.ajax({
         url: base_url + "request/pending",
@@ -155,7 +158,7 @@ function getAllRequests() {
         async: false,
         success: function (rep) {
             $("#cars-rental-request-table-body").empty();
-            let requests = rep.data;
+            requests = rep.data;
             console.log(requests)
             for (let i in requests) {
                 let request = requests[i]
@@ -178,6 +181,163 @@ function getAllRequests() {
             }
         }
     })
+    loadPendingRequestDataForPopUpForm();
 }
 
+function loadPendingRequestDataForPopUpForm() {
+    $("#cars-rental-request-table-body>tr>td>button").click(function () {
+        let request_id = $(this).parents("#cars-rental-request-table-body>tr").children().eq(0).text();
+
+        let r = searchRequest(request_id);
+
+        $("#request-id").val(r.request_id);
+        $("#nic-request").val(r.nic);
+        $("#registration-number-request").val(r.registration_number);
+        $("#pick-up-date-request").val(r.pick_up_date);
+        $("#pick-up-time-request").val(r.pick_up_time);
+        $("#return-date-request").val(r.return_date);
+        $("#return-time-request").val(r.return_time);
+        $("#location-request").val(r.location);
+        $("#drivers-or-not-request").val(r.driver_or_not);
+        getAllDrivers();
+        if (r.driver_or_not === "yes") {
+            for (let j in drivers) {
+                let option = `<option value=${drivers[j].driver_id}>${drivers[j].driver_id}</option>`;
+                $("#drivers-id-request").append(option);
+            }
+        } else {
+            $("#drivers-id-request").css("display", "none");
+            $("[for=drivers-id-request]").css("display", "none");
+            $("#driver-name-request").css("display", "none");
+            $("[for=driver-name-request]").css("display", "none");
+            $("#driver-nic-request").css("display", "none");
+            $("[for=driver-nic-request]").css("display", "none");
+            $("#driver-contact-request").css("display", "none");
+            $("[for=driver-contact-request]").css("display", "none");
+            $("#driver-address-request").css("display", "none");
+            $("[for=driver-address-request]").css("display", "none");
+        }
+        // $("#slip").css("background",`${request.}`);
+    })
+}
+
+function searchRequest(request_id) {
+    for (let i in requests) {
+        let rental = requests[i];
+        if (rental.request_id === request_id) {
+            return requests[i];
+        }
+    }
+}
+
+$("#home-btn").css("backgroundColor", "white");
+$("#logout-btn").css("backgroundColor", "white");
+$("#manage-cars-btn").css("backgroundColor", "white");
+$("#manage-drivers-btn").css("backgroundColor", "white");
+$("#rental-request-btn").css("backgroundColor", "white");
+$("#payments-btn").css("backgroundColor", "white");
+$("#income-btn").css("backgroundColor", "white");
+
+$("#dashboard-btn").click(function () {
+    $("#dashboard").css("display", "flex");
+    $("#cars-section").css("display", "none");
+    $("#drivers-section").css("display", "none");
+    $("#cars-rental-request").css("display", "none");
+    $("#payment-section").css("display", "none");
+
+
+    $("#dashboard-btn").css("backgroundColor", "#b3bdff");
+    $("#manage-cars-btn").css("backgroundColor", "white");
+    $("#manage-drivers-btn").css("backgroundColor", "white");
+    $("#rental-request-btn").css("backgroundColor", "white");
+    $("#payments-btn").css("backgroundColor", "white");
+
+});
+
+$("#manage-cars-btn").click(function () {
+    getAllCars();
+    loadCarsForTable();
+
+    $("#dashboard").css("display", "none");
+    $("#cars-section").css("display", "flex");
+    $("#drivers-section").css("display", "none");
+    $("#cars-rental-request").css("display", "none");
+    $("#payment-section").css("display", "none");
+
+
+    $("#dashboard-btn").css("backgroundColor", "white");
+    $("#manage-cars-btn").css("backgroundColor", "#b3bdff");
+    $("#manage-drivers-btn").css("backgroundColor", "white");
+    $("#rental-request-btn").css("backgroundColor", "white");
+    $("#payments-btn").css("backgroundColor", "white");
+
+});
+
+$("#manage-drivers-btn").click(function () {
+    $("#dashboard").css("display", "none");
+    $("#cars-section").css("display", "none");
+    $("#drivers-section").css("display", "flex");
+    $("#cars-rental-request").css("display", "none");
+    $("#payment-section").css("display", "none");
+
+
+    $("#dashboard-btn").css("backgroundColor", "white");
+    $("#manage-cars-btn").css("backgroundColor", "white");
+    $("#manage-drivers-btn").css("backgroundColor", "#b3bdff");
+    $("#rental-request-btn").css("backgroundColor", "white");
+    $("#payments-btn").css("backgroundColor", "white");
+
+
+    getAllDrivers();
+});
+
+$("#rental-request-btn").click(function () {
+    $("#dashboard").css("display", "none");
+    $("#cars-section").css("display", "none");
+    $("#drivers-section").css("display", "none");
+    $("#cars-rental-request").css("display", "flex");
+    $("#payment-section").css("display", "none");
+
+    $("#dashboard-btn").css("backgroundColor", "white");
+    $("#manage-cars-btn").css("backgroundColor", "white");
+    $("#manage-drivers-btn").css("backgroundColor", "white");
+    $("#rental-request-btn").css("backgroundColor", "#b3bdff");
+    $("#payments-btn").css("backgroundColor", "white");
+
+    getAllRequests();
+});
+
+$("#payments-btn").click(function () {
+    $("#dashboard").css("display", "none");
+    $("#cars-section").css("display", "none");
+    $("#drivers-section").css("display", "none");
+    $("#cars-rental-request").css("display", "none");
+    $("#payment-section").css("display", "flex");
+
+    $("#dashboard-btn").css("backgroundColor", "white");
+    $("#manage-cars-btn").css("backgroundColor", "white");
+    $("#manage-drivers-btn").css("backgroundColor", "white");
+    $("#rental-request-btn").css("backgroundColor", "white");
+    $("#payments-btn").css("backgroundColor", "#b3bdff");
+});
+
+$("#logout-btn").click(function () {
+    usernameForContinue = "logout";
+    passwordForContinue = "logout";
+    window.location.href = "../index.html";
+});
+
+$("#cars-section>form").css("display", "none");
+
+let click_count = 0;
+
+$("#new-car-btn-div>button").click(function () {
+    if (click_count === 0) {
+        $("#cars-section>form").css("display", "flex");
+        click_count = 1;
+    } else {
+        $("#cars-section>form").css("display", "none");
+        click_count = 0;
+    }
+});
 
