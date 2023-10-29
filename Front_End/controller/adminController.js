@@ -244,6 +244,7 @@ function loadPendingRequestDataForPopUpForm() {
         $("#slip").css("backgroundSize", `cover`);
     })
 }
+
 /*change to assigned driver*/
 $("#drivers-id-request").click(function () {
     let driver = getDriverByDriverId($("#drivers-id-request").val());
@@ -252,6 +253,30 @@ $("#drivers-id-request").click(function () {
     $("#driver-contact-request").val(driver.contact);
     $("#driver-address-request").val(driver.address);
 })
+
+$("#reject-request").click(function () {
+    let request_id = $("#request-id").val();
+    let msg = $("#message-request").val();
+    let data={
+        "request_id":request_id,
+        "message":msg
+    }
+    $.ajax({
+        url:base_url+"request",
+        method:"put",
+        contentType: "application/json",
+        data:JSON.stringify(data),
+        success:function (rep) {
+            alert(rep.message);
+        },
+        error:function (rep){
+
+        }
+    })
+})
+
+
+
 /*search request from requests array*/
 function searchRequest(request_id) {
     for (let i in requests) {
