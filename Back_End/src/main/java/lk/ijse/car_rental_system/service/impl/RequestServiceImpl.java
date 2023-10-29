@@ -6,6 +6,7 @@ import lk.ijse.car_rental_system.dto.RequestDTO;
 import lk.ijse.car_rental_system.dto.ScheduleDTO;
 import lk.ijse.car_rental_system.entity.CustomEntity;
 import lk.ijse.car_rental_system.entity.Request;
+import lk.ijse.car_rental_system.entity.Schedule;
 import lk.ijse.car_rental_system.repo.DriverRepo;
 import lk.ijse.car_rental_system.repo.RequestRepo;
 import lk.ijse.car_rental_system.service.RequestService;
@@ -31,18 +32,26 @@ public class RequestServiceImpl implements RequestService {
     DriverRepo driverRepo;
 
     @Override
-    public String getLastRequestID(){
+    public String getLastRequestID() {
         return requestRepo.findLastRequestID();
     }
+
     @Override
-    public List<CustomDTO> getAllPendingRequests(){
+    public List<CustomDTO> getAllPendingRequests() {
         ArrayList<CustomEntity> allPendingRequests = requestRepo.findAllPendingRequests();
-        for (CustomEntity c:allPendingRequests) {
-            ScheduleDTO scheduleDTO = modelMapper.map(driverRepo.findDriverFromSchedule(c.getRental_id(), c.getRegistration_number()), ScheduleDTO.class);
-            c.setDriver_id(scheduleDTO.getDriver_id());
+        for (CustomEntity c : allPendingRequests) {
+//            List<Schedule> driverFromSchedule = driverRepo.findDriverFromSchedule(c.getRental_id(), c.getRegistration_number());
+            List<CustomEntity> driverFromSchedule = driverRepo.findDriverFromSchedule(c.getRental_id(), c.getRegistration_number());
+            for (CustomEntity s:driverFromSchedule) {
+                if (c.getRental_id().equals(s.getRental_id()) && c.getRegistration_number().equals(s.getRegistration_number())){
+                    c.setDriver_id(s.getDriver_id());
+                    System.out.println(s.getDriver_id());
+                }
+                System.out.println("\n\n"+s.getDriver_id());
+            }
         }
-//        System.out.println("\n\n\n\n"+allPendingRequests.get(0).toString());
-        return modelMapper.map(requestRepo.findAllPendingRequests(), new TypeToken<List<CustomDTO>>() {
+        System.out.println();
+        return modelMapper.map(allPendingRequests, new TypeToken<List<CustomDTO>>() {
         }.getType());
     }
 }

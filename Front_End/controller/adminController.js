@@ -201,12 +201,27 @@ function loadPendingRequestDataForPopUpForm() {
         $("#drivers-or-not-request").val(r.driver_or_not);
         getAllDrivers();
         if (r.driver_or_not === "yes") {
-
+            let driver=getDriverByDriverId(r.driver_id);
             $("#drivers-id-request").append(`<option selected value=${r.driver_id}>${r.driver_id}</option>`);
             for (let j in drivers) {
                 let option = `<option value=${drivers[j].driver_id}>${drivers[j].driver_id}</option>`;
                 $("#drivers-id-request").append(option);
             }
+            $("#driver-name-request").val(driver.name);
+            $("#driver-nic-request").val(driver.nic);
+            $("#driver-contact-request").val(driver.contact);
+            $("#driver-address-request").val(driver.address);
+
+            $("#drivers-id-request").css("display", "block");
+            $("[for=drivers-id-request]").css("display", "block");
+            $("#driver-name-request").css("display", "block");
+            $("[for=driver-name-request]").css("display", "block");
+            $("#driver-nic-request").css("display", "block");
+            $("[for=driver-nic-request]").css("display", "block");
+            $("#driver-contact-request").css("display", "block");
+            $("[for=driver-contact-request]").css("display", "block");
+            $("#driver-address-request").css("display", "block");
+            $("[for=driver-address-request]").css("display", "block");
         } else {
             $("#drivers-id-request").css("display", "none");
             $("[for=drivers-id-request]").css("display", "none");
@@ -219,9 +234,13 @@ function loadPendingRequestDataForPopUpForm() {
             $("#driver-address-request").css("display", "none");
             $("[for=driver-address-request]").css("display", "none");
         }
-        $("#slip").css("background",`${r.loss}`);
+        let slip = "../../CarRentalSystem/Back_End/src/main/resources/files/bankSlip/" + r.loss_damage_back_slip;
+        $("#slip").css("background", `url(${slip})`);
+        $("#slip").css("backgroundPosition", `center`);
+        $("#slip").css("backgroundSize", `cover`);
     })
 }
+
 /*search request from requests array*/
 function searchRequest(request_id) {
     for (let i in requests) {

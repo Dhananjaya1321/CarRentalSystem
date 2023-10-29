@@ -134,6 +134,7 @@ function getDriverByDriverId(driver_id) {
     $.ajax({
         url: base_url + "driver?driver_id=" + driver_id,
         method: "get",
+        async:false,
         success: function (rep) {
             driver=rep.data;
         },
