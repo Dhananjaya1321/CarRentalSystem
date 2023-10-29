@@ -162,7 +162,8 @@ function getAllRequests() {
             console.log(requests)
             for (let i in requests) {
                 let request = requests[i]
-                let row = `<tr>
+                if (request.status==="pending"){
+                    let row = `<tr>
                             <td>${request.request_id}</td>
                             <td>${request.nic}</td>
                             <td>${request.registration_number}</td>
@@ -177,7 +178,8 @@ function getAllRequests() {
                                     <i class="fa-solid fa-eye"></i></button>
                             </td>
                         </tr>`;
-                $("#cars-rental-request-table-body").append(row);
+                    $("#cars-rental-request-table-body").append(row);
+                }
             }
         }
     })
@@ -257,9 +259,14 @@ $("#drivers-id-request").click(function () {
 $("#reject-request").click(function () {
     let request_id = $("#request-id").val();
     let msg = $("#message-request").val();
+    let request = searchRequest(request_id);
+    let registration_number = $("#registration-number-request").val();
     let data={
         "request_id":request_id,
-        "message":msg
+        "message":msg,
+        "status":"reject",
+        "rental_id":request.rental_id,
+        "car": {"registration_number":registration_number}
     }
     $.ajax({
         url:base_url+"request",
@@ -268,6 +275,7 @@ $("#reject-request").click(function () {
         data:JSON.stringify(data),
         success:function (rep) {
             alert(rep.message);
+            getAllRequests();
         },
         error:function (rep){
 

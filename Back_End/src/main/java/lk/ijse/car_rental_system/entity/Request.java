@@ -21,7 +21,7 @@ public class Request {
     @ManyToOne
     private Rental rental;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Car car;
 
     @OneToMany(mappedBy = "request",cascade = {CascadeType.ALL})

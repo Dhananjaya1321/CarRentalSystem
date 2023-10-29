@@ -9,5 +9,7 @@ import java.util.List;
 public interface RequestService {
     String getLastRequestID();
 
+    void rejectRequest(RequestDTO dto);
+
     List<CustomDTO> getAllPendingRequests();
 }

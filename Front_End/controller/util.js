@@ -29,7 +29,6 @@ function searchCarByRegistrationNumber(registration_number) {
         async: false,
         success: function (rep) {
             car = rep.data;
-            console.log("car arrya",car, rep.data,rep)
         },
         error: function (rep) {
 

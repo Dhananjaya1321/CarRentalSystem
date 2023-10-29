@@ -37,6 +37,11 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
+    public void rejectRequest(RequestDTO dto) {
+        requestRepo.save(modelMapper.map(dto,Request.class));
+    }
+
+    @Override
     public List<CustomDTO> getAllPendingRequests() {
         ArrayList<CustomEntity> allPendingRequests = requestRepo.findAllPendingRequests();
         for (CustomEntity c : allPendingRequests) {

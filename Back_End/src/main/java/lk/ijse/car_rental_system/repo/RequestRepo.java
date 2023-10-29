@@ -4,6 +4,7 @@ import lk.ijse.car_rental_system.dto.CustomDTO;
 import lk.ijse.car_rental_system.entity.CustomEntity;
 import lk.ijse.car_rental_system.entity.Request;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.ArrayList;
@@ -20,4 +21,9 @@ public interface RequestRepo extends JpaRepository<Request,String> {
             "JOIN r.rental r2 " +
             "JOIN r.car c")
     ArrayList<CustomEntity> findAllPendingRequests();
+
+    @Modifying
+    @Query(value = "update request set message=?2,status=?3 where request_id=?1",nativeQuery = true)
+    int updateRequest(String request_id,String message,String status);
+
 }
