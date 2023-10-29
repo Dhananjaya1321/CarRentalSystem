@@ -26,7 +26,7 @@ function saveRental() {
             "return_time": returnTime,
             "customer": {"nic": nic},
             "rentalCarDetails": [{"rental_id": rental_id, "registration_number": registration_number}],
-            "request": [{"request_id": request_id, "message": "", "status": "pending", "rental_id": rental_id}]
+            "request": [{"request_id": request_id, "message": "", "status": "pending", "rental_id": rental_id,"registration_number": registration_numbe}]
 
         }
 

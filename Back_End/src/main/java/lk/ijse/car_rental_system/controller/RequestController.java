@@ -19,4 +19,8 @@ public class RequestController {
     public ResponseUtil getLastRequestID(){
         return new ResponseUtil("Ok","Successfully loaded...!",requestService.getLastRequestID());
     }
+    @GetMapping(path = "/pending")
+    public ResponseUtil getAllPendingRequests(){
+        return new ResponseUtil("Ok","Successfully loaded...!",requestService.getAllPendingRequests());
+    }
 }

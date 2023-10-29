@@ -21,6 +21,9 @@ public class Request {
     @ManyToOne
     private Rental rental;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Car car;
+
     @OneToMany(mappedBy = "request",cascade = {CascadeType.ALL})
     private List<Payment> payments;
 }

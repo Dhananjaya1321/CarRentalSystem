@@ -18,5 +18,6 @@ public class RequestDTO {
 
     private String rental_id;
 
+    private CarDTO car;
     private PaymentDTO payment;
 }

@@ -135,11 +135,11 @@ function manageCarMaintainStatusRequestHandler(registration_number, status) {
             console.log(rep.message)
             getAllCars();
             loadCarsForTable();
-            if ($("#cars-under-maintenance-table-body tr").length===0){
-                $("#cars-under-maintenance").css("display","none");
+            if ($("#cars-under-maintenance-table-body tr").length === 0) {
+                $("#cars-under-maintenance").css("display", "none");
             }
-            if ($("#cars-need-maintenance-table-body tr").length===0){
-                $("#need-to-maintain-cars").css("display","none");
+            if ($("#cars-need-maintenance-table-body tr").length === 0) {
+                $("#need-to-maintain-cars").css("display", "none");
             }
         },
         error: function (rep) {
@@ -150,14 +150,16 @@ function manageCarMaintainStatusRequestHandler(registration_number, status) {
 
 function getAllRequests() {
     $.ajax({
-        url:base_url+"request/pending",
-        method:"get",
-        success:function (rep) {
+        url: base_url + "request/pending",
+        method: "get",
+        async: false,
+        success: function (rep) {
             $("#cars-rental-request-table-body").empty();
             let requests = rep.data;
+            console.log(requests)
             for (let i in requests) {
-                let request=requests[i]
-                let row=`<tr>
+                let request = requests[i]
+                let row = `<tr>
                             <td>${request.request_id}</td>
                             <td>${request.nic}</td>
                             <td>${request.registration_number}</td>
