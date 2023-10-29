@@ -201,6 +201,8 @@ function loadPendingRequestDataForPopUpForm() {
         $("#drivers-or-not-request").val(r.driver_or_not);
         getAllDrivers();
         if (r.driver_or_not === "yes") {
+
+            $("#drivers-id-request").append(`<option selected value=${r.driver_id}>${r.driver_id}</option>`);
             for (let j in drivers) {
                 let option = `<option value=${drivers[j].driver_id}>${drivers[j].driver_id}</option>`;
                 $("#drivers-id-request").append(option);
@@ -217,10 +219,10 @@ function loadPendingRequestDataForPopUpForm() {
             $("#driver-address-request").css("display", "none");
             $("[for=driver-address-request]").css("display", "none");
         }
-        // $("#slip").css("background",`${request.}`);
+        $("#slip").css("background",`${r.loss}`);
     })
 }
-
+/*search request from requests array*/
 function searchRequest(request_id) {
     for (let i in requests) {
         let rental = requests[i];

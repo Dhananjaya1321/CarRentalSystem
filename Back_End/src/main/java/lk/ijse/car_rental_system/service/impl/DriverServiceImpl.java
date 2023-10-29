@@ -1,6 +1,7 @@
 package lk.ijse.car_rental_system.service.impl;
 
 import lk.ijse.car_rental_system.dto.DriverDTO;
+import lk.ijse.car_rental_system.dto.ScheduleDTO;
 import lk.ijse.car_rental_system.dto.UserDTO;
 import lk.ijse.car_rental_system.entity.Driver;
 import lk.ijse.car_rental_system.entity.User;
@@ -36,7 +37,7 @@ public class DriverServiceImpl implements DriverService {
     @Override
     public void saveDriver(DriverDTO dto) {
         if (driverRepo.existsById(dto.getDriver_id())) {
-            throw new RuntimeException(dto.getDriver_id()+" Driver is already available");
+            throw new RuntimeException(dto.getDriver_id() + " Driver is already available");
         }
         driverRepo.save(modelMapper.map(dto, Driver.class));
     }
@@ -44,7 +45,7 @@ public class DriverServiceImpl implements DriverService {
     @Override
     public void deleteDriver(String driver_id) {
         if (!driverRepo.existsById(driver_id)) {
-            throw new RuntimeException(driver_id+" Driver is not available, please check the ID before delete");
+            throw new RuntimeException(driver_id + " Driver is not available, please check the ID before delete");
         }
         driverRepo.deleteById(driver_id);
     }
@@ -55,9 +56,14 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
+    public ScheduleDTO findDriverFromSchedule(String rental_id, String registration_number) {
+        return modelMapper.map(driverRepo.findDriverFromSchedule(rental_id,registration_number), ScheduleDTO.class);
+    }
+
+    @Override
     public UserDTO findDriverByUsername(String username) {
         if (!userRepo.existsById(username)) {
-            throw new RuntimeException(username+" username is not available");
+            throw new RuntimeException(username + " username is not available");
         }
         return modelMapper.map(userRepo.findById(username), UserDTO.class);
     }

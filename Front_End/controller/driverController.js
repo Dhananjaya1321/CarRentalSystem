@@ -129,4 +129,16 @@ function deleteDriver() {
     })
 }
 
+function getDriverByDriverId(driver_id) {
+    let driver=null;
+    $.ajax({
+        url: base_url + "driver?driver_id=" + driver_id,
+        method: "get",
+        success: function (rep) {
+            driver=rep.data;
+        },
+    })
+    return driver;
+}
+
 
