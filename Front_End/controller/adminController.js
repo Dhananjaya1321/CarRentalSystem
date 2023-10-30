@@ -92,6 +92,17 @@ function getAvailableDriversCount() {
     })
 }
 
+function getOccupiedDriversCount() {
+    $.ajax({
+        url: base_url + "driver/occupied/count",
+        method: "get",
+        async: false,
+        success: function (rep) {
+            $("#occupied-drivers").text(rep.data);
+        }
+    })
+}
+
 
 /*add cars*/
 $("#car-add-btn").click(function () {
