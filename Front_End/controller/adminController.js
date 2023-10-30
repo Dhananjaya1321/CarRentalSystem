@@ -81,6 +81,17 @@ function getAcceptedRequestRequestCountForTheDay() {
     })
 }
 
+function getAvailableDriversCount() {
+    $.ajax({
+        url: base_url + "driver/available/count",
+        method: "get",
+        async: false,
+        success: function (rep) {
+            $("#available-drivers").text(rep.data);
+        }
+    })
+}
+
 
 /*add cars*/
 $("#car-add-btn").click(function () {
