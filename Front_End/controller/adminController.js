@@ -72,7 +72,7 @@ function getPendingRequestCount() {
 
 function getAcceptedRequestRequestCountForTheDay() {
     $.ajax({
-        url: base_url + "request/accept/count",
+        url: base_url + "request/accept/count?date=" + currentDate,
         method: "get",
         async: false,
         success: function (rep) {

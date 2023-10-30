@@ -16,7 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,6 +91,13 @@ public class RequestServiceImpl implements RequestService {
     @Override
     public int getPendingRequestCount() {
        return requestRepo.getPendingRequestCount();
+    }
+    @Override
+    public int getAcceptedRequestRequestCountForTheDay(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate currentDate = LocalDate.parse(date, formatter);
+
+        return requestRepo.getAcceptedRequestRequestCountForTheDay(currentDate);
     }
     @Override
     public List<CustomDTO> getAllPendingRequests() {

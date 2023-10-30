@@ -18,5 +18,7 @@ public interface RequestService {
 
     int getPendingRequestCount();
 
+    int getAcceptedRequestRequestCountForTheDay(String date);
+
     List<CustomDTO> getAllPendingRequests();
 }
