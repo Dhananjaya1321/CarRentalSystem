@@ -22,6 +22,7 @@ public class PaymentDTO {
     private LocalDate payment_date;
     private LocalTime payment_time;
     private String payment_type;
+    private String status;
 
-    private RequestDTO request;
+//    private RequestDTO request;
 }

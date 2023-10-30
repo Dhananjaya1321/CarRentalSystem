@@ -51,6 +51,36 @@
             top: 50px;
         }
 
+        #payment-section > section:nth-child(1) {
+            width: 750px;
+            height: 500px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 3px 14px -6px black;
+            margin-bottom: 25px;
+        }
+
+        #cars-rental-payment-form {
+            gap: 20px;
+        }
+
+        #cars-rental-payment-form > div > select,
+        #cars-rental-payment-form > div > input {
+            width: 210px;
+        }
+
+        #pay-btn {
+            background-color: #1aff00;
+            border: none;
+            width: 200px;
+            height: 40px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            position: relative;
+            top: 15px;
+        }
+
         #slip {
             width: 100%;
             height: 250px;
@@ -499,133 +529,126 @@
         </div><!--modal-->
     </section><!--rental request-->
     <section id="payment-section" class="flex f-col">
-        <h4>Pending Payments</h4>
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th scope="col">Request ID</th>
-                <th scope="col">NIC</th>
-                <th scope="col">Name</th>
-                <th scope="col">Registration number</th>
-                <th scope="col">Pick up date</th>
-                <th scope="col">Return up date</th>
-                <th scope="col">Options</th>
-            </tr>
-            </thead>
-            <tbody id="payment-table-body">
-            <tr>
-                <td>1111</td>
-                <td>1111111111</td>
-                <td>1111111111</td>
-                <td>1111111111</td>
-                <td>2023/12/12</td>
-                <td>2023/12/13</td>
-                <td>
-                    <button type="button" class="btn btn-danger border-0" style="background-color: #0090ff;"
-                            data-bs-toggle="modal"
-                            data-bs-target="#payment-details">
-                        <i class="fa-solid fa-eye"></i></button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <div class="modal fade" id="payment-details" data-bs-backdrop="static" data-bs-keyboard="false"
-             tabindex="-1" aria-labelledby="paymentLable" aria-hidden="true">
-            <div class="modal-dialog" style="max-width: 700px">
-                <div class="modal-content">
-                    <div class="modal-header"
-                         style="background-color: white; border-radius: 15px 15px 0 0; color: white">
-                        <h1 class="modal-title fs-5" id="paymentLable">New Customer</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="cars-rental-payment-form" class="row g-3 text-start">
-                            <div class="col-4">
-                                <label for="payment-request-id" class="form-label">Request ID</label>
-                                <input type="text" name="request_id" class="form-control" id="payment-request-id"
-                                       readonly>
-                            </div>
-                            <div class="col-4">
-                                <label for="payment-nic" class="form-label">NIC</label>
-                                <input type="text" name="nic" class="form-control" id="payment-nic" readonly>
-                            </div>
-                            <div class="col-4">
-                                <label for="payment-registration-number" class="form-label">Registration number</label>
-                                <input type="text" name="registration-number" class="form-control"
-                                       id="payment-registration-number" readonly>
-                            </div>
-                            <div class="col-4">
-                                <label for="date-of-payment" class="form-label">Date of payment</label>
-                                <input type="text" name="pay-date" class="form-control" id="date-of-payment"
-                                       readonly>
-                            </div>
-                            <div class="col-4">
-                                <label for="time-of-payment" class="form-label">Time of payment</label>
-                                <input type="text" name="time-of-payment" class="form-control" id="time-of-payment"
-                                       readonly>
-                            </div>
-                            <div class="col-4">
-                                <label for="number-of-days" class="form-label">Number of days</label>
-                                <input type="text" name="number-of-days" class="form-control" id="number-of-days">
-                            </div>
-
-                            <div class="col-4">
-                                <label for="extra-mileage" class="form-label">Extra mileage</label>
-                                <input type="text" name="extra-mileage" class="form-control" id="extra-mileage">
-                            </div>
-                            <div class="col-4">
-                                <label for="fee-for-extra-mileage" class="form-label">Fee for extra mileage</label>
-                                <input type="text" name="fee-for-extra-mileage" class="form-control"
-                                       id="fee-for-extra-mileage" readonly>
-                            </div>
-
-                            <div class="col-4">
-                                <label for="payment-method" class="form-label">Payment method</label>
-                                <select id="payment-method" class="form-select" aria-label="Default select example">
-                                    <option value="all">Card</option>
-                                    <option value="all">Cash</option>
-                                </select>
-                            </div>
-                            <div class="col-4">
-                                <label for="driver-fee" class="form-label">Driver fee</label>
-                                <input type="text" name="driver-fee" class="form-control"
-                                       id="driver-fee" readonly>
-                            </div>
-                            <div class="col-4">
-                                <label for="car-fee" class="form-label">Car fee</label>
-                                <input type="text" name="car-fee" class="form-control"
-                                       id="car-fee" readonly>
-                            </div>
-                            <div class="col-4">
-                                <label for="loss-damage" class="form-label">Loss damage</label>
-                                <input type="text" name="loss-damage" class="form-control"
-                                       id="loss-damage">
-                            </div>
-
-                            <div class="col-4">
-                                <label for="total" class="form-label">Total</label>
-                                <input type="text" name="total" class="form-control"
-                                       id="total" readonly>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" id="pay-btn"
-                                        style="background-color: #1aff00; border: none">Pay
-                                </button>
-                            </div>
-                        </form><!--payment form-->
-                    </div>
+        <section class="flex f-col">
+            <form id="cars-rental-payment-form" class="flex f-row f-wrap">
+                <div>
+                    <label for="payment-request-id" class="form-label">Request ID</label>
+                    <select id="payment-request-id" class="form-select" aria-label="Default select example">
+                        <option value="">Card</option>
+                        <option value="">Cash</option>
+                    </select>
                 </div>
-            </div>
-        </div><!--modal-->
+                <div>
+                    <label for="payment-nic" class="form-label">NIC</label>
+                    <input type="text" name="nic" class="form-control" id="payment-nic" readonly>
+                </div>
+                <div>
+                    <label for="payment-registration-number" class="form-label">Registration
+                        number</label>
+                    <input type="text" name="registration-number" class="form-control"
+                           id="payment-registration-number" readonly>
+                </div>
+                <div>
+                    <label for="date-of-payment" class="form-label">Date of payment</label>
+                    <input type="text" name="pay-date" class="form-control" id="date-of-payment"
+                           readonly>
+                </div>
+                <div>
+                    <label for="time-of-payment" class="form-label">Time of payment</label>
+                    <input type="text" name="time-of-payment" class="form-control" id="time-of-payment"
+                           readonly>
+                </div>
+                <div>
+                    <label for="number-of-days" class="form-label">Number of days</label>
+                    <input type="text" name="number-of-days" class="form-control" id="number-of-days">
+                </div>
+
+                <div>
+                    <label for="extra-mileage" class="form-label">Extra mileage</label>
+                    <input type="text" name="extra-mileage" class="form-control" id="extra-mileage">
+                </div>
+                <div>
+                    <label for="fee-for-extra-mileage" class="form-label">Fee for extra mileage</label>
+                    <input type="text" name="fee-for-extra-mileage" class="form-control"
+                           id="fee-for-extra-mileage" readonly>
+                </div>
+
+                <div>
+                    <label for="payment-method" class="form-label">Payment method</label>
+                    <select id="payment-method" class="form-select" aria-label="Default select example">
+                        <option value="all">Card</option>
+                        <option value="all">Cash</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="driver-fee" class="form-label">Driver fee</label>
+                    <input type="text" name="driver-fee" class="form-control"
+                           id="driver-fee" readonly>
+                </div>
+                <div>
+                    <label for="car-fee" class="form-label">Car fee</label>
+                    <input type="text" name="car-fee" class="form-control"
+                           id="car-fee" readonly>
+                </div>
+                <div>
+                    <label for="loss-damage" class="form-label">Loss damage</label>
+                    <input type="text" name="loss-damage" class="form-control"
+                           id="loss-damage">
+                </div>
+
+                <div>
+                    <label for="total" class="form-label">Total</label>
+                    <input type="text" name="total" class="form-control"
+                           id="total" readonly>
+                </div>
+
+                <div>
+                    <button type="button" id="pay-btn">
+                        Pay
+                    </button>
+                </div>
+            </form>
+        </section>
+        <section class="flex f-col">
+            <h4>Pending Payments</h4>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Request ID</th>
+                    <th scope="col">NIC</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Registration number</th>
+                    <th scope="col">Pick up date</th>
+                    <th scope="col">Return up date</th>
+                    <th scope="col">Options</th>
+                </tr>
+                </thead>
+                <tbody id="payment-table-body">
+                <tr>
+                    <td>1111</td>
+                    <td>1111111111</td>
+                    <td>1111111111</td>
+                    <td>1111111111</td>
+                    <td>2023/12/12</td>
+                    <td>2023/12/13</td>
+                    <td>
+                        <button type="button" class="btn btn-danger border-0" style="background-color: #0090ff;"
+                                data-bs-toggle="modal"
+                                data-bs-target="#payment-details">
+                            <i class="fa-solid fa-eye"></i></button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
     </section><!--payment section-->
 </main>
 
 <script src="../assets/js/jquery-3.7.0.min.js"></script>
 <script src="../assets/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
-<script src="../controller/util.js"></script>
-<script src="../controller/driverController.js"></script>
-<script src="../controller/carController.js"></script>
+<!--<script src="../controller/util.js"></script>-->
+<!--<script src="../controller/driverController.js"></script>-->
+<!--<script src="../controller/carController.js"></script>-->
 <script src="../controller/adminController.js"></script>
 
 <script>

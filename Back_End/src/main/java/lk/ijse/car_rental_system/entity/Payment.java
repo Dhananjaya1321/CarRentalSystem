@@ -27,6 +27,6 @@ public class Payment {
     private String payment_type;
     private String status;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Request request;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    private Request request;
 }

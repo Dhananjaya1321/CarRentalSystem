@@ -21,6 +21,9 @@ public class Request {
     @ManyToOne
     private Rental rental;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     private Car car;
+
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+    private Payment payment;
 }

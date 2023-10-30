@@ -416,6 +416,8 @@ $("#accept-request").click(function () {
     let returntime = $("#return-time-request").val();
     let loc = $("#location-request").val();
 
+    let payment_id = generateNextPaymentID(getLastPaymentID());
+
     let requestData = {
         "request_id": requestid,
         "message": msg,

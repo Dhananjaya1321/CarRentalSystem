@@ -79,7 +79,6 @@ function getLastRentalID() {
     return last_id;
 }
 
-
 function generateNextRequestID(lastRequestID) {
     if (lastRequestID === null) {
         return "REQ-001";

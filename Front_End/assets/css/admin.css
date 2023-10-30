@@ -163,7 +163,7 @@ a {
 #cars-under-maintenance > table ,
 #drivers-details > table ,
 #cars-rental-request>table,
-#payment-section>table{
+#payment-section>section:nth-child(2)>table{
     width: 100%;
     height: max-content;
     border-radius: 15px!important;
