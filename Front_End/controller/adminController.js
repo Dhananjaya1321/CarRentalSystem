@@ -454,6 +454,7 @@ $("#accept-request").click(function () {
                 console.log(rep.data)
                 alert(rep.message);
                 getAllRequests();
+                savePayment(payment_id,requestid);
             },
             error: function (rep) {
 
@@ -469,6 +470,7 @@ $("#accept-request").click(function () {
                 console.log(rep.data)
                 alert(rep.message);
                 getAllRequests();
+                savePayment(payment_id,requestid);
             },
             error: function (rep) {
 
@@ -476,6 +478,22 @@ $("#accept-request").click(function () {
         })
     }
 })
+
+function savePayment(payment_id,request_id) {
+    let data={"payment_id": payment_id,"status":"pending","request_id":request_id}
+    $.ajax({
+        url:base_url+"payment",
+        method:"post",
+        contentType:"application/json",
+        data:JSON.stringify(data),
+        success:function (rep) {
+
+        },
+        error:function (rep) {
+
+        }
+    })
+}
 
 /*search request from requests array*/
 function searchRequest(request_id) {
