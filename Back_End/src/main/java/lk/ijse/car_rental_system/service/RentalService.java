@@ -7,5 +7,7 @@ import java.io.IOException;
 public interface RentalService {
     String getLastRentalID();
 
+    int getTotalBookingCountForTheDay(String date);
+
     void saveRental(RentalDTO dto) throws IOException;
 }

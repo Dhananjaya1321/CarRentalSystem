@@ -15,6 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
@@ -31,6 +33,12 @@ public class RentalServiceImpl implements RentalService {
     @Override
     public String getLastRentalID() {
         return rentalRepo.findLastRentalID();
+    }
+    @Override
+    public int getTotalBookingCountForTheDay(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate = LocalDate.parse(date, formatter);
+        return rentalRepo.getTotalBookingCountForTheDay(localDate);
     }
 
     @Override

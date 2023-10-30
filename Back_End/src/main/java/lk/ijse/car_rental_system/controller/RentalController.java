@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 @RestController
 @CrossOrigin
@@ -22,8 +23,13 @@ public class RentalController {
         rentalService.saveRental(dto);
         return new ResponseUtil("Ok","Successfully Added",dto.getRental_id());
     }
+
     @GetMapping(path = "/last_ID")
     public ResponseUtil getLastRentalID(){
         return new ResponseUtil("Ok","Successfully loaded...!",rentalService.getLastRentalID());
+    }
+    @GetMapping(path = "/count",params = {"date"})
+    public ResponseUtil getTotalBookingCountForTheDay(String date){
+        return new ResponseUtil("Ok","Successfully loaded...!",rentalService.getTotalBookingCountForTheDay(date));
     }
 }

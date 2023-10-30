@@ -1,25 +1,30 @@
 function getRegisteredCustomerCount() {
     $.ajax({
-        url:base_url+"customer/count",
-        method:"get",
+        url: base_url + "customer/count",
+        method: "get",
         async: false,
-        success:function (rep) {
+        success: function (rep) {
             $("#registered-users").text(rep.data);
         }
     })
 }
+
 function getTotalBookingCountForTheDay() {
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let currentDate = year + "-" + month + "-" + day;
+
     $.ajax({
-        url:base_url+"rental/count",
-        method:"get",
+        url: base_url + "rental/count?date=" + currentDate,
+        method: "get",
         async: false,
-        success:function (rep) {
+        success: function (rep) {
             $("#total-bookings-for-day").text(rep.data);
         }
     })
 }
-
-
 
 
 /*add cars*/
