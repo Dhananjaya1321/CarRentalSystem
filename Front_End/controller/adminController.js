@@ -162,7 +162,7 @@ function getAllRequests() {
             console.log(requests)
             for (let i in requests) {
                 let request = requests[i]
-                if (request.status==="pending"){
+                if (request.status === "pending") {
                     let row = `<tr>
                             <td>${request.request_id}</td>
                             <td>${request.nic}</td>
@@ -204,10 +204,10 @@ function loadPendingRequestDataForPopUpForm() {
         getAllDrivers();
         if (r.driver_or_not === "yes") {
             $("#drivers-id-request").empty();
-            let driver=getDriverByDriverId(r.driver_id);
+            let driver = getDriverByDriverId(r.driver_id);
             $("#drivers-id-request").append(`<option selected value=${r.driver_id}>${r.driver_id}</option>`);
             for (let j in drivers) {
-                if (drivers[j].driver_id!==r.driver_id){
+                if (drivers[j].driver_id !== r.driver_id) {
                     let option = `<option value=${drivers[j].driver_id}>${drivers[j].driver_id}</option>`;
                     $("#drivers-id-request").append(option);
                 }
@@ -262,23 +262,23 @@ $("#reject-request").click(function () {
     let msg = $("#message-request").val();
     let request = searchRequest(request_id);
     let registration_number = $("#registration-number-request").val();
-    let data={
-        "request_id":request_id,
-        "message":msg,
-        "status":"reject",
-        "rental_id":request.rental_id,
-        "car": {"registration_number":registration_number}
+    let data = {
+        "request_id": request_id,
+        "message": msg,
+        "status": "reject",
+        "rental_id": request.rental_id,
+        "car": {"registration_number": registration_number}
     }
     $.ajax({
-        url:base_url+"request",
-        method:"put",
+        url: base_url + "request",
+        method: "put",
         contentType: "application/json",
-        data:JSON.stringify(data),
-        success:function (rep) {
+        data: JSON.stringify(data),
+        success: function (rep) {
             alert(rep.message);
             getAllRequests();
         },
-        error:function (rep){
+        error: function (rep) {
 
         }
     })
@@ -286,34 +286,77 @@ $("#reject-request").click(function () {
 
 /*This event was created to accept the rental request*/
 $("#accept-request").click(function () {
-    let request_id = $("#request-id").val();
+    let requestid = $("#request-id").val();
     let msg = $("#message-request").val();
-    let request = searchRequest(request_id);
-    let registration_number = $("#registration-number-request").val();
+    let request = searchRequest(requestid);
+    let registrationnumber = $("#registration-number-request").val();
     let driver_id = $("#drivers-id-request").val();
-    let data={
-        "request_id":request_id,
-        "message":msg,
-        "status":"accept",
-        "rental_id":request.rental_id,
-        "car": {"registration_number":registration_number},
-        "schedule": {"rental_id":request.rental_id,"driver_id":driver_id,"registration_number":registration_number}
+    let driver_or_not = $("#drivers-or-not-request").val();
+    let cusnic = $("#nic-request").val();
+    let pickupdate = $("#pick-up-date-request").val();
+    let pickuptime = $("#pick-up-time-request").val();
+    let returndate = $("#return-date-request").val();
+    let returntime = $("#return-time-request").val();
+    let loc = $("#location-request").val();
+
+    let requestData = {
+        "request_id": requestid,
+        "message": msg,
+        "status": "accept",
+        "rental_id": request.rental_id,
+        "car": {"registration_number": registrationnumber},
     }
-    $.ajax({
-        url:base_url+"request/accept",
-        method:"put",
-        contentType: "application/json",
-        data:JSON.stringify(data),
-        success:function (rep) {
-            alert(rep.message);
-            getAllRequests();
-        },
-        error:function (rep){
 
+    if (driver_or_not === "yes") {
+        let data = {
+            "rental_id": request.rental_id,
+            "driver_or_not": driver_or_not,
+            "location": loc,
+            "pick_up_date": new Date(pickupdate),
+            "pick_up_time": pickuptime,
+            "return_date": new Date(returndate),
+            "return_time": returntime,
+            "customer": {"nic": cusnic},
+            "rentalCarDetails": [{"rental_id": request.rental_id, "registration_number": registrationnumber}],
+            "request": [requestData],
+            "schedule": [{
+                "rental_id": request.rental_id,
+                "driver_id": driver_id,
+                "registration_number": registrationnumber
+            }]
         }
-    })
-})
 
+        $.ajax({
+            url: base_url + "request/accept?loss_damage_back_slip=" + request.loss_damage_back_slip,
+            method: "put",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (rep) {
+                console.log(rep.data)
+                alert(rep.message);
+                getAllRequests();
+            },
+            error: function (rep) {
+
+            }
+        })
+    } else {
+        $.ajax({
+            url: base_url + "request/accept",
+            method: "put",
+            contentType: "application/json",
+            data: JSON.stringify(requestData),
+            success: function (rep) {
+                console.log(rep.data)
+                alert(rep.message);
+                getAllRequests();
+            },
+            error: function (rep) {
+
+            }
+        })
+    }
+})
 
 
 /*search request from requests array*/
