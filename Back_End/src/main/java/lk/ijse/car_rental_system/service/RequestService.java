@@ -16,5 +16,7 @@ public interface RequestService {
 
     void acceptRequestAndChangeDriver(RentalDTO dto, String loss_damage_back_slip);
 
+    int getPendingRequestCount();
+
     List<CustomDTO> getAllPendingRequests();
 }

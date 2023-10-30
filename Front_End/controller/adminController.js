@@ -60,7 +60,7 @@ function getUnderMaintenanceCarCount() {
 }
 function getPendingRequestCount() {
     $.ajax({
-        url: base_url + "request/pending",
+        url: base_url + "request/pending/count",
         method: "get",
         async: false,
         success: function (rep) {

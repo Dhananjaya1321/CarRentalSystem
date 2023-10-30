@@ -26,4 +26,7 @@ public interface RequestRepo extends JpaRepository<Request,String> {
     @Query(value = "update request set message=?2,status=?3 where request_id=?1",nativeQuery = true)
     int updateRequest(String request_id,String message,String status);
 
+    @Query(value = "select count(request_id) from request where status='pending'",nativeQuery = true)
+    int getPendingRequestCount();
+
 }

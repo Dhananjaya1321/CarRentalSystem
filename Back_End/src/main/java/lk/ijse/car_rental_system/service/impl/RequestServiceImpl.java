@@ -87,6 +87,10 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
+    public int getPendingRequestCount() {
+       return requestRepo.getPendingRequestCount();
+    }
+    @Override
     public List<CustomDTO> getAllPendingRequests() {
         ArrayList<CustomEntity> allPendingRequests = requestRepo.findAllPendingRequests();
         for (CustomEntity c : allPendingRequests) {
