@@ -488,7 +488,7 @@ function searchRequest(request_id) {
 function getLastPaymentID() {
     let lastPaymentId=null;
     $.ajax({
-        url:base_url+"payment",
+        url:base_url+"payment/last_id",
         method:"get",
         async:false,
         success:function (rep) {
