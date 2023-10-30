@@ -1,3 +1,14 @@
+$(document).ready(function () {
+    getRegisteredCustomerCount();
+    getTotalBookingCountForTheDay();
+    getAvailableCarCount();
+    getNeedMaintenanceCarCount();
+    getUnderMaintenanceCarCount();
+    getPendingRequestCount();
+    getAcceptedRequestRequestCountForTheDay();
+    getAvailableDriversCount();
+    getOccupiedDriversCount();
+});
 let date = new Date();
 let year = date.getFullYear();
 let month = date.getMonth() + 1;
@@ -54,7 +65,7 @@ function getUnderMaintenanceCarCount() {
         method: "get",
         async: false,
         success: function (rep) {
-            $("#need-maintenance").text(rep.data);
+            $("#under-maintenance").text(rep.data);
         }
     })
 }
