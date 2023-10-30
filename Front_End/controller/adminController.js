@@ -8,6 +8,16 @@ function getRegisteredCustomerCount() {
         }
     })
 }
+function getTotalBookingCountForTheDay() {
+    $.ajax({
+        url:base_url+"rental/count",
+        method:"get",
+        async: false,
+        success:function (rep) {
+            $("#total-bookings-for-day").text(rep.data);
+        }
+    })
+}
 
 
 
