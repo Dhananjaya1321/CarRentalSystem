@@ -64,6 +64,10 @@ public class DriverServiceImpl implements DriverService {
     public DriverDTO getDriverByDriverId(String driver_id) {
         return modelMapper.map(driverRepo.findById(driver_id), DriverDTO.class);
     }
+    @Override
+    public int getAvailableDriversCount() {
+        return driverRepo.getAvailableDriversCount();
+    }
 
     @Override
     public UserDTO findDriverByUsername(String username) {

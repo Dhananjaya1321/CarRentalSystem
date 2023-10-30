@@ -19,5 +19,7 @@ public interface DriverService {
 
     DriverDTO getDriverByDriverId(String driver_id);
 
+    int getAvailableDriversCount();
+
     UserDTO findDriverByUsername(String username);
 }
