@@ -39,7 +39,7 @@ function getTotalBookingCountForTheDay() {
 
 function getAvailableCarCount() {
     $.ajax({
-        url: base_url + "car/count?status="+"available",
+        url: base_url + "car/count?status=" + "available",
         method: "get",
         async: false,
         success: function (rep) {
@@ -61,7 +61,7 @@ function getNeedMaintenanceCarCount() {
 
 function getUnderMaintenanceCarCount() {
     $.ajax({
-        url: base_url + "car/under/maintain/count?status="+"under-maintenance",
+        url: base_url + "car/under/maintain/count?status=" + "under-maintenance",
         method: "get",
         async: false,
         success: function (rep) {
@@ -105,7 +105,7 @@ function getAvailableDriversCount() {
 
 function getOccupiedDriversCount() {
     $.ajax({
-        url: base_url + "driver/occupied/count?date="+currentDate,
+        url: base_url + "driver/occupied/count?date=" + currentDate,
         method: "get",
         async: false,
         success: function (rep) {
@@ -486,16 +486,24 @@ function searchRequest(request_id) {
 }
 
 function getLastPaymentID() {
-    let lastPaymentId=null;
+    let lastPaymentId = null;
     $.ajax({
-        url:base_url+"payment/last_id",
-        method:"get",
-        async:false,
-        success:function (rep) {
-            lastPaymentId=rep.data;
+        url: base_url + "payment/last_id",
+        method: "get",
+        async: false,
+        success: function (rep) {
+            lastPaymentId = rep.data;
         }
     });
     return lastPaymentId;
+}
+
+function generateNextPaymentID(lastPaymentId) {
+    if (lastPaymentId === null) {
+        return "PAY-001";
+    } else {
+        return "PAY-00" + (Number(lastPaymentId.slice(6)) + 1);
+    }
 }
 
 $("#home-btn").css("backgroundColor", "white");
