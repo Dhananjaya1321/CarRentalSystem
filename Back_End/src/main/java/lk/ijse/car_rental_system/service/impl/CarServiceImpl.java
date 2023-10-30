@@ -110,6 +110,10 @@ public class CarServiceImpl implements CarService {
     public int getAvailableCarCount(String status) {
         return carRepo.getAvailableCarCount(status);
     }
+  @Override
+    public int getUnderMaintenanceCarCount(String status) {
+        return carRepo.getUnderMaintenanceCarCount(status);
+    }
 
     @Override
     public int getNeedMaintenanceCarCount() {
