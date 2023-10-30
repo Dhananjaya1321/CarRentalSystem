@@ -23,7 +23,4 @@ public class Request {
 
     @OneToOne(cascade = CascadeType.PERSIST)
     private Car car;
-
-    @OneToMany(mappedBy = "request",cascade = {CascadeType.ALL})
-    private List<Payment> payments;
 }

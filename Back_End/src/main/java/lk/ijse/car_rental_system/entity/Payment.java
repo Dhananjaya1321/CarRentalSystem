@@ -5,9 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -27,6 +25,8 @@ public class Payment {
     private LocalDate payment_date;
     private LocalTime payment_time;
     private String payment_type;
-    @ManyToOne
+    private String status;
+
+    @OneToOne(cascade = CascadeType.ALL)
     private Request request;
 }

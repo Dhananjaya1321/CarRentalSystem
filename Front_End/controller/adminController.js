@@ -125,7 +125,7 @@ $("#car-add-btn").click(function () {
         contentType: false,
         processData: false,
         success: function (rep) {
-            alert("Car", rep.message);
+            alert(rep.message);
             getAllCars()
             loadCarsForTable();
         },
@@ -475,7 +475,6 @@ $("#accept-request").click(function () {
     }
 })
 
-
 /*search request from requests array*/
 function searchRequest(request_id) {
     for (let i in requests) {
@@ -484,6 +483,19 @@ function searchRequest(request_id) {
             return requests[i];
         }
     }
+}
+
+function getLastPaymentID() {
+    let lastPaymentId=null;
+    $.ajax({
+        url:base_url+"payment",
+        method:"get",
+        async:false,
+        success:function (rep) {
+            lastPaymentId=rep.data;
+        }
+    });
+    return lastPaymentId;
 }
 
 $("#home-btn").css("backgroundColor", "white");
