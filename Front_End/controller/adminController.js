@@ -1,6 +1,6 @@
 function getRegisteredCustomerCount() {
     $.ajax({
-        url:base_url+"customer",
+        url:base_url+"customer/count",
         method:"get",
         async: false,
         success:function (rep) {

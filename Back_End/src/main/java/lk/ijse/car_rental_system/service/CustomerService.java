@@ -8,4 +8,6 @@ public interface CustomerService {
     void saveCustomer(CustomerDTO dto) throws IOException;
 
     String getCustomerNIC(String username);
+
+    int getRegisteredCustomerCount();
 }

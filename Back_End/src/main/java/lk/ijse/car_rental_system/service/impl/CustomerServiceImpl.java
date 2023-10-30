@@ -60,4 +60,9 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepo.findCustomerNIC(username);
     }
 
+    @Override
+    public int getRegisteredCustomerCount(){
+        return customerRepo.getCustomerCount();
+    }
+
 }

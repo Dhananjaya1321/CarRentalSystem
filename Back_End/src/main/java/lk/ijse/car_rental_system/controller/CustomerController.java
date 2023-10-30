@@ -33,4 +33,8 @@ public class CustomerController {
     public ResponseUtil getCustomerNIC(String username){
         return new ResponseUtil("Ok","Successfully loaded...!",customerService.getCustomerNIC(username));
     }
+    @GetMapping(path = "/count")
+    public ResponseUtil getRegisteredCustomerCount(){
+        return new ResponseUtil("Ok","Successfully loaded...!",customerService.getRegisteredCustomerCount());
+    }
 }
