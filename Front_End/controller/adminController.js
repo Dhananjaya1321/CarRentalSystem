@@ -39,7 +39,7 @@ function getAvailableCarCount() {
 
 function getNeedMaintenanceCarCount() {
     $.ajax({
-        url: base_url + "car/count?status="+"needMaintain",
+        url: base_url + "car/need/maintain/count",
         method: "get",
         async: false,
         success: function (rep) {

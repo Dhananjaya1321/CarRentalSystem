@@ -112,6 +112,11 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public int getNeedMaintenanceCarCount() {
+        return carRepo.getNeedMaintenanceCarCount();
+    }
+
+    @Override
     public List<CarDTO> searchCarByRegistrationNumber(String registration_number) {
         Car car = carRepo.findById(registration_number).get();
         ArrayList<Car> cars = new ArrayList<>();

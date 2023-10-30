@@ -22,5 +22,7 @@ public interface CarService{
 
     int getAvailableCarCount(String Status);
 
+    int getNeedMaintenanceCarCount();
+
     List<CarDTO> searchCarByRegistrationNumber(String registration_number);
 }

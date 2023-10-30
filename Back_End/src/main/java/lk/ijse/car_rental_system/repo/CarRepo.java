@@ -25,4 +25,7 @@ public interface CarRepo extends JpaRepository<Car, String> {
     @Query(value = "SELECT COUNT(registration_number) FROM car where status=?1", nativeQuery = true)
     int getAvailableCarCount(String status);
 
+    @Query(value = "SELECT COUNT(registration_number) FROM car where mileage_after_maintenance>=5000", nativeQuery = true)
+    int getNeedMaintenanceCarCount();
+
 }
