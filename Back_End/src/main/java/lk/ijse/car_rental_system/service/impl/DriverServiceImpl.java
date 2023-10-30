@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -64,9 +66,17 @@ public class DriverServiceImpl implements DriverService {
     public DriverDTO getDriverByDriverId(String driver_id) {
         return modelMapper.map(driverRepo.findById(driver_id), DriverDTO.class);
     }
+
     @Override
     public int getAvailableDriversCount() {
         return driverRepo.getAvailableDriversCount();
+    }
+
+    @Override
+    public int getOccupiedDriversCount(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate currentDate = LocalDate.parse(date, formatter);
+        return driverRepo.getOccupiedDriversCount(currentDate);
     }
 
     @Override

@@ -35,9 +35,15 @@ public class DriverController {
     public ResponseUtil getDriverByDriverId(String driver_id) {
         return new ResponseUtil("Ok", "Successfully loaded...!", driverService.getDriverByDriverId(driver_id));
     }
+
     @GetMapping(path = "/available/count")
     public ResponseUtil getAvailableDriversCount() {
         return new ResponseUtil("Ok", "Successfully loaded...!", driverService.getAvailableDriversCount());
+    }
+
+    @GetMapping(path = "/occupied/count",params = {"date"})
+    public ResponseUtil getOccupiedDriversCount(String date) {
+        return new ResponseUtil("Ok", "Successfully loaded...!", driverService.getOccupiedDriversCount(date));
     }
 
     @GetMapping(params = {"nic"})

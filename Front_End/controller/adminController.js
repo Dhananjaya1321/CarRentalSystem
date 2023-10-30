@@ -94,7 +94,7 @@ function getAvailableDriversCount() {
 
 function getOccupiedDriversCount() {
     $.ajax({
-        url: base_url + "driver/occupied/count",
+        url: base_url + "driver/occupied/count?date="+currentDate,
         method: "get",
         async: false,
         success: function (rep) {

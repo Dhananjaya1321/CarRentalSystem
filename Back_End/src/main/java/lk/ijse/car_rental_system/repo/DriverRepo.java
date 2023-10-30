@@ -20,7 +20,14 @@ public interface DriverRepo extends JpaRepository<Driver, String> {
             "FROM Schedule s WHERE s.rental_id = ?1 AND s.registration_number = ?2")
     List<CustomEntity> findDriverFromSchedule(String rental_id, String registration_number);
 
+    @Query(value = "select count(distinct driver.driver_id) from driver join schedule on driver.driver_id = schedule.driver_id" +
+            "join rental  on rental.rental_id = schedule.rental_id where not (rental.pick_up_date>=?1)",nativeQuery = true)
+    int getOccupiedDriversCount(LocalDate date);
+
     @Query(value = "select count (driver_id) from driver",nativeQuery = true)
     int getAvailableDriversCount();
 
 }
+
+
+

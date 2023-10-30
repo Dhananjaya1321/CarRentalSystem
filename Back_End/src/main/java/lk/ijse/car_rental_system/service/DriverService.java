@@ -21,5 +21,7 @@ public interface DriverService {
 
     int getAvailableDriversCount();
 
+    int getOccupiedDriversCount(String date);
+
     UserDTO findDriverByUsername(String username);
 }
