@@ -58,6 +58,11 @@ public class CarController {
         return new ResponseUtil("Ok", "Successfully loaded...!", carService.getCarMonthlyRates());
     }
 
+    @GetMapping(path = "/count",params = {"status"})
+    public ResponseUtil getAvailableCarCount(String status) {
+        return new ResponseUtil("Ok", "Successfully loaded...!", carService.getAvailableCarCount(status));
+    }
+
     @GetMapping(params = {"registration_number"})
     public ResponseUtil searchCarByRegistrationNumber(String registration_number) {
         return new ResponseUtil("Ok", "", carService.searchCarByRegistrationNumber(registration_number));

@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface CarRepo extends JpaRepository<Car, String> {
@@ -20,4 +21,8 @@ public interface CarRepo extends JpaRepository<Car, String> {
 
     @Query(value = "SELECT DISTINCT price_for_month FROM car", nativeQuery = true)
     List<Double> searchCarMonthlyRates();
+
+    @Query(value = "SELECT COUNT(registration_number) FROM car where status=?1", nativeQuery = true)
+    int getAvailableCarCount(String status);
+
 }

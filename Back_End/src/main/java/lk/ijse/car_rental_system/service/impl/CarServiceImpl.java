@@ -13,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -102,6 +104,11 @@ public class CarServiceImpl implements CarService {
     @Override
     public List<Double> getCarMonthlyRates() {
         return carRepo.searchCarMonthlyRates();
+    }
+
+    @Override
+    public int getAvailableCarCount(String status) {
+        return carRepo.getAvailableCarCount(status);
     }
 
     @Override

@@ -20,5 +20,7 @@ public interface CarService{
 
     List<Double> getCarMonthlyRates();
 
+    int getAvailableCarCount(String Status);
+
     List<CarDTO> searchCarByRegistrationNumber(String registration_number);
 }

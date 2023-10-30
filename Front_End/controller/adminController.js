@@ -26,9 +26,9 @@ function getTotalBookingCountForTheDay() {
     })
 }
 
-function getAvailableForTheDay() {
+function getAvailableCarCount() {
     $.ajax({
-        url: base_url + "car/count?date=" + currentDate,
+        url: base_url + "car/count?status="+"available",
         method: "get",
         async: false,
         success: function (rep) {
