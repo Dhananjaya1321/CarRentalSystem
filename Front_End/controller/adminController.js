@@ -48,6 +48,17 @@ function getNeedMaintenanceCarCount() {
     })
 }
 
+function getUnderMaintenanceCarCount() {
+    $.ajax({
+        url: base_url + "car/under/maintain/count?status="+"under-maintenance",
+        method: "get",
+        async: false,
+        success: function (rep) {
+            $("#need-maintenance").text(rep.data);
+        }
+    })
+}
+
 
 /*add cars*/
 $("#car-add-btn").click(function () {
