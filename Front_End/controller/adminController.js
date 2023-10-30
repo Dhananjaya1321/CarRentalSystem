@@ -1,3 +1,9 @@
+let date = new Date();
+let year = date.getFullYear();
+let month = date.getMonth() + 1;
+let day = date.getDate();
+let currentDate = year + "-" + month + "-" + day;
+
 function getRegisteredCustomerCount() {
     $.ajax({
         url: base_url + "customer/count",
@@ -10,18 +16,23 @@ function getRegisteredCustomerCount() {
 }
 
 function getTotalBookingCountForTheDay() {
-    let date = new Date();
-    let year = date.getFullYear();
-    let month = date.getMonth() + 1;
-    let day = date.getDate();
-    let currentDate = year + "-" + month + "-" + day;
-
     $.ajax({
         url: base_url + "rental/count?date=" + currentDate,
         method: "get",
         async: false,
         success: function (rep) {
             $("#total-bookings-for-day").text(rep.data);
+        }
+    })
+}
+
+function getAvailableForTheDay() {
+    $.ajax({
+        url: base_url + "car/count?date=" + currentDate,
+        method: "get",
+        async: false,
+        success: function (rep) {
+            $("#available-cars").text(rep.data);
         }
     })
 }
