@@ -58,6 +58,7 @@ function getUnderMaintenanceCarCount() {
         }
     })
 }
+
 function getPendingRequestCount() {
     $.ajax({
         url: base_url + "request/pending/count",
@@ -65,6 +66,17 @@ function getPendingRequestCount() {
         async: false,
         success: function (rep) {
             $("#reserved-cars").text(rep.data);
+        }
+    })
+}
+
+function getAcceptedRequestRequestCountForTheDay() {
+    $.ajax({
+        url: base_url + "request/accept/count",
+        method: "get",
+        async: false,
+        success: function (rep) {
+            $("#active-bookings-for-day").text(rep.data);
         }
     })
 }
