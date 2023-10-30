@@ -58,6 +58,16 @@ function getUnderMaintenanceCarCount() {
         }
     })
 }
+function getPendingRequestCount() {
+    $.ajax({
+        url: base_url + "request/pending",
+        method: "get",
+        async: false,
+        success: function (rep) {
+            $("#reserved-cars").text(rep.data);
+        }
+    })
+}
 
 
 /*add cars*/
