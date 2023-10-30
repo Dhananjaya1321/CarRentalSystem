@@ -1,3 +1,17 @@
+function getRegisteredCustomerCount() {
+    $.ajax({
+        url:base_url+"customer",
+        method:"get",
+        async: false,
+        success:function (rep) {
+            $("#registered-users").text(rep.data);
+        }
+    })
+}
+
+
+
+
 /*add cars*/
 $("#car-add-btn").click(function () {
     let formData = new FormData($("#cars-add-form")[0]);
