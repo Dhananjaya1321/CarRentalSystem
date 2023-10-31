@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.web.multipart.MultipartFile;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,7 +17,7 @@ public class DriverDTO {
     private String email;
     private String name;
     private String nic;
-    private String profile_photo;
+    private MultipartFile profile_photo;
 
     private UserDTO user;
 }

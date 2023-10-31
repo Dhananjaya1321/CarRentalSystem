@@ -3,6 +3,7 @@ package lk.ijse.car_rental_system.service.impl;
 import lk.ijse.car_rental_system.dto.DriverDTO;
 import lk.ijse.car_rental_system.dto.ScheduleDTO;
 import lk.ijse.car_rental_system.dto.UserDTO;
+import lk.ijse.car_rental_system.entity.Car;
 import lk.ijse.car_rental_system.entity.Driver;
 import lk.ijse.car_rental_system.entity.User;
 import lk.ijse.car_rental_system.repo.DriverRepo;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -72,6 +74,7 @@ public class DriverServiceImpl implements DriverService {
         return driverRepo.getAvailableDriversCount();
     }
 
+
     @Override
     public int getOccupiedDriversCount(String date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -85,5 +88,9 @@ public class DriverServiceImpl implements DriverService {
             throw new RuntimeException(username + " username is not available");
         }
         return modelMapper.map(userRepo.findById(username), UserDTO.class);
+    }
+    @Override
+    public String getDriverId(String username) {
+        return driverRepo.getDriverId(username);
     }
 }

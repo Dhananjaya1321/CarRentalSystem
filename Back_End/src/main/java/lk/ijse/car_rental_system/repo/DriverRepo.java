@@ -26,6 +26,9 @@ public interface DriverRepo extends JpaRepository<Driver, String> {
     @Query(value = "select count(driver_id) from driver", nativeQuery = true)
     int getAvailableDriversCount();
 
+    @Query(value = "select driver_id from driver join user on user.username = driver.user_username where user.username=?1", nativeQuery = true)
+    String getDriverId(String username);
+
 }
 
 

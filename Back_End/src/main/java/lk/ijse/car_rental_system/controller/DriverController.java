@@ -48,6 +48,10 @@ public class DriverController {
 
     @GetMapping(params = {"nic"})
     public ResponseUtil findDriver(String nic) {
-        return new ResponseUtil("Ok", "", driverService.findDriverByNic(nic));
+        return new ResponseUtil("Ok", "Successfully loaded...!", driverService.findDriverByNic(nic));
+    }
+    @GetMapping(params = {"username"})
+    public ResponseUtil getDriverId(String username) {
+        return new ResponseUtil("Ok", "Successfully loaded...!", driverService.getDriverId(username));
     }
 }

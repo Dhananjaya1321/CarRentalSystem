@@ -51,6 +51,21 @@ function generateDriverID() {
 
 }
 
+function getDriverID(username) {
+    $.ajax({
+        url: base_url + "driver?username="+username,
+        method: "get",
+        async: false,
+        success: function (rep) {
+           console.log(rep.data)
+        },
+    });
+}
+$("#driver-details-update-btn").click(function () {
+
+})
+
+
 /*
 function searchDriverNIC(driverNIC) {
     let resp = false;

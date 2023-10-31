@@ -476,7 +476,7 @@
                 <button id="cart-btn">Cart</button>
             </a>
             <a class="flex" href="#">
-                <button id="profile-btn">Profile</button>
+                <button id="customer-profile-btn">Profile</button>
             </a>
             <a class="flex" href="#">
                 <button id="logout-btn">LogOut</button>
@@ -618,7 +618,7 @@
 
     $("#home-btn").click(function () {
         $("#header").css("display", "flex");
-        $("#footer").css("display", "flex");
+        $("#footer").css("display", "block");
         $("#create-account-main").css("display", "none");
         $("#login-main").css("display", "none");
         $("#item-main").css("display", "none");
@@ -629,7 +629,7 @@
         $("#cart").css("display", "flex");
         $("#profile-section").css("display", "none");
     })
-    $("#profile-btn").click(function () {
+    $("#customer-profile-btn").click(function () {
         $("#cart").css("display", "none");
         $("#profile-section").css("display", "flex");
     })
@@ -637,7 +637,7 @@
 
     $("#logout-btn").click(function () {
         $("#header").css("display", "flex");
-        $("#footer").css("display", "flex");
+        $("#footer").css("display", "block");
         $("#create-account-main").css("display", "none");
         $("#login-main").css("display", "none");
         $("#item-main").css("display", "none");

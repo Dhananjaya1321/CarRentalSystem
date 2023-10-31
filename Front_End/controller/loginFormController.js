@@ -24,8 +24,9 @@ $("#login-btn").click(function () {
                         passwordForContinue = password;
                         manageSingInAndSignUpButton();
                         $("#header").css("display", "flex");
-                        $("#footer").css("display", "flex");
+                        $("#footer").css("display", "block");
                         $("#login-main").css("display", "none");
+                        $("#customer-main").css("display", "none");
                         $("#create-account-main").css("display", "none");
                         $("#item-main").css("display", "none");
                         $("#home-main").css("display", "block");
@@ -102,6 +103,7 @@ $("#create-btn").click(function () {
     $("#footer").css("display", "none");
     $("#create-account-main").css("display", "flex");
     $("#login-main").css("display", "none");
+    $("#customer-main").css("display", "none");
     $("#item-main").css("display", "none");
     $("#home-main").css("display", "none");
 });

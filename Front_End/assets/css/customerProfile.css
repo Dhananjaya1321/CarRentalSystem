@@ -33,8 +33,9 @@
     width: 96%;
     height: 40px;
     border: none;
+    display: block!important;
     border-radius: 10px;
-    /*background-color: #ffffff;*/
+    background-color: #ffffff;
     box-shadow: -5px 5px 14px -14px black;
 }
 #cart{
