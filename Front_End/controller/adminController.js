@@ -488,12 +488,14 @@ function searchRequest(request_id) {
     }
 }
 
+let pendingPayments=[];
 function getAllPendingPaymentRequest() {
     $.ajax({
         url:base_url+"request",
         method:"get",
         async:false,
         success:function (rep) {
+            pendingPayments=rep.data;
             $("#payment-request-id").empty();
             for (let i in rep.data) {
                 let id=rep.data[i].rental_id;
@@ -502,6 +504,19 @@ function getAllPendingPaymentRequest() {
             }
         }
     })
+}
+
+$("#payment-request-id").click(function () {
+    let rental_id=$("#payment-request-id").val();
+
+});
+
+function searchPendingPayment(rental_id) {
+    for (let i in pendingPayments) {
+        if (pendingPayments[i].rental_id===rental_id){
+            return pendingPayments[i];
+        }
+    }
 }
 
 $("#home-btn").css("backgroundColor", "white");
