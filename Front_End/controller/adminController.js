@@ -567,6 +567,7 @@ $("#loss-damage").on("input", function () {
     previousValueLossDamage=currentValueLossDamage;
 });
 
+/*payment update function*/
 $("#pay-btn").click(function () {
 let thisRentalMiles=(Number($("#number-of-days").val())*pendingPaymentsCar.free_mileage_for_day)+Number($("#extra-mileage").val());
 
