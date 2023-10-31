@@ -490,6 +490,7 @@ function searchRequest(request_id) {
 
 let pendingPayments = [];
 let pendingPaymentsCar;
+let pendingPaymentID;
 
 function getAllPendingPaymentRequest() {
     $.ajax({
@@ -529,6 +530,7 @@ $("#payment-request-id").click(function () {
 function searchPendingPayment(rental_id) {
     for (let i in pendingPayments) {
         if (pendingPayments[i].rental_id === rental_id) {
+            pendingPaymentID=pendingPayments[i].payment_id;
             return pendingPayments[i];
         }
     }
@@ -562,6 +564,33 @@ $("#loss-damage").on("input", function () {
     $("#total").val((Number(currentValueLossDamage)-Number(previousValueLossDamage))+Number($("#total").val()));
     previousValueLossDamage=currentValueLossDamage;
 });
+
+$("#pay-btn").click(function () {
+let thisRentalMiles=(Number($("#number-of-days").val())*pendingPaymentsCar.free_mileage_for_day)+Number($("#extra-mileage").val());
+
+    let data={
+        "payment_id":pendingPaymentID,
+        "car_fee": $("#car-fee").val(),
+        "days": $("#number-of-days").val(),
+        "driver_fee": $("#driver-fee").val(),
+        "loss_damage": $("#loss-damage").val(),
+        "mileage": $("#extra-mileage").val(),
+        "payment_date": $('#date-of-payment').val(),
+        "payment_time": $('#time-of-payment').val(),
+        "payment_type": $('#payment-method').val(),
+        "status": "paid",
+        "thisRentalMiles":thisRentalMiles,
+    }
+    $.ajax({
+        url: base_url + "payment",
+        method: "put",
+        contentType:"application/json",
+        data:JSON.stringify(data),
+        success: function (rep) {
+            alert(rep.message);
+        }
+    })
+})
 
 
 $("#home-btn").css("backgroundColor", "white");
