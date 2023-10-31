@@ -61,7 +61,7 @@ function getDriverID() {
         async: false,
         success: function (rep) {
             driverID = rep.data;
-            let driver=searchDriverDriverID(driverID);
+            let driver = searchDriverDriverID(driverID);
             $("#driver-profile-name").text(driver.name);
             $("#driver-profile-nic>span").text(driver.nic);
             $("#driver-profile-email>span").text(driver.email);
@@ -72,8 +72,38 @@ function getDriverID() {
     });
 }
 
+$("#edit>button").click(function () {
+    $("#driver-nic").val($("#driver-profile-nic>span").text());
+    $("#driver-contact").val($("#driver-profile-contact>span").text());
+    $("#driver-name").val($("#driver-profile-name").text());
+    $("#driver-address").val($("#driver-profile-address>span").text());
+    $("#driver-email").val($("#driver-profile-email>span").text());
+    $("#driver-username").val(usernameForContinue);
+    $("#driver-password").val(passwordForContinue);
+});
 $("#driver-details-update-btn").click(function () {
+    let data = {
+        "driver_id": driverID,
+        "address": $("#driver-address").val(),
+        "contact": $("#driver-contact").val(),
+        "email": $("#driver-email").val(),
+        "name": $("#driver-name").val(),
+        "nic": $("#driver-nic").val(),
+        "user": {"username": $("#driver-username").val(), "password": $("#driver-password").val(), "role": "driver"},
+    }
 
+    $.ajax({
+        url: base_url + "driver",
+        method: "put",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function (rep) {
+            alert(rep.message)
+        },
+        error: function (rep) {
+            alert(rep.data)
+        }
+    })
 })
 
 
@@ -154,7 +184,7 @@ function getDriverByDriverId(driver_id) {
         success: function (rep) {
             driver = rep.data;
         },
-    })
+    });
     return driver;
 }
 

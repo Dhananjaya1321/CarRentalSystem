@@ -4,12 +4,15 @@ import lk.ijse.car_rental_system.dto.DriverDTO;
 import lk.ijse.car_rental_system.dto.ScheduleDTO;
 import lk.ijse.car_rental_system.dto.UserDTO;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface DriverService {
     List<DriverDTO> getAllDrivers();
 
     void saveDriver(DriverDTO dto);
+
+    void updateDriver(DriverDTO dto);
 
     void deleteDriver(String driver_id);
 

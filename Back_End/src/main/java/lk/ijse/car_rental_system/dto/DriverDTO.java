@@ -17,7 +17,6 @@ public class DriverDTO {
     private String email;
     private String name;
     private String nic;
-    private MultipartFile profile_photo;
 
     private UserDTO user;
 }

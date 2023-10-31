@@ -14,8 +14,11 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -44,6 +47,10 @@ public class DriverServiceImpl implements DriverService {
             throw new RuntimeException(dto.getDriver_id() + " Driver is already available");
         }
         driverRepo.save(modelMapper.map(dto, Driver.class));
+    }
+    @Override
+    public void updateDriver(DriverDTO dto){
+       driverRepo.save(modelMapper.map(dto,Driver.class));
     }
 
     @Override

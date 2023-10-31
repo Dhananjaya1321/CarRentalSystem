@@ -5,6 +5,9 @@ import lk.ijse.car_rental_system.service.DriverService;
 import lk.ijse.car_rental_system.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @RestController
 @CrossOrigin
@@ -18,6 +21,13 @@ public class DriverController {
         System.out.println(dto.toString());
         driverService.saveDriver(dto);
         return new ResponseUtil("Ok", "Successfully added...!", dto);
+    }
+
+    @PutMapping
+    public ResponseUtil updateDriver(@RequestBody DriverDTO dto){
+        System.out.println("\n\n"+dto.toString());
+        driverService.updateDriver(dto);
+        return new ResponseUtil("Ok", "Successfully updated...!", dto.getDriver_id());
     }
 
     @DeleteMapping(params = {"driver_id"})
@@ -41,7 +51,7 @@ public class DriverController {
         return new ResponseUtil("Ok", "Successfully loaded...!", driverService.getAvailableDriversCount());
     }
 
-    @GetMapping(path = "/occupied/count",params = {"date"})
+    @GetMapping(path = "/occupied/count", params = {"date"})
     public ResponseUtil getOccupiedDriversCount(String date) {
         return new ResponseUtil("Ok", "Successfully loaded...!", driverService.getOccupiedDriversCount(date));
     }
@@ -50,6 +60,7 @@ public class DriverController {
     public ResponseUtil findDriver(String nic) {
         return new ResponseUtil("Ok", "Successfully loaded...!", driverService.findDriverByNic(nic));
     }
+
     @GetMapping(params = {"username"})
     public ResponseUtil getDriverId(String username) {
         return new ResponseUtil("Ok", "Successfully loaded...!", driverService.getDriverId(username));

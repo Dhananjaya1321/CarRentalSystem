@@ -644,7 +644,7 @@
                 <button><i class="fa-solid fa-pen"></i></button>
             </div>
         </div><!--details-->
-        <form class="flex f-col f-wrap">
+        <form id="driver-details-form" class="flex f-col f-wrap">
             <div class="flex f-col f-wrap">
                 <div class="flex f-row f-wrap">
                     <div class="mb-3">
@@ -675,19 +675,13 @@
                 <div class="flex f-row f-wrap">
                     <div class="mb-3">
                         <label for="driver-username" class="form-label">Username</label>
-                        <input name="username" type="text" id="driver-username" class="form-control" placeholder="Ex:- Kamal123">
+                        <input readonly name="username" type="text" id="driver-username" class="form-control" placeholder="Ex:- Kamal123">
                     </div><!--username-->
                     <div class="mb-3">
                         <label for="driver-password" class="form-label">Password</label>
                         <input name="password" type="password" id="driver-password" class="form-control" placeholder="password">
                     </div><!--driver password-->
                 </div>
-            </div>
-            <div class="flex f-col f-wrap">
-                <div class="mb-3">
-                    <label for="driver-img" class="form-label">Profile Photo</label>
-                    <input type="file" id="driver-img" class="form-control">
-                </div><!--driver photo-->
             </div>
             <div class="flex f-col f-wrap">
                 <div class="flex f-col f-wrap">

@@ -23,7 +23,7 @@ public class Driver {
     private String email;
     private String name;
     private String nic;
-    private String profile_photo;
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
+
 }
