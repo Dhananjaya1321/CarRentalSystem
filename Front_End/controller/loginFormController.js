@@ -18,7 +18,16 @@ $("#login-btn").click(function () {
                         usernameForContinue = username;
                         passwordForContinue = password;
                         manageSingInAndSignUpButton();
-                        window.location.href = "../pages/driver.html";
+                        // window.location.href = "../pages/driver.html";
+                        $("#header").css("display", "none");
+                        $("#footer").css("display", "none");
+                        $("#login-main").css("display", "none");
+                        $("#customer-main").css("display", "none");
+                        $("#create-account-main").css("display", "none");
+                        $("#item-main").css("display", "none");
+                        $("#home-main").css("display", "none");
+                        $("#driver-main").css("display", "block");
+                        $("#profile").css("display", "none");
                     } else {
                         usernameForContinue = username;
                         passwordForContinue = password;
@@ -30,6 +39,7 @@ $("#login-btn").click(function () {
                         $("#create-account-main").css("display", "none");
                         $("#item-main").css("display", "none");
                         $("#home-main").css("display", "block");
+                        $("#driver-main").css("display", "none");
                     }
                 } else {
                     /*incorrect password*/

@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="assets/css/contact.css">
     <link rel="stylesheet" href="assets/css/login.css">
     <link rel="stylesheet" href="assets/css/createAccount.css">
+    <link rel="stylesheet" href="assets/css/driver.css">
 
     <style>
 
@@ -509,6 +510,196 @@
     </section>
     <section id="profile-section"></section>
 </main>
+<main id="driver-main">
+    <section id="driver-nav-bar" class="flex f-row">
+        <div class="flex f-col">
+            <a class="flex" href="#">
+                <button id="driver-home-btn">Home</button>
+            </a>
+            <a class="flex" href="#">
+                <button id="schedule-btn">Schedule</button>
+            </a>
+            <a class="flex" href="#">
+                <button id="driver-profile-btn">Profile</button>
+            </a>
+            <a class="flex" href="#">
+                <button id="driver-logout-btn">LogOut</button>
+            </a>
+        </div>
+    </section><!--navigation bar-->
+    <section id="schedule" class="flex f-col">
+        <h4>Drivers Details</h4>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Rental ID</th>
+                <th scope="col">Registration number</th>
+                <th scope="col">Pick up date</th>
+                <th scope="col">Pick up time</th>
+                <th scope="col">Return date</th>
+                <th scope="col">Return time</th>
+                <th scope="col">Location</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>111</td>
+                <td>001</td>
+                <td>2023/10/13</td>
+                <td>12:00</td>
+                <td>2023/10/14</td>
+                <td>12:00</td>
+                <td>Galle</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>001</td>
+                <td>2023/10/13</td>
+                <td>12:00</td>
+                <td>2023/10/14</td>
+                <td>12:00</td>
+                <td>Galle</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>001</td>
+                <td>2023/10/13</td>
+                <td>12:00</td>
+                <td>2023/10/14</td>
+                <td>12:00</td>
+                <td>Galle</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>001</td>
+                <td>2023/10/13</td>
+                <td>12:00</td>
+                <td>2023/10/14</td>
+                <td>12:00</td>
+                <td>Galle</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>001</td>
+                <td>2023/10/13</td>
+                <td>12:00</td>
+                <td>2023/10/14</td>
+                <td>12:00</td>
+                <td>Galle</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>001</td>
+                <td>2023/10/13</td>
+                <td>12:00</td>
+                <td>2023/10/14</td>
+                <td>12:00</td>
+                <td>Galle</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>001</td>
+                <td>2023/10/13</td>
+                <td>12:00</td>
+                <td>2023/10/14</td>
+                <td>12:00</td>
+                <td>Galle</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>001</td>
+                <td>2023/10/13</td>
+                <td>12:00</td>
+                <td>2023/10/14</td>
+                <td>12:00</td>
+                <td>Galle</td>
+            </tr>
+            <tr>
+                <td>111</td>
+                <td>001</td>
+                <td>2023/10/13</td>
+                <td>12:00</td>
+                <td>2023/10/14</td>
+                <td>12:00</td>
+                <td>Galle</td>
+            </tr>
+            </tbody>
+        </table>
+    </section><!--schedule section-->
+    <section id="profile" class="flex f-col">
+        <div class="flex f-row">
+            <div id="profile-photo"></div><!--profile photo-->
+            <div class="flex f-row">
+                <div id="driver-details">
+                    <h1 id="name">Driver Name Here</h1>
+                    <div class="flex f-col f-wrap">
+                        <h5 id="driver-profile-nic">NIC : 000000000000</h5>
+                        <h5 id="driver-profile-email">Email : driver@gmail.com</h5>
+                        <h5 id="driver-profile-contact">Contact : 075 000 0000</h5>
+                        <h5 id="driver-profile-address">Address : Galle</h5>
+                    </div>
+                </div>
+            </div><!--profile details-->
+            <div id="edit" class="flex">
+                <button><i class="fa-solid fa-pen"></i></button>
+            </div>
+        </div><!--details-->
+        <form class="flex f-col f-wrap">
+            <div class="flex f-col f-wrap">
+                <div class="flex f-row f-wrap">
+                    <div class="mb-3">
+                        <label for="driver-nic" class="form-label">NIC</label>
+                        <input name="nic" type="text" id="driver-nic" class="form-control" placeholder="Ex:- 0000000000">
+                    </div><!--driver nic-->
+                    <div class="mb-3">
+                        <label for="driver-contact" class="form-label">Contact</label>
+                        <input name="contact" type="text" id="driver-contact" class="form-control" placeholder="Ex:- 076 000 0000">
+                    </div><!--driver Contact-->
+                    <div class="mb-3">
+                        <label for="driver-name" class="form-label">Name</label>
+                        <input name="name" type="text" id="driver-name" class="form-control" placeholder="your name">
+                    </div><!--driver Name-->
+                </div>
+                <div class="flex f-row f-wrap">
+                    <div class="mb-3">
+                        <label for="driver-address" class="form-label">Address</label>
+                        <input name="address" type="text" id="driver-address" class="form-control" placeholder="Ex:- Galle">
+                    </div><!--driver Address-->
+                    <div class="mb-3">
+                        <label for="driver-email" class="form-label">Email</label>
+                        <input name="email" type="email" id="driver-email" class="form-control" placeholder="Ex:- driver@gmail.com">
+                    </div><!--email-->
+                </div>
+            </div>
+            <div class="flex f-col f-wrap">
+                <div class="flex f-row f-wrap">
+                    <div class="mb-3">
+                        <label for="driver-username" class="form-label">Username</label>
+                        <input name="username" type="text" id="driver-username" class="form-control" placeholder="Ex:- Kamal123">
+                    </div><!--username-->
+                    <div class="mb-3">
+                        <label for="driver-password" class="form-label">Password</label>
+                        <input name="password" type="password" id="driver-password" class="form-control" placeholder="password">
+                    </div><!--driver password-->
+                </div>
+            </div>
+            <div class="flex f-col f-wrap">
+                <div class="mb-3">
+                    <label for="driver-img" class="form-label">Profile Photo</label>
+                    <input type="file" id="driver-img" class="form-control">
+                </div><!--driver photo-->
+            </div>
+            <div class="flex f-col f-wrap">
+                <div class="flex f-col f-wrap">
+                    <button type="button" id="driver-details-update-btn">Update</button>
+                </div>
+            </div>
+
+        </form><!--form-->
+    </section><!--profile section-->
+<!--    <div></div>-->
+</main>
+
 <footer style="background-color: #393939 !important; color: #a1a1a1  !important;" id="footer"
         class="text-center text-lg-start bg-white text-muted">
     <section id="contact-section" class="flex f-col">
@@ -610,7 +801,70 @@
 <script src="controller/loginFormController.js"></script>
 <script src="controller/customerController.js"></script>
 <script src="controller/itemController.js"></script>
+<script src="controller/driverController.js"></script>
+<script>
+    $("#schedule-btn").css("backgroundColor", "#b3bdff");
+    $("#driver-profile-btn").css("backgroundColor", "white");
+    $("#driver-logout-btn").css("backgroundColor", "white");
+    $("#driver-home-btn").css("backgroundColor", "white");
 
+    $("#driver-logout-btn").click(function () {
+        $("#header").css("display", "flex");
+        $("#footer").css("display", "block");
+        $("#create-account-main").css("display", "none");
+        $("#login-main").css("display", "none");
+        $("#item-main").css("display", "none");
+        $("#home-main").css("display", "block");
+        $("#customer-main").css("display", "none");
+        $("#driver-main").css("display", "none");
+        $("#navbar-sign-in").css("display", "block");
+        $("#navbar-sign-up").css("display", "block");
+        usernameForContinue="logout";
+        passwordForContinue="logout";
+    })
+    $("#driver-home-btn").click(function () {
+        $("#header").css("display", "flex");
+        $("#footer").css("display", "block");
+        $("#create-account-main").css("display", "none");
+        $("#login-main").css("display", "none");
+        $("#item-main").css("display", "none");
+        $("#home-main").css("display", "block");
+        $("#customer-main").css("display", "none");
+        $("#driver-main").css("display", "none");
+        $("#navbar-sign-in").css("display", "block");
+        $("#navbar-sign-up").css("display", "block");
+        $("#customer-profile-btn").css("display","none");
+        usernameForContinue="logout";
+        passwordForContinue="logout";
+    })
+    $("#schedule-btn").click(function () {
+        $("#schedule").css("display", "flex");
+        $("#profile").css("display", "none");
+
+        $("#schedule-btn").css("backgroundColor", "#b3bdff");
+        $("#driver-profile-btn").css("backgroundColor", "white");
+    });
+    $("#driver-profile-btn").click(function () {
+        $("#schedule").css("display", "none");
+        $("#profile").css("display", "flex");
+
+        $("#schedule-btn").css("backgroundColor", "white");
+        $("#driver-profile-btn").css("backgroundColor", "#b3bdff");
+    });
+
+
+    let edit_btn_click_count = 0;
+    $("#edit > button").click(function () {
+        if (edit_btn_click_count === 0) {
+            $("#profile > form").css("display", "flex");
+            edit_btn_click_count = 1;
+        } else {
+            $("#profile > form").css("display", "none");
+            edit_btn_click_count = 0;
+        }
+    });
+
+</script>
 <script>
     getAllCars();
     loadCarsForHomePage();
