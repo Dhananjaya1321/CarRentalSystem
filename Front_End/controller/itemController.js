@@ -2,6 +2,20 @@ $("#reservation-btn").click(function () {
     saveRental();
 })
 
+let cartItems=[];
+$("#add-to-cart-btn").click(function () {
+    let registration_number = $("#registration-number").text();
+    let x=0;
+    for (let i in cartItems) {
+        if (cartItems[i]===registration_number){
+            x=1;
+        }
+    }
+    if (x===0){
+        cartItems.push(registration_number);
+    }
+})
+
 function saveRental() {
     if (findUser(usernameForContinue)) {
         let rental_id = generateNextRentalID(getLastRentalID());
@@ -35,9 +49,13 @@ function saveRental() {
                     "return_time": returnTime,
                     "customer": {"nic": nic},
                     "rentalCarDetails": [{"rental_id": rental_id, "registration_number": registration_number}],
-                    "request": [{"request_id": request_id, "message": "", "status": "pending", "rental_id": rental_id,
-                        "car":{"registration_number": registration_number},
-                        "payment":{"payment_id": payment_id}}]
+                    "request": [
+                        {
+                            "request_id": request_id, "message": "", "status": "pending", "rental_id": rental_id,
+                            "car":{"registration_number": registration_number},
+                            "payment":{"payment_id": payment_id}
+                        }
+                    ]
 
                 }
 
