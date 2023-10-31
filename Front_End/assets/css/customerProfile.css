@@ -1,0 +1,67 @@
+#customer-main {
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+#customer-main>#nav-bar {
+    position: fixed;
+    left: 0;
+    border-radius: 0 15px 15px 0;
+    width: 250px;
+    height: 100%;
+    box-shadow: 0 0 14px -3px #00000057;
+    background: #2f3457;
+}
+
+#customer-main>#nav-bar > div {
+    position: relative;
+    top: 10px;
+    width: 100%;
+    gap: 5px;
+    align-self: flex-start;
+}
+
+#customer-main>#nav-bar > div > a {
+    align-self: flex-start;
+    width: 100%;
+}
+
+#customer-main>#nav-bar > div > a > button {
+    width: 96%;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    /*background-color: #ffffff;*/
+    box-shadow: -5px 5px 14px -14px black;
+}
+#cart{
+    width: 750px;
+    height: 500px;
+    position: absolute;
+    background-color: white;
+    left: 250px;
+    right: 0;
+    top: 50px;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: 0 2px 15px -10px black;
+}
+
+#cart > div:first-child {
+    align-self: flex-end;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 25px;
+}
+
+#clear-cart-btn {
+    border: 1px red solid;
+    background-color: white;
+    border-radius: 10px;
+    width: 200px;
+    color: red;
+    height: 40px;
+    margin: 20px 0;
+}
