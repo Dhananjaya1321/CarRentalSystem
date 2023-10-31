@@ -488,21 +488,23 @@ function searchRequest(request_id) {
     }
 }
 
-let pendingPayments=[];
+let pendingPayments = [];
+let pendingPaymentsCar;
+
 function getAllPendingPaymentRequest() {
     $.ajax({
-        url:base_url+"request",
-        method:"get",
-        async:false,
-        success:function (rep) {
-            pendingPayments=rep.data;
+        url: base_url + "request",
+        method: "get",
+        async: false,
+        success: function (rep) {
+            pendingPayments = rep.data;
             $("#payment-request-id").empty();
             for (let i in rep.data) {
-                let id=rep.data[i].rental_id;
-                let option=`<option value="${id}">${id}</option>`;
+                let id = rep.data[i].rental_id;
+                let option = `<option value="${id}">${id}</option>`;
                 $("#payment-request-id").append(option);
 
-                let row=`<tr>
+                let row = `<tr>
                             <td>${rep.data.rental_id}</td>
                             <td>${rep.data.request_id}</td>
                             <td>${rep.data.nic}</td>
@@ -515,20 +517,51 @@ function getAllPendingPaymentRequest() {
 }
 
 $("#payment-request-id").click(function () {
-    let rental_id=$("#payment-request-id").val();
+    let rental_id = $("#payment-request-id").val();
     let payment = searchPendingPayment(rental_id);
     $("#payment-nic").val(payment.nic);
     $("#payment-registration-number").val(payment.registration_number);
+     pendingPaymentsCar = searchCarByRegistrationNumber(payment.registration_number)[0];
+    $("#fee-for-extra-mileage").val(pendingPaymentsCar.price_for_extra_km);
+    $("#car-fee").val(pendingPaymentsCar.price_for_day);
 });
 
 function searchPendingPayment(rental_id) {
     for (let i in pendingPayments) {
-        if (pendingPayments[i].rental_id===rental_id){
+        if (pendingPayments[i].rental_id === rental_id) {
             return pendingPayments[i];
         }
     }
 }
 
+let previousValueNumberOfDays=0;
+let previousValueExtraMileage=0;
+let previousValueLossDamage=0;
+let previousValueDriverFee=0;
+$("#number-of-days").on("input", function () {
+    // console.log($("#number-of-days").val());
+    let currentValueNumberOfDays=$("#number-of-days").val();
+    $("#total").val((pendingPaymentsCar.price_for_day*Number(currentValueNumberOfDays))-(pendingPaymentsCar.price_for_day*Number(previousValueNumberOfDays))+Number($("#total").val()));
+    previousValueNumberOfDays=currentValueNumberOfDays;
+});
+$("#extra-mileage").on("input", function () {
+    // console.log($("#extra-mileage").val());
+    let currentValueExtraMileage=$("#extra-mileage").val();
+    $("#total").val((pendingPaymentsCar.price_for_extra_km*Number(currentValueExtraMileage))-(pendingPaymentsCar.price_for_extra_km*Number(previousValueExtraMileage))+Number($("#total").val()));
+    previousValueExtraMileage=currentValueExtraMileage;
+});
+$("#driver-fee").on("input", function () {
+    // console.log($("#driver-fee").val());
+    let currentValueDriverFee=$("#driver-fee").val();
+    $("#total").val((Number(currentValueDriverFee)-Number(previousValueDriverFee))+Number($("#total").val()));
+    previousValueDriverFee=currentValueDriverFee;
+});
+$("#loss-damage").on("input", function () {
+    // console.log($("#loss-damage").val());
+    let currentValueLossDamage=$("#loss-damage").val();
+    $("#total").val((Number(currentValueLossDamage)-Number(previousValueLossDamage))+Number($("#total").val()));
+    previousValueLossDamage=currentValueLossDamage;
+});
 
 
 $("#home-btn").css("backgroundColor", "white");
