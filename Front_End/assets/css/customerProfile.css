@@ -38,7 +38,7 @@
 }
 #cart{
     width: 750px;
-    height: 500px;
+    height: max-content;
     position: absolute;
     background-color: white;
     left: 250px;
@@ -64,4 +64,38 @@
     color: red;
     height: 40px;
     margin: 20px 0;
+}
+
+#cart-item-display-section {
+    width: 100%;
+    height: max-content;
+}
+
+#cart-item-display-section > div {
+    width: 90%;
+    height: 80px;
+    box-shadow: 0 0 6px -2px #00000047;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#cart-item-display-section > div > div {
+    position: relative;
+}
+
+.cart-item-img {
+    width: 70px;
+    border-radius: 10px;
+    height: 70px;
+    background-color: black;
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    left: 8px;
+}
+.cart-item-delete-btn{
+    background: no-repeat;
+    background-color: unset;
+    border: none;
+    font-size: 26px;
 }
