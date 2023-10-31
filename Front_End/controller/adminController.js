@@ -501,6 +501,14 @@ function getAllPendingPaymentRequest() {
                 let id=rep.data[i].rental_id;
                 let option=`<option value="${id}">${id}</option>`;
                 $("#payment-request-id").append(option);
+
+                let row=`<tr>
+                            <td>${rep.data.rental_id}</td>
+                            <td>${rep.data.request_id}</td>
+                            <td>${rep.data.nic}</td>
+                            <td>${rep.data.registration_number}</td>
+                        </tr>`
+                $("#payment-table-body").append(row);
             }
         }
     })
@@ -508,7 +516,9 @@ function getAllPendingPaymentRequest() {
 
 $("#payment-request-id").click(function () {
     let rental_id=$("#payment-request-id").val();
-
+    let payment = searchPendingPayment(rental_id);
+    $("#payment-nic").val(payment.nic);
+    $("#payment-registration-number").val(payment.registration_number);
 });
 
 function searchPendingPayment(rental_id) {
@@ -518,6 +528,8 @@ function searchPendingPayment(rental_id) {
         }
     }
 }
+
+
 
 $("#home-btn").css("backgroundColor", "white");
 $("#logout-btn").css("backgroundColor", "white");
@@ -617,6 +629,16 @@ $("#payments-btn").click(function () {
     $("#rental-request-btn").css("backgroundColor", "white");
     $("#payments-btn").css("backgroundColor", "#b3bdff");
     getAllPendingPaymentRequest();
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    let formattedDate = year + "-" + month.toString().padStart(2, "0") + "-" + day.toString().padStart(2, "0");
+    let formattedTime = hour.toString().padStart(2, "0") + ":" + minute.toString().padStart(2, "0");
+    $('#date-of-payment').val(formattedDate);
+    $('#time-of-payment').val(formattedTime);
 });
 
 $("#logout-btn").click(function () {

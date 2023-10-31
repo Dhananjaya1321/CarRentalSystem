@@ -549,12 +549,12 @@
                 </div>
                 <div>
                     <label for="date-of-payment" class="form-label">Date of payment</label>
-                    <input type="text" name="pay-date" class="form-control" id="date-of-payment"
+                    <input type="date" name="pay-date" class="form-control" id="date-of-payment"
                            readonly>
                 </div>
                 <div>
                     <label for="time-of-payment" class="form-label">Time of payment</label>
-                    <input type="text" name="time-of-payment" class="form-control" id="time-of-payment"
+                    <input type="time" name="time-of-payment" class="form-control" id="time-of-payment"
                            readonly>
                 </div>
                 <div>
@@ -613,30 +613,14 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
+                    <th scope="col">Rental ID</th>
                     <th scope="col">Request ID</th>
                     <th scope="col">NIC</th>
-                    <th scope="col">Name</th>
                     <th scope="col">Registration number</th>
-                    <th scope="col">Pick up date</th>
-                    <th scope="col">Return up date</th>
-                    <th scope="col">Options</th>
                 </tr>
                 </thead>
                 <tbody id="payment-table-body">
-                <tr>
-                    <td>1111</td>
-                    <td>1111111111</td>
-                    <td>1111111111</td>
-                    <td>1111111111</td>
-                    <td>2023/12/12</td>
-                    <td>2023/12/13</td>
-                    <td>
-                        <button type="button" class="btn btn-danger border-0" style="background-color: #0090ff;"
-                                data-bs-toggle="modal"
-                                data-bs-target="#payment-details">
-                            <i class="fa-solid fa-eye"></i></button>
-                    </td>
-                </tr>
+
                 </tbody>
             </table>
         </section>
