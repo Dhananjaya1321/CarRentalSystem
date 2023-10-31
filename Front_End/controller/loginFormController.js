@@ -18,6 +18,7 @@ $("#login-btn").click(function () {
                         usernameForContinue = username;
                         passwordForContinue = password;
                         manageSingInAndSignUpButton();
+                        getDriverID();
                         // window.location.href = "../pages/driver.html";
                         $("#header").css("display", "none");
                         $("#footer").css("display", "none");

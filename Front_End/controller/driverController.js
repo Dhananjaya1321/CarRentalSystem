@@ -51,38 +51,39 @@ function generateDriverID() {
 
 }
 
-function getDriverID(username) {
+let driverID;
+
+function getDriverID() {
+    getAllDrivers();
     $.ajax({
-        url: base_url + "driver?username="+username,
+        url: base_url + "driver?username=" + usernameForContinue,
         method: "get",
         async: false,
         success: function (rep) {
-           console.log(rep.data)
+            driverID = rep.data;
+            let driver=searchDriverDriverID(driverID);
+            $("#driver-profile-name").text(driver.name);
+            $("#driver-profile-nic>span").text(driver.nic);
+            $("#driver-profile-email>span").text(driver.email);
+            $("#driver-profile-contact>span").text(driver.contact);
+            $("#driver-profile-address>span").text(driver.address);
+            // $("#profile-photo").css("background",'url()');
         },
     });
 }
+
 $("#driver-details-update-btn").click(function () {
 
 })
 
 
-/*
-function searchDriverNIC(driverNIC) {
-    let resp = false;
-    $.ajax({
-        url: base_url + "driver?nic=" + driverNIC,
-        method: "get",
-        async: false,
-        success: function (rep) {
-            return true;
-        },
-        error: function (rep) {
-            return false;
+function searchDriverDriverID(driverID) {
+    for (let i in drivers) {
+        if (drivers[i].driver_id === driverID) {
+            return drivers[i];
         }
-    })
+    }
 }
-*/
-
 
 
 $("#driver-add-btn").click(function () {
@@ -145,13 +146,13 @@ function deleteDriver() {
 }
 
 function getDriverByDriverId(driver_id) {
-    let driver=null;
+    let driver = null;
     $.ajax({
         url: base_url + "driver?driver_id=" + driver_id,
         method: "get",
-        async:false,
+        async: false,
         success: function (rep) {
-            driver=rep.data;
+            driver = rep.data;
         },
     })
     return driver;

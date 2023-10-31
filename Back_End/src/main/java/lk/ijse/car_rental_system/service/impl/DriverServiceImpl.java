@@ -34,7 +34,7 @@ public class DriverServiceImpl implements DriverService {
     @Override
     public List<DriverDTO> getAllDrivers() {
         List<Driver> all = driverRepo.findAll();
-        return modelMapper.map(all, new TypeToken<List<DriverDTO>>() {
+        return modelMapper.map(all, new TypeToken<List<Driver>>() {
         }.getType());
     }
 
