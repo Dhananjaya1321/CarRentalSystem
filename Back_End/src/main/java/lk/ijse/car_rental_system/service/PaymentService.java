@@ -8,4 +8,6 @@ public interface PaymentService{
     void savePayment(PaymentDTO dto);
 
     String getLastPaymentID();
+
+    void updatePayment(PaymentDTO dto, int thisRentalMiles, String registration_number);
 }

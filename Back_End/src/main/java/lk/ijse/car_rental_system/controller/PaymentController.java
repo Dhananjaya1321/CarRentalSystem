@@ -20,6 +20,13 @@ public class PaymentController {
         return new ResponseUtil("Ok","Successfully loaded...!",dto.getPayment_id());
     }
 
+    @PutMapping(params = {"thisRentalMiles","registration_number"})
+    public ResponseUtil updatePayment(@RequestBody PaymentDTO dto, int thisRentalMiles,String registration_number) {
+        System.out.println("\n\n" + dto.toString()+thisRentalMiles);
+        paymentService.updatePayment(dto,thisRentalMiles,registration_number);
+        return new ResponseUtil("Ok", "Successfully updated...!", dto.getPayment_id());
+    }
+
     @GetMapping(path = "/last_id")
     public ResponseUtil getLastPaymentID(){
         return new ResponseUtil("Ok","Successfully loaded...!",paymentService.getLastPaymentID());

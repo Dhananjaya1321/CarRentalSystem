@@ -13,6 +13,10 @@ public interface CarRepo extends JpaRepository<Car, String> {
     @Query(value = "UPDATE car set status=?1,mileage_after_maintenance=?2 WHERE registration_number=?3", nativeQuery = true)
     int updateCarStatus(String status, int mileage_after_maintenance, String registration_number);
 
+    @Modifying
+    @Query(value = "UPDATE car set mileage_after_maintenance=?2 WHERE registration_number=?1", nativeQuery = true)
+    int updateCarMileageAfterMaintain(String registration_number,int mileage_after_maintenance);
+
     @Query(value = "SELECT DISTINCT brand FROM car", nativeQuery = true)
     List<String> searchCarBrands();
 

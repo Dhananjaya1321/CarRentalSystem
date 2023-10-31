@@ -491,6 +491,7 @@ function searchRequest(request_id) {
 let pendingPayments = [];
 let pendingPaymentsCar;
 let pendingPaymentID;
+let pendingPaymentCarRegistration_number;
 
 function getAllPendingPaymentRequest() {
     $.ajax({
@@ -506,10 +507,10 @@ function getAllPendingPaymentRequest() {
                 $("#payment-request-id").append(option);
 
                 let row = `<tr>
-                            <td>${rep.data.rental_id}</td>
-                            <td>${rep.data.request_id}</td>
-                            <td>${rep.data.nic}</td>
-                            <td>${rep.data.registration_number}</td>
+                            <td>${rep.data[i].rental_id}</td>
+                            <td>${rep.data[i].request_id}</td>
+                            <td>${rep.data[i].nic}</td>
+                            <td>${rep.data[i].registration_number}</td>
                         </tr>`
                 $("#payment-table-body").append(row);
             }
@@ -525,6 +526,7 @@ $("#payment-request-id").click(function () {
      pendingPaymentsCar = searchCarByRegistrationNumber(payment.registration_number)[0];
     $("#fee-for-extra-mileage").val(pendingPaymentsCar.price_for_extra_km);
     $("#car-fee").val(pendingPaymentsCar.price_for_day);
+    pendingPaymentCarRegistration_number=payment.registration_number;
 });
 
 function searchPendingPayment(rental_id) {
@@ -579,10 +581,9 @@ let thisRentalMiles=(Number($("#number-of-days").val())*pendingPaymentsCar.free_
         "payment_time": $('#time-of-payment').val(),
         "payment_type": $('#payment-method').val(),
         "status": "paid",
-        "thisRentalMiles":thisRentalMiles,
     }
     $.ajax({
-        url: base_url + "payment",
+        url: base_url + "payment?thisRentalMiles="+thisRentalMiles+"&registration_number="+pendingPaymentCarRegistration_number,
         method: "put",
         contentType:"application/json",
         data:JSON.stringify(data),
