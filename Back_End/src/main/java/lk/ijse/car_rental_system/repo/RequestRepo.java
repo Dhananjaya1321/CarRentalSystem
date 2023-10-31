@@ -33,4 +33,10 @@ public interface RequestRepo extends JpaRepository<Request, String> {
     @Query(value = "select count(request_id) from request join rental on rental.rental_id = request.rental_rental_id where status='accept' and rental.pick_up_date=?1", nativeQuery = true)
     int getAcceptedRequestRequestCountForTheDay(LocalDate date);
 
+    @Query(value = "SELECT NEW lk.ijse.car_rental_system.entity.CustomEntity(r1.request_id, r1.rental.rental_id, r1.car.registration_number, r1.payment.payment_id, r.customer.nic)\n" +
+            "FROM Request r1\n" +
+            "JOIN r1.rental r\n" +
+            "JOIN r1.payment p\n" +
+            "WHERE p.status = 'pending'")
+    List<CustomEntity> getAllPendingPaymentRequest();
 }

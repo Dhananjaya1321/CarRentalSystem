@@ -117,4 +117,9 @@ public class RequestServiceImpl implements RequestService {
         return modelMapper.map(allPendingRequests, new TypeToken<List<CustomDTO>>() {
         }.getType());
     }
+    @Override
+    public List<CustomDTO> getAllPendingPaymentRequest() {
+        return modelMapper.map(requestRepo.getAllPendingPaymentRequest(), new TypeToken<List<CustomDTO>>() {
+        }.getType());
+    }
 }

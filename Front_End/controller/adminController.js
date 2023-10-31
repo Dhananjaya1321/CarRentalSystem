@@ -488,15 +488,15 @@ function searchRequest(request_id) {
     }
 }
 
-function getAllPendingPayments() {
+function getAllPendingPaymentRequest() {
     $.ajax({
-        url:base_url+"payment",
+        url:base_url+"request",
         method:"get",
         async:false,
         success:function (rep) {
             $("#payment-request-id").empty();
             for (let i in rep.data) {
-                let id=rep.data[i];
+                let id=rep.data[i].rental_id;
                 let option=`<option value="${id}">${id}</option>`;
                 $("#payment-request-id").append(option);
             }
@@ -601,7 +601,7 @@ $("#payments-btn").click(function () {
     $("#manage-drivers-btn").css("backgroundColor", "white");
     $("#rental-request-btn").css("backgroundColor", "white");
     $("#payments-btn").css("backgroundColor", "#b3bdff");
-    getAllPendingPayments();
+    getAllPendingPaymentRequest();
 });
 
 $("#logout-btn").click(function () {

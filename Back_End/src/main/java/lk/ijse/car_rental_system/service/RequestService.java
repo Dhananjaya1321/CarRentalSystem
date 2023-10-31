@@ -21,4 +21,6 @@ public interface RequestService {
     int getAcceptedRequestRequestCountForTheDay(String date);
 
     List<CustomDTO> getAllPendingRequests();
+
+    List<CustomDTO> getAllPendingPaymentRequest();
 }

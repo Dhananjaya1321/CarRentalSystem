@@ -6,10 +6,10 @@ import lk.ijse.car_rental_system.repo.PaymentRepo;
 import lk.ijse.car_rental_system.service.PaymentService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.support.ManagedMap;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional

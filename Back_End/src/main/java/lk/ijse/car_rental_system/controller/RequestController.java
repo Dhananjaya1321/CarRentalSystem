@@ -52,4 +52,9 @@ public class RequestController {
     public ResponseUtil getAllPendingRequests() {
         return new ResponseUtil("Ok", "Successfully loaded...!", requestService.getAllPendingRequests());
     }
+
+    @GetMapping
+    public ResponseUtil getAllPendingPaymentRequest(){
+        return new ResponseUtil("Ok","Successfully loaded...!",requestService.getAllPendingPaymentRequest());
+    }
 }
