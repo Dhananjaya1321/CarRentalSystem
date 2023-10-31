@@ -20,6 +20,7 @@ public class RentalController {
     @PostMapping
     public ResponseUtil saveRental(@RequestPart("loss_damage_back_slip") MultipartFile lossDamageBackSlip, @RequestPart("dto") RentalDTO dto) throws IOException {
         dto.setLoss_damage_back_slip(lossDamageBackSlip);
+        System.out.println("\n\n\n"+dto.toString());
         rentalService.saveRental(dto);
         return new ResponseUtil("Ok","Successfully Added",dto.getRental_id());
     }

@@ -416,7 +416,7 @@ $("#accept-request").click(function () {
     let returntime = $("#return-time-request").val();
     let loc = $("#location-request").val();
 
-    let payment_id = generateNextPaymentID(getLastPaymentID());
+    // let payment_id = generateNextPaymentID(getLastPaymentID());
 
     let requestData = {
         "request_id": requestid,
@@ -454,7 +454,6 @@ $("#accept-request").click(function () {
                 console.log(rep.data)
                 alert(rep.message);
                 getAllRequests();
-                savePayment(payment_id,requestid);
             },
             error: function (rep) {
 
@@ -470,7 +469,6 @@ $("#accept-request").click(function () {
                 console.log(rep.data)
                 alert(rep.message);
                 getAllRequests();
-                savePayment(payment_id,requestid);
             },
             error: function (rep) {
 
@@ -479,21 +477,6 @@ $("#accept-request").click(function () {
     }
 })
 
-function savePayment(payment_id,request_id) {
-    let data={"payment_id": payment_id,"status":"pending","request_id":request_id}
-    $.ajax({
-        url:base_url+"payment",
-        method:"post",
-        contentType:"application/json",
-        data:JSON.stringify(data),
-        success:function (rep) {
-
-        },
-        error:function (rep) {
-
-        }
-    })
-}
 
 /*search request from requests array*/
 function searchRequest(request_id) {
@@ -505,26 +488,6 @@ function searchRequest(request_id) {
     }
 }
 
-function getLastPaymentID() {
-    let lastPaymentId = null;
-    $.ajax({
-        url: base_url + "payment/last_id",
-        method: "get",
-        async: false,
-        success: function (rep) {
-            lastPaymentId = rep.data;
-        }
-    });
-    return lastPaymentId;
-}
-
-function generateNextPaymentID(lastPaymentId) {
-    if (lastPaymentId === null) {
-        return "PAY-001";
-    } else {
-        return "PAY-00" + (Number(lastPaymentId.slice(6)) + 1);
-    }
-}
 
 $("#home-btn").css("backgroundColor", "white");
 $("#logout-btn").css("backgroundColor", "white");

@@ -25,6 +25,7 @@ public class RentalDTO {
     private LocalTime return_time;
 
     private CustomerDTO customer;
+
     private List<RequestDTO> request;
 
     private List<ScheduleDTO> schedule;

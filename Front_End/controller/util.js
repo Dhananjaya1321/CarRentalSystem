@@ -36,3 +36,25 @@ function searchCarByRegistrationNumber(registration_number) {
     })
     return car;
 }
+
+
+function getLastPaymentID() {
+    let lastPaymentId = null;
+    $.ajax({
+        url: base_url + "payment/last_id",
+        method: "get",
+        async: false,
+        success: function (rep) {
+            lastPaymentId = rep.data;
+        }
+    });
+    return lastPaymentId;
+}
+
+function generateNextPaymentID(lastPaymentId) {
+    if (lastPaymentId === null) {
+        return "PAY-001";
+    } else {
+        return "PAY-00" + (Number(lastPaymentId.slice(6)) + 1);
+    }
+}
