@@ -83,6 +83,7 @@ $("#cart-reservation-btn").click(function () {
     let paymentDataArray=[];
     let rentalCarDetailsArray=[];
     let requestArray=[];
+    let scheduleArray=[];
     requestIDArray.push(request_id);
     paymentIDArray.push(payment_id);
     for (let i = 0; i < cartItems.length-1; i++) {
@@ -107,6 +108,7 @@ $("#cart-reservation-btn").click(function () {
                 "payment":{"payment_id": paymentIDArray[i]}
             }
         );
+        scheduleArray.push({"rental_id": rental_id,"registration_number": cartItems[i]});
     }
 
     let data = {
@@ -119,16 +121,33 @@ $("#cart-reservation-btn").click(function () {
         "return_time": returnTime,
         "customer": {"nic": nic},
         "rentalCarDetails": rentalCarDetailsArray,
-        "request": requestArray
+        "request": requestArray,
+        "schedule": scheduleArray
 
     }
+    let formData = new FormData();
+    formData.append("loss_damage_back_slip", $("#cart-bank-slip")[0].files[0]);
+    formData.append("dto", new Blob([JSON.stringify(data)], {type: "application/json"}));
+
     $.ajax({
         url: base_url + "payment/cart",
         method: "post",
         contentType: "application/json",
         data: JSON.stringify(paymentDataArray),
         success:function (rep) {
-
+            $.ajax({
+                url: base_url + "rental/cart",
+                method: "post",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (rep) {
+                    alert(rep.message);
+                },
+                error: function (rep) {
+                    console.log(rep.data)
+                }
+            })
         }
     });
 })
