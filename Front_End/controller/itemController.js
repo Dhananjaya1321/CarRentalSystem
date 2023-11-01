@@ -17,9 +17,6 @@ $("#add-cart").click(function () {
         cartItems.push(registration_number);
     }
 })
-// $("#add-to-cart").click(function () {
-
-// })
 
 function loadAllCartItemsToCartSection() {
     getAllCars();
@@ -28,9 +25,10 @@ function loadAllCartItemsToCartSection() {
         let cart_item=cartItems[i];
         for (let j in cars) {
             if (cars[j].registration_number===cart_item){
+                let side_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + cars[j].back_image;
                 let item=`<div class="flex f-row">
                                 <div class="flex f-row col-2">
-                                    <div class="cart-item-img"></div>
+                                    <div style="background-position: center; background: url(${side_img}); background-size: cover;" class="cart-item-img"></div>
                                 </div>
                                 <div class="flex f-row col-6">
                                     <p style="margin: 0">
@@ -40,20 +38,33 @@ function loadAllCartItemsToCartSection() {
                                         <i class="fa-solid fa-gas-pump"></i> <span>${cars[j].fuel_type}</span> |
                                     </p>
                                 </div>
-                                <div class="flex f-row col-2">
-                                   <input class="slip-upload-btn" type="file">
+                                <div class="flex f-col col-2">
+                                    <label>Bank slip</label>
+                                   <input style="width: 105px;" class="slip-upload-btn" type="file">
                                 </div>
                                 <div class="flex f-row col-2">
-                                    <button class="cart-item-delete-btn"><i class="fa-solid fa-trash-can" style="color: #ff0000;"></i>
+                                    <button value="${cars[j].registration_number}" class="cart-item-delete-btn">
+                                        <i class="fa-solid fa-trash-can" style="color: #ff0000;"></i>
                                     </button>
                                 </div>
-                            </div>`
+                          </div>`
                 $("#cart-item-display-section").append(item);
             }
         }
-
     }
-
+    deleteCartItem();
+}
+function deleteCartItem() {
+    $("#cart-item-display-section > div >div> button").click(function () {
+        let registration_number = $(this).attr("value");
+        console.log(registration_number);
+        for (let i in cartItems) {
+            if (registration_number===cartItems[i]){
+                cartItems.splice(i, 1);
+            }
+        }
+        loadAllCartItemsToCartSection();
+    })
 }
 
 
