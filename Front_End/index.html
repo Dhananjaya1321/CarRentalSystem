@@ -420,6 +420,7 @@
     </section><!--rental section-->
 </main>
 <main id="item-main" class="flex f-col">
+    <button id="item-back-btn">back</button>
     <section id="item-details-section" class="flex f-row f-wrap"></section><!--details section-->
     <section id="form-section" class="flex">
         <form class="flex f-col f-wrap">
@@ -460,7 +461,7 @@
                 <div id="slip"></div>
             </div>
             <div class="flex f-row f-wrap">
-                <button id="add-to-cart-btn">Add To Cart</button>
+                <button id="add-cart">Add To Cart</button>
                 <button id="reservation-btn">Reservation</button>
             </div>
 
@@ -489,23 +490,7 @@
             <button id="clear-cart-btn">Clear Cart</button>
         </div>
         <section id="cart-item-display-section" class="flex f-col">
-            <div class="flex f-row">
-                <div class="flex f-row col-2">
-                    <div class="cart-item-img"></div>
-                </div>
-                <div class="flex f-row col-8">
-                    <p style="margin: 0">
-                        Type : type | Brand : brand | Color : color |
-                        <i class="fa-solid fa-user"></i> <span>5</span> |
-                        <i class="fa-solid fa-gear"></i> <span>jjj</span> |
-                        <i class="fa-solid fa-gas-pump"></i> <span>nnnn</span> |
-                    </p>
-                </div>
-                <div class="flex f-row col-2">
-                    <button class="cart-item-delete-btn"><i class="fa-solid fa-trash-can" style="color: #ff0000;"></i>
-                    </button>
-                </div>
-            </div>
+
         </section>
     </section>
     <section id="profile-section"></section>
@@ -864,6 +849,17 @@
     loadCarsForHomePage();
 
 
+    $("#item-back-btn").click(function () {
+        $("#header").css("display", "flex");
+        $("#footer").css("display", "block");
+        $("#create-account-main").css("display", "none");
+        $("#login-main").css("display", "none");
+        $("#item-main").css("display", "none");
+        $("#home-main").css("display", "block");
+        $("#customer-main").css("display", "none");
+        $("#driver-main").css("display", "none");
+    })
+
     $("#home-btn").click(function () {
         $("#header").css("display", "flex");
         $("#footer").css("display", "block");
@@ -909,6 +905,8 @@
             $("#customer-main").css("display", "block");
             $("#navbar-sign-in").css("display", "none");
             $("#navbar-sign-up").css("display", "none");
+
+            loadAllCartItemsToCartSection();
         } else {
             /*please login first*/
             $("#navbar-sign-in").css("display", "block");
@@ -934,7 +932,6 @@
         $("#home-main").css("display", "none");
         $("#customer-main").css("display", "none");
     });
-
     $("#navbar-sign-up").click(function () {
         $("#header").css("display", "none");
         $("#footer").css("display", "none");

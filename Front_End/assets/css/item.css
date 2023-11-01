@@ -15,9 +15,23 @@
     top: 60px;
     gap: 25px;
     display: none;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
 }
-
+#item-back-btn{
+    display: flex;
+    justify-content: center;
+    align-self: flex-start;
+    position: relative;
+    left: 20px;
+    top: -20px;
+    border: none;
+    background: #ff7800;
+    width: 100px;
+    height: 40px;
+    align-items: center;
+    color: white;
+    border-radius: 15px;
+}
 #item-details-section {
     width: 80%;
     height: max-content;
@@ -125,7 +139,7 @@ form > div:last-child {
 #add-to-cart {
     background-color: #FF9800;
 }
-#request-to-rental{
+#reservation-btn{
     background-color: #0066ff;
 }
 form > div:last-child > button {

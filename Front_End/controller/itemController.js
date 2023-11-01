@@ -3,7 +3,9 @@ $("#reservation-btn").click(function () {
 })
 
 let cartItems=[];
-$("#add-to-cart-btn").click(function () {
+
+$("#add-cart").click(function () {
+    console.log("00");
     let registration_number = $("#registration-number").text();
     let x=0;
     for (let i in cartItems) {
@@ -15,6 +17,45 @@ $("#add-to-cart-btn").click(function () {
         cartItems.push(registration_number);
     }
 })
+// $("#add-to-cart").click(function () {
+
+// })
+
+function loadAllCartItemsToCartSection() {
+    getAllCars();
+    $("#cart-item-display-section").empty();
+    for (let i in cartItems) {
+        let cart_item=cartItems[i];
+        for (let j in cars) {
+            if (cars[j].registration_number===cart_item){
+                let item=`<div class="flex f-row">
+                                <div class="flex f-row col-2">
+                                    <div class="cart-item-img"></div>
+                                </div>
+                                <div class="flex f-row col-6">
+                                    <p style="margin: 0">
+                                        Type : ${cars[j].type} | Brand : ${cars[j].brand} | Color : ${cars[j].color} |
+                                        <i class="fa-solid fa-user"></i> <span>${cars[j].number_of_passengers}</span> |
+                                        <i class="fa-solid fa-gear"></i> <span>${cars[j].transmission_type}</span> |
+                                        <i class="fa-solid fa-gas-pump"></i> <span>${cars[j].fuel_type}</span> |
+                                    </p>
+                                </div>
+                                <div class="flex f-row col-2">
+                                   <input class="slip-upload-btn" type="file">
+                                </div>
+                                <div class="flex f-row col-2">
+                                    <button class="cart-item-delete-btn"><i class="fa-solid fa-trash-can" style="color: #ff0000;"></i>
+                                    </button>
+                                </div>
+                            </div>`
+                $("#cart-item-display-section").append(item);
+            }
+        }
+
+    }
+
+}
+
 
 function saveRental() {
     if (findUser(usernameForContinue)) {

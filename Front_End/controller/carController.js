@@ -119,10 +119,11 @@ function loadCarsForHomePage() {
 
 function getCarDetails() {
     $("#rental-display-section>div").click(function () {
+        $("#item-details-section").empty();
         let registration_number = $(this).find(".display-car>div:nth-child(1)>div").attr("id").substring(4);
 
         let car = searchCarByRegistrationNumber(registration_number)[0];
-        let front_img = "../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.front_image;
+        let front_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.front_image;
         let side_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.back_image;
         let back_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.side_image;
         let interior_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.interior_image;
@@ -200,16 +201,18 @@ function getCarDetails() {
                         Defects and malfunctions in the car's engine are not counted when making deductions from the Loss Damage
                         Waiver.
                     </p>
-                </div><!--details-->`
+                </div>`
         $("#item-details-section").append(item);
         $("#item-main").css("display", "flex");
+        $("#customer-main").css("display", "none");
+        $("#driver-main").css("display", "none");
         $("#home-main").css("display", "none");
         $("body>header").css("display", "none");
     })
 }
 
 function loadFindCars(car) {
-    let front_img = "../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.front_image;
+    let front_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.front_image;
     let side_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.back_image;
     let back_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.side_image;
     let interior_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.interior_image;
