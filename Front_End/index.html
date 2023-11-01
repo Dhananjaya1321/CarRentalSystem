@@ -523,20 +523,61 @@
                         <input id="cart-location" type="text" placeholder="Ex- Galle">
                     </div>
                 </div>
-                <div class="flex f-col">
+                <div style="justify-content: center;align-items: center;" class="flex f-col">
                     <div class="flex f-col">
                         <label>Bank Slip :</label>
                         <input style="height: 32px;" id="cart-bank-slip" type="file">
                     </div>
                 </div>
-                <div class="flex f-row f-wrap">
+                <div style="justify-content: center;" class="flex f-row f-wrap">
                     <button style="background-color: #ff7800;" id="cart-reservation-btn">Reservation</button>
                 </div>
 
             </form>
         </section><!--form section-->
     </section>
-    <section id="profile-section"></section>
+    <section id="profile-section">
+        <form class="flex f-col f-wrap" id="customer-profile-details-form">
+            <div class="flex f-row f-wrap">
+                <div class="flex f-col">
+                    <label>Address</label>
+                    <input id="customer-profile-address" type="text">
+                </div>
+                <div class="flex f-col">
+                    <label>Contact</label>
+                    <input id="customer-profile-contact" type="text">
+                </div>
+                <div class="flex f-col">
+                    <label>Email</label>
+                    <input id="customer-profile-email" type="text">
+                </div>
+                <div class="flex f-col">
+                    <label>Username</label>
+                    <input id="customer-profile-username" type="text" readonly>
+                </div>
+                <div class="flex f-col">
+                    <label>Password</label>
+                    <input id="customer-profile-password" type="text">
+                </div>
+                <section>
+                    <div class="flex f-col">
+                        <label>License number</label>
+                        <input id="customer-profile-driving-license-number" type="text" readonly>
+                    </div>
+                    <div id="customer-profile-driving-license-front-photo"></div>
+                    <div id="customer-profile-driving-license-back-photo"></div>
+                </section>
+                <section>
+                    <div class="flex f-col">
+                        <label>NIC</label>
+                        <input id="customer-profile-nic" type="text" readonly>
+                    </div>
+                    <div id="customer-profile-nic-front-photo"></div>
+                    <div id="customer-profile-nic-back-photo"></div>
+                </section>
+            </div>
+        </form>
+    </section>
 </main>
 <main id="driver-main">
     <section id="driver-nav-bar" class="flex f-row">
@@ -556,7 +597,7 @@
         </div>
     </section><!--navigation bar-->
     <section id="schedule" class="flex f-col">
-        <h4>Drivers Details</h4>
+        <h4>Schedule</h4>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -597,11 +638,13 @@
                 <div class="flex f-row f-wrap">
                     <div class="mb-3">
                         <label for="driver-nic" class="form-label">NIC</label>
-                        <input name="nic" type="text" id="driver-nic" class="form-control" placeholder="Ex:- 0000000000">
+                        <input name="nic" type="text" id="driver-nic" class="form-control"
+                               placeholder="Ex:- 0000000000">
                     </div><!--driver nic-->
                     <div class="mb-3">
                         <label for="driver-contact" class="form-label">Contact</label>
-                        <input name="contact" type="text" id="driver-contact" class="form-control" placeholder="Ex:- 076 000 0000">
+                        <input name="contact" type="text" id="driver-contact" class="form-control"
+                               placeholder="Ex:- 076 000 0000">
                     </div><!--driver Contact-->
                     <div class="mb-3">
                         <label for="driver-name" class="form-label">Name</label>
@@ -611,11 +654,13 @@
                 <div class="flex f-row f-wrap">
                     <div class="mb-3">
                         <label for="driver-address" class="form-label">Address</label>
-                        <input name="address" type="text" id="driver-address" class="form-control" placeholder="Ex:- Galle">
+                        <input name="address" type="text" id="driver-address" class="form-control"
+                               placeholder="Ex:- Galle">
                     </div><!--driver Address-->
                     <div class="mb-3">
                         <label for="driver-email" class="form-label">Email</label>
-                        <input name="email" type="email" id="driver-email" class="form-control" placeholder="Ex:- driver@gmail.com">
+                        <input name="email" type="email" id="driver-email" class="form-control"
+                               placeholder="Ex:- driver@gmail.com">
                     </div><!--email-->
                 </div>
             </div>
@@ -623,11 +668,13 @@
                 <div class="flex f-row f-wrap">
                     <div class="mb-3">
                         <label for="driver-username" class="form-label">Username</label>
-                        <input readonly name="username" type="text" id="driver-username" class="form-control" placeholder="Ex:- Kamal123">
+                        <input readonly name="username" type="text" id="driver-username" class="form-control"
+                               placeholder="Ex:- Kamal123">
                     </div><!--username-->
                     <div class="mb-3">
                         <label for="driver-password" class="form-label">Password</label>
-                        <input name="password" type="password" id="driver-password" class="form-control" placeholder="password">
+                        <input name="password" type="password" id="driver-password" class="form-control"
+                               placeholder="password">
                     </div><!--driver password-->
                 </div>
             </div>
@@ -639,7 +686,7 @@
 
         </form><!--form-->
     </section><!--profile section-->
-<!--    <div></div>-->
+    <!--    <div></div>-->
 </main>
 
 <footer style="background-color: #393939 !important; color: #a1a1a1  !important;" id="footer"
@@ -761,9 +808,8 @@
         $("#driver-main").css("display", "none");
         $("#navbar-sign-in").css("display", "block");
         $("#navbar-sign-up").css("display", "block");
-        getDriverSchedule();
-        usernameForContinue="logout";
-        passwordForContinue="logout";
+        usernameForContinue = "logout";
+        passwordForContinue = "logout";
     })
     $("#driver-home-btn").click(function () {
         $("#header").css("display", "flex");
@@ -776,14 +822,14 @@
         $("#driver-main").css("display", "none");
         $("#navbar-sign-in").css("display", "block");
         $("#navbar-sign-up").css("display", "block");
-        $("#customer-profile-btn").css("display","none");
-        usernameForContinue="logout";
-        passwordForContinue="logout";
+        $("#customer-profile-btn").css("display", "none");
+        usernameForContinue = "logout";
+        passwordForContinue = "logout";
     })
     $("#schedule-btn").click(function () {
         $("#schedule").css("display", "flex");
         $("#profile").css("display", "none");
-
+        getDriverSchedule();
         $("#schedule-btn").css("backgroundColor", "#b3bdff");
         $("#driver-profile-btn").css("backgroundColor", "white");
     });
@@ -811,7 +857,6 @@
 <script>
     getAllCars();
     loadCarsForHomePage();
-
 
     $("#item-back-btn").click(function () {
         $("#header").css("display", "flex");
