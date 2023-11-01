@@ -81,6 +81,8 @@ $("#cart-reservation-btn").click(function () {
     let requestIDArray=[];
     let paymentIDArray=[];
     let paymentDataArray=[];
+    let rentalCarDetailsArray=[];
+    let requestArray=[];
     requestIDArray.push(request_id);
     paymentIDArray.push(payment_id);
     for (let i = 0; i < cartItems.length-1; i++) {
@@ -97,6 +99,28 @@ $("#cart-reservation-btn").click(function () {
 
     for (let i = 0; i < cartItems.length; i++) {
         paymentDataArray.push({"payment_id": paymentIDArray[i],"days":0,"driver_fee":0,"loss_damage":0, "mileage":0,"status": "pending"});
+        rentalCarDetailsArray.push({"rental_id": rental_id, "registration_number": cartItems[i]});
+        requestArray.push(
+            {
+                "request_id": requestIDArray[i], "message": "", "status": "pending", "rental_id": rental_id,
+                "car":{"registration_number": cartItems[i]},
+                "payment":{"payment_id": paymentIDArray[i]}
+            }
+        );
+    }
+
+    let data = {
+        "rental_id": rental_id,
+        "driver_or_not": driverOrNot,
+        "location": location,
+        "pick_up_date": pickUpDate,
+        "pick_up_time": pickUpTime,
+        "return_date": returnDate,
+        "return_time": returnTime,
+        "customer": {"nic": nic},
+        "rentalCarDetails": rentalCarDetailsArray,
+        "request": requestArray
+
     }
     $.ajax({
         url: base_url + "payment/cart",
