@@ -30,7 +30,7 @@ function loadAllCartItemsToCartSection() {
                                 <div class="flex f-row col-2">
                                     <div style="background-position: center; background: url(${side_img}); background-size: cover;" class="cart-item-img"></div>
                                 </div>
-                                <div class="flex f-row col-6">
+                                <div class="flex f-row col-8">
                                     <p style="margin: 0">
                                         Type : ${cars[j].type} | Brand : ${cars[j].brand} | Color : ${cars[j].color} |
                                         <i class="fa-solid fa-user"></i> <span>${cars[j].number_of_passengers}</span> |
@@ -38,10 +38,7 @@ function loadAllCartItemsToCartSection() {
                                         <i class="fa-solid fa-gas-pump"></i> <span>${cars[j].fuel_type}</span> |
                                     </p>
                                 </div>
-                                <div class="flex f-col col-2">
-                                    <label>Bank slip</label>
-                                   <input style="width: 105px;" class="slip-upload-btn" type="file">
-                                </div>
+                              
                                 <div class="flex f-row col-2">
                                     <button value="${cars[j].registration_number}" class="cart-item-delete-btn">
                                         <i class="fa-solid fa-trash-can" style="color: #ff0000;"></i>
@@ -69,6 +66,47 @@ function deleteCartItem() {
 $("#clear-cart-btn").click(function () {
     cartItems=[];
     loadAllCartItemsToCartSection();
+})
+$("#cart-reservation-btn").click(function () {
+    let rental_id = generateNextRentalID(getLastRentalID());
+    let nic = getCustomerNIC();
+    let pickUpDate = $("#cart-pick-up-date").val();
+    let pickUpTime = $("#cart-pick-up-time").val();
+    let returnDate = $("#cart-return-date").val();
+    let returnTime = $("#cart-return-time").val();
+    let driverOrNot = $("#cart-driver-or-not").val();
+    let location = $("#cart-location").val();
+    let request_id = generateNextRequestID(getLastRequestID());
+    let payment_id = generateNextPaymentID(getLastPaymentID());
+    let requestIDArray=[];
+    let paymentIDArray=[];
+    let paymentDataArray=[];
+    requestIDArray.push(request_id);
+    paymentIDArray.push(payment_id);
+    for (let i = 0; i < cartItems.length-1; i++) {
+        requestIDArray.push("REQ-00"+(Number(request_id.slice(6)) + 1));
+        paymentIDArray.push("PAY-00"+(Number(request_id.slice(6)) + 1));
+    }
+   /* // console.log(requestIDArray)
+
+    for (let i in cartItems) {
+        let id="#img-"+cartItems[i];
+        let file = $(id)[0].files[0];
+        console.log(file)
+    }*/
+
+    for (let i = 0; i < cartItems.length; i++) {
+        paymentDataArray.push({"payment_id": paymentIDArray[i],"days":0,"driver_fee":0,"loss_damage":0, "mileage":0,"status": "pending"});
+    }
+    $.ajax({
+        url: base_url + "payment",
+        method: "post",
+        contentType: "application/json",
+        data: JSON.stringify(paymentDataArray),
+        success:function (rep) {
+
+        }
+    });
 })
 
 

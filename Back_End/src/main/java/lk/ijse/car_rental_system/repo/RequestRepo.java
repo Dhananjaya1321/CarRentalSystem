@@ -16,7 +16,7 @@ public interface RequestRepo extends JpaRepository<Request, String> {
     String findLastRequestID();
 
     @Query("SELECT NEW lk.ijse.car_rental_system.entity.CustomEntity(r.request_id, r.message, r.status, r.rental.rental_id, " +
-            "c.registration_number, r2.driver_or_not, r2.location, r2.loss_damage_back_slip," +
+            "c.registration_number, r2.driver_or_not, r2.location, r2payment.loss_damage_back_slip," +
             " r2.pick_up_date, r2.pick_up_time, r2.return_date, r2.return_time, r2.customer.nic) " +
             "FROM Request r " +
             "JOIN r.rental r2 " +
