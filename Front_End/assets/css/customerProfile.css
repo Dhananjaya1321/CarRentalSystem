@@ -42,6 +42,7 @@
     display: none;
 }
 #cart,
+#request-status-section,
 #profile-section{
     width: 750px;
     height: max-content;

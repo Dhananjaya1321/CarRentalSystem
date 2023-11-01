@@ -478,6 +478,9 @@
                 <button id="cart-btn">Cart</button>
             </a>
             <a class="flex" href="#">
+                <button id="request-btn">Request</button>
+            </a>
+            <a class="flex" href="#">
                 <button id="customer-profile-btn">Profile</button>
             </a>
             <a class="flex" href="#">
@@ -535,7 +538,7 @@
 
             </form>
         </section><!--form section-->
-    </section>
+    </section><!--cart-->
     <section id="profile-section">
         <form class="flex f-col f-wrap" id="customer-profile-details-form">
             <div class="flex f-row f-wrap">
@@ -577,7 +580,40 @@
                 </section>
             </div>
         </form>
-    </section>
+    </section><!--profile-->
+    <section style="width: max-content;" id="request-status-section" class="flex f-col">
+        <h4 style="margin: 20px">Request Status</h4>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Rental ID</th>
+                <th>Registration number</th>
+                <th>Pick up date</th>
+                <th>Return date</th>
+                <th>Location</th>
+                <th>message</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody id="request-status-table-body">
+            <tr>
+                <td>${driver.driver_id}</td>
+                <td>${driver.nic}</td>
+                <td>${driver.name}</td>
+                <td>${driver.contact}</td>
+                <td>${driver.address}</td>
+                <td>
+                    <textarea readonly>cdjkdhsdkjfsdb des</textarea>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger border-0" style="border-radius: 15px; background-color: #0068ff; height: 30px; width: 85px; font-size: 12px;">
+                        <i class="fa-regular fa-clock"></i> Pending
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section><!--profile-->
 </main>
 <main id="driver-main">
     <section id="driver-nav-bar" class="flex f-row">
