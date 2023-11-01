@@ -1,7 +1,14 @@
 #img-slider > div {
     width: 100%;
 }
-
+#cart-form-section>form>div>div>input,
+#cart-form-section>form>div>div>select{
+    margin: 0;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #0000004f;
+}
 #img-slider > div > div > div:first-child > div:first-child,
 #img-slider > div > div > div:nth-child(2) > div:first-child,
 #img-slider > div > div > div:nth-child(3) > div:first-child,
@@ -109,6 +116,7 @@ p,
 
 /*================================================== form section ====================================================*/
 
+#cart-form-section ,
 #form-section {
     width: 80%;
     height: max-content;
@@ -139,7 +147,8 @@ form > div:last-child {
 #add-to-cart {
     background-color: #FF9800;
 }
-#reservation-btn{
+#reservation-btn,
+#cart-reservation-btn{
     background-color: #0066ff;
 }
 form > div:last-child > button {

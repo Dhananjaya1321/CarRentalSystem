@@ -66,6 +66,13 @@ function deleteCartItem() {
         loadAllCartItemsToCartSection();
     })
 }
+$("#clear-cart-btn").click(function () {
+    cartItems=[];
+    loadAllCartItemsToCartSection();
+})
+
+
+
 
 
 function saveRental() {
