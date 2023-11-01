@@ -64,6 +64,26 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public void updateCustomer(CustomerDTO dto){
+        Customer customer = customerRepo.findById(dto.getNic()).get();
+        customerRepo.save(
+                new Customer(
+                        dto.getNic(),
+                        customer.getNic_front_photo(),
+                        customer.getNic_back_photo(),
+                        dto.getAddress(),
+                        dto.getContact(),
+                        dto.getDriving_license_number(),
+                        customer.getLicense_front_photo(),
+                        customer.getLicense_back_photo(),
+                        dto.getEmail(),
+                        new User(dto.getUser().getUsername(), dto.getUser().getPassword(), "customer")
+                )
+        );
+
+    }
+
+    @Override
     public String getCustomerNIC(String username){
         return customerRepo.findCustomerNIC(username);
     }

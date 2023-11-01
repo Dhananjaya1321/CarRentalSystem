@@ -24,6 +24,11 @@ public class CustomerController {
         customerService.saveCustomer(dto);
         return new ResponseUtil("Ok", "Successfully added...!", user.getUsername());
     }
+    @PutMapping
+    public ResponseUtil updateCustomer(@RequestBody CustomerDTO dto) {
+        customerService.updateCustomer(dto);
+        return new ResponseUtil("Ok", "Successfully added...!", dto.getUser().getUsername());
+    }
 
     @GetMapping(params = {"username"})
     public ResponseUtil getCustomerNIC(String username) {

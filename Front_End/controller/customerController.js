@@ -135,3 +135,30 @@ function getRequest() {
         }
     })
 }
+
+$("#customer-details-update-btn").click(function () {
+    updateCustomer();
+})
+
+function updateCustomer() {
+    let data={
+        "address":$("#customer-profile-address").val(),
+        "email":$("#customer-profile-email").val(),
+        "contact":$("#customer-profile-contact").val(),
+        "nic":$("#customer-profile-nic").val(),
+        "driving_license_number":$("#customer-profile-driving-license-number").val(),
+        "user":{"username":$("#customer-profile-username").val(),"password": $("#customer-profile-password").val(),"role":"customer"}
+    }
+    $.ajax({
+        url: base_url + "customer",
+        method: "put",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function (rep) {
+            getCustomerDetails();
+        },
+        error: function (rep) {
+
+        }
+    });
+}

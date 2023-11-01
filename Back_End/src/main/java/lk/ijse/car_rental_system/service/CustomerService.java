@@ -10,6 +10,8 @@ import java.util.List;
 public interface CustomerService {
     void saveCustomer(CustomerDTO dto) throws IOException;
 
+    void updateCustomer(CustomerDTO dto);
+
     String getCustomerNIC(String username);
 
     int getRegisteredCustomerCount();
