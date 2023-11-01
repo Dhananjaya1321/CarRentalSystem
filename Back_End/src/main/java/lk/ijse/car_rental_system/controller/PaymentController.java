@@ -6,6 +6,8 @@ import lk.ijse.car_rental_system.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/payment")
@@ -18,6 +20,13 @@ public class PaymentController {
         System.out.println("\n\n"+dto.toString());
         paymentService.savePayment(dto);
         return new ResponseUtil("Ok","Successfully loaded...!",dto.getPayment_id());
+    }
+
+    @PostMapping(path = "/cart")
+    public ResponseUtil saveCartPayment(@RequestBody List<PaymentDTO> dto){
+        System.out.println("\n\n"+dto.toString());
+        paymentService.saveCartPayment(dto);
+        return new ResponseUtil("Ok","Successfully loaded...!","dto.getPayment_id()");
     }
 
     @PutMapping(params = {"thisRentalMiles","registration_number"})

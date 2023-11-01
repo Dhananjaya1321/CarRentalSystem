@@ -84,8 +84,8 @@ $("#cart-reservation-btn").click(function () {
     requestIDArray.push(request_id);
     paymentIDArray.push(payment_id);
     for (let i = 0; i < cartItems.length-1; i++) {
-        requestIDArray.push("REQ-00"+(Number(request_id.slice(6)) + 1));
-        paymentIDArray.push("PAY-00"+(Number(request_id.slice(6)) + 1));
+        requestIDArray.push("REQ-00"+(Number(requestIDArray[requestIDArray.length-1].slice(6)) + 1));
+        paymentIDArray.push("PAY-00"+(Number(paymentIDArray[paymentIDArray.length-1].slice(6)) + 1));
     }
    /* // console.log(requestIDArray)
 
@@ -99,7 +99,7 @@ $("#cart-reservation-btn").click(function () {
         paymentDataArray.push({"payment_id": paymentIDArray[i],"days":0,"driver_fee":0,"loss_damage":0, "mileage":0,"status": "pending"});
     }
     $.ajax({
-        url: base_url + "payment",
+        url: base_url + "payment/cart",
         method: "post",
         contentType: "application/json",
         data: JSON.stringify(paymentDataArray),

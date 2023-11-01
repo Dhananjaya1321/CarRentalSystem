@@ -7,6 +7,8 @@ import java.util.List;
 public interface PaymentService{
     void savePayment(PaymentDTO dto);
 
+    void saveCartPayment(List<PaymentDTO> dto);
+
     String getLastPaymentID();
 
     void updatePayment(PaymentDTO dto, int thisRentalMiles, String registration_number);

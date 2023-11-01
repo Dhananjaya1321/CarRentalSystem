@@ -30,6 +30,13 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
+    public void saveCartPayment(List<PaymentDTO> dto) {
+        for (int i = 0; i < dto.size(); i++) {
+            paymentRepo.save(modelMapper.map(dto.get(i), Payment.class));
+        }
+    }
+
+    @Override
     public String getLastPaymentID() {
         return paymentRepo.getLastPaymentID();
     }
