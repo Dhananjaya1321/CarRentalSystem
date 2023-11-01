@@ -88,12 +88,47 @@ function getCustomerDetails() {
 }
 
 function getRequest() {
+    $("#request-status-table-body").empty();
     $.ajax({
         url: base_url + "customer/requests?nic=" + getCustomerNIC(),
         method: "get",
         async: false,
         success: function (rep) {
-            console.log(rep.data)
+            for (let i in rep.data) {
+                let request=rep.data[i];
+                let btn;
+                if (request.status==="pending"){
+
+                    btn=`<button type="button" class="btn btn-danger border-0"
+                            style="border-radius: 15px; background-color: #0068ff; height: 30px; width: 85px; font-size: 12px;">
+                                <i class="fa-regular fa-clock"></i> ${request.status}
+                         </button>`
+                }else if (request.status==="reject"){
+                    btn=`<button type="button" class="btn btn-danger border-0"
+                            style="border-radius: 15px; background-color: #ff0000; height: 30px; width: 85px; font-size: 12px;">
+                               <i class="fa-solid fa-circle-xmark"></i> ${request.status}
+                         </button>`
+                } else {
+                    btn=`<button type="button" class="btn btn-danger border-0"
+                            style="border-radius: 15px; background-color: #39ff00; height: 30px; width: 85px; font-size: 12px;">
+                               <i class="fa-solid fa-circle-check"></i> ${request.status}
+                         </button>`
+                }
+                let row=`<tr>
+                            <td>${request.rental_id}</td>
+                            <td>${request.registration_number}</td>
+                            <td>${request.pick_up_date}</td>
+                            <td>${request.return_date}</td>
+                            <td>${request.location}</td>
+                            <td>
+                                <textarea readonly>${request.message}</textarea>
+                            </td>
+                            <td>
+                                ${btn}
+                            </td>
+                        </tr>`
+                $("#request-status-table-body").append(row);
+            }
         },
         error: function (rep) {
 
