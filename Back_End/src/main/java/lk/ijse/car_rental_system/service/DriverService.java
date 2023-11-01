@@ -1,5 +1,6 @@
 package lk.ijse.car_rental_system.service;
 
+import lk.ijse.car_rental_system.dto.CustomDTO;
 import lk.ijse.car_rental_system.dto.DriverDTO;
 import lk.ijse.car_rental_system.dto.ScheduleDTO;
 import lk.ijse.car_rental_system.dto.UserDTO;
@@ -29,4 +30,6 @@ public interface DriverService {
     UserDTO findDriverByUsername(String username);
 
     String getDriverId(String username);
+
+    List<CustomDTO> getDriverSchedule(String driver_id);
 }

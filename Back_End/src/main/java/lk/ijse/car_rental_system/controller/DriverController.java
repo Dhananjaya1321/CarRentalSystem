@@ -65,4 +65,8 @@ public class DriverController {
     public ResponseUtil getDriverId(String username) {
         return new ResponseUtil("Ok", "Successfully loaded...!", driverService.getDriverId(username));
     }
+    @GetMapping(path = "/schedule",params = {"driver_id"})
+    public ResponseUtil getDriverSchedule(String driver_id) {
+        return new ResponseUtil("Ok", "Successfully loaded...!", driverService.getDriverSchedule(driver_id));
+    }
 }

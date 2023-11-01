@@ -81,6 +81,7 @@ $("#edit>button").click(function () {
     $("#driver-username").val(usernameForContinue);
     $("#driver-password").val(passwordForContinue);
 });
+
 $("#driver-details-update-btn").click(function () {
     let data = {
         "driver_id": driverID,
@@ -104,8 +105,7 @@ $("#driver-details-update-btn").click(function () {
             alert(rep.data)
         }
     })
-})
-
+});
 
 function searchDriverDriverID(driverID) {
     for (let i in drivers) {
@@ -114,7 +114,6 @@ function searchDriverDriverID(driverID) {
         }
     }
 }
-
 
 $("#driver-add-btn").click(function () {
     let driverNIC = $("#driver-nic").val();
@@ -188,4 +187,13 @@ function getDriverByDriverId(driver_id) {
     return driver;
 }
 
-
+function getDriverSchedule() {
+    getDriverID();
+    $.ajax({
+        url: base_url + "driver/schedule?driver_id="+driverID,
+        method: "get",
+        success: function (rep) {
+            console.log(rep.data)
+        },
+    })
+}

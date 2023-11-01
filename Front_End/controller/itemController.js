@@ -2,18 +2,18 @@ $("#reservation-btn").click(function () {
     saveRental();
 })
 
-let cartItems=[];
+let cartItems = [];
 
 $("#add-cart").click(function () {
     console.log("00");
     let registration_number = $("#registration-number").text();
-    let x=0;
+    let x = 0;
     for (let i in cartItems) {
-        if (cartItems[i]===registration_number){
-            x=1;
+        if (cartItems[i] === registration_number) {
+            x = 1;
         }
     }
-    if (x===0){
+    if (x === 0) {
         cartItems.push(registration_number);
     }
 })
@@ -22,11 +22,11 @@ function loadAllCartItemsToCartSection() {
     getAllCars();
     $("#cart-item-display-section").empty();
     for (let i in cartItems) {
-        let cart_item=cartItems[i];
+        let cart_item = cartItems[i];
         for (let j in cars) {
-            if (cars[j].registration_number===cart_item){
+            if (cars[j].registration_number === cart_item) {
                 let side_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + cars[j].back_image;
-                let item=`<div class="flex f-row">
+                let item = `<div class="flex f-row">
                                 <div class="flex f-row col-2">
                                     <div style="background-position: center; background: url(${side_img}); background-size: cover;" class="cart-item-img"></div>
                                 </div>
@@ -51,22 +51,25 @@ function loadAllCartItemsToCartSection() {
     }
     deleteCartItem();
 }
+
 function deleteCartItem() {
     $("#cart-item-display-section > div >div> button").click(function () {
         let registration_number = $(this).attr("value");
         console.log(registration_number);
         for (let i in cartItems) {
-            if (registration_number===cartItems[i]){
+            if (registration_number === cartItems[i]) {
                 cartItems.splice(i, 1);
             }
         }
         loadAllCartItemsToCartSection();
     })
 }
+
 $("#clear-cart-btn").click(function () {
-    cartItems=[];
+    cartItems = [];
     loadAllCartItemsToCartSection();
 })
+
 $("#cart-reservation-btn").click(function () {
     let rental_id = generateNextRentalID(getLastRentalID());
     let nic = getCustomerNIC();
@@ -78,37 +81,44 @@ $("#cart-reservation-btn").click(function () {
     let location = $("#cart-location").val();
     let request_id = generateNextRequestID(getLastRequestID());
     let payment_id = generateNextPaymentID(getLastPaymentID());
-    let requestIDArray=[];
-    let paymentIDArray=[];
-    let paymentDataArray=[];
-    let rentalCarDetailsArray=[];
-    let requestArray=[];
-    let scheduleArray=[];
+    let requestIDArray = [];
+    let paymentIDArray = [];
+    let paymentDataArray = [];
+    let rentalCarDetailsArray = [];
+    let requestArray = [];
+    let scheduleArray = [];
     requestIDArray.push(request_id);
     paymentIDArray.push(payment_id);
-    for (let i = 0; i < cartItems.length-1; i++) {
-        requestIDArray.push("REQ-00"+(Number(requestIDArray[requestIDArray.length-1].slice(6)) + 1));
-        paymentIDArray.push("PAY-00"+(Number(paymentIDArray[paymentIDArray.length-1].slice(6)) + 1));
+    for (let i = 0; i < cartItems.length - 1; i++) {
+        requestIDArray.push("REQ-00" + (Number(requestIDArray[requestIDArray.length - 1].slice(6)) + 1));
+        paymentIDArray.push("PAY-00" + (Number(paymentIDArray[paymentIDArray.length - 1].slice(6)) + 1));
     }
-   /* // console.log(requestIDArray)
+    /* // console.log(requestIDArray)
 
-    for (let i in cartItems) {
-        let id="#img-"+cartItems[i];
-        let file = $(id)[0].files[0];
-        console.log(file)
-    }*/
+     for (let i in cartItems) {
+         let id="#img-"+cartItems[i];
+         let file = $(id)[0].files[0];
+         console.log(file)
+     }*/
 
     for (let i = 0; i < cartItems.length; i++) {
-        paymentDataArray.push({"payment_id": paymentIDArray[i],"days":0,"driver_fee":0,"loss_damage":0, "mileage":0,"status": "pending"});
+        paymentDataArray.push({
+            "payment_id": paymentIDArray[i],
+            "days": 0,
+            "driver_fee": 0,
+            "loss_damage": 0,
+            "mileage": 0,
+            "status": "pending"
+        });
         rentalCarDetailsArray.push({"rental_id": rental_id, "registration_number": cartItems[i]});
         requestArray.push(
             {
                 "request_id": requestIDArray[i], "message": "", "status": "pending", "rental_id": rental_id,
-                "car":{"registration_number": cartItems[i]},
-                "payment":{"payment_id": paymentIDArray[i]}
+                "car": {"registration_number": cartItems[i]},
+                "payment": {"payment_id": paymentIDArray[i]}
             }
         );
-        scheduleArray.push({"rental_id": rental_id,"registration_number": cartItems[i]});
+        scheduleArray.push({"rental_id": rental_id, "registration_number": cartItems[i]});
     }
 
     let data = {
@@ -134,7 +144,7 @@ $("#cart-reservation-btn").click(function () {
         method: "post",
         contentType: "application/json",
         data: JSON.stringify(paymentDataArray),
-        success:function (rep) {
+        success: function (rep) {
             $.ajax({
                 url: base_url + "rental",
                 method: "post",
@@ -152,10 +162,6 @@ $("#cart-reservation-btn").click(function () {
     });
 })
 
-
-
-
-
 function saveRental() {
     if (findUser(usernameForContinue)) {
         let rental_id = generateNextRentalID(getLastRentalID());
@@ -172,7 +178,14 @@ function saveRental() {
         let registration_number = $("#registration-number").text();
 
         let payment_id = generateNextPaymentID(getLastPaymentID());
-        let data = {"payment_id": payment_id,"days":0,"driver_fee":0,"loss_damage":0, "mileage":0,"status": "pending"}
+        let data = {
+            "payment_id": payment_id,
+            "days": 0,
+            "driver_fee": 0,
+            "loss_damage": 0,
+            "mileage": 0,
+            "status": "pending"
+        }
         $.ajax({
             url: base_url + "payment",
             method: "post",
@@ -192,14 +205,14 @@ function saveRental() {
                     "request": [
                         {
                             "request_id": request_id, "message": "", "status": "pending", "rental_id": rental_id,
-                            "car":{"registration_number": registration_number},
-                            "payment":{"payment_id": payment_id}
+                            "car": {"registration_number": registration_number},
+                            "payment": {"payment_id": payment_id}
                         }
                     ]
 
                 }
 
-                data.schedule = [{"rental_id": rental_id,"registration_number": registration_number}];
+                data.schedule = [{"rental_id": rental_id, "registration_number": registration_number}];
 
                 let formData = new FormData();
                 formData.append("loss_damage_back_slip", $("#bank-slip")[0].files[0]);
@@ -226,19 +239,6 @@ function saveRental() {
 
     }
 }
-function savePayment() {
-    let data = {"payment_id": "PAY-001","days":0,"driver_fee":0,"loss_damage":0, "mileage":0,"status": "pending"}
-    $.ajax({
-        url: base_url + "payment",
-        method: "post",
-        contentType: "application/json",
-        data: JSON.stringify(data),
-        success: function (rep) {
-
-        }
-    })
-}
-
 
 function getLastRequestID() {
     let last_id = null;

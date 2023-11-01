@@ -31,6 +31,11 @@ public interface DriverRepo extends JpaRepository<Driver, String> {
     @Query(value = "select driver_id from driver join user on user.username = driver.user_username where user.username=?1", nativeQuery = true)
     String getDriverId(String username);
 
+    @Query(value = "select NEW lk.ijse.car_rental_system.entity.CustomEntity(s.rental_id,s.registration_number,r.pick_up_date,r.pick_up_time,r.return_date,r.return_time,r.location) " +
+            "from Schedule s join s.driver d join s.rental r where d.driver_id=?1")
+    List<CustomEntity> getDriverSchedule(String driver_id);
+
+
 }
 
 

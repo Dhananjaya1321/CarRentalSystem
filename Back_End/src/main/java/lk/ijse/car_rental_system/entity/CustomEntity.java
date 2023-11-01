@@ -84,6 +84,16 @@ public class CustomEntity {
         this.payment_id=payment_id;
         this.nic=nic;
     }
+    public CustomEntity(String rental_id,String registration_number,LocalDate pick_up_date,LocalTime pick_up_time,
+                        LocalDate return_date, LocalTime return_time,String location) {
+        this.rental_id=rental_id;
+        this.registration_number=registration_number;
+        this.pick_up_date=pick_up_date;
+        this.pick_up_time=pick_up_time;
+        this.return_date=return_date;
+        this.return_time=return_time;
+        this.location=location;
+    }
 
     public CustomEntity(String request_id, String message, String status, String rental_id, String registration_number,
                         String driver_or_not, String location, String loss_damage_back_slip, LocalDate pick_up_date,
