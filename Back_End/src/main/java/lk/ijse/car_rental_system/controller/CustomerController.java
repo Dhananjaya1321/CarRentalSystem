@@ -18,14 +18,10 @@ public class CustomerController {
 
 
     @PostMapping
-    public ResponseUtil saveCustomer(CustomerDTO dto, UserDTO user) {
+    public ResponseUtil saveCustomer(CustomerDTO dto, UserDTO user) throws IOException {
         user.setRole("customer");
         dto.setUser(user);
-        try {
-            customerService.saveCustomer(dto);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        customerService.saveCustomer(dto);
         return new ResponseUtil("Ok", "Successfully added...!", user.getUsername());
     }
 
@@ -39,9 +35,13 @@ public class CustomerController {
         return new ResponseUtil("Ok", "Successfully loaded...!", customerService.getRegisteredCustomerCount());
     }
 
-    @GetMapping(path = "/customer",params = {"username"})
+    @GetMapping(path = "/customer", params = {"username"})
     public ResponseUtil getCustomerDetails(String username) {
-        System.out.println("\n\n"+customerService.getCustomerDetails(username).toString());
         return new ResponseUtil("Ok", "Successfully loaded...!", customerService.getCustomerDetails(username));
+    }
+
+    @GetMapping(path = "/requests", params = {"nic"})
+    public ResponseUtil getRequests(String nic) {
+        return new ResponseUtil("Ok", "Successfully loaded...!", customerService.getRequests(nic));
     }
 }

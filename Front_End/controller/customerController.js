@@ -86,3 +86,17 @@ function getCustomerDetails() {
         }
     })
 }
+
+function getRequest() {
+    $.ajax({
+        url: base_url + "customer/requests?nic=" + getCustomerNIC(),
+        method: "get",
+        async: false,
+        success: function (rep) {
+            console.log(rep.data)
+        },
+        error: function (rep) {
+
+        }
+    })
+}

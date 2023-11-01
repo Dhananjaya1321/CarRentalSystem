@@ -95,6 +95,17 @@ public class CustomEntity {
         this.location=location;
     }
 
+   public CustomEntity(String rental_id,String registration_number,LocalDate pick_up_date,
+                        LocalDate return_date, String location,String message,String status) {
+        this.rental_id=rental_id;
+        this.registration_number=registration_number;
+        this.pick_up_date=pick_up_date;
+        this.return_date=return_date;
+        this.location=location;
+        this.message=message;
+        this.status=status;
+    }
+
     public CustomEntity(String request_id, String message, String status, String rental_id, String registration_number,
                         String driver_or_not, String location, String loss_damage_back_slip, LocalDate pick_up_date,
                         LocalTime pick_up_time, LocalDate return_date, LocalTime return_time, String nic) {

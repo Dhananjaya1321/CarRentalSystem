@@ -1,5 +1,6 @@
 package lk.ijse.car_rental_system.service.impl;
 
+import lk.ijse.car_rental_system.dto.CustomDTO;
 import lk.ijse.car_rental_system.dto.CustomerDTO;
 import lk.ijse.car_rental_system.entity.CustomEntity;
 import lk.ijse.car_rental_system.entity.Customer;
@@ -8,6 +9,7 @@ import lk.ijse.car_rental_system.repo.CustomerRepo;
 import lk.ijse.car_rental_system.repo.UserRepo;
 import lk.ijse.car_rental_system.service.CustomerService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Transactional
@@ -72,6 +76,12 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomEntity getCustomerDetails(String username){
         return customerRepo.findCustomerByUsername(username);
+    }
+
+    @Override
+    public List<CustomDTO> getRequests(String nic){
+        return modelMapper.map(customerRepo.getRequests(nic), new TypeToken<ArrayList<CustomDTO>>() {
+        }.getType());
     }
 
 }
