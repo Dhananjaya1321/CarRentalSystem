@@ -112,4 +112,19 @@ public class CustomEntity {
        this.return_time=return_time;
        this.nic=nic;
     }
+    public CustomEntity(String nic, String address, String contact, String driving_license_number, String email,
+                        String license_back_photo, String license_front_photo, String nic_back_photo, String nic_front_photo,
+                        String username, String password) {
+       this.nic=nic;
+       this.address=address;
+       this.contact=contact;
+       this.driving_license_number=driving_license_number;
+       this.email=email;
+       this.license_back_photo=license_back_photo;
+       this.license_front_photo=license_front_photo;
+       this.nic_back_photo=nic_back_photo;
+       this.nic_front_photo=nic_front_photo;
+       this.username=username;
+       this.password=password;
+    }
 }

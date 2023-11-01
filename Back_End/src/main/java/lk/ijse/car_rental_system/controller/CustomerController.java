@@ -30,11 +30,18 @@ public class CustomerController {
     }
 
     @GetMapping(params = {"username"})
-    public ResponseUtil getCustomerNIC(String username){
-        return new ResponseUtil("Ok","Successfully loaded...!",customerService.getCustomerNIC(username));
+    public ResponseUtil getCustomerNIC(String username) {
+        return new ResponseUtil("Ok", "Successfully loaded...!", customerService.getCustomerNIC(username));
     }
+
     @GetMapping(path = "/count")
-    public ResponseUtil getRegisteredCustomerCount(){
-        return new ResponseUtil("Ok","Successfully loaded...!",customerService.getRegisteredCustomerCount());
+    public ResponseUtil getRegisteredCustomerCount() {
+        return new ResponseUtil("Ok", "Successfully loaded...!", customerService.getRegisteredCustomerCount());
+    }
+
+    @GetMapping(path = "/customer",params = {"username"})
+    public ResponseUtil getCustomerDetails(String username) {
+        System.out.println("\n\n"+customerService.getCustomerDetails(username).toString());
+        return new ResponseUtil("Ok", "Successfully loaded...!", customerService.getCustomerDetails(username));
     }
 }

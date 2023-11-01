@@ -1,10 +1,11 @@
 package lk.ijse.car_rental_system.service.impl;
 
 import lk.ijse.car_rental_system.dto.CustomerDTO;
+import lk.ijse.car_rental_system.entity.CustomEntity;
 import lk.ijse.car_rental_system.entity.Customer;
 import lk.ijse.car_rental_system.entity.User;
 import lk.ijse.car_rental_system.repo.CustomerRepo;
-import lk.ijse.car_rental_system.service.CarService;
+import lk.ijse.car_rental_system.repo.UserRepo;
 import lk.ijse.car_rental_system.service.CustomerService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     ModelMapper modelMapper;
+
+    @Autowired
+    UserRepo userRepo;
 
     @Override
     public void saveCustomer(CustomerDTO dto) throws IOException {
@@ -63,6 +67,11 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public int getRegisteredCustomerCount(){
         return customerRepo.getCustomerCount();
+    }
+
+    @Override
+    public CustomEntity getCustomerDetails(String username){
+        return customerRepo.findCustomerByUsername(username);
     }
 
 }

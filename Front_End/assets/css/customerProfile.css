@@ -38,6 +38,9 @@
     background-color: #ffffff;
     box-shadow: -5px 5px 14px -14px black;
 }
+#profile-section{
+    display: none;
+}
 #cart,
 #profile-section{
     width: 750px;
