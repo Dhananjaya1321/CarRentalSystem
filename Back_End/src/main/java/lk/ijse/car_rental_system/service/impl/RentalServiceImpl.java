@@ -36,6 +36,7 @@ public class RentalServiceImpl implements RentalService {
     public String getLastRentalID() {
         return rentalRepo.findLastRentalID();
     }
+
     @Override
     public int getTotalBookingCountForTheDay(String date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -57,20 +58,27 @@ public class RentalServiceImpl implements RentalService {
         }.getType());
 
         if (dto.getDriver_or_not().equals("yes")) {
-//            List<Driver> allAvailableDrivers = driverRepo.findAllAvailableDrivers(dto.getPick_up_date(), dto.getReturn_date());
-            List<Driver> allAvailableDrivers = driverRepo.findAll();
+
+            System.out.println("\n\n"+"yes");
+
+            List<String> allAvailableDrivers = driverRepo.findAllAvailableDrivers(dto.getPick_up_date(), dto.getReturn_date());
+//            List<Driver> allAvailableDrivers = driverRepo.findAll();
+
+            System.out.println(allAvailableDrivers.toString());
+
+
             if (allAvailableDrivers.size() >= dto.getSchedule().size()) {
                 Set<Integer> uniqueRandomValues = new HashSet<>();
                 Random random = new Random();
 
                 while (uniqueRandomValues.size() < dto.getSchedule().size()) {
-                    int randomNumber = random.nextInt(allAvailableDrivers.size() + 1);
+                    int randomNumber = random.nextInt(allAvailableDrivers.size());
                     uniqueRandomValues.add(randomNumber);
                 }
                 int count = 0;
                 for (int value : uniqueRandomValues) {
                     System.out.println(value);
-                    dto.getSchedule().get(count).setDriver_id(allAvailableDrivers.get(value).getDriver_id());
+                    dto.getSchedule().get(count).setDriver_id(allAvailableDrivers.get(value));
                     count++;
                 }
             } else {
@@ -79,7 +87,7 @@ public class RentalServiceImpl implements RentalService {
         }/*drivers assign randomly*/
         List<Schedule> schedule = modelMapper.map(dto.getSchedule(), new TypeToken<ArrayList<Schedule>>() {
         }.getType());
-
+        System.out.println(schedule.toString());
         if (dto.getDriver_or_not().equals("yes")) {
             System.out.println("\n\nok");
             rentalRepo.save(

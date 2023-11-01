@@ -136,7 +136,7 @@ $("#cart-reservation-btn").click(function () {
         data: JSON.stringify(paymentDataArray),
         success:function (rep) {
             $.ajax({
-                url: base_url + "rental/cart",
+                url: base_url + "rental",
                 method: "post",
                 data: formData,
                 processData: false,

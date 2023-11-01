@@ -20,17 +20,18 @@ public class RentalController {
     @PostMapping
     public ResponseUtil saveRental(@RequestPart("loss_damage_back_slip") MultipartFile lossDamageBackSlip, @RequestPart("dto") RentalDTO dto) throws IOException {
         dto.setLoss_damage_back_slip(lossDamageBackSlip);
-        System.out.println("\n\n\n"+dto.toString());
+        System.out.println("\n\n\n" + dto.toString());
         rentalService.saveRental(dto);
-        return new ResponseUtil("Ok","Successfully Added",dto.getRental_id());
+        return new ResponseUtil("Ok", "Successfully Added...!", dto.getRental_id());
     }
 
     @GetMapping(path = "/last_ID")
-    public ResponseUtil getLastRentalID(){
-        return new ResponseUtil("Ok","Successfully loaded...!",rentalService.getLastRentalID());
+    public ResponseUtil getLastRentalID() {
+        return new ResponseUtil("Ok", "Successfully loaded...!", rentalService.getLastRentalID());
     }
-    @GetMapping(path = "/count",params = {"date"})
-    public ResponseUtil getTotalBookingCountForTheDay(String date){
-        return new ResponseUtil("Ok","Successfully loaded...!",rentalService.getTotalBookingCountForTheDay(date));
+
+    @GetMapping(path = "/count", params = {"date"})
+    public ResponseUtil getTotalBookingCountForTheDay(String date) {
+        return new ResponseUtil("Ok", "Successfully loaded...!", rentalService.getTotalBookingCountForTheDay(date));
     }
 }
