@@ -569,88 +569,8 @@
                 <th scope="col">Location</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <td>111</td>
-                <td>001</td>
-                <td>2023/10/13</td>
-                <td>12:00</td>
-                <td>2023/10/14</td>
-                <td>12:00</td>
-                <td>Galle</td>
-            </tr>
-            <tr>
-                <td>111</td>
-                <td>001</td>
-                <td>2023/10/13</td>
-                <td>12:00</td>
-                <td>2023/10/14</td>
-                <td>12:00</td>
-                <td>Galle</td>
-            </tr>
-            <tr>
-                <td>111</td>
-                <td>001</td>
-                <td>2023/10/13</td>
-                <td>12:00</td>
-                <td>2023/10/14</td>
-                <td>12:00</td>
-                <td>Galle</td>
-            </tr>
-            <tr>
-                <td>111</td>
-                <td>001</td>
-                <td>2023/10/13</td>
-                <td>12:00</td>
-                <td>2023/10/14</td>
-                <td>12:00</td>
-                <td>Galle</td>
-            </tr>
-            <tr>
-                <td>111</td>
-                <td>001</td>
-                <td>2023/10/13</td>
-                <td>12:00</td>
-                <td>2023/10/14</td>
-                <td>12:00</td>
-                <td>Galle</td>
-            </tr>
-            <tr>
-                <td>111</td>
-                <td>001</td>
-                <td>2023/10/13</td>
-                <td>12:00</td>
-                <td>2023/10/14</td>
-                <td>12:00</td>
-                <td>Galle</td>
-            </tr>
-            <tr>
-                <td>111</td>
-                <td>001</td>
-                <td>2023/10/13</td>
-                <td>12:00</td>
-                <td>2023/10/14</td>
-                <td>12:00</td>
-                <td>Galle</td>
-            </tr>
-            <tr>
-                <td>111</td>
-                <td>001</td>
-                <td>2023/10/13</td>
-                <td>12:00</td>
-                <td>2023/10/14</td>
-                <td>12:00</td>
-                <td>Galle</td>
-            </tr>
-            <tr>
-                <td>111</td>
-                <td>001</td>
-                <td>2023/10/13</td>
-                <td>12:00</td>
-                <td>2023/10/14</td>
-                <td>12:00</td>
-                <td>Galle</td>
-            </tr>
+            <tbody id="driver-schedule-table-body">
+
             </tbody>
         </table>
     </section><!--schedule section-->
@@ -841,6 +761,7 @@
         $("#driver-main").css("display", "none");
         $("#navbar-sign-in").css("display", "block");
         $("#navbar-sign-up").css("display", "block");
+        getDriverSchedule();
         usernameForContinue="logout";
         passwordForContinue="logout";
     })

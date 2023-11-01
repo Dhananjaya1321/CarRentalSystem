@@ -192,8 +192,24 @@ function getDriverSchedule() {
     $.ajax({
         url: base_url + "driver/schedule?driver_id="+driverID,
         method: "get",
+        async:false,
         success: function (rep) {
             console.log(rep.data)
+            $("#driver-schedule-table-body").empty();
+            for (let i in rep.data) {
+                let schedule=rep.data[i];
+                let row=`
+                        <tr>
+                            <td>${schedule.rental_id}</td>
+                            <td>${schedule.registration_number}</td>
+                            <td>${schedule.pick_up_date}</td>
+                            <td>${schedule.pick_up_time}</td>
+                            <td>${schedule.return_date}</td>
+                            <td>${schedule.return_time}</td>
+                            <td>${schedule.location}</td>
+                        </tr>`
+                $("#driver-schedule-table-body").append(row);
+            }
         },
     })
 }
