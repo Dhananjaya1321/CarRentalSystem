@@ -144,7 +144,6 @@ function searchDriverDriverID(driverID) {
 
 $("#driver-add-btn").click(function () {
     $("#driver-nic,#driver-contact,#driver-name,#driver-address,#driver-username,#driver-password,#driver-email").css("border", "1px solid #ced4da");
-    $("#driver-nic,#driver-contact,#driver-name,#driver-address,#driver-username,#driver-password,#driver-email").val("");
     $("#driver-username-validation").text("");
 
     let driverNIC = $("#driver-nic").val();
@@ -187,6 +186,9 @@ $("#driver-add-btn").click(function () {
                                     },
                                     error: function (rep) {
                                         alert(rep.responseJSON.message)
+                                        $("#driver-nic,#driver-contact,#driver-name,#driver-address,#driver-username,#driver-password,#driver-email").css("border", "1px solid #ced4da");
+                                        $("#driver-nic,#driver-contact,#driver-name,#driver-address,#driver-username,#driver-password,#driver-email").val("");
+                                        $("#driver-username-validation,#driver-password-validation").text("");
                                     }
                                 });
                             } else {

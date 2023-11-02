@@ -9,6 +9,13 @@ $("#login-btn").click(function () {
             success: function (rep) {
                 let user = rep.data;
                 if (user.password === password) {
+                    $("#user-name").val("");
+                    $("#password").val("");
+                    $("#user-name").css("border", "1px solid #ced4da")
+                    $("#password").css("border", "1px solid #ced4da")
+                    $("#login-password-validation").text("");
+                    $("#login-username-validation").text("");
+
                     if (user.role === "admin") {
                         usernameForContinue = username;
                         passwordForContinue = password;
@@ -44,7 +51,10 @@ $("#login-btn").click(function () {
                         $("#driver-main").css("display", "none");
                     }
                 } else {
-                    /*incorrect password*/
+                    $("#user-name").css("border", "1px solid red")
+                    $("#password").css("border", "1px solid red")
+                    $("#login-password-validation").text("Incorrect password");
+                    $("#login-password-validation").css("color", "red");
                 }
             },
             error: function (rep) {
@@ -52,7 +62,10 @@ $("#login-btn").click(function () {
             }
         })
     } else {
-        /*incorrect username*/
+        $("#user-name").css("border", "1px solid red")
+        $("#password").css("border", "1px solid red")
+        $("#login-username-validation").text("Incorrect username");
+        $("#login-username-validation").css("color", "red");
     }
 })
 
@@ -67,13 +80,20 @@ $("#next-btn").click(function () {
                 let user = rep.data;
                 $("#find-account-section").css("display", "none");
                 $("#verification-section").css("display", "flex");
+                $("#user-name").val("");
+                $("#user-name").css("border", "red")
+                $("#forgot-password-username-validation").text("Incorrect username");
+                $("#forgot-password-username-validation").css("color","red");
             },
             error: function (rep) {
 
             }
         })
     } else {
-        /*username is not available*/
+        $("#user-name").val("");
+        $("#user-name").css("border", "red")
+        $("#forgot-password-username-validation").text("Incorrect username");
+        $("#forgot-password-username-validation").css("color","red");
     }
 })
 
@@ -83,12 +103,12 @@ function findUser(username) {
     $.ajax({
         url: base_url + "user?username=" + username,
         method: "get",
-        async:false,
+        async: false,
         success: function (rep) {
-            if (rep.data.username===usernameForContinue && rep.data.password===passwordForContinue){
-                user=true;
-            }else {
-                user=false;
+            if (rep.data.username === usernameForContinue && rep.data.password === passwordForContinue) {
+                user = true;
+            } else {
+                user = false;
             }
             console.log("SSs")
         },

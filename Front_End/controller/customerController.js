@@ -4,28 +4,71 @@ $("#create-account-create-btn").click(function (e) {
     let password = $("#create-account-password").val();
     let conform_password = $("#conform-password").val();
 
+    let email = $("#email");
+    let contact = $("#contact");
+    let address = $("#address");
+    let nic = $("#nic");
+    let license = $("#license");
+    $("#license,#nic,#address,#contact,#email").val("");
+    $("#license,#nic,#address,#contact,#email").css("border", "1px solid #ced4da");
     if (!searchUsername(username)) {
-        if (password === conform_password) {
-            let formData = new FormData($("#create-account-form")[0]);
-            $.ajax({
-                url: base_url + "customer",
-                method: "post",
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function () {
-                    manageSingInAndSignUpButton();
-                    window.location.href = '../index.html'
-                },
-                error: function () {
+        if (PASSWORD.test(password)) {
+            if (password === conform_password) {
+                if (EMAIL.test(email.val())) {
+                    if (CONTACT.test(contact.val())) {
+                        if (ADDRESS.test(address.val())) {
+                            if (NIC.test(nic.val())) {
+                                if (LICENSE.test(license.val())) {
+                                    let formData = new FormData($("#create-account-form")[0]);
+                                    $.ajax({
+                                        url: base_url + "customer",
+                                        method: "post",
+                                        data: formData,
+                                        contentType: false,
+                                        processData: false,
+                                        success: function () {
+                                            manageSingInAndSignUpButton();
+                                            $("#license,#nic,#address,#contact,#email").val("");
+                                            $("#license,#nic,#address,#contact,#email").css("border", "1px solid #ced4da");
+                                            window.location.href = '../index.html'
+                                        },
+                                        error: function () {
 
+                                        }
+                                    })
+                                } else {
+                                    license.css("border", "1px solid red");
+                                }
+                            } else {
+                                nic.css("border", "1px solid red");
+                            }
+                        } else {
+                            address.css("border", "1px solid red");
+                        }
+                    } else {
+                        contact.css("border", "1px solid red");
+                    }
+                } else {
+                    email.css("border", "1px solid red");
                 }
-            })
+            } else {
+                /*password is not match*/
+                $("#create-account-password").val("");
+                $("#conform-password").val("");
+                $("#create-account-password").val("");
+                $("#conform-password").val("");
+
+            }
         } else {
-            /*password is not match*/
+            $("#create-account-password-validation").text("Must contain at least 8 characters including one uppercase letter, one lowercase letter, one number and one special character");
+            $("#create-account-password-validation").css("color", "red");
+            $("#create-account-password").css("border", "1px solid red");
         }
     } else {
         /*username is already excise*/
+        $("#create-account-username-validation").text("username is already excise");
+        $("#create-account-username-validation").css("color", "red");
+        $("#create-account-user-name").css("border", "1px solid red");
     }
 });
 
@@ -64,21 +107,21 @@ function getCustomerDetails() {
             let nic_front_photo = "../../../CarRentalSystem/Back_End/src/main/resources/files/upload-dir/" + customer.nic_front_photo;
             let nic_back_photo = "../../../CarRentalSystem/Back_End/src/main/resources/files/upload-dir/" + customer.nic_back_photo;
 
-            $("#customer-profile-driving-license-front-photo").css("background",`url(${license_front_photo})`)
-            $("#customer-profile-driving-license-front-photo").css("backgroundPosition",`center`)
-            $("#customer-profile-driving-license-front-photo").css("backgroundSize",`cover`)
+            $("#customer-profile-driving-license-front-photo").css("background", `url(${license_front_photo})`)
+            $("#customer-profile-driving-license-front-photo").css("backgroundPosition", `center`)
+            $("#customer-profile-driving-license-front-photo").css("backgroundSize", `cover`)
 
-            $("#customer-profile-driving-license-back-photo").css("background",`url(${license_back_photo})`)
-            $("#customer-profile-driving-license-back-photo").css("backgroundPosition",`center`)
-            $("#customer-profile-driving-license-back-photo").css("backgroundSize",`cover`)
+            $("#customer-profile-driving-license-back-photo").css("background", `url(${license_back_photo})`)
+            $("#customer-profile-driving-license-back-photo").css("backgroundPosition", `center`)
+            $("#customer-profile-driving-license-back-photo").css("backgroundSize", `cover`)
 
-            $("#customer-profile-nic-front-photo").css("background",`url(${nic_front_photo})`)
-            $("#customer-profile-nic-front-photo").css("backgroundPosition",`center`)
-            $("#customer-profile-nic-front-photo").css("backgroundSize",`cover`)
+            $("#customer-profile-nic-front-photo").css("background", `url(${nic_front_photo})`)
+            $("#customer-profile-nic-front-photo").css("backgroundPosition", `center`)
+            $("#customer-profile-nic-front-photo").css("backgroundSize", `cover`)
 
-            $("#customer-profile-nic-back-photo").css("background",`url(${nic_back_photo})`)
-            $("#customer-profile-nic-back-photo").css("backgroundPosition",`center`)
-            $("#customer-profile-nic-back-photo").css("backgroundSize",`cover`)
+            $("#customer-profile-nic-back-photo").css("background", `url(${nic_back_photo})`)
+            $("#customer-profile-nic-back-photo").css("backgroundPosition", `center`)
+            $("#customer-profile-nic-back-photo").css("backgroundSize", `cover`)
 
         },
         error: function (rep) {
@@ -95,26 +138,26 @@ function getRequest() {
         async: false,
         success: function (rep) {
             for (let i in rep.data) {
-                let request=rep.data[i];
+                let request = rep.data[i];
                 let btn;
-                if (request.status==="pending"){
+                if (request.status === "pending") {
 
-                    btn=`<button type="button" class="btn btn-danger border-0"
+                    btn = `<button type="button" class="btn btn-danger border-0"
                             style="border-radius: 15px; background-color: #0068ff; height: 30px; width: 85px; font-size: 12px;">
                                 <i class="fa-regular fa-clock"></i> ${request.status}
                          </button>`
-                }else if (request.status==="reject"){
-                    btn=`<button type="button" class="btn btn-danger border-0"
+                } else if (request.status === "reject") {
+                    btn = `<button type="button" class="btn btn-danger border-0"
                             style="border-radius: 15px; background-color: #ff0000; height: 30px; width: 85px; font-size: 12px;">
                                <i class="fa-solid fa-circle-xmark"></i> ${request.status}
                          </button>`
                 } else {
-                    btn=`<button type="button" class="btn btn-danger border-0"
+                    btn = `<button type="button" class="btn btn-danger border-0"
                             style="border-radius: 15px; background-color: #39ff00; height: 30px; width: 85px; font-size: 12px;">
                                <i class="fa-solid fa-circle-check"></i> ${request.status}
                          </button>`
                 }
-                let row=`<tr>
+                let row = `<tr>
                             <td>${request.rental_id}</td>
                             <td>${request.registration_number}</td>
                             <td>${request.pick_up_date}</td>
@@ -141,13 +184,17 @@ $("#customer-details-update-btn").click(function () {
 })
 
 function updateCustomer() {
-    let data={
-        "address":$("#customer-profile-address").val(),
-        "email":$("#customer-profile-email").val(),
-        "contact":$("#customer-profile-contact").val(),
-        "nic":$("#customer-profile-nic").val(),
-        "driving_license_number":$("#customer-profile-driving-license-number").val(),
-        "user":{"username":$("#customer-profile-username").val(),"password": $("#customer-profile-password").val(),"role":"customer"}
+    let data = {
+        "address": $("#customer-profile-address").val(),
+        "email": $("#customer-profile-email").val(),
+        "contact": $("#customer-profile-contact").val(),
+        "nic": $("#customer-profile-nic").val(),
+        "driving_license_number": $("#customer-profile-driving-license-number").val(),
+        "user": {
+            "username": $("#customer-profile-username").val(),
+            "password": $("#customer-profile-password").val(),
+            "role": "customer"
+        }
     }
     $.ajax({
         url: base_url + "customer",

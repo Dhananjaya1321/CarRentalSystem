@@ -458,6 +458,7 @@ $("#reject-request").click(function () {
             success: function (rep) {
                 alert(rep.message);
                 getAllRequests();
+                $("#message-request").val("");
             },
             error: function (rep) {
 
@@ -522,6 +523,7 @@ $("#accept-request").click(function () {
                     alert(rep.message);
                     getAllRequests();
                     $("#message-request").css("border", "1px solid #ced4da");
+                    $("#message-request").val("");
                 },
                 error: function (rep) {
 
@@ -538,6 +540,7 @@ $("#accept-request").click(function () {
                     alert(rep.message);
                     getAllRequests();
                     $("#message-request").css("border", "1px solid #ced4da");
+                    $("#message-request").val("");
                 },
                 error: function (rep) {
 

@@ -10,7 +10,8 @@ const EMAIL=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const ADDRESS=/^.{5,100}$/;
 const NAME=/^[A-Za-z-']{2,50}$/;
 const NIC=/^[0-9]{9}(V)?|[0-9]{12}(V)?/;
-const CONTACT=/^(?:\+94\s|0)(7[167])(?:\s\d{2}){2}\d{2}$/;
+const CONTACT=/^(?:\+94|0)7[0-9]{8}$/;
 const PASSWORD=/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/;/* 8 characters, including at least one uppercase letter, one lowercase letter, one number, and one special character*/
 const USERNAME=/^[A-Za-z0-9_-]{3,20}$/;
 const MESSAGE=/^.{4,}$/;
+const LICENSE=/^[A-Z]{2}\d{6}$/;
