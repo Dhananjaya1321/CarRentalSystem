@@ -14,4 +14,4 @@ const CONTACT=/^(?:\+94|0)7[0-9]{8}$/;
 const PASSWORD=/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/;/* 8 characters, including at least one uppercase letter, one lowercase letter, one number, and one special character*/
 const USERNAME=/^[A-Za-z0-9_-]{3,20}$/;
 const MESSAGE=/^.{4,}$/;
-const LICENSE=/^[A-Z]{2}\d{6}$/;
+const LICENSE=/^[A-Z]{2}\d{6}$/;/*AB123456, XY987654, CD765432*/

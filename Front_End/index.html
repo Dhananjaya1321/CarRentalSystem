@@ -62,25 +62,25 @@
     <section id="login-section" class="flex f-col">
         <div class="flex"><h1>LogIn</h1></div>
         <form>
-            <div class="flex f-col">
+            <div style="align-items: flex-start;" class="flex f-col">
                 <label>User Name</label>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="user-name-span">@</span>
                     <input id="user-name" name="userName" type="text" class="form-control" placeholder="Username"
                            aria-label="Username"
                            aria-describedby="user-name-span">
-                    <small id="login-username-validation"></small>
                 </div>
+                <small id="login-username-validation"></small>
             </div>
             <div class="flex f-col">
                 <label>Password</label>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="password-span"><i class="fa-solid fa-lock"></i></span>
-                    <input id="password" name="password" type="password" class="form-control" placeholder="Username"
+                    <input id="password" name="password" type="password" class="form-control" placeholder="Password"
                            aria-label="Username"
                            aria-describedby="password-span">
-                    <small id="login-password-validation"></small>
                 </div>
+                <small id="login-password-validation"></small>
             </div>
             <a href="#" id="forgot-password">Forgot password?</a>
         </form>
@@ -219,8 +219,6 @@
                                   aria-describedby="address-span"></textarea>
                     </div>
                 </div><!--address-->
-            </div><!--other details-->
-            <div class="flex f-col">
                 <div class="flex f-col">
                     <label>NIC (National Identity Card)</label>
                     <div class="input-group mb-3">
@@ -230,24 +228,20 @@
                                aria-describedby="nic-span">
                     </div>
                 </div><!--nic-->
-                <div class="chooser flex f-row f-wrap">
-                    <div class="flex f-col">
-                        <label>NIC front photo</label>
-                        <div class="input-group mb-3">
-                            <input name="nic_front_photo" type="file" id="nic-front-photo-choose">
-                        </div>
-<!--                        <div id="nic-front-photo"></div>-->
-                    </div><!--nic front photo-->
-                    <div class="flex f-col">
-                        <label>NIC back photo</label>
-                        <div class="input-group mb-3">
-                            <input name="nic_back_photo" type="file" id="nic-back-photo-choose">
-                        </div>
-<!--                        <div id="nic-back-photo"></div>-->
-                    </div><!--nic back photo-->
-                </div>
-            </div><!--nic details-->
-            <div class="flex f-col">
+                <div class="flex f-col">
+                    <label>NIC front photo</label>
+                    <div class="input-group mb-3">
+                        <input name="nic_front_photo" type="file" id="nic-front-photo-choose">
+                    </div>
+                    <!--                        <div id="nic-front-photo"></div>-->
+                </div><!--nic front photo-->
+                <div class="flex f-col">
+                    <label>NIC back photo</label>
+                    <div class="input-group mb-3">
+                        <input name="nic_back_photo" type="file" id="nic-back-photo-choose">
+                    </div>
+                    <!--                        <div id="nic-back-photo"></div>-->
+                </div><!--nic back photo-->
                 <div class="flex f-col">
                     <label>License number</label>
                     <div class="input-group mb-3">
@@ -258,23 +252,33 @@
                                aria-describedby="license-span">
                     </div>
                 </div><!--license-->
+                <div class="flex f-col">
+                    <label>License front photo</label>
+                    <div class="input-group mb-3">
+                        <input name="license_front_photo" type="file" id="license-front-photo-choose">
+                    </div>
+                    <!--                        <div id="license-front-photo"></div>-->
+                </div><!--nic front photo-->
+                <div class="flex f-col">
+                    <label>License back photo</label>
+                    <div class="input-group mb-3">
+                        <input name="license_back_photo" type="file" id="license-back-photo-choose">
+                    </div>
+                    <!--                        <div id="license-back-photo"></div>-->
+                </div><!--nic back photo-->
+            </div><!--other details-->
+            <!--<div class="flex f-col">
+
+&lt;!&ndash;                <div class="chooser flex f-row f-wrap">&ndash;&gt;
+&lt;!&ndash;                    &ndash;&gt;
+&lt;!&ndash;                </div>&ndash;&gt;
+            </div>&lt;!&ndash;nic details&ndash;&gt;
+            <div class="flex f-col">
+
                 <div class="chooser flex f-row f-wrap">
-                    <div class="flex f-col">
-                        <label>License front photo</label>
-                        <div class="input-group mb-3">
-                            <input name="license_front_photo" type="file" id="license-front-photo-choose">
-                        </div>
-<!--                        <div id="license-front-photo"></div>-->
-                    </div><!--nic front photo-->
-                    <div class="flex f-col">
-                        <label>License back photo</label>
-                        <div class="input-group mb-3">
-                            <input name="license_back_photo" type="file" id="license-back-photo-choose">
-                        </div>
-<!--                        <div id="license-back-photo"></div>-->
-                    </div><!--nic back photo-->
+
                 </div>
-            </div><!--license details-->
+            </div>&lt;!&ndash;license details&ndash;&gt;-->
             <div class="flex f-col">
                 <a href="#">
                     <button type="button" id="create-account-create-btn">Create Account</button>
@@ -822,6 +826,7 @@
 <script src="controller/customerController.js"></script>
 <script src="controller/itemController.js"></script>
 <script src="controller/driverController.js"></script>
+<script src="controller/validation/validation.js"></script>
 <script>
     $("#schedule-btn").css("backgroundColor", "#b3bdff");
     $("#driver-profile-btn").css("backgroundColor", "white");

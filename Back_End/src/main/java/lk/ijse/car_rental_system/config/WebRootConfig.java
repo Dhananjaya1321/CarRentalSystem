@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@Import({JPAConfig.class})
+@Import({JPAConfig.class,EmailConfig.class})
 @ComponentScan(basePackages = "lk.ijse.car_rental_system.service")
 public class WebRootConfig {
    @Bean

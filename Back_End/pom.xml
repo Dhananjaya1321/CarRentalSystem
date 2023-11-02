@@ -95,8 +95,16 @@
             <artifactId>commons-fileupload</artifactId>
             <version>1.5</version>
         </dependency>
-
-
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>5.3.23</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version> <!-- Use the latest version -->
+        </dependency>
 
     </dependencies>
 </project>

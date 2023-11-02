@@ -21,10 +21,15 @@ public class UserController {
         return new ResponseUtil("Ok", "", user.findUser(username));
     }
 
-
     @GetMapping
     public ResponseUtil getAllUsers() {
         return new ResponseUtil("Ok", "Successfully loaded...!", user.getAllUsers());
+    }
+
+    @GetMapping(path = "/mail",params = {"username"})
+    public ResponseUtil getOTPCode(String username) {
+        user.sendEmail(username);
+        return new ResponseUtil("Ok", "Successfully loaded...!",username);
     }
 
 

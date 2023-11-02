@@ -8,4 +8,6 @@ public interface UserService {
     UserDTO findUser(String username);
 
     List<UserDTO> getAllUsers();
+
+    void sendEmail(String username);
 }

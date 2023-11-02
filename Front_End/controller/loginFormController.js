@@ -97,7 +97,6 @@ $("#next-btn").click(function () {
     }
 })
 
-
 function findUser(username) {
     let user;
     $.ajax({
@@ -116,6 +115,18 @@ function findUser(username) {
     return user;
 }
 
+function sendMail() {
+    $.ajax({
+        url: base_url + "user/mail?username=" + usernameForContinue,
+        method: "get",
+        success: function (rep) {
+            console.log("Success fully send")
+        },
+        error: function (rep) {
+
+        }
+    })
+}
 
 $("#find-account-section").css("display", "none");
 $("#verification-section").css("display", "none");

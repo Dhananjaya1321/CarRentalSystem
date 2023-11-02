@@ -9,7 +9,6 @@ $("#create-account-create-btn").click(function (e) {
     let address = $("#address");
     let nic = $("#nic");
     let license = $("#license");
-    $("#license,#nic,#address,#contact,#email").val("");
     $("#license,#nic,#address,#contact,#email").css("border", "1px solid #ced4da");
     if (!searchUsername(username)) {
         if (PASSWORD.test(password)) {
@@ -26,14 +25,16 @@ $("#create-account-create-btn").click(function (e) {
                                         data: formData,
                                         contentType: false,
                                         processData: false,
-                                        success: function () {
+                                        success: function (rep) {
                                             manageSingInAndSignUpButton();
                                             $("#license,#nic,#address,#contact,#email").val("");
                                             $("#license,#nic,#address,#contact,#email").css("border", "1px solid #ced4da");
                                             window.location.href = '../index.html'
                                         },
-                                        error: function () {
-
+                                        error: function (rep) {
+                                            alert(rep.responseJSON.message);
+                                            $("#license,#nic,#address,#contact,#email").val("");
+                                            $("#license,#nic,#address,#contact,#email").css("border", "1px solid #ced4da");
                                         }
                                     })
                                 } else {
@@ -196,16 +197,42 @@ function updateCustomer() {
             "role": "customer"
         }
     }
-    $.ajax({
-        url: base_url + "customer",
-        method: "put",
-        contentType: "application/json",
-        data: JSON.stringify(data),
-        success: function (rep) {
-            getCustomerDetails();
-        },
-        error: function (rep) {
+    $("#customer-profile-email,#customer-profile-contact,#customer-profile-address,#customer-profile-nic,#customer-profile-driving-license-number").css("border", "1px solid #ced4da");
 
+    if (EMAIL.test($("#customer-profile-email").val())) {
+        if (CONTACT.test($("#customer-profile-contact").val())) {
+            if (ADDRESS.test($("#customer-profile-address").val())) {
+                if (NIC.test($("#customer-profile-nic").val())) {
+                    if (LICENSE.test($("#customer-profile-driving-license-number").val())) {
+                        $.ajax({
+                            url: base_url + "customer",
+                            method: "put",
+                            contentType: "application/json",
+                            data: JSON.stringify(data),
+                            success: function (rep) {
+                                getCustomerDetails();
+                                $("#customer-profile-email,#customer-profile-contact,#customer-profile-address,#customer-profile-nic,#customer-profile-driving-license-number").val("");
+                                $("#customer-profile-email,#customer-profile-contact,#customer-profile-address,#customer-profile-nic,#customer-profile-driving-license-number").css("border", "1px solid #ced4da");
+                            },
+                            error: function (rep) {
+                                alert(rep.responseJSON.message);
+                                $("#customer-profile-email,#customer-profile-contact,#customer-profile-address,#customer-profile-nic,#customer-profile-driving-license-number").val("");
+                                $("#customer-profile-email,#customer-profile-contact,#customer-profile-address,#customer-profile-nic,#customer-profile-driving-license-number").css("border", "1px solid #ced4da");
+                            }
+                        });
+                    } else {
+                        $("#customer-profile-driving-license-number").css("border", "1px solid red");
+                    }
+                } else {
+                    $("#customer-profile-nic").css("border", "1px solid red");
+                }
+            } else {
+                $("#customer-profile-address").css("border", "1px solid red");
+            }
+        } else {
+            $("#customer-profile-contact").css("border", "1px solid red");
         }
-    });
+    } else {
+        $("#customer-profile-email").css("border", "1px solid red");
+    }
 }
