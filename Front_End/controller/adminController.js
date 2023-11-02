@@ -649,7 +649,7 @@ $("#driver-fee").on("input", function () {
     $("#driver-fee,#payment-request-id").css("border", "1px solid #ced4da");
     let currentValueDriverFee = $("#driver-fee").val();
     if ($("#payment-nic").val()!==""){
-        if (INT.test(currentValueDriverFee)) {
+        if (PRICES.test(currentValueDriverFee)) {
             $("#total").val((Number(currentValueDriverFee) - Number(previousValueDriverFee)) + Number($("#total").val()));
             previousValueDriverFee = currentValueDriverFee;
         } else {
@@ -664,7 +664,7 @@ $("#loss-damage").on("input", function () {
     $("#loss-damage,#payment-request-id").css("border", "1px solid #ced4da");
     let currentValueLossDamage = $("#loss-damage").val();
     if ($("#payment-nic").val()!==""){
-        if (INT.test(currentValueLossDamage)) {
+        if (PRICES.test(currentValueLossDamage)) {
             $("#total").val((Number(currentValueLossDamage) - Number(previousValueLossDamage)) + Number($("#total").val()));
             previousValueLossDamage = currentValueLossDamage;
         } else {

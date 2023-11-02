@@ -83,6 +83,7 @@ $("#edit>button").click(function () {
 });
 
 $("#driver-details-update-btn").click(function () {
+    $("#driver-password,#driver-address,#driver-contact,#driver-email,#driver-name,#driver-nic").css("border", "1px solid #ced4da");
     let data = {
         "driver_id": driverID,
         "address": $("#driver-address").val(),
@@ -93,18 +94,44 @@ $("#driver-details-update-btn").click(function () {
         "user": {"username": $("#driver-username").val(), "password": $("#driver-password").val(), "role": "driver"},
     }
 
-    $.ajax({
-        url: base_url + "driver",
-        method: "put",
-        data: JSON.stringify(data),
-        contentType: "application/json",
-        success: function (rep) {
-            alert(rep.message)
-        },
-        error: function (rep) {
-            alert(rep.data)
+    if (ADDRESS.test($("#driver-address").val())) {
+        if (CONTACT.test($("#driver-contact").val())) {
+            if (EMAIL.test($("#driver-email").val())) {
+                if (NAME.test($("#driver-name").val())) {
+                    if (NIC.test($("#driver-nic").val())) {
+                        if (PASSWORD.test($("#driver-password").val())) {
+                            $.ajax({
+                                url: base_url + "driver",
+                                method: "put",
+                                data: JSON.stringify(data),
+                                contentType: "application/json",
+                                success: function (rep) {
+                                    alert(rep.message);
+                                    $("#driver-password,#driver-address,#driver-contact,#driver-email,#driver-name,#driver-nic").css("border", "1px solid #ced4da");
+                                },
+                                error: function (rep) {
+                                    alert(rep.responseJSON.data);
+                                    $("#driver-password,#driver-address,#driver-contact,#driver-email,#driver-name,#driver-nic").css("border", "1px solid #ced4da");
+                                }
+                            })
+                        } else {
+                            $("#driver-password").css("border", "1px solid red");
+                        }
+                    } else {
+                        $("#driver-nic").css("border", "1px solid red");
+                    }
+                } else {
+                    $("#driver-name").css("border", "1px solid red");
+                }
+            } else {
+                $("#driver-email").css("border", "1px solid red");
+            }
+        } else {
+            $("#driver-contact").css("border", "1px solid red");
         }
-    })
+    } else {
+        $("#driver-address").css("border", "1px solid red");
+    }
 });
 
 function searchDriverDriverID(driverID) {
@@ -116,6 +143,10 @@ function searchDriverDriverID(driverID) {
 }
 
 $("#driver-add-btn").click(function () {
+    $("#driver-nic,#driver-contact,#driver-name,#driver-address,#driver-username,#driver-password,#driver-email").css("border", "1px solid #ced4da");
+    $("#driver-nic,#driver-contact,#driver-name,#driver-address,#driver-username,#driver-password,#driver-email").val("");
+    $("#driver-username-validation").text("");
+
     let driverNIC = $("#driver-nic").val();
     let contact = $("#driver-contact").val();
     let name = $("#driver-name").val();
@@ -135,22 +166,55 @@ $("#driver-add-btn").click(function () {
             "profile_photo": null,
             "user": {"username": username, "password": password, "role": "driver"}
         }
-        $.ajax({
-            url: base_url + "driver",
-            method: "post",
-            contentType: "application/json",
-            data: JSON.stringify(newDriver),
-            success: function (rep) {
-                alert(rep.message);
-                getAllDrivers();
-                loadAllDriversForTable(drivers);
-            },
-            error: function (rep) {
-                alert(rep.responseJSON.message)
+        if (ADDRESS.test(address)) {
+            if (CONTACT.test(contact)) {
+                if (EMAIL.test(email)) {
+                    if (NAME.test(name)) {
+                        if (NIC.test(driverNIC)) {
+                            if (PASSWORD.test(password)) {
+                                $.ajax({
+                                    url: base_url + "driver",
+                                    method: "post",
+                                    contentType: "application/json",
+                                    data: JSON.stringify(newDriver),
+                                    success: function (rep) {
+                                        alert(rep.message);
+                                        getAllDrivers();
+                                        loadAllDriversForTable(drivers);
+                                        $("#driver-nic,#driver-contact,#driver-name,#driver-address,#driver-username,#driver-password,#driver-email").css("border", "1px solid #ced4da");
+                                        $("#driver-nic,#driver-contact,#driver-name,#driver-address,#driver-username,#driver-password,#driver-email").val("");
+                                        $("#driver-username-validation,#driver-password-validation").text("");
+                                    },
+                                    error: function (rep) {
+                                        alert(rep.responseJSON.message)
+                                    }
+                                });
+                            } else {
+                                $("#driver-password").css("border", "1px solid red");
+                                $("#driver-password-validation").text("Must contain at least 8 characters including one uppercase letter, one lowercase letter, one number and one special character");
+                                $("#driver-password-validation").css("color","red");
+                            }
+                        } else {
+                            $("#driver-nic").css("border", "1px solid red");
+                        }
+                    } else {
+                        $("#driver-name").css("border", "1px solid red");
+                    }
+                } else {
+                    $("#driver-email").css("border", "1px solid red");
+                }
+            } else {
+                $("#driver-contact").css("border", "1px solid red");
             }
-        });
+        } else {
+            $("#driver-address").css("border", "1px solid red");
+        }
+
     } else {
         /*username already excites*/
+        $("#driver-username-validation").text("Username already exists");
+        $("#driver-username-validation").css("color","red");
+        $("#driver-username-validation").focus();
     }
 });
 
@@ -190,15 +254,15 @@ function getDriverByDriverId(driver_id) {
 function getDriverSchedule() {
     getDriverID();
     $.ajax({
-        url: base_url + "driver/schedule?driver_id="+driverID,
+        url: base_url + "driver/schedule?driver_id=" + driverID,
         method: "get",
-        async:false,
+        async: false,
         success: function (rep) {
             console.log(rep.data)
             $("#driver-schedule-table-body").empty();
             for (let i in rep.data) {
-                let schedule=rep.data[i];
-                let row=`
+                let schedule = rep.data[i];
+                let row = `
                         <tr>
                             <td>${schedule.rental_id}</td>
                             <td>${schedule.registration_number}</td>
