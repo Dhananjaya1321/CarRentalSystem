@@ -116,8 +116,8 @@ function getOccupiedDriversCount() {
 
 
 /*add cars*/
-$("#car-add-btn").click(function (){
-    $("#brand,#Number-of-passengers,#registration-number,#color,#daily-rate,#monthly-rate,#daily-free-mileage,#monthly-free-mileage,#price-for-extra-km,#mileage-after-last-maintenance,#loss-damage-waiver").css("border","1px solid #ced4da");
+$("#car-add-btn").click(function () {
+    $("#brand,#Number-of-passengers,#registration-number,#color,#daily-rate,#monthly-rate,#daily-free-mileage,#monthly-free-mileage,#price-for-extra-km,#mileage-after-last-maintenance,#loss-damage-waiver").css("border", "1px solid #ced4da");
     let brand = $("#brand").val();
     let numberOfPassengers = $("#Number-of-passengers").val();
     let registrationNumber = $("#registration-number").val();
@@ -129,52 +129,52 @@ $("#car-add-btn").click(function (){
     let priceForExtraKM = $("#price-for-extra-km").val();
     let mileageAfterLastMaintenance = $("#mileage-after-last-maintenance").val();
     let lossDamageWaiver = $("#loss-damage-waiver").val();
-    if (BRAND.test(brand)){
-        if (PASSENGER_COUNT.test(numberOfPassengers)){
-            if (REGISTRATION_NUMBER.test(registrationNumber)){
-                if (COLOR.test(color)){
-                    if (PRICES.test(dailyRate)){
-                        if (PRICES.test(monthlyRate)){
-                            if (MILEAGES.test(dailyFreeMileage)){
-                                if (MILEAGES.test(monthlyFreeMileage)){
-                                    if (PRICES.test(priceForExtraKM)){
-                                        if (MILEAGES.test(mileageAfterLastMaintenance)){
-                                            if (MILEAGES.test(lossDamageWaiver)){
+    if (BRAND.test(brand)) {
+        if (PASSENGER_COUNT.test(numberOfPassengers)) {
+            if (REGISTRATION_NUMBER.test(registrationNumber)) {
+                if (COLOR.test(color)) {
+                    if (PRICES.test(dailyRate)) {
+                        if (PRICES.test(monthlyRate)) {
+                            if (MILEAGES.test(dailyFreeMileage)) {
+                                if (MILEAGES.test(monthlyFreeMileage)) {
+                                    if (PRICES.test(priceForExtraKM)) {
+                                        if (MILEAGES.test(mileageAfterLastMaintenance)) {
+                                            if (MILEAGES.test(lossDamageWaiver)) {
                                                 saveCar();
-                                                $("#brand,#Number-of-passengers,#registration-number,#color,#daily-rate,#monthly-rate,#daily-free-mileage,#monthly-free-mileage,#price-for-extra-km,#mileage-after-last-maintenance,#loss-damage-waiver").css("border","1px solid #ced4da");
+                                                $("#brand,#Number-of-passengers,#registration-number,#color,#daily-rate,#monthly-rate,#daily-free-mileage,#monthly-free-mileage,#price-for-extra-km,#mileage-after-last-maintenance,#loss-damage-waiver").css("border", "1px solid #ced4da");
                                                 $("#brand,#Number-of-passengers,#registration-number,#color,#daily-rate,#monthly-rate,#daily-free-mileage,#monthly-free-mileage,#price-for-extra-km,#mileage-after-last-maintenance,#loss-damage-waiver").val("");
-                                            }else {
-                                                $("#loss-damage-waiver").css("border","2px solid red");
+                                            } else {
+                                                $("#loss-damage-waiver").css("border", "2px solid red");
                                             }
-                                        }else {
-                                            $("#mileage-after-last-maintenance").css("border","2px solid red");
+                                        } else {
+                                            $("#mileage-after-last-maintenance").css("border", "2px solid red");
                                         }
-                                    }else {
-                                        $("#price-for-extra-km").css("border","2px solid red");
+                                    } else {
+                                        $("#price-for-extra-km").css("border", "2px solid red");
                                     }
-                                }else {
-                                    $("#monthly-free-mileage").css("border","2px solid red");
+                                } else {
+                                    $("#monthly-free-mileage").css("border", "2px solid red");
                                 }
-                            }else {
-                                $("#daily-free-mileage").css("border","2px solid red");
+                            } else {
+                                $("#daily-free-mileage").css("border", "2px solid red");
                             }
-                        }else {
-                            $("#monthly-rate").css("border","2px solid red");
+                        } else {
+                            $("#monthly-rate").css("border", "2px solid red");
                         }
-                    }else {
-                        $("#daily-rate").css("border","2px solid red");
+                    } else {
+                        $("#daily-rate").css("border", "2px solid red");
                     }
-                }else {
-                    $("#color").css("border","2px solid red");
+                } else {
+                    $("#color").css("border", "2px solid red");
                 }
-            }else {
-                $("#registration-number").css("border","2px solid red");
+            } else {
+                $("#registration-number").css("border", "2px solid red");
             }
-        }else {
-            $("#Number-of-passengers").css("border","2px solid red");
+        } else {
+            $("#Number-of-passengers").css("border", "2px solid red");
         }
-    }else {
-        $("#brand").css("border","2px solid red");
+    } else {
+        $("#brand").css("border", "2px solid red");
     }
 })
 
@@ -449,19 +449,23 @@ $("#reject-request").click(function () {
         "rental_id": request.rental_id,
         "car": {"registration_number": registration_number}
     }
-    $.ajax({
-        url: base_url + "request",
-        method: "put",
-        contentType: "application/json",
-        data: JSON.stringify(data),
-        success: function (rep) {
-            alert(rep.message);
-            getAllRequests();
-        },
-        error: function (rep) {
+    if (MESSAGE.test(msg)) {
+        $.ajax({
+            url: base_url + "request",
+            method: "put",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (rep) {
+                alert(rep.message);
+                getAllRequests();
+            },
+            error: function (rep) {
 
-        }
-    })
+            }
+        })
+    } else {
+        $("#message-request").css("border", "2px solid red")
+    }
 })
 
 /*This event was created to accept the rental request*/
@@ -488,55 +492,60 @@ $("#accept-request").click(function () {
         "rental_id": request.rental_id,
         "car": {"registration_number": registrationnumber},
     }
-
-    if (driver_or_not === "yes") {
-        let data = {
-            "rental_id": request.rental_id,
-            "driver_or_not": driver_or_not,
-            "location": loc,
-            "pick_up_date": new Date(pickupdate),
-            "pick_up_time": pickuptime,
-            "return_date": new Date(returndate),
-            "return_time": returntime,
-            "customer": {"nic": cusnic},
-            "rentalCarDetails": [{"rental_id": request.rental_id, "registration_number": registrationnumber}],
-            "request": [requestData],
-            "schedule": [{
+    if (MESSAGE.test(msg)) {
+        if (driver_or_not === "yes") {
+            let data = {
                 "rental_id": request.rental_id,
-                "driver_id": driver_id,
-                "registration_number": registrationnumber
-            }]
+                "driver_or_not": driver_or_not,
+                "location": loc,
+                "pick_up_date": new Date(pickupdate),
+                "pick_up_time": pickuptime,
+                "return_date": new Date(returndate),
+                "return_time": returntime,
+                "customer": {"nic": cusnic},
+                "rentalCarDetails": [{"rental_id": request.rental_id, "registration_number": registrationnumber}],
+                "request": [requestData],
+                "schedule": [{
+                    "rental_id": request.rental_id,
+                    "driver_id": driver_id,
+                    "registration_number": registrationnumber
+                }]
+            }
+
+            $.ajax({
+                url: base_url + "request/accept?loss_damage_back_slip=" + request.loss_damage_back_slip,
+                method: "put",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (rep) {
+                    console.log(rep.data)
+                    alert(rep.message);
+                    getAllRequests();
+                    $("#message-request").css("border", "1px solid #ced4da");
+                },
+                error: function (rep) {
+
+                }
+            })
+        } else {
+            $.ajax({
+                url: base_url + "request/accept",
+                method: "put",
+                contentType: "application/json",
+                data: JSON.stringify(requestData),
+                success: function (rep) {
+                    console.log(rep.data)
+                    alert(rep.message);
+                    getAllRequests();
+                    $("#message-request").css("border", "1px solid #ced4da");
+                },
+                error: function (rep) {
+
+                }
+            })
         }
-
-        $.ajax({
-            url: base_url + "request/accept?loss_damage_back_slip=" + request.loss_damage_back_slip,
-            method: "put",
-            contentType: "application/json",
-            data: JSON.stringify(data),
-            success: function (rep) {
-                console.log(rep.data)
-                alert(rep.message);
-                getAllRequests();
-            },
-            error: function (rep) {
-
-            }
-        })
     } else {
-        $.ajax({
-            url: base_url + "request/accept",
-            method: "put",
-            contentType: "application/json",
-            data: JSON.stringify(requestData),
-            success: function (rep) {
-                console.log(rep.data)
-                alert(rep.message);
-                getAllRequests();
-            },
-            error: function (rep) {
-
-            }
-        })
+        $("#message-request").css("border", "2px solid red");
     }
 })
 
@@ -586,56 +595,92 @@ $("#payment-request-id").click(function () {
     let payment = searchPendingPayment(rental_id);
     $("#payment-nic").val(payment.nic);
     $("#payment-registration-number").val(payment.registration_number);
-     pendingPaymentsCar = searchCarByRegistrationNumber(payment.registration_number)[0];
+    pendingPaymentsCar = searchCarByRegistrationNumber(payment.registration_number)[0];
     $("#fee-for-extra-mileage").val(pendingPaymentsCar.price_for_extra_km);
     $("#car-fee").val(pendingPaymentsCar.price_for_day);
-    pendingPaymentCarRegistration_number=payment.registration_number;
+    pendingPaymentCarRegistration_number = payment.registration_number;
 });
 
 function searchPendingPayment(rental_id) {
     for (let i in pendingPayments) {
         if (pendingPayments[i].rental_id === rental_id) {
-            pendingPaymentID=pendingPayments[i].payment_id;
+            pendingPaymentID = pendingPayments[i].payment_id;
             return pendingPayments[i];
         }
     }
 }
 
-let previousValueNumberOfDays=0;
-let previousValueExtraMileage=0;
-let previousValueLossDamage=0;
-let previousValueDriverFee=0;
+let previousValueNumberOfDays = 0;
+let previousValueExtraMileage = 0;
+let previousValueLossDamage = 0;
+let previousValueDriverFee = 0;
 $("#number-of-days").on("input", function () {
-    // console.log($("#number-of-days").val());
-    let currentValueNumberOfDays=$("#number-of-days").val();
-    $("#total").val((pendingPaymentsCar.price_for_day*Number(currentValueNumberOfDays))-(pendingPaymentsCar.price_for_day*Number(previousValueNumberOfDays))+Number($("#total").val()));
-    previousValueNumberOfDays=currentValueNumberOfDays;
+    $("#number-of-days,#payment-request-id").css("border", "1px solid #ced4da");
+    let currentValueNumberOfDays = $("#number-of-days").val();
+    if ($("#payment-nic").val()!==""){
+        if (INT.test(currentValueNumberOfDays)) {
+            $("#total").val((pendingPaymentsCar.price_for_day * Number(currentValueNumberOfDays)) - (pendingPaymentsCar.price_for_day * Number(previousValueNumberOfDays)) + Number($("#total").val()));
+            previousValueNumberOfDays = currentValueNumberOfDays;
+        } else {
+            $("#number-of-days").css("border", "1px solid red");
+        }
+    }else {
+        $("#payment-request-id").css("border", "1px solid red");
+    }
 });
 $("#extra-mileage").on("input", function () {
-    // console.log($("#extra-mileage").val());
-    let currentValueExtraMileage=$("#extra-mileage").val();
-    $("#total").val((pendingPaymentsCar.price_for_extra_km*Number(currentValueExtraMileage))-(pendingPaymentsCar.price_for_extra_km*Number(previousValueExtraMileage))+Number($("#total").val()));
-    previousValueExtraMileage=currentValueExtraMileage;
+    $("#extra-mileage,#payment-request-id").css("border", "1px solid #ced4da");
+    let currentValueExtraMileage = $("#extra-mileage").val();
+    if ($("#payment-nic").val()!==""){
+        if (INT.test(currentValueExtraMileage)) {
+            $("#total").val((pendingPaymentsCar.price_for_extra_km * Number(currentValueExtraMileage)) - (pendingPaymentsCar.price_for_extra_km * Number(previousValueExtraMileage)) + Number($("#total").val()));
+            previousValueExtraMileage = currentValueExtraMileage;
+        } else {
+            $("#extra-mileage").css("border", "1px solid red");
+        }
+    }else {
+        $("#payment-request-id").css("border", "1px solid red");
+    }
+
+
+
 });
 $("#driver-fee").on("input", function () {
-    // console.log($("#driver-fee").val());
-    let currentValueDriverFee=$("#driver-fee").val();
-    $("#total").val((Number(currentValueDriverFee)-Number(previousValueDriverFee))+Number($("#total").val()));
-    previousValueDriverFee=currentValueDriverFee;
+    $("#driver-fee,#payment-request-id").css("border", "1px solid #ced4da");
+    let currentValueDriverFee = $("#driver-fee").val();
+    if ($("#payment-nic").val()!==""){
+        if (INT.test(currentValueDriverFee)) {
+            $("#total").val((Number(currentValueDriverFee) - Number(previousValueDriverFee)) + Number($("#total").val()));
+            previousValueDriverFee = currentValueDriverFee;
+        } else {
+            $("#driver-fee").css("border", "1px solid red");
+        }
+    }else {
+        $("#payment-request-id").css("border", "1px solid red");
+    }
+
 });
 $("#loss-damage").on("input", function () {
-    // console.log($("#loss-damage").val());
-    let currentValueLossDamage=$("#loss-damage").val();
-    $("#total").val((Number(currentValueLossDamage)-Number(previousValueLossDamage))+Number($("#total").val()));
-    previousValueLossDamage=currentValueLossDamage;
+    $("#loss-damage,#payment-request-id").css("border", "1px solid #ced4da");
+    let currentValueLossDamage = $("#loss-damage").val();
+    if ($("#payment-nic").val()!==""){
+        if (INT.test(currentValueLossDamage)) {
+            $("#total").val((Number(currentValueLossDamage) - Number(previousValueLossDamage)) + Number($("#total").val()));
+            previousValueLossDamage = currentValueLossDamage;
+        } else {
+            $("#loss-damage").css("border", "1px solid red");
+        }
+    }else {
+        $("#payment-request-id").css("border", "1px solid red");
+    }
 });
 
 /*payment update function*/
 $("#pay-btn").click(function () {
-let thisRentalMiles=(Number($("#number-of-days").val())*pendingPaymentsCar.free_mileage_for_day)+Number($("#extra-mileage").val());
+    let thisRentalMiles = (Number($("#number-of-days").val()) * pendingPaymentsCar.free_mileage_for_day) + Number($("#extra-mileage").val());
 
-    let data={
-        "payment_id":pendingPaymentID,
+    let data = {
+        "payment_id": pendingPaymentID,
         "car_fee": $("#car-fee").val(),
         "days": $("#number-of-days").val(),
         "driver_fee": $("#driver-fee").val(),
@@ -647,10 +692,10 @@ let thisRentalMiles=(Number($("#number-of-days").val())*pendingPaymentsCar.free_
         "status": "paid",
     }
     $.ajax({
-        url: base_url + "payment?thisRentalMiles="+thisRentalMiles+"&registration_number="+pendingPaymentCarRegistration_number,
+        url: base_url + "payment?thisRentalMiles=" + thisRentalMiles + "&registration_number=" + pendingPaymentCarRegistration_number,
         method: "put",
-        contentType:"application/json",
-        data:JSON.stringify(data),
+        contentType: "application/json",
+        data: JSON.stringify(data),
         success: function (rep) {
             alert(rep.message);
         }
