@@ -116,7 +116,69 @@ function getOccupiedDriversCount() {
 
 
 /*add cars*/
-$("#car-add-btn").click(function () {
+$("#car-add-btn").click(function (){
+    $("#brand,#Number-of-passengers,#registration-number,#color,#daily-rate,#monthly-rate,#daily-free-mileage,#monthly-free-mileage,#price-for-extra-km,#mileage-after-last-maintenance,#loss-damage-waiver").css("border","1px solid #ced4da");
+    let brand = $("#brand").val();
+    let numberOfPassengers = $("#Number-of-passengers").val();
+    let registrationNumber = $("#registration-number").val();
+    let color = $("#color").val();
+    let dailyRate = $("#daily-rate").val();
+    let monthlyRate = $("#monthly-rate").val();
+    let dailyFreeMileage = $("#daily-free-mileage").val();
+    let monthlyFreeMileage = $("#monthly-free-mileage").val();
+    let priceForExtraKM = $("#price-for-extra-km").val();
+    let mileageAfterLastMaintenance = $("#mileage-after-last-maintenance").val();
+    let lossDamageWaiver = $("#loss-damage-waiver").val();
+    if (BRAND.test(brand)){
+        if (PASSENGER_COUNT.test(numberOfPassengers)){
+            if (REGISTRATION_NUMBER.test(registrationNumber)){
+                if (COLOR.test(color)){
+                    if (PRICES.test(dailyRate)){
+                        if (PRICES.test(monthlyRate)){
+                            if (MILEAGES.test(dailyFreeMileage)){
+                                if (MILEAGES.test(monthlyFreeMileage)){
+                                    if (PRICES.test(priceForExtraKM)){
+                                        if (MILEAGES.test(mileageAfterLastMaintenance)){
+                                            if (MILEAGES.test(lossDamageWaiver)){
+                                                saveCar();
+                                                $("#brand,#Number-of-passengers,#registration-number,#color,#daily-rate,#monthly-rate,#daily-free-mileage,#monthly-free-mileage,#price-for-extra-km,#mileage-after-last-maintenance,#loss-damage-waiver").css("border","1px solid #ced4da");
+                                                $("#brand,#Number-of-passengers,#registration-number,#color,#daily-rate,#monthly-rate,#daily-free-mileage,#monthly-free-mileage,#price-for-extra-km,#mileage-after-last-maintenance,#loss-damage-waiver").val("");
+                                            }else {
+                                                $("#loss-damage-waiver").css("border","2px solid red");
+                                            }
+                                        }else {
+                                            $("#mileage-after-last-maintenance").css("border","2px solid red");
+                                        }
+                                    }else {
+                                        $("#price-for-extra-km").css("border","2px solid red");
+                                    }
+                                }else {
+                                    $("#monthly-free-mileage").css("border","2px solid red");
+                                }
+                            }else {
+                                $("#daily-free-mileage").css("border","2px solid red");
+                            }
+                        }else {
+                            $("#monthly-rate").css("border","2px solid red");
+                        }
+                    }else {
+                        $("#daily-rate").css("border","2px solid red");
+                    }
+                }else {
+                    $("#color").css("border","2px solid red");
+                }
+            }else {
+                $("#registration-number").css("border","2px solid red");
+            }
+        }else {
+            $("#Number-of-passengers").css("border","2px solid red");
+        }
+    }else {
+        $("#brand").css("border","2px solid red");
+    }
+})
+
+function saveCar() {
     let formData = new FormData($("#cars-add-form")[0]);
     $.ajax({
         url: base_url + "car",
@@ -130,11 +192,12 @@ $("#car-add-btn").click(function () {
             loadCarsForTable();
         },
         error: function (rep) {
+            alert(rep.responseJSON.message);
             getAllCars()
             loadCarsForTable();
         }
     })
-})
+}
 
 /*load cars for available, undermining and need to maintain tables*/
 function loadCarsForTable() {
