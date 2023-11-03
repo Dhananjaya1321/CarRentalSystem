@@ -702,6 +702,7 @@ $("#pay-btn").click(function () {
         "payment_time": $('#time-of-payment').val(),
         "payment_type": $('#payment-method').val(),
         "status": "paid",
+        "total": $("#total").val(),
     }
     $.ajax({
         url: base_url + "payment?thisRentalMiles=" + thisRentalMiles + "&registration_number=" + pendingPaymentCarRegistration_number,
@@ -719,6 +720,10 @@ $("#pay-btn").click(function () {
 let last_year = (year - 1) + "-" + month + "-" + day;
 
 function getAllPaymentFromLastYear() {
+    let d_income = 0;
+    let w_income = 0;
+    let m_income = 0;
+    let y_income = 0;
     $.ajax({
         url: base_url + "payment?lastYear=" + last_year,
         method: "get",
@@ -757,16 +762,31 @@ function getAllPaymentFromLastYear() {
 
                 if (paidDay === today) {
                     $("#baily-income-table-body,#weekly-income-table-body,#monthly-income-table-body,#yearly-income-table-body").append(row);
+                    d_income += payment.total;
+                    w_income += payment.total;
+                    m_income += payment.total;
+                    y_income += payment.total;
                 } else if (paidDay >= lastWeek) {
                     $("#weekly-income-table-body,#monthly-income-table-body,#yearly-income-table-body").append(row);
+                    w_income += payment.total;
+                    m_income += payment.total;
+                    y_income += payment.total;
                 } else if (paidDay >= lastMonth) {
                     $("#monthly-income-table-body,#yearly-income-table-body").append(row);
+                    m_income += payment.total;
+                    y_income += payment.total;
                 } else {
                     $("#yearly-income-table-body").append(row);
+                    y_income += payment.total;
                 }
 
                 $("#payment-table-body").append(row);
             }
+            $("#daily-tot").text(d_income);
+            $("#monthly-tot").text(m_income);
+            $("#weekly-tot").text(w_income);
+            $("#yearly-tot").text(y_income);
+
         },
         error: function (rep) {
 
@@ -800,7 +820,8 @@ $("#income-btn").click(function () {
     $("#income-section").css("display", "flex");
 
     $("#manage-customer-btn").css("backgroundColor", "white");
-    $("#dashboard-btn").css("backgroundColor", "#b3bdff");
+    $("#income-btn").css("backgroundColor", "#b3bdff");
+    $("#dashboard-btn").css("backgroundColor", "white");
     $("#manage-cars-btn").css("backgroundColor", "white");
     $("#manage-drivers-btn").css("backgroundColor", "white");
     $("#rental-request-btn").css("backgroundColor", "white");
@@ -825,6 +846,7 @@ $("#dashboard-btn").click(function () {
     $("#manage-drivers-btn").css("backgroundColor", "white");
     $("#rental-request-btn").css("backgroundColor", "white");
     $("#payments-btn").css("backgroundColor", "white");
+    $("#income-btn").css("backgroundColor", "white");
     getRegisteredCustomerCount();
     getTotalBookingCountForTheDay();
     getAvailableCarCount();
@@ -853,6 +875,8 @@ $("#manage-customer-btn").click(function () {
     $("#manage-drivers-btn").css("backgroundColor", "white");
     $("#rental-request-btn").css("backgroundColor", "white");
     $("#payments-btn").css("backgroundColor", "white");
+    $("#income-btn").css("backgroundColor", "white");
+
     getRegisteredCustomerCount();
     getTotalBookingCountForTheDay();
     getAvailableCarCount();
@@ -876,7 +900,7 @@ $("#manage-cars-btn").click(function () {
     $("#customer-section").css("display", "none");
     $("#income-section").css("display", "none");
 
-
+    $("#income-btn").css("backgroundColor", "white");
     $("#manage-customer-btn").css("backgroundColor", "white");
     $("#dashboard-btn").css("backgroundColor", "white");
     $("#manage-cars-btn").css("backgroundColor", "#b3bdff");
@@ -895,7 +919,7 @@ $("#manage-drivers-btn").click(function () {
     $("#customer-section").css("display", "none");
     $("#income-section").css("display", "none");
 
-
+    $("#income-btn").css("backgroundColor", "white");
     $("#manage-customer-btn").css("backgroundColor", "white");
     $("#dashboard-btn").css("backgroundColor", "white");
     $("#manage-cars-btn").css("backgroundColor", "white");
@@ -916,7 +940,7 @@ $("#rental-request-btn").click(function () {
     $("#customer-section").css("display", "none");
     $("#income-section").css("display", "none");
 
-
+    $("#income-btn").css("backgroundColor", "white");
     $("#manage-customer-btn").css("backgroundColor", "white");
     $("#dashboard-btn").css("backgroundColor", "white");
     $("#manage-cars-btn").css("backgroundColor", "white");
@@ -936,7 +960,7 @@ $("#payments-btn").click(function () {
     $("#customer-section").css("display", "none");
     $("#income-section").css("display", "none");
 
-
+    $("#income-btn").css("backgroundColor", "white");
     $("#manage-customer-btn").css("backgroundColor", "white");
     $("#dashboard-btn").css("backgroundColor", "white");
     $("#manage-cars-btn").css("backgroundColor", "white");

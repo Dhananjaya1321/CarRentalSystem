@@ -241,6 +241,9 @@ a {
     column-gap: 80px;
 }
 /*========================================================income details=============================================*/
+#income-section{
+    display: none;
+}
 #daily-section,
 #weekly-section,
 #monthly-section,
