@@ -49,4 +49,8 @@ public class CustomerController {
     public ResponseUtil getRequests(String nic) {
         return new ResponseUtil("Ok", "Successfully loaded...!", customerService.getRequests(nic));
     }
+    @GetMapping
+    public ResponseUtil getAllCustomers() {
+        return new ResponseUtil("Ok", "Successfully loaded...!", customerService.getAllCustomers());
+    }
 }

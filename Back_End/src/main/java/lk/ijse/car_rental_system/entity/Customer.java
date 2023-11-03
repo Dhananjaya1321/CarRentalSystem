@@ -41,4 +41,13 @@ public class Customer {
         this.email=email;
         this.user=user;
     }
+    public Customer(String nic, String contact, String nic_front_photo, String nic_back_photo, String driving_license_number, String license_front_photo, String license_back_photo) {
+        this.nic=nic;
+        this.contact=contact;
+        this.nic_front_photo=nic_front_photo;
+        this.nic_back_photo=nic_back_photo;
+        this.driving_license_number=driving_license_number;
+        this.license_front_photo=license_front_photo;
+        this.license_back_photo=license_back_photo;
+    }
 }

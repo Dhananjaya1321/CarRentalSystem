@@ -620,45 +620,44 @@ let previousValueDriverFee = 0;
 $("#number-of-days").on("input", function () {
     $("#number-of-days,#payment-request-id").css("border", "1px solid #ced4da");
     let currentValueNumberOfDays = $("#number-of-days").val();
-    if ($("#payment-nic").val()!==""){
+    if ($("#payment-nic").val() !== "") {
         if (INT.test(currentValueNumberOfDays)) {
             $("#total").val((pendingPaymentsCar.price_for_day * Number(currentValueNumberOfDays)) - (pendingPaymentsCar.price_for_day * Number(previousValueNumberOfDays)) + Number($("#total").val()));
             previousValueNumberOfDays = currentValueNumberOfDays;
         } else {
             $("#number-of-days").css("border", "1px solid red");
         }
-    }else {
+    } else {
         $("#payment-request-id").css("border", "1px solid red");
     }
 });
 $("#extra-mileage").on("input", function () {
     $("#extra-mileage,#payment-request-id").css("border", "1px solid #ced4da");
     let currentValueExtraMileage = $("#extra-mileage").val();
-    if ($("#payment-nic").val()!==""){
+    if ($("#payment-nic").val() !== "") {
         if (INT.test(currentValueExtraMileage)) {
             $("#total").val((pendingPaymentsCar.price_for_extra_km * Number(currentValueExtraMileage)) - (pendingPaymentsCar.price_for_extra_km * Number(previousValueExtraMileage)) + Number($("#total").val()));
             previousValueExtraMileage = currentValueExtraMileage;
         } else {
             $("#extra-mileage").css("border", "1px solid red");
         }
-    }else {
+    } else {
         $("#payment-request-id").css("border", "1px solid red");
     }
-
 
 
 });
 $("#driver-fee").on("input", function () {
     $("#driver-fee,#payment-request-id").css("border", "1px solid #ced4da");
     let currentValueDriverFee = $("#driver-fee").val();
-    if ($("#payment-nic").val()!==""){
+    if ($("#payment-nic").val() !== "") {
         if (PRICES.test(currentValueDriverFee)) {
             $("#total").val((Number(currentValueDriverFee) - Number(previousValueDriverFee)) + Number($("#total").val()));
             previousValueDriverFee = currentValueDriverFee;
         } else {
             $("#driver-fee").css("border", "1px solid red");
         }
-    }else {
+    } else {
         $("#payment-request-id").css("border", "1px solid red");
     }
 
@@ -666,14 +665,14 @@ $("#driver-fee").on("input", function () {
 $("#loss-damage").on("input", function () {
     $("#loss-damage,#payment-request-id").css("border", "1px solid #ced4da");
     let currentValueLossDamage = $("#loss-damage").val();
-    if ($("#payment-nic").val()!==""){
+    if ($("#payment-nic").val() !== "") {
         if (PRICES.test(currentValueLossDamage)) {
             $("#total").val((Number(currentValueLossDamage) - Number(previousValueLossDamage)) + Number($("#total").val()));
             previousValueLossDamage = currentValueLossDamage;
         } else {
             $("#loss-damage").css("border", "1px solid red");
         }
-    }else {
+    } else {
         $("#payment-request-id").css("border", "1px solid red");
     }
 });
@@ -713,6 +712,7 @@ $("#manage-drivers-btn").css("backgroundColor", "white");
 $("#rental-request-btn").css("backgroundColor", "white");
 $("#payments-btn").css("backgroundColor", "white");
 $("#income-btn").css("backgroundColor", "white");
+$("#manage-customer-btn").css("backgroundColor", "white");
 
 $("#dashboard-btn").click(function () {
     $("#dashboard").css("display", "flex");
@@ -721,8 +721,35 @@ $("#dashboard-btn").click(function () {
     $("#cars-rental-request").css("display", "none");
     $("#payment-section").css("display", "none");
 
-
+    $("#manage-customer-btn").css("backgroundColor", "white");
     $("#dashboard-btn").css("backgroundColor", "#b3bdff");
+    $("#manage-cars-btn").css("backgroundColor", "white");
+    $("#manage-drivers-btn").css("backgroundColor", "white");
+    $("#rental-request-btn").css("backgroundColor", "white");
+    $("#payments-btn").css("backgroundColor", "white");
+    getRegisteredCustomerCount();
+    getTotalBookingCountForTheDay();
+    getAvailableCarCount();
+    getNeedMaintenanceCarCount();
+    getUnderMaintenanceCarCount();
+    getPendingRequestCount();
+    getAcceptedRequestRequestCountForTheDay();
+    getAvailableDriversCount();
+    getOccupiedDriversCount();
+});
+
+$("#manage-customer-btn").click(function () {
+    getAllCustomers();
+    $("#dashboard").css("display", "none");
+    $("#cars-section").css("display", "none");
+    $("#drivers-section").css("display", "none");
+    $("#cars-rental-request").css("display", "none");
+    $("#payment-section").css("display", "none");
+    $("#customer-section").css("display", "flex");
+
+
+    $("#manage-customer-btn").css("backgroundColor", "#b3bdff");
+    $("#dashboard-btn").css("backgroundColor", "white");
     $("#manage-cars-btn").css("backgroundColor", "white");
     $("#manage-drivers-btn").css("backgroundColor", "white");
     $("#rental-request-btn").css("backgroundColor", "white");
@@ -747,8 +774,9 @@ $("#manage-cars-btn").click(function () {
     $("#drivers-section").css("display", "none");
     $("#cars-rental-request").css("display", "none");
     $("#payment-section").css("display", "none");
+    $("#customer-section").css("display", "none");
 
-
+    $("#manage-customer-btn").css("backgroundColor", "white");
     $("#dashboard-btn").css("backgroundColor", "white");
     $("#manage-cars-btn").css("backgroundColor", "#b3bdff");
     $("#manage-drivers-btn").css("backgroundColor", "white");
@@ -763,8 +791,9 @@ $("#manage-drivers-btn").click(function () {
     $("#drivers-section").css("display", "flex");
     $("#cars-rental-request").css("display", "none");
     $("#payment-section").css("display", "none");
+    $("#customer-section").css("display", "none");
 
-
+    $("#manage-customer-btn").css("backgroundColor", "white");
     $("#dashboard-btn").css("backgroundColor", "white");
     $("#manage-cars-btn").css("backgroundColor", "white");
     $("#manage-drivers-btn").css("backgroundColor", "#b3bdff");
@@ -781,7 +810,9 @@ $("#rental-request-btn").click(function () {
     $("#drivers-section").css("display", "none");
     $("#cars-rental-request").css("display", "flex");
     $("#payment-section").css("display", "none");
+    $("#customer-section").css("display", "none");
 
+    $("#manage-customer-btn").css("backgroundColor", "white");
     $("#dashboard-btn").css("backgroundColor", "white");
     $("#manage-cars-btn").css("backgroundColor", "white");
     $("#manage-drivers-btn").css("backgroundColor", "white");
@@ -797,7 +828,9 @@ $("#payments-btn").click(function () {
     $("#drivers-section").css("display", "none");
     $("#cars-rental-request").css("display", "none");
     $("#payment-section").css("display", "flex");
+    $("#customer-section").css("display", "none");
 
+    $("#manage-customer-btn").css("backgroundColor", "white");
     $("#dashboard-btn").css("backgroundColor", "white");
     $("#manage-cars-btn").css("backgroundColor", "white");
     $("#manage-drivers-btn").css("backgroundColor", "white");

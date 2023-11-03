@@ -246,14 +246,20 @@ function getAllCustomers() {
             $("#customer-details-table-body").empty();
             for (const i in array) {
                 let customer = array[i];
+                let path = "../../../CarRentalSystem/Back_End/src/main/resources/files/upload-dir/";
+
                 let row = `<tr>
-                        <td>${customer.name}</td>
+                        <td>${customer.contact}</td>
                         <td>${customer.nic}</td>
-                        <td>${customer.nic_front_photo}</td>
-                        <td>${customer.nic_back_photo}</td>
+                        <td>
+                            <img src="${path}${customer.nic_front_photo}" style="border-radius: 10px" width="80" height="80">
+                            <img src="${path}${customer.nic_back_photo}" style="border-radius: 10px" width="80" height="80">
+                        </td>
                         <td>${customer.driving_license_number}</td>
-                        <td>${customer.license_front_photo}</td>
-                        <td>${customer.license_back_photo}</td>
+                        <td>
+                            <img src="${path}${customer.license_front_photo}" style="border-radius: 10px" width="80" height="80">
+                            <img src="${path}${customer.license_back_photo}" style="border-radius: 10px" width="80" height="80">
+                        </td>
                         <td>
                             <button type="button" class="btn btn-danger border-0" style="background-color: #0aff00">
                             <i class="fa-solid fa-eye"></i>

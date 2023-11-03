@@ -23,4 +23,7 @@ public interface CustomerRepo extends JpaRepository<Customer, String> {
             "from Rental r2 join Request r on r2.rental_id = r.rental.rental_id join Customer c on c.nic = r2.customer.nic " +
             "where c.nic=?1")
     List<CustomEntity> getRequests(String nic);
+
+    @Query(value = "select NEW lk.ijse.car_rental_system.entity.Customer(c.nic,c.contact,c.nic_front_photo,c.nic_back_photo,c.driving_license_number,c.license_front_photo,c.license_back_photo) from Customer c")
+    List<Customer> getAllCustomers();
 }

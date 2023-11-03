@@ -151,6 +151,9 @@ a {
     width: 750px;
 }
 
+#customer-section {
+    display: none;
+}
 #customer-section > h4,
 #car-details > h4,
 #need-to-maintain-cars > h4,

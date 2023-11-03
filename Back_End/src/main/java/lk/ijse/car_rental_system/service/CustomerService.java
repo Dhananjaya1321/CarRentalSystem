@@ -19,4 +19,6 @@ public interface CustomerService {
     CustomEntity getCustomerDetails(String username);
 
     List<CustomDTO> getRequests(String nic);
+
+    List<CustomDTO> getAllCustomers();
 }
