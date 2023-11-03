@@ -433,6 +433,53 @@
 
             </tbody>
         </table>
+        <div class="modal fade" id="customer-details" data-bs-backdrop="static" data-bs-keyboard="false"
+             tabindex="-1" aria-labelledby="CustomerLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header"
+                         style="background-color: white; border-radius: 15px 15px 0 0; color: white">
+                        <h1 class="modal-title fs-5" id="CustomerLabel">Customer Details</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="flex row g-3 text-start">
+                            <div class="col-10">
+                                <label class="form-label">Contact</label>
+                                <input type="text" id="contact" name="" class="form-control" readonly>
+                            </div>
+
+                            <div class="col-10">
+                                <label class="form-label">NIC</label>
+                                <input type="text" id="nic" name="" class="form-control" readonly>
+                            </div>
+                            <div class="flex f-col col-10">
+                                <label for="pick-up-date-request" class="form-label">NIC front photo</label>
+                                <img style="border-radius: 15px; border: 1px solid #2f3457" width="400" height="200" id="nic-front" src="">
+                            </div>
+                            <div class="flex f-col col-10">
+                                <label id="nic-back" for="pick-up-date-request" class="form-label">NIC back photo</label>
+                                <img style="border-radius: 15px; border: 1px solid #2f3457" width="400" height="200" src="">
+                            </div>
+
+                            <div class="col-10">
+                                <label class="form-label">License number</label>
+                                <input type="text" id="license" name="" class="form-control" readonly>
+                            </div>
+                            <div class="flex f-col col-10">
+                                <label for="pick-up-date-request" class="form-label">License front photo</label>
+                                <img style="border-radius: 15px; border: 1px solid #2f3457" width="400" height="200" id="license-front" src="">
+                            </div>
+                            <div class="flex f-col col-10">
+                                <label for="pick-up-date-request" class="form-label">License back photo</label>
+                                <img style="border-radius: 15px; border: 1px solid #2f3457" width="400" height="200" id="license-back" src="">
+                            </div>
+                        </form><!--request form-->
+                    </div>
+                </div>
+            </div>
+        </div><!--modal-->
     </section><!--drivers section-->
     <section id="cars-rental-request" class="flex f-col">
         <h4>Rental Request</h4>

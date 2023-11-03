@@ -261,7 +261,9 @@ function getAllCustomers() {
                             <img src="${path}${customer.license_back_photo}" style="border-radius: 10px" width="80" height="80">
                         </td>
                         <td>
-                            <button type="button" class="btn btn-danger border-0" style="background-color: #0aff00">
+                            <button type="button" class="btn btn-danger border-0" style="background-color: #0aff00"
+                             data-bs-toggle="modal"
+                             data-bs-target="#customer-details">
                             <i class="fa-solid fa-eye"></i>
                             </button>
                         </td>
@@ -299,7 +301,9 @@ $("#search-customer").on("input", function () {
                             <img src="${path}${customer.license_back_photo}" style="border-radius: 10px" width="80" height="80">
                         </td>
                         <td>
-                            <button type="button" class="btn btn-danger border-0" style="background-color: #0aff00">
+                            <button type="button" class="btn btn-danger border-0" style="background-color: #0aff00"
+                             data-bs-toggle="modal"
+                             data-bs-target="#customer-details">
                             <i class="fa-solid fa-eye"></i>
                             </button>
                         </td>
