@@ -103,6 +103,7 @@ public class CustomerServiceImpl implements CustomerService {
         return modelMapper.map(customerRepo.getRequests(nic), new TypeToken<ArrayList<CustomDTO>>() {
         }.getType());
     }
+
     @Override
     public List<CustomDTO> getAllCustomers(){
         return modelMapper.map(customerRepo.getAllCustomers(), new TypeToken<ArrayList<Customer>>() {
