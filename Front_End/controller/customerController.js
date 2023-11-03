@@ -236,3 +236,37 @@ function updateCustomer() {
         $("#customer-profile-email").css("border", "1px solid red");
     }
 }
+
+function getAllCustomers() {
+    $.ajax({
+        url: base_url + "customer",
+        method: "get",
+        success: function (rep) {
+            let array = rep.data;
+            $("#customer-details-table-body").empty();
+            for (const i in array) {
+                let customer = array[i];
+                let row = `<tr>
+                        <td>${customer.name}</td>
+                        <td>${customer.nic}</td>
+                        <td>${customer.nic_front_photo}</td>
+                        <td>${customer.nic_back_photo}</td>
+                        <td>${customer.driving_license_number}</td>
+                        <td>${customer.license_front_photo}</td>
+                        <td>${customer.license_back_photo}</td>
+                        <td>
+                            <button type="button" class="btn btn-danger border-0" style="background-color: #0aff00">
+                            <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </td>
+                    </tr>`;
+                $("#customer-details-table-body").append(row);
+            }
+        },
+        error: function (rep) {
+
+        }
+    });
+
+}
+
