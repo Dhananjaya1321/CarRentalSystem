@@ -236,17 +236,18 @@ function updateCustomer() {
         $("#customer-profile-email").css("border", "1px solid red");
     }
 }
-
+let allCustomers=[];
+let path = "../../../CarRentalSystem/Back_End/src/main/resources/files/upload-dir/";
 function getAllCustomers() {
     $.ajax({
         url: base_url + "customer",
         method: "get",
         success: function (rep) {
+            allCustomers=rep.data;
             let array = rep.data;
             $("#customer-details-table-body").empty();
             for (const i in array) {
                 let customer = array[i];
-                let path = "../../../CarRentalSystem/Back_End/src/main/resources/files/upload-dir/";
 
                 let row = `<tr>
                         <td>${customer.contact}</td>
@@ -270,6 +271,7 @@ function getAllCustomers() {
                     </tr>`;
                 $("#customer-details-table-body").append(row);
             }
+            loadCustomerDetailsToCustomerDetailsForm();
         },
         error: function (rep) {
 
@@ -277,9 +279,29 @@ function getAllCustomers() {
     });
 }
 
+function loadCustomerDetailsToCustomerDetailsForm() {
+    $("#customer-details-table-body>tr>td>button").click(function () {
+        let nic = $(this).parents("#customer-details-table-body>tr").children().eq(1).text();
+        console.log(nic)
+        let customer;
+        for (let i in allCustomers) {
+            if (allCustomers[i].nic===nic){
+                customer=allCustomers[i];
+            }
+        }
+        $("#contact").val(customer.contact);
+        $("#nic").val(customer.nic);
+        $("#license").val(customer.driving_license_number);
+        $("#nic-front").attr("src",path+customer.nic_front_photo);
+        $("#nic-back").attr("src",path+customer.nic_back_photo);
+        $("#license-front").attr("src",path+customer.license_front_photo);
+        $("#license-back").attr("src",path+customer.license_back_photo);
+    });
+}
+
 $("#search-customer").on("input", function () {
     $.ajax({
-        url: base_url + "customer?nic="+$("#search-customer").val(),
+        url: base_url + "customer?nic=" + $("#search-customer").val(),
         method: "get",
         success: function (rep) {
             let array = rep.data
@@ -310,6 +332,7 @@ $("#search-customer").on("input", function () {
                     </tr>`;
                 $("#customer-details-table-body").append(row);
             }
+            loadCustomerDetailsToCustomerDetailsForm();
         },
         error: function (rep) {
 
