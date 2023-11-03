@@ -26,5 +26,6 @@ public class Payment {
     private LocalTime payment_time;
     private String payment_type;
     private String status;
+    private double total;
 
 }

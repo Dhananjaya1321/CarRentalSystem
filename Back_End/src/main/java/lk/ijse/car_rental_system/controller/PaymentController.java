@@ -40,4 +40,9 @@ public class PaymentController {
     public ResponseUtil getLastPaymentID(){
         return new ResponseUtil("Ok","Successfully loaded...!",paymentService.getLastPaymentID());
     }
+
+    @GetMapping(params = {"lastYear"})
+    public ResponseUtil getAllPaymentFromLastYear(String lastYear){
+        return new ResponseUtil("Ok","Successfully loaded...!",paymentService.getAllPaymentFromLastYear(lastYear));
+    }
 }

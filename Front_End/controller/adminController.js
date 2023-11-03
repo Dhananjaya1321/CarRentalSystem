@@ -13,7 +13,14 @@ let date = new Date();
 let year = date.getFullYear();
 let month = date.getMonth() + 1;
 let day = date.getDate();
+if (day < 10) {
+    day = "0" + day;
+}
+if (month < 10) {
+    month = "0" + month;
+}
 let currentDate = year + "-" + month + "-" + day;
+
 
 function getRegisteredCustomerCount() {
     $.ajax({
@@ -631,6 +638,7 @@ $("#number-of-days").on("input", function () {
         $("#payment-request-id").css("border", "1px solid red");
     }
 });
+
 $("#extra-mileage").on("input", function () {
     $("#extra-mileage,#payment-request-id").css("border", "1px solid #ced4da");
     let currentValueExtraMileage = $("#extra-mileage").val();
@@ -647,6 +655,7 @@ $("#extra-mileage").on("input", function () {
 
 
 });
+
 $("#driver-fee").on("input", function () {
     $("#driver-fee,#payment-request-id").css("border", "1px solid #ced4da");
     let currentValueDriverFee = $("#driver-fee").val();
@@ -662,6 +671,7 @@ $("#driver-fee").on("input", function () {
     }
 
 });
+
 $("#loss-damage").on("input", function () {
     $("#loss-damage,#payment-request-id").css("border", "1px solid #ced4da");
     let currentValueLossDamage = $("#loss-damage").val();
@@ -704,6 +714,72 @@ $("#pay-btn").click(function () {
     })
 })
 
+/*Get all payments from last year*/
+
+let last_year = (year - 1) + "-" + month + "-" + day;
+
+function getAllPaymentFromLastYear() {
+    $.ajax({
+        url: base_url + "payment?lastYear=" + last_year,
+        method: "get",
+        success: function (rep) {
+            $("#baily-income-table-body,#weekly-income-table-body,#monthly-income-table-body,#yearly-income-table-body").empty();
+            console.log(rep.data)
+
+            const currentDate = new Date();
+
+            const sevenDaysAgo = new Date(currentDate);
+            sevenDaysAgo.setDate(currentDate.getDate() - 7);
+
+            const oneMonthAgo = new Date(currentDate);
+            oneMonthAgo.setMonth(currentDate.getMonth() - 1);
+
+
+            const currentDateStr = formatDate(currentDate);
+            const sevenDaysAgoStr = formatDate(sevenDaysAgo);
+            const oneMonthAgoStr = formatDate(oneMonthAgo);
+
+            for (let i in rep.data) {
+                let payment = rep.data[i];
+                let row = `<tr>
+                            <td>${payment.payment_id}</td>
+                            <td>${payment.days}</td>
+                            <td>${payment.driver_fee}</td>
+                            <td>${payment.mileage}</td>
+                            <td>${payment.car_fee}</td>
+                            <td>${payment.total}</td>
+                        </tr>`
+
+                let paidDay = new Date(payment.payment_date);
+                let today = new Date(currentDateStr);
+                let lastWeek = new Date(sevenDaysAgoStr);
+                let lastMonth = new Date(oneMonthAgoStr);
+
+                if (paidDay === today) {
+                    $("#baily-income-table-body,#weekly-income-table-body,#monthly-income-table-body,#yearly-income-table-body").append(row);
+                } else if (paidDay >= lastWeek) {
+                    $("#weekly-income-table-body,#monthly-income-table-body,#yearly-income-table-body").append(row);
+                } else if (paidDay >= lastMonth) {
+                    $("#monthly-income-table-body,#yearly-income-table-body").append(row);
+                } else {
+                    $("#yearly-income-table-body").append(row);
+                }
+
+                $("#payment-table-body").append(row);
+            }
+        },
+        error: function (rep) {
+
+        }
+    })
+}
+
+const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+};
 
 $("#home-btn").css("backgroundColor", "white");
 $("#logout-btn").css("backgroundColor", "white");
@@ -714,12 +790,34 @@ $("#payments-btn").css("backgroundColor", "white");
 $("#income-btn").css("backgroundColor", "white");
 $("#manage-customer-btn").css("backgroundColor", "white");
 
+$("#income-btn").click(function () {
+    $("#dashboard").css("display", "none");
+    $("#cars-section").css("display", "none");
+    $("#drivers-section").css("display", "none");
+    $("#cars-rental-request").css("display", "none");
+    $("#payment-section").css("display", "none");
+    $("#customer-section").css("display", "none");
+    $("#income-section").css("display", "flex");
+
+    $("#manage-customer-btn").css("backgroundColor", "white");
+    $("#dashboard-btn").css("backgroundColor", "#b3bdff");
+    $("#manage-cars-btn").css("backgroundColor", "white");
+    $("#manage-drivers-btn").css("backgroundColor", "white");
+    $("#rental-request-btn").css("backgroundColor", "white");
+    $("#payments-btn").css("backgroundColor", "white");
+
+    getAllPaymentFromLastYear();
+
+});
 $("#dashboard-btn").click(function () {
     $("#dashboard").css("display", "flex");
     $("#cars-section").css("display", "none");
     $("#drivers-section").css("display", "none");
     $("#cars-rental-request").css("display", "none");
     $("#payment-section").css("display", "none");
+    $("#customer-section").css("display", "none");
+    $("#income-section").css("display", "none");
+
 
     $("#manage-customer-btn").css("backgroundColor", "white");
     $("#dashboard-btn").css("backgroundColor", "#b3bdff");
@@ -746,6 +844,7 @@ $("#manage-customer-btn").click(function () {
     $("#cars-rental-request").css("display", "none");
     $("#payment-section").css("display", "none");
     $("#customer-section").css("display", "flex");
+    $("#income-section").css("display", "none");
 
 
     $("#manage-customer-btn").css("backgroundColor", "#b3bdff");
@@ -775,6 +874,8 @@ $("#manage-cars-btn").click(function () {
     $("#cars-rental-request").css("display", "none");
     $("#payment-section").css("display", "none");
     $("#customer-section").css("display", "none");
+    $("#income-section").css("display", "none");
+
 
     $("#manage-customer-btn").css("backgroundColor", "white");
     $("#dashboard-btn").css("backgroundColor", "white");
@@ -792,6 +893,8 @@ $("#manage-drivers-btn").click(function () {
     $("#cars-rental-request").css("display", "none");
     $("#payment-section").css("display", "none");
     $("#customer-section").css("display", "none");
+    $("#income-section").css("display", "none");
+
 
     $("#manage-customer-btn").css("backgroundColor", "white");
     $("#dashboard-btn").css("backgroundColor", "white");
@@ -811,6 +914,8 @@ $("#rental-request-btn").click(function () {
     $("#cars-rental-request").css("display", "flex");
     $("#payment-section").css("display", "none");
     $("#customer-section").css("display", "none");
+    $("#income-section").css("display", "none");
+
 
     $("#manage-customer-btn").css("backgroundColor", "white");
     $("#dashboard-btn").css("backgroundColor", "white");
@@ -829,6 +934,8 @@ $("#payments-btn").click(function () {
     $("#cars-rental-request").css("display", "none");
     $("#payment-section").css("display", "flex");
     $("#customer-section").css("display", "none");
+    $("#income-section").css("display", "none");
+
 
     $("#manage-customer-btn").css("backgroundColor", "white");
     $("#dashboard-btn").css("backgroundColor", "white");

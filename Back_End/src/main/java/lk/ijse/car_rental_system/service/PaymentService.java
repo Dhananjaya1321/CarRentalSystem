@@ -12,4 +12,6 @@ public interface PaymentService{
     String getLastPaymentID();
 
     void updatePayment(PaymentDTO dto, int thisRentalMiles, String registration_number);
+
+    List<PaymentDTO> getAllPaymentFromLastYear(String lastYear);
 }
