@@ -141,6 +141,7 @@ a {
     box-shadow: -3px 3px 10px -7px black;
 }
 
+#customer-section,
 #car-details,
 #need-to-maintain-cars,
 #cars-under-maintenance ,
@@ -150,6 +151,7 @@ a {
     width: 750px;
 }
 
+#customer-section > h4,
 #car-details > h4,
 #need-to-maintain-cars > h4,
 #cars-under-maintenance > h4 ,
@@ -158,6 +160,7 @@ a {
     font-size: 18px;
 }
 
+#customer-section > table,
 #car-details > table,
 #need-to-maintain-cars > table,
 #cars-under-maintenance > table ,
