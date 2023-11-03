@@ -78,13 +78,15 @@ $("#next-btn").click(function () {
             method: "get",
             success: function (rep) {
                 let user = rep.data;
+                usernameForContinue = username;
                 getOTP();
                 $("#find-account-section").css("display", "none");
+                $("#change-password").css("display", "none");
                 $("#verification-section").css("display", "flex");
                 $("#user-name").val("");
                 $("#user-name").css("border", "red")
                 $("#forgot-password-username-validation").text("Incorrect username");
-                $("#forgot-password-username-validation").css("color","red");
+                $("#forgot-password-username-validation").css("color", "red");
             },
             error: function (rep) {
 
@@ -94,7 +96,7 @@ $("#next-btn").click(function () {
         $("#user-name").val("");
         $("#user-name").css("border", "red")
         $("#forgot-password-username-validation").text("Incorrect username");
-        $("#forgot-password-username-validation").css("color","red");
+        $("#forgot-password-username-validation").css("color", "red");
     }
 })
 
@@ -104,12 +106,52 @@ $("#continue-btn").click(function () {
     let verify_2 = $("#verify-2").val();
     let verify_3 = $("#verify-3").val();
     let verify_4 = $("#verify-4").val();
-    let code=Number(verify_1+verify_2+verify_3+verify_4);
-    if (code===OTP) {
-        window.location.href="../pages/changePassword.html";
+    let code = Number(verify_1 + verify_2 + verify_3 + verify_4);
+    if (code === OTP) {
+        console.log(code, OTP)
+        $("#verify-1,#verify-2,#verify-3,#verify-4").val("");
+        $("#change-password").css("display", "flex");
+        $("#verification-section").css("display", "none");
     } else {
         $("#verify-1,#verify-2,#verify-3,#verify-4").val("");
-        $("#verify-1,#verify-2,#verify-3,#verify-4").css("border","1px solid red");
+        $("#verify-1,#verify-2,#verify-3,#verify-4").css("border", "1px solid red");
+    }
+})
+
+$("#Change-password-btn").click(function () {
+    let newPassword = $("#new-password").val();
+    let conformNewPassword = $("#conform-new-password").val();
+    let data={
+        "username":usernameForContinue,
+        "password":passwordForContinue,
+    }
+    if (newPassword === conformNewPassword) {
+        $.ajax({
+            url: base_url + "user",
+            method: "put",
+            data:JSON.stringify(data),
+            success: function (rep) {
+                passwordForContinue = newPassword;
+                manageSingInAndSignUpButton();
+                $("#header").css("display", "flex");
+                $("#footer").css("display", "block");
+                $("#login-main").css("display", "none");
+                $("#customer-main").css("display", "none");
+                $("#create-account-main").css("display", "none");
+                $("#item-main").css("display", "none");
+                $("#home-main").css("display", "block");
+                $("#driver-main").css("display", "none");
+                $("#change-password").css("display", "none");
+
+            },
+            error: function (rep) {
+
+            }
+        })
+    } else {
+        $("#new-password,#conform-new-password").val("");
+        $("#new-password,#conform-new-password").css("border", "1px solid red");
+        $("#change-password-verification,#change-password-conform-verification").text("Password does not match");
     }
 })
 
@@ -137,7 +179,7 @@ function getOTP() {
         method: "get",
         success: function (rep) {
             console.log("Success fully send")
-            OTP=rep.data;
+            OTP = rep.data;
         },
         error: function (rep) {
 

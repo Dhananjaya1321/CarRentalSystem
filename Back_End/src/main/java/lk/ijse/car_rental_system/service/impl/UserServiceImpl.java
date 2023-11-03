@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public int sendEmail(String username) {
         Random random = new Random();
-        int otp = random.nextInt(10000);
+        int otp = random.nextInt(9999 - 1000 + 1) + 1000;
         UserDTO user = findUser(username);
         String role = user.getRole();
         String to;

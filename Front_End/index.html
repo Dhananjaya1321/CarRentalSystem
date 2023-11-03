@@ -132,26 +132,63 @@
         <div class="flex">
             <form class="flex f-row">
                 <div>
-                    <input id="verify-1" type="text" class="form-control form-control-lg text-center py-4" maxlength="1" autofocus="">
+                    <input id="verify-1" type="text" class="form-control form-control-lg text-center py-4" maxlength="1"
+                           autofocus="">
                 </div>
                 <div>
-                    <input id="verify-2" type="text" class="form-control form-control-lg text-center py-4" maxlength="1" autofocus="">
+                    <input id="verify-2" type="text" class="form-control form-control-lg text-center py-4" maxlength="1"
+                           autofocus="">
                 </div>
                 <div>
-                    <input id="verify-3" type="text" class="form-control form-control-lg text-center py-4" maxlength="1" autofocus="">
+                    <input id="verify-3" type="text" class="form-control form-control-lg text-center py-4" maxlength="1"
+                           autofocus="">
                 </div>
                 <div>
-                    <input id="verify-4" type="text" class="form-control form-control-lg text-center py-4" maxlength="1" autofocus="">
+                    <input id="verify-4" type="text" class="form-control form-control-lg text-center py-4" maxlength="1"
+                           autofocus="">
                 </div>
             </form>
         </div>
         <div><p>Didn't receive it? <a href="#">Resend code</a></p></div>
         <div class="flex f-row">
-            <a href="pages/changePassword.html" class="flex">
-                <button id="continue-btn">Continue</button>
-            </a>
+            <button id="continue-btn">Continue</button>
         </div>
     </section>
+    <section id="change-password" class="flex f-col">
+        <div class="flex"><h1>Change Password</h1></div>
+        <form>
+            <div  style="gap: 5px" class="flex f-col">
+                <label>New password</label>
+                <div class="input-group mb-3">
+                    <span style="height: 40px;" class="input-group-text" id="new-password-span"><i
+                            class="fa-solid fa-lock"></i></span>
+                    <input style="height: 40px;" id="new-password" name="new-password" type="password"
+                           class="form-control"
+                           placeholder="new password"
+                           aria-label="new-password"
+                           aria-describedby="new-password-span">
+                </div>
+                <small id="change-password-verification"></small>
+            </div>
+            <div  style="gap: 5px" class="flex f-col">
+                <label>Conform password</label>
+                <div class="input-group mb-3">
+                    <span style="height: 40px;" class="input-group-text" id="conform-new-password-span"><i
+                            class="fa-solid fa-lock"></i></span>
+                    <input style="height: 40px;" id="conform-new-password" name="conform-new-password" type="password"
+                           class="form-control"
+                           placeholder="conform password"
+                           aria-label="conform-new-password"
+                           aria-describedby="conform-new-password-span">
+                </div>
+                <small id="change-password-conform-verification"></small>
+            </div>
+        </form>
+        <div class="flex f-row">
+            <button id="Change-password-btn">Continue</button>
+        </div>
+    </section>
+
 </main>
 <main id="create-account-main" class="flex f-col">
     <section id="create-account-section" class="flex f-col">
@@ -589,7 +626,8 @@
                 </section>
                 <div class="flex f-col">
                     <button id="customer-details-update-btn" style="background-color: #0acd00; border-radius: 15px; border: 1px solid rgba(0,0,0,0.25);
-                        width: 200px; height: 40px; font-size: 18px; color: white; font-weight: bold;">Update</button>
+                        width: 200px; height: 40px; font-size: 18px; color: white; font-weight: bold;">Update
+                    </button>
                 </div>
             </div>
         </form>
