@@ -28,8 +28,7 @@ public class UserController {
 
     @GetMapping(path = "/mail",params = {"username"})
     public ResponseUtil getOTPCode(String username) {
-        user.sendEmail(username);
-        return new ResponseUtil("Ok", "Successfully loaded...!",username);
+        return new ResponseUtil("Ok", "Successfully loaded...!",user.sendEmail(username));
     }
 
 

@@ -78,6 +78,7 @@ $("#next-btn").click(function () {
             method: "get",
             success: function (rep) {
                 let user = rep.data;
+                getOTP();
                 $("#find-account-section").css("display", "none");
                 $("#verification-section").css("display", "flex");
                 $("#user-name").val("");
@@ -94,6 +95,21 @@ $("#next-btn").click(function () {
         $("#user-name").css("border", "red")
         $("#forgot-password-username-validation").text("Incorrect username");
         $("#forgot-password-username-validation").css("color","red");
+    }
+})
+
+let OTP;
+$("#continue-btn").click(function () {
+    let verify_1 = $("#verify-1").val();
+    let verify_2 = $("#verify-2").val();
+    let verify_3 = $("#verify-3").val();
+    let verify_4 = $("#verify-4").val();
+    let code=Number(verify_1+verify_2+verify_3+verify_4);
+    if (code===OTP) {
+        window.location.href="../pages/changePassword.html";
+    } else {
+        $("#verify-1,#verify-2,#verify-3,#verify-4").val("");
+        $("#verify-1,#verify-2,#verify-3,#verify-4").css("border","1px solid red");
     }
 })
 
@@ -115,12 +131,13 @@ function findUser(username) {
     return user;
 }
 
-function sendMail() {
+function getOTP() {
     $.ajax({
         url: base_url + "user/mail?username=" + usernameForContinue,
         method: "get",
         success: function (rep) {
             console.log("Success fully send")
+            OTP=rep.data;
         },
         error: function (rep) {
 

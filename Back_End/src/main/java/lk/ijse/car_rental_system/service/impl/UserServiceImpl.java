@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void sendEmail(String username) {
+    public int sendEmail(String username) {
         Random random = new Random();
         int otp = random.nextInt(10000);
         UserDTO user = findUser(username);
@@ -73,5 +73,6 @@ public class UserServiceImpl implements UserService {
         );
 
         javaMailSender.send(message);
+        return otp;
     }
 }
