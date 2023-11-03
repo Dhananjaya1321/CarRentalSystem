@@ -21,4 +21,6 @@ public interface CustomerService {
     List<CustomDTO> getRequests(String nic);
 
     List<CustomDTO> getAllCustomers();
+
+    List<CustomDTO> searchCustomer(String nic);
 }

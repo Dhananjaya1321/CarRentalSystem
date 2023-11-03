@@ -110,4 +110,10 @@ public class CustomerServiceImpl implements CustomerService {
         }.getType());
     }
 
+    @Override
+    public List<CustomDTO> searchCustomer(String nic){
+        return modelMapper.map(customerRepo.searchCustomer(nic), new TypeToken<ArrayList<Customer>>() {
+        }.getType());
+    }
+
 }

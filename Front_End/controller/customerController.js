@@ -275,7 +275,7 @@ function getAllCustomers() {
     });
 }
 
-$("#search-customer").onkeydown(function () {
+$("#search-customer").on("input", function () {
     $.ajax({
         url: base_url + "customer?nic="+$("#search-customer").val(),
         method: "get",
