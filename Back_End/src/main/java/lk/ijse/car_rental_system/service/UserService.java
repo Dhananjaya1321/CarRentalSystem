@@ -9,5 +9,7 @@ public interface UserService {
 
     List<UserDTO> getAllUsers();
 
+    void updatePassword(UserDTO dto);
+
     int sendEmail(String username);
 }

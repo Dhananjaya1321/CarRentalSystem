@@ -123,12 +123,13 @@ $("#Change-password-btn").click(function () {
     let conformNewPassword = $("#conform-new-password").val();
     let data={
         "username":usernameForContinue,
-        "password":passwordForContinue,
+        "password":newPassword,
     }
     if (newPassword === conformNewPassword) {
         $.ajax({
             url: base_url + "user",
             method: "put",
+            contentType:"application/json",
             data:JSON.stringify(data),
             success: function (rep) {
                 passwordForContinue = newPassword;
@@ -136,6 +137,7 @@ $("#Change-password-btn").click(function () {
                 $("#header").css("display", "flex");
                 $("#footer").css("display", "block");
                 $("#login-main").css("display", "none");
+                $("#login-section").css("display", "flex");
                 $("#customer-main").css("display", "none");
                 $("#create-account-main").css("display", "none");
                 $("#item-main").css("display", "none");

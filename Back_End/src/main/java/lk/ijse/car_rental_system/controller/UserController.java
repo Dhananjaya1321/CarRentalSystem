@@ -1,5 +1,6 @@
 package lk.ijse.car_rental_system.controller;
 
+import lk.ijse.car_rental_system.dto.UserDTO;
 import lk.ijse.car_rental_system.service.UserService;
 import lk.ijse.car_rental_system.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,11 @@ public class UserController {
     @GetMapping(path = "/mail",params = {"username"})
     public ResponseUtil getOTPCode(String username) {
         return new ResponseUtil("Ok", "Successfully loaded...!",user.sendEmail(username));
+    }
+    @PutMapping
+    public ResponseUtil updatePassword(@RequestBody UserDTO dto) {
+        user.updatePassword(dto);
+        return new ResponseUtil("Ok", "Successfully updated...!", dto.getUsername());
     }
 
 

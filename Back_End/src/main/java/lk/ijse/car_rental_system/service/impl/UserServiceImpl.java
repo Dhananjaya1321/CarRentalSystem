@@ -51,6 +51,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void updatePassword(UserDTO dto) {
+        User user = userRepo.findById(dto.getUsername()).get();
+        user.setPassword(dto.getPassword());
+        userRepo.save(user);
+    }
+
+    @Override
     public int sendEmail(String username) {
         Random random = new Random();
         int otp = random.nextInt(9999 - 1000 + 1) + 1000;
