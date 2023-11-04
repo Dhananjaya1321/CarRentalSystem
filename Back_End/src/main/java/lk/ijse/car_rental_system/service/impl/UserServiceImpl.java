@@ -1,8 +1,6 @@
 package lk.ijse.car_rental_system.service.impl;
 
-import lk.ijse.car_rental_system.dto.DriverDTO;
 import lk.ijse.car_rental_system.dto.UserDTO;
-import lk.ijse.car_rental_system.entity.Driver;
 import lk.ijse.car_rental_system.entity.User;
 import lk.ijse.car_rental_system.repo.CustomerRepo;
 import lk.ijse.car_rental_system.repo.DriverRepo;

@@ -98,14 +98,14 @@ function loadCarsForHomePage() {
                                     <h3>Free KM for a month <br><span>${car.free_mileage_for_month}</span></h3>
                                 </div><!--monthly rate-->
                             </div><!--price details-->
-                            <div class="other-details flex f-col">
-                                <h3>Price per Extra Km (Rs) <span>${car.price_for_extra_km}</span></h3>
-                                <div class="flex f-row f-wrap">
-                                    <div class="flex flex-row"><i class="fa-solid fa-user"></i> <span>${car.number_of_passengers}</span></div>
+                             <div class="other-details flex f-col">
+                                <h3 style="align-self: center;">Price per Extra Km (Rs) <span>${car.price_for_extra_km}</span></h3>
+                                <div class="flex f-row">
+                                    <div style="margin-left:0;" class="flex flex-row"><i class="fa-solid fa-user"></i> <span>${car.number_of_passengers}</span></div>
                                     <!--seat count-->
-                                    <div class="flex flex-row"><i class="fa-solid fa-gear"></i> <span>${car.transmission_type}</span></div>
+                                    <div style="margin-left:0;" class="flex flex-row"><i class="fa-solid fa-gear"></i> <span>${car.transmission_type}</span></div>
                                     <!--(Manual, Auto)-->
-                                    <div class="flex flex-row"><i class="fa-solid fa-gas-pump"></i> <span>${car.fuel_type}</span></div>
+                                    <div style="margin-left:0;" class="flex flex-row"><i class="fa-solid fa-gas-pump"></i> <span>${car.fuel_type}</span></div>
                                     <!--(Diesel, Petrol)-->
                                 </div>
                             </div><!--other details-->

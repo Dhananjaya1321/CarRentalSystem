@@ -10,7 +10,7 @@ function loadCarsForRentalPage() {
     $("#premium-rental-display-section").empty();
     for (let i in cars) {
         let car = cars[i];
-        let front_img = "../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.front_image;
+        let front_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.front_image;
         let side_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.back_image;
         let back_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.side_image;
         let interior_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.interior_image;
@@ -103,7 +103,7 @@ function getCarDetailsForRentalsPage() {
 
 function setItem(registration_number) {
     let car = searchCarByRegistrationNumber(registration_number)[0];
-    let front_img = "../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.front_image;
+    let front_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.front_image;
     let side_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.back_image;
     let back_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.side_image;
     let interior_img = "../../../CarRentalSystem/Back_End/src/main/resources/files/cars/" + car.interior_image;
@@ -148,25 +148,34 @@ function setItem(registration_number) {
                             <h3>Free KM for a month : <span id="km-for-month">${car.free_mileage_for_month}</span>KM</h3>
                         </div><!--monthly rate-->
                     </div>
-                    <div class="other-details flex f-col">
-                        <h3>Price per Extra KM : Rs. <span id="extra-km-price">${car.price_for_extra_km}</span></h3>
-                        <div class="flex f-row ">
-                            <div class="flex f-col">
-                                <div class="flex flex-row"><h3>Number of passengers : <span id="seat-count">${car.number_of_passengers}</span></h3></div>
-                                <!--seat count-->
-                                <div class="flex flex-row"><h3>Registration number : <span id="registration-number">${car.registration_number}</span>
-                                </h3></div>
-                                <div class="flex flex-row"><h3>Transmission type : <span id="transmission-type">${car.transmission_type}</span></h3>
+                    <div id="dody${car.registration_number}" class="details-div flex f-col">
+                            <div class="flex f-row">
+                                <h2>${car.brand}</h2>
+                                <div class="car-color"></div>
+                            </div><!--brand-->
+                            <div class="price-details flex f-row">
+                                <div>
+                                    <h3>Daily Rate (Rs.) <br><span>${car.price_for_day}</span></h3>
+                                    <h3>Free KM for a day <br><span>${car.free_mileage_for_day}</span></h3>
+                                </div><!--daily rate-->
+                                <div class="horizontal-line"></div>
+                                <div>
+                                    <h3>Monthly Rate (Rs.) <br><span>${car.price_for_month}</span></h3>
+                                    <h3>Free KM for a month <br><span>${car.free_mileage_for_month}</span></h3>
+                                </div><!--monthly rate-->
+                            </div><!--price details-->
+                            <div class="other-details flex f-col">
+                                <h3 style="align-self: center;">Price per Extra Km (Rs) <span>${car.price_for_extra_km}</span></h3>
+                                <div class="flex f-row">
+                                    <div style="margin-left:0;" class="flex flex-row"><i class="fa-solid fa-user"></i> <span>${car.number_of_passengers}</span></div>
+                                    <!--seat count-->
+                                    <div style="margin-left:0;" class="flex flex-row"><i class="fa-solid fa-gear"></i> <span>${car.transmission_type}</span></div>
+                                    <!--(Manual, Auto)-->
+                                    <div style="margin-left:0;" class="flex flex-row"><i class="fa-solid fa-gas-pump"></i> <span>${car.fuel_type}</span></div>
+                                    <!--(Diesel, Petrol)-->
                                 </div>
-                                <!--(Manual, Auto)-->
-                            </div>
-                            <div class="flex f-col">
-                                <div class="flex flex-row"><h3>Colo : <span id="color">${car.color}</span></h3></div>
-                                <div class="flex flex-row"><h3>Fuel Type : <span id="fuel-type">${car.fuel_type}</span></h3></div>
-                                <!--(Diesel, Petrol)-->
-                            </div>
-                        </div>
-                    </div><!--other details-->
+                            </div><!--other details-->
+                        </div><!--car details-->
                     <p>This car is a <span id="car-type-loss-damage">${car.type}</span>car and before you can rent it first you need
                         to make a damage waiver payment of Rs. <span id="loss-damage">${car.loss_damage_waiver}</span> to our bank account details
                         and upload the bank slip or bank confirmation in the reserved field in the rental view.

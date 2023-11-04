@@ -7,20 +7,20 @@ import lk.ijse.car_rental_system.service.CarService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
+@PropertySource("classpath:properties.properties")
 public class CarServiceImpl implements CarService {
     @Autowired
     CarRepo carRepo;
@@ -28,14 +28,14 @@ public class CarServiceImpl implements CarService {
     @Autowired
     ModelMapper modelMapper;
 
+    @Value("${files.cars}")
+    String uploadDir;
+
     @Override
     public void saveCar(CarDTO dto) throws IOException {
         if (carRepo.existsById(dto.getRegistration_number())) {
             throw new RuntimeException(dto.getRegistration_number() + " already exists");
         }
-
-
-        String uploadDir = "C:\\Users\\ACER\\Documents\\WorkZone\\CarRentalSystem\\Back_End\\src\\main\\resources\\files\\" + "cars";
 
         MultipartFile back_image = dto.getBack_image();
         MultipartFile front_image = dto.getFront_image();

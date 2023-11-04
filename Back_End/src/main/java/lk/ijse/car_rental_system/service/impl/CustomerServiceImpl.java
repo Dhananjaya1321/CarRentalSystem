@@ -11,6 +11,8 @@ import lk.ijse.car_rental_system.service.CustomerService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,6 +24,7 @@ import java.util.List;
 
 @Service
 @Transactional
+@PropertySource("classpath:properties.properties")
 public class CustomerServiceImpl implements CustomerService {
     @Autowired
     CustomerRepo customerRepo;
@@ -32,10 +35,11 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     UserRepo userRepo;
 
+    @Value("${files.customers}")
+    String uploadDir;
+
     @Override
     public void saveCustomer(CustomerDTO dto) throws IOException {
-        String uploadDir = "C:\\Users\\ACER\\Documents\\WorkZone\\CarRentalSystem\\Back_End\\src\\main\\resources\\files\\" + "upload-dir";
-
         MultipartFile license_back_photo = dto.getLicense_back_photo();
         MultipartFile license_front_photo = dto.getLicense_front_photo();
         MultipartFile nic_front_photo = dto.getNic_front_photo();

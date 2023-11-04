@@ -50,9 +50,10 @@ public class DriverServiceImpl implements DriverService {
         }
         driverRepo.save(modelMapper.map(dto, Driver.class));
     }
+
     @Override
-    public void updateDriver(DriverDTO dto){
-       driverRepo.save(modelMapper.map(dto,Driver.class));
+    public void updateDriver(DriverDTO dto) {
+        driverRepo.save(modelMapper.map(dto, Driver.class));
     }
 
     @Override
@@ -98,6 +99,7 @@ public class DriverServiceImpl implements DriverService {
         }
         return modelMapper.map(userRepo.findById(username), UserDTO.class);
     }
+
     @Override
     public String getDriverId(String username) {
         return driverRepo.getDriverId(username);

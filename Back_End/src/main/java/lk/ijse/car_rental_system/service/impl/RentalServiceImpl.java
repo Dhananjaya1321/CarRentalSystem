@@ -11,6 +11,8 @@ import lk.ijse.car_rental_system.service.RentalService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,6 +25,7 @@ import java.util.*;
 
 @Service
 @Transactional
+@PropertySource("classpath:properties.properties")
 public class RentalServiceImpl implements RentalService {
     @Autowired
     RentalRepo rentalRepo;
@@ -31,6 +34,9 @@ public class RentalServiceImpl implements RentalService {
 
     @Autowired
     ModelMapper modelMapper;
+
+    @Value("${files.slip}")
+    String uploadDir;
 
     @Override
     public String getLastRentalID() {
@@ -46,8 +52,6 @@ public class RentalServiceImpl implements RentalService {
 
     @Override
     public void saveRental(RentalDTO dto) throws IOException {
-        String uploadDir = "C:\\Users\\ACER\\Documents\\WorkZone\\CarRentalSystem\\Back_End\\src\\main\\resources\\files\\" + "bankSlip";
-
         MultipartFile bank_slip = dto.getLoss_damage_back_slip();
         bank_slip.transferTo(new File(new File(uploadDir, bank_slip.getOriginalFilename()).getAbsolutePath()));
 
@@ -59,7 +63,7 @@ public class RentalServiceImpl implements RentalService {
 
         if (dto.getDriver_or_not().equals("yes")) {
 
-            System.out.println("\n\n"+"yes");
+            System.out.println("\n\n" + "yes");
 
             List<String> allAvailableDrivers = driverRepo.findAllAvailableDrivers(dto.getPick_up_date(), dto.getReturn_date());
 //            List<Driver> allAvailableDrivers = driverRepo.findAll();

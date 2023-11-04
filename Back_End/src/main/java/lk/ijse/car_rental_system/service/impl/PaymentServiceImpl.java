@@ -48,8 +48,8 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public void updatePayment(PaymentDTO dto, int thisRentalMiles, String registration_number) {
-        carRepo.updateCarMileageAfterMaintain(registration_number,thisRentalMiles);
-        paymentRepo.save(modelMapper.map(dto,Payment.class));
+        carRepo.updateCarMileageAfterMaintain(registration_number, thisRentalMiles);
+        paymentRepo.save(modelMapper.map(dto, Payment.class));
     }
 
     @Override
