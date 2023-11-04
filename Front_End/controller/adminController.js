@@ -485,10 +485,11 @@ $("#accept-request").click(function () {
     let driver_id = $("#drivers-id-request").val();
     let driver_or_not = $("#drivers-or-not-request").val();
     let cusnic = $("#nic-request").val();
-    let pickupdate = $("#pick-up-date-request").val();
-    let pickuptime = $("#pick-up-time-request").val();
-    let returndate = $("#return-date-request").val();
-    let returntime = $("#return-time-request").val();
+    let searchRequest1 = searchRequest(requestid);
+    let pickupdate = searchRequest1.pick_up_date;
+    let pickuptime = searchRequest1.pick_up_time;
+    let returndate = searchRequest1.return_date;
+    let returntime = searchRequest1.return_time;
     let loc = $("#location-request").val();
 
     // let payment_id = generateNextPaymentID(getLastPaymentID());

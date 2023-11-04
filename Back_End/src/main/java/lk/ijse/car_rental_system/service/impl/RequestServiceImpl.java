@@ -55,7 +55,7 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public void acceptRequestAndChangeDriver(RentalDTO dto, String loss_damage_back_slip) {
-       /*modifying*/
+        /*modifying*/
         Customer customer = modelMapper.map(dto.getCustomer(), Customer.class);
         ArrayList<CustomEntity> allPendingRequests = requestRepo.findAllPendingRequests();
         for (CustomEntity c : allPendingRequests) {
@@ -90,8 +90,9 @@ public class RequestServiceImpl implements RequestService {
 
     @Override
     public int getPendingRequestCount() {
-       return requestRepo.getPendingRequestCount();
+        return requestRepo.getPendingRequestCount();
     }
+
     @Override
     public int getAcceptedRequestRequestCountForTheDay(String date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -99,6 +100,7 @@ public class RequestServiceImpl implements RequestService {
 
         return requestRepo.getAcceptedRequestRequestCountForTheDay(currentDate);
     }
+
     @Override
     public List<CustomDTO> getAllPendingRequests() {
         ArrayList<CustomEntity> allPendingRequests = requestRepo.findAllPendingRequests();
@@ -117,6 +119,7 @@ public class RequestServiceImpl implements RequestService {
         return modelMapper.map(allPendingRequests, new TypeToken<List<CustomDTO>>() {
         }.getType());
     }
+
     @Override
     public List<CustomDTO> getAllPendingPaymentRequest() {
         return modelMapper.map(requestRepo.getAllPendingPaymentRequest(), new TypeToken<List<CustomDTO>>() {

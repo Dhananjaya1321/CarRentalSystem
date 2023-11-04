@@ -29,6 +29,7 @@ public class RequestController {
 
     @PutMapping(path = "/accept", params = {"loss_damage_back_slip"})
     public ResponseUtil acceptRequestAndChangeDriver(@RequestBody RentalDTO dto, String loss_damage_back_slip) {
+        System.out.println(dto.toString());
         requestService.acceptRequestAndChangeDriver(dto, loss_damage_back_slip);
         return new ResponseUtil("Ok", "Successfully updated...!", dto.getRental_id());
     }
