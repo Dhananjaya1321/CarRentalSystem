@@ -1,5 +1,26 @@
 $("#reservation-btn").click(function () {
-    saveRental();
+    $("#location,#pick-up-date,#pick-up-time,#return-date,#return-time").css("border", "1px solid #000000b3");
+    if ($("#pick-up-date").val() !== "") {
+        if ($("#pick-up-time").val() !== "") {
+            if ($("#return-date").val() !== "") {
+                if ($("#return-time").val() !== "") {
+                    if ($("#location").val() !== "") {
+                        saveRental();
+                    } else {
+                        $("#location").css("border", "1px solid red");
+                    }
+                } else {
+                    $("#return-time").css("border", "1px solid red");
+                }
+            } else {
+                $("#return-date").css("border", "1px solid red");
+            }
+        } else {
+            $("#pick-up-time").css("border", "1px solid red");
+        }
+    } else {
+        $("#pick-up-date").css("border", "1px solid red");
+    }
 })
 
 let cartItems = [];
@@ -38,7 +59,6 @@ function loadAllCartItemsToCartSection() {
                                         <i class="fa-solid fa-gas-pump"></i> <span>${cars[j].fuel_type}</span> |
                                     </p>
                                 </div>
-                              
                                 <div class="flex f-row col-2">
                                     <button value="${cars[j].registration_number}" class="cart-item-delete-btn">
                                         <i class="fa-solid fa-trash-can" style="color: #ff0000;"></i>
@@ -66,9 +86,13 @@ function deleteCartItem() {
 }
 
 $("#clear-cart-btn").click(function () {
+    clearCart()
+})
+
+function clearCart() {
     cartItems = [];
     loadAllCartItemsToCartSection();
-})
+}
 
 $("#cart-reservation-btn").click(function () {
     let rental_id = generateNextRentalID(getLastRentalID());
@@ -139,27 +163,51 @@ $("#cart-reservation-btn").click(function () {
     formData.append("loss_damage_back_slip", $("#cart-bank-slip")[0].files[0]);
     formData.append("dto", new Blob([JSON.stringify(data)], {type: "application/json"}));
 
-    $.ajax({
-        url: base_url + "payment/cart",
-        method: "post",
-        contentType: "application/json",
-        data: JSON.stringify(paymentDataArray),
-        success: function (rep) {
-            $.ajax({
-                url: base_url + "rental",
-                method: "post",
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (rep) {
-                    alert(rep.message);
-                },
-                error: function (rep) {
-                    console.log(rep.data)
+    if (pickUpDate !== "") {
+        if (pickUpTime !== "") {
+            if (returnDate !== "") {
+                if (returnTime !== "") {
+                    if (location !== "") {
+                        $.ajax({
+                            url: base_url + "payment/cart",
+                            method: "post",
+                            contentType: "application/json",
+                            data: JSON.stringify(paymentDataArray),
+                            success: function (rep) {
+                                $.ajax({
+                                    url: base_url + "rental",
+                                    method: "post",
+                                    data: formData,
+                                    processData: false,
+                                    contentType: false,
+                                    success: function (rep) {
+                                        alert(rep.message);
+                                        clearCart();
+                                        $("#location,#cart-return-date,#cart-return-time,#cart-pick-up-date,#cart-pick-up-time").val("");
+                                    },
+                                    error: function (rep) {
+                                        console.log(rep.data)
+                                        clearCart();
+                                        $("#location,#cart-return-date,#cart-return-time,#cart-pick-up-date,#cart-pick-up-time").val("");
+                                    }
+                                })
+                            }
+                        });
+                    } else {
+                        $("#location").css("border", "1px solid red");
+                    }
+                } else {
+                    $("#cart-return-time").css("border", "1px solid red");
                 }
-            })
+            } else {
+                $("#cart-return-date").css("border", "1px solid red");
+            }
+        } else {
+            $("#cart-pick-up-time").css("border", "1px solid red");
         }
-    });
+    } else {
+        $("#cart-pick-up-date").css("border", "1px solid red");
+    }
 })
 
 function saveRental() {

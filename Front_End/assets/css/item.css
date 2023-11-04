@@ -173,7 +173,7 @@ label {
     height: 40px !important;
     width: 250px !important;
     border-radius: 10px !important;
-    border: 1px solid #000000b3 !important;
+    border: 1px solid #000000b3;
     margin: 0!important;
 }
 
